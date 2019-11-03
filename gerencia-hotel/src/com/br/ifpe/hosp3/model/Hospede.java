@@ -8,22 +8,28 @@ package com.br.ifpe.hosp3.model;
 
 public class Hospede extends Pessoa
 {
-	private String codigo_hospede;
+	private int id;
 
-	public Hospede(String nome, String cpf, String email, String senha, String telefone, Endereco endereco, String codigo_hospede) 
+	public Hospede(String nome, String cpf, String email, String telefone, String palavra_passe, Endereco endereco, int id) 
 	{
-		super(nome, cpf, email, senha, telefone, endereco);
-		this.codigo_hospede = codigo_hospede;
+		super(nome, cpf, email, telefone, palavra_passe, endereco);
+		this.id = id;
 	}
 
-	public String getCodigo_hospede() 
+	/**
+	 * @return id {@link int}
+	 */
+	public int getId() 
 	{
-		return codigo_hospede;
+		return id;
 	}
 
-	public void setCodigo_hospede(String codigo_hospede) 
+	/**
+	 * @param id {@link int}
+	 */
+	public void setId(int id) 
 	{
-		this.codigo_hospede = codigo_hospede;
+		this.id = id;
 	}
-	
+
 }

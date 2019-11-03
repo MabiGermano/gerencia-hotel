@@ -8,21 +8,46 @@ package com.br.ifpe.hosp3.model;
 
 public class Funcionario extends Pessoa
 {
-	private String codigo_funcionario;
-
-	public Funcionario(String nome, String cpf, String email, String senha, String telefone, Endereco endereco, String codigo_funcionario) 
+	private int id;
+	private String codigo;
+	
+	public Funcionario(String nome, String cpf, String email, String telefone, String palavra_passe, Endereco endereco, int id, String codigo) 
 	{
-		super(nome, cpf, email, senha, telefone, endereco);
-		this.codigo_funcionario = codigo_funcionario;
+		super(nome, cpf, email, telefone, palavra_passe, endereco);
+		this.id = id;
+		this.codigo = codigo;
 	}
 
-	public String getCodigo_funcionario() 
+	/**
+	 * @return id {@link int}
+	 */
+	public int getId() 
 	{
-		return codigo_funcionario;
+		return id;
 	}
 
-	public void setCodigo_funcionario(String codigo_funcionario) 
+	/**
+	 * @param id {@link int}
+	 */
+	public void setId(int id) 
 	{
-		this.codigo_funcionario = codigo_funcionario;
+		this.id = id;
 	}
+
+	/**
+	 * @return codigo {@link String}
+	 */
+	public String getCodigo() 
+	{
+		return codigo;
+	}
+
+	/**
+	 * @param codigo {@link String}
+	 */
+	public void setCodigo(String codigo) 
+	{
+		this.codigo = codigo;
+	}
+	
 }

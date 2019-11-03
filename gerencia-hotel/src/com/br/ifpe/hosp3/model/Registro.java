@@ -1,70 +1,142 @@
 package com.br.ifpe.hosp3.model;
 
+/**
+ * @author Tayná Alexandra
+ *
+ * Classe Registro 
+ */
+
 public class Registro 
 {
-	private boolean flagAtivo;
+	private int id;
+	private boolean flag_ativo;
 	private String pagamento;
-	private int codigo_consumo;
-	private int codigo_quarto;
-	private int codigo_hospede;
+	private Hospede hospede;
+	private Quarto quarto;
+	private ConsumoExtra consumoExtra;
+	private Funcionario funcionario;
 	
-	public Registro(boolean flagAtivo, String pagamento, int codigo_consumo, int codigo_quarto, int codigo_hospede) 
+	public Registro(int id, boolean flag_ativo, String pagamento, Hospede hospede, Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) 
 	{
-		this.flagAtivo = flagAtivo;
+		this.id = id;
+		this.flag_ativo = flag_ativo;
 		this.pagamento = pagamento;
-		this.codigo_consumo = codigo_consumo;
-		this.codigo_quarto = codigo_quarto;
-		this.codigo_hospede = codigo_hospede;
+		this.hospede = hospede;
+		this.quarto = quarto;
+		this.consumoExtra = consumoExtra;
+		this.funcionario = funcionario;
 	}
 
-	public boolean isFlagAtivo() 
+	/**
+	 * @return id {@link int}
+	 */
+	public int getId() 
 	{
-		return flagAtivo;
+		return id;
 	}
 
-	public void setFlagAtivo(boolean flagAtivo) 
+	/**
+	 * @param id {@link int}
+	 */
+	public void setId(int id) 
 	{
-		this.flagAtivo = flagAtivo;
+		this.id = id;
 	}
 
+	/**
+	 * @return flag_ativo {@link boolean}
+	 */
+	public boolean isFlag_ativo() 
+	{
+		return flag_ativo;
+	}
+
+	/**
+	 * @param flag_ativo {@link boolean}
+	 */
+	public void setFlag_ativo(boolean flag_ativo) 
+	{
+		this.flag_ativo = flag_ativo;
+	}
+
+	/**
+	 * @return pagamento {@link String}
+	 */
 	public String getPagamento() 
 	{
 		return pagamento;
 	}
 
+	/**
+	 * @param pagamento {@link String}
+	 */
 	public void setPagamento(String pagamento) 
 	{
 		this.pagamento = pagamento;
 	}
 
-	public int getCodigo_consumoExtra() 
+	/**
+	 * @return hospede {@link Hospede}
+	 */
+	public Hospede getHospede() 
 	{
-		return codigo_consumo;
+		return hospede;
 	}
 
-	public void setCodigo_consumoExtra(int codigo_consumo) 
+	/**
+	 * @param hospede {@link Hospede}
+	 */
+	public void setHospede(Hospede hospede) 
 	{
-		this.codigo_consumo = codigo_consumo;
+		this.hospede = hospede;
 	}
 
-	public int getCodigo_quarto() 
+	/**
+	 * @return quarto {@link Quarto}
+	 */
+	public Quarto getQuarto() 
 	{
-		return codigo_quarto;
+		return quarto;
 	}
 
-	public void setCodigo_quarto(int codigo_quarto) 
+	/**
+	 * @param quarto {@link Quarto}
+	 */
+	public void setQuarto(Quarto quarto) 
 	{
-		this.codigo_quarto = codigo_quarto;
+		this.quarto = quarto;
 	}
 
-	public int getCodigo_hospede() 
+	/**
+	 * @return consumoExtra {@link ConsumoExtra}
+	 */
+	public ConsumoExtra getConsumoExtra() 
 	{
-		return codigo_hospede;
+		return consumoExtra;
 	}
 
-	public void setCodigo_hospede(int codigo_hospede) 
+	/**
+	 * @param consumoExtra {@link ConsumoExtra}
+	 */
+	public void setConsumoExtra(ConsumoExtra consumoExtra) 
 	{
-		this.codigo_hospede = codigo_hospede;
+		this.consumoExtra = consumoExtra;
+	}
+
+	/**
+	 * @return funcionario {@link Funcionario}
+	 */
+	public Funcionario getFuncionario() 
+	{
+		return funcionario;
+	}
+
+	/**
+	 * @param funcionario {@link Funcionario}
+	 */
+	public void setFuncionario(Funcionario funcionario) 
+	{
+		this.funcionario = funcionario;
 	}
 	
 }

@@ -1,46 +1,70 @@
 package com.br.ifpe.hosp3.model;
 
+/**
+ * @author Tayná Alexandra
+ *
+ * Classe Consumo Extra 
+ */
+
 public class ConsumoExtra 
 {
-	private int codigo_consumoExtra;
+	private int id;
 	private String descricao;
 	private float valor;
 	
-	public ConsumoExtra(int codigo_consumoExtra, String descricao, float valor) 
+	public ConsumoExtra(int id, String descricao, float valor) 
 	{
-		this.codigo_consumoExtra = codigo_consumoExtra;
+		this.id = id;
 		this.descricao = descricao;
 		this.valor = valor;
 	}
 
-	public int getCodigo_consumoExtra() 
+	/**
+	 * @return id {@link int}
+	 */
+	public int getId() 
 	{
-		return codigo_consumoExtra;
+		return id;
 	}
 
-	public void setCodigo_consumoExtra(int codigo_consumoExtra) 
+	/**
+	 * @param id {@link int}
+	 */
+	public void setId(int id) 
 	{
-		this.codigo_consumoExtra = codigo_consumoExtra;
+		this.id = id;
 	}
 
+	/**
+	 * @return descricao {@link String}
+	 */
 	public String getDescricao() 
 	{
 		return descricao;
 	}
 
+	/**
+	 * @param descricao {@link String}
+	 */
 	public void setDescricao(String descricao) 
 	{
 		this.descricao = descricao;
 	}
 
+	/**
+	 * @return valor {@link float}
+	 */
 	public float getValor() 
 	{
 		return valor;
 	}
 
+	/**
+	 * @param valor {@link float}
+	 */
 	public void setValor(float valor) 
 	{
 		this.valor = valor;
 	}
-
+	
 }
