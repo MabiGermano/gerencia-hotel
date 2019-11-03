@@ -38,7 +38,7 @@ public class Endereco
 	}
 	
 	/**
-	 * @param id {@link String}
+	 * @param id {@link int}
 	 */
 	public void setId(int id) 
 	{

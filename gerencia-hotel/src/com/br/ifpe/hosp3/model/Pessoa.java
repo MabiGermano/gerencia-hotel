@@ -12,16 +12,16 @@ public abstract class Pessoa
 	private String cpf;
 	private String email;
 	private String telefone;
-	private String palavra_passe;
+	private String palavraPasse;
 	private Endereco endereco;
 
-	public Pessoa(String nome, String cpf, String email, String telefone, String palavra_passe, Endereco endereco) 
+	public Pessoa(String nome, String cpf, String email, String telefone, String palavraPasse, Endereco endereco) 
 	{
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.telefone = telefone;
-		this.palavra_passe = palavra_passe;
+		this.palavraPasse = palavraPasse;
 		this.endereco = endereco;
 	}
 
@@ -90,19 +90,19 @@ public abstract class Pessoa
 	}
 
 	/**
-	 * @return palavra_passe {@link String}
+	 * @return palavraPasse {@link String}
 	 */
-	public String getPalavra_passe() 
+	public String getPalavraPasse() 
 	{
-		return palavra_passe;
+		return palavraPasse;
 	}
 
 	/**
-	 * @param palavra_passe {@link String}
+	 * @param palavraPasse {@link String}
 	 */
-	public void setPalavra_passe(String palavra_passe) 
+	public void setPalavraPasse(String palavraPasse) 
 	{
-		this.palavra_passe = palavra_passe;
+		this.palavraPasse = palavraPasse;
 	}
 
 	/**

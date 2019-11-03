@@ -9,17 +9,17 @@ package com.br.ifpe.hosp3.model;
 public class Registro 
 {
 	private int id;
-	private boolean flag_ativo;
+	private boolean flagAtivo;
 	private String pagamento;
 	private Hospede hospede;
 	private Quarto quarto;
 	private ConsumoExtra consumoExtra;
 	private Funcionario funcionario;
 	
-	public Registro(int id, boolean flag_ativo, String pagamento, Hospede hospede, Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) 
+	public Registro(int id, boolean flagAtivo, String pagamento, Hospede hospede, Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) 
 	{
 		this.id = id;
-		this.flag_ativo = flag_ativo;
+		this.flagAtivo = flagAtivo;
 		this.pagamento = pagamento;
 		this.hospede = hospede;
 		this.quarto = quarto;
@@ -44,19 +44,19 @@ public class Registro
 	}
 
 	/**
-	 * @return flag_ativo {@link boolean}
+	 * @return flagAtivo {@link boolean}
 	 */
-	public boolean isFlag_ativo() 
+	public boolean isFlagAtivo() 
 	{
-		return flag_ativo;
+		return flagAtivo;
 	}
 
 	/**
-	 * @param flag_ativo {@link boolean}
+	 * @param flagAtivo {@link boolean}
 	 */
-	public void setFlag_ativo(boolean flag_ativo) 
+	public void setFlagAtivo(boolean flagAtivo) 
 	{
-		this.flag_ativo = flag_ativo;
+		this.flagAtivo = flagAtivo;
 	}
 
 	/**
