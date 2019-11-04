@@ -13,35 +13,26 @@ public interface ManipulacaoDeDados {
 	/**
 	 * @param object {@link Object}
 	 **/
-	public static void create(Object object) {
-
-	}
+	public void create(Object object);
 	
 	/**
 	 * @param object {@link Object}
 	 **/
-	public static void updade(Object object) {
-
-	}
+	public void updade(Object object);
 
 	/**
 	 * @return HashSet {@link HashSet<Object>}
 	 **/
-	public static HashSet<Object> listAll() {
-		return null;
-	}
+	public HashSet<Object> listAll();
 
 	/**
 	 * @return object {@link Object}
 	 **/
-	public static Object getById(int id) {
-		return null;
-	}
+	public Object getById(int id);
 	
 	/**
 	 * @param object {@link Object}
 	 **/
-	public static void delete(Object object) {
+	public void delete(Object object);
 
-	}
 }
