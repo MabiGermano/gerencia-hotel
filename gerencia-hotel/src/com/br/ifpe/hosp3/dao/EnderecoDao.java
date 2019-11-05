@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.HashSet;
 
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
+import com.br.ifpe.hosp3.connection.ManipulacaoDeDados;
 import com.br.ifpe.hosp3.model.Endereco;
 
 /**

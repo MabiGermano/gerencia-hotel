@@ -1,4 +1,4 @@
-package com.br.ifpe.hosp3.dao;
+package com.br.ifpe.hosp3.connection;
 
 public class TesteDeConexão {
 
