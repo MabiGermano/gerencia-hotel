@@ -1,7 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
 /**
- * @author Tayná Alexandra
+ * @author Taynï¿½ Alexandra
  *
  * Classe Registro 
  */
@@ -11,17 +11,17 @@ public class Registro
 	private int id;
 	private boolean flag_ativo;
 	private String pagamento;
-	private Hospede hospede;
+	private Hospedagem hospedagem;
 	private Quarto quarto;
 	private ConsumoExtra consumoExtra;
 	private Funcionario funcionario;
 	
-	public Registro(int id, boolean flag_ativo, String pagamento, Hospede hospede, Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) 
-	{
+	public Registro(int id, boolean flag_ativo, String pagamento, Hospedagem hospedagem, 
+			Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) {
 		this.id = id;
 		this.flag_ativo = flag_ativo;
 		this.pagamento = pagamento;
-		this.hospede = hospede;
+		this.hospedagem = hospedagem;
 		this.quarto = quarto;
 		this.consumoExtra = consumoExtra;
 		this.funcionario = funcionario;
@@ -78,17 +78,17 @@ public class Registro
 	/**
 	 * @return hospede {@link Hospede}
 	 */
-	public Hospede getHospede() 
+	public Hospedagem getHospedagem() 
 	{
-		return hospede;
+		return hospedagem;
 	}
 
 	/**
 	 * @param hospede {@link Hospede}
 	 */
-	public void setHospede(Hospede hospede) 
+	public void setHospedagem(Hospedagem hospedagem) 
 	{
-		this.hospede = hospede;
+		this.hospedagem = hospedagem;
 	}
 
 	/**
