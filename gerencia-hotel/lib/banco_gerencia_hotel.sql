@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `hosp3`.`endereco` (
   `bairro` VARCHAR(45) NULL,
   `pais` VARCHAR(45) NULL,
   `cidade` VARCHAR(45) NULL,
+  `estado` VARCHAR(45) NULL,
   `complemento` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

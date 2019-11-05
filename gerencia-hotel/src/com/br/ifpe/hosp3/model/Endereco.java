@@ -14,6 +14,7 @@ public class Endereco {
 	private String bairro;
 	private String pais;
 	private String cidade;
+	private String estado;
 	private String complemento;
 
 	public Endereco() {
@@ -21,7 +22,7 @@ public class Endereco {
 	}
 
 	public Endereco(int id, String rua, String numero, String cep, String bairro, String pais, String cidade,
-			String complemento) {
+			String estado, String complemento) {
 		this.id = id;
 		this.rua = rua;
 		this.numero = numero;
@@ -29,19 +30,22 @@ public class Endereco {
 		this.bairro = bairro;
 		this.pais = pais;
 		this.cidade = cidade;
+		this.estado = estado;
 		this.complemento = complemento;
 	}
 	
 	public Endereco(String rua, String numero, String cep, String bairro, String pais, String cidade,
-			String complemento) {
+			String estado, String complemento) {
 		this.rua = rua;
 		this.numero = numero;
 		this.cep = cep;
 		this.bairro = bairro;
 		this.pais = pais;
 		this.cidade = cidade;
+		this.estado = estado;
 		this.complemento = complemento;
 	}
+
 
 	/**
 	 * @return id {@link String}
@@ -139,6 +143,21 @@ public class Endereco {
 	 */
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+	
+	/**
+	 * @return estado {@link String}
+	 */
+	public String getEstado() {
+		return estado;
+	}
+
+
+	/**
+	 * @param estado {@link String}
+	 */
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	/**

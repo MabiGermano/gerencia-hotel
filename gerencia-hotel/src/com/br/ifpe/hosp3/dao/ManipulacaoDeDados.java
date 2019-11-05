@@ -26,13 +26,19 @@ public interface ManipulacaoDeDados {
 	public HashSet<Object> listAll();
 
 	/**
+	 * @param id {@link int}
 	 * @return object {@link Object}
 	 **/
 	public Object getById(int id);
 	
 	/**
+	 * @param id {@link int}
+	 **/
+	public void delete(int id);
+
+	/**
 	 * @param object {@link Object}
 	 **/
-	public void delete(Object object);
+	public void softDelete(Object object);
 
 }
