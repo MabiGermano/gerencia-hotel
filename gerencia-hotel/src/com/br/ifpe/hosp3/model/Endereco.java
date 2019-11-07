@@ -45,6 +45,18 @@ public class Endereco {
 		this.estado = estado;
 		this.complemento = complemento;
 	}
+	
+	public Endereco(Endereco endereco) {
+		this.id = endereco.getId();
+		this.rua = endereco.getRua();
+		this.numero = endereco.getNumero();
+		this.cep = endereco.getCep();
+		this.bairro = endereco.getBairro();
+		this.pais = endereco.getPais();
+		this.cidade = endereco.getCidade();
+		this.estado = endereco.getEstado();
+		this.complemento = endereco.getComplemento();
+	}
 
 
 	/**

@@ -1,5 +1,6 @@
 package com.br.ifpe.hosp3.connection;
 
+import java.sql.ResultSet;
 import java.util.HashSet;
 
 /**
@@ -13,7 +14,7 @@ public interface ManipulacaoDeDados {
 	/**
 	 * @param object {@link Object}
 	 **/
-	public void create(Object object);
+	public int create(Object object);
 	
 	/**
 	 * @param object {@link Object}
@@ -40,5 +41,11 @@ public interface ManipulacaoDeDados {
 	 * @param object {@link Object}
 	 **/
 	public void softDelete(Object object);
+	
+	/**
+	 * @param rs {@link ResultSet}
+	 * @return int {@link int}}
+	 **/
+	public int getLastInsertedId(ResultSet rs);
 
 }

@@ -14,19 +14,20 @@ import com.br.ifpe.hosp3.model.Endereco;
 /**
  * @author Maria Beatriz Germano
  * 
- * Classe com mÃ©todos de manipulaÃ§Ã£o de dados no banco
- * referente ao objeto EndereÃ§o
+ * Classe com métodos de manipulação de dados no banco
+ * referente ao objeto Endereço
  **/
 public class EnderecoDao implements ManipulacaoDeDados {
 
 	@Override
 	/**
-	 * MÃ©todo para criaÃ§Ã£o do objeto EndereÃ§o no banco de dados
+	 * Método para criaçao do objeto Endereço no banco de dados
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void create(Object object) {
+	public int create(Object object) {
 		Connection conexao;
+		int resultado = 0;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			Endereco endereco = new Endereco();
@@ -47,9 +48,12 @@ public class EnderecoDao implements ManipulacaoDeDados {
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			resultado = this.getLastInsertedId(ps.getGeneratedKeys());
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
+		
+		return resultado;
 	}
 
 	@Override
@@ -183,5 +187,22 @@ public class EnderecoDao implements ManipulacaoDeDados {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public int getLastInsertedId(ResultSet rs) {
+		int resultado = 0;
+	
+		try {
+			if(rs.next()) {
+				resultado = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+		return resultado;
+	}
+	
+	
 
 }
