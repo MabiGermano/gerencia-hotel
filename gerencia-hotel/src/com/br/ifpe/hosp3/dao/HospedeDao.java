@@ -11,7 +11,6 @@ import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.connection.ManipulacaoDeDados;
 import com.br.ifpe.hosp3.model.Endereco;
 import com.br.ifpe.hosp3.model.Hospede;
-import com.br.ifpe.hosp3.model.hospede;
 
 /**
  * @author Maria Beatriz Germano
