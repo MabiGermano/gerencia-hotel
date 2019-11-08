@@ -15,6 +15,7 @@ public class Registro
 	private Quarto quarto;
 	private ConsumoExtra consumoExtra;
 	private Funcionario funcionario;
+	private boolean deleted;
 	
 	public Registro(int id, boolean flag_ativo, String pagamento, Hospedagem hospedagem, 
 			Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) {
@@ -137,6 +138,22 @@ public class Registro
 	public void setFuncionario(Funcionario funcionario) 
 	{
 		this.funcionario = funcionario;
+	}
+
+	/**
+	 * @return deleted {@link boolean}
+	 */
+	public boolean isDeleted()
+	{
+		return deleted;
+	}
+
+	/**
+	 * @param deleted {@link boolean}
+	 */
+	public void setDeleted(boolean deleted)
+	{
+		this.deleted = deleted;
 	}
 	
 }

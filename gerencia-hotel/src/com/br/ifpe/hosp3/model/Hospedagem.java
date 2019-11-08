@@ -11,6 +11,7 @@ public class Hospedagem
 	private int id;
 	private Hospede hospede;
 	private Quarto quarto;
+	private boolean deleted;
 	
 	public Hospedagem(int id, Hospede hospede, Quarto quarto) 
 	{
@@ -65,6 +66,22 @@ public class Hospedagem
 	public void setQuarto(Quarto quarto) 
 	{
 		this.quarto = quarto;
+	}
+
+	/**
+	 * @return deleted {@link boolean}
+	 */
+	public boolean isDeleted()
+	{
+		return deleted;
+	}
+
+	/**
+	 * @param deleted {@link boolean}
+	 */
+	public void setDeleted(boolean deleted)
+	{
+		this.deleted = deleted;
 	}
 	
 }

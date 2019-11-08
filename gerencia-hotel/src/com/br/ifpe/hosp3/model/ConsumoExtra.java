@@ -11,6 +11,7 @@ public class ConsumoExtra
 	private int id;
 	private String descricao;
 	private float valor;
+	private boolean deleted;
 	
 	public ConsumoExtra(int id, String descricao, float valor) 
 	{
@@ -66,5 +67,23 @@ public class ConsumoExtra
 	{
 		this.valor = valor;
 	}
+
+	/**
+	 * @return deleted {@link boolean}
+	 */
+	public boolean isDeleted()
+	{
+		return deleted;
+	}
+
+	/**
+	 * @param deleted {@link boolean}
+	 */
+	public void setDeleted(boolean deleted)
+	{
+		this.deleted = deleted;
+	}
+	
+	
 	
 }

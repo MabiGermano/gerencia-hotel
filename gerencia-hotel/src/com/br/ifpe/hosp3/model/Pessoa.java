@@ -14,6 +14,7 @@ public abstract class Pessoa
 	private String telefone;
 	private String palavra_passe;
 	private Endereco endereco;
+	private boolean deleted;
 
 	public Pessoa(String nome, String cpf, String email, String telefone, String palavra_passe, Endereco endereco) 
 	{
@@ -119,6 +120,22 @@ public abstract class Pessoa
 	public void setEndereco(Endereco endereco) 
 	{
 		this.endereco = endereco;
+	}
+
+	/**
+	 * @return deleted {@link boolean}
+	 */
+	public boolean isDeleted()
+	{
+		return deleted;
+	}
+
+	/**
+	 * @param deleted {@link boolean}
+	 */
+	public void setDeleted(boolean deleted)
+	{
+		this.deleted = deleted;
 	}
 	
 }

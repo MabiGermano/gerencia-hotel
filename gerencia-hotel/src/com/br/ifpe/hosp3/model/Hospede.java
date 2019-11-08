@@ -9,6 +9,7 @@ package com.br.ifpe.hosp3.model;
 public class Hospede extends Pessoa
 {
 	private int id;
+	private boolean deleted;
 
 	public Hospede(String nome, String cpf, String email, String telefone, String palavra_passe, Endereco endereco, int id) 
 	{
@@ -30,6 +31,22 @@ public class Hospede extends Pessoa
 	public void setId(int id) 
 	{
 		this.id = id;
+	}
+
+	/**
+	 * @return deleted {@link boolean}
+	 */
+	public boolean isDeleted()
+	{
+		return deleted;
+	}
+
+	/**
+	 * @param deleted {@link boolean}
+	 */
+	public void setDeleted(boolean deleted)
+	{
+		this.deleted = deleted;
 	}
 
 }

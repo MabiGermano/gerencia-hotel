@@ -10,6 +10,7 @@ public class Funcionario extends Pessoa
 {
 	private int id;
 	private String codigo;
+	private boolean deleted;
 	
 	public Funcionario(String nome, String cpf, String email, String telefone, String palavra_passe, Endereco endereco, int id, String codigo) 
 	{
@@ -49,5 +50,21 @@ public class Funcionario extends Pessoa
 	{
 		this.codigo = codigo;
 	}
-	
+
+	/**
+	 * @return deleted {@link boolean}
+	 */
+	public boolean isDeleted()
+	{
+		return deleted;
+	}
+
+	/**
+	 * @param deleted {@link boolean}
+	 */
+	public void setDeleted(boolean deleted)
+	{
+		this.deleted = deleted;
+	}
+
 }
