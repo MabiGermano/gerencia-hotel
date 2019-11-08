@@ -14,14 +14,14 @@ import com.br.ifpe.hosp3.model.Endereco;
 /**
  * @author Maria Beatriz Germano
  * 
- * Classe com métodos de manipulação de dados no banco
- * referente ao objeto Endereço
+ * Classe com mï¿½todos de manipulaï¿½ï¿½o de dados no banco
+ * referente ao objeto Endereï¿½o
  **/
 public class EnderecoDao implements ManipulacaoDeDados {
 
 	@Override
 	/**
-	 * Método para criaçao do objeto Endereço no banco de dados
+	 * Mï¿½todo para criaï¿½ao do objeto Endereï¿½o no banco de dados
 	 * 
 	 * @param object {@link Object}
 	 **/
@@ -189,6 +189,11 @@ public class EnderecoDao implements ManipulacaoDeDados {
 	}
 
 	@Override
+	/**
+	 * O mÃ©todo pega o ultimo ID inserido no banco de dados
+	 * 
+	 * @param rs {@link ResultSet}
+	 **/
 	public int getLastInsertedId(ResultSet rs) {
 		int resultado = 0;
 	

@@ -15,14 +15,14 @@ import com.br.ifpe.hosp3.model.Hospede;
 /**
  * @author Maria Beatriz Germano
  * 
- * Classe com métodos de manipulação de dados no banco
+ * Classe com mï¿½todos de manipulaï¿½ï¿½o de dados no banco
  * referente ao objeto Hospede
  **/
 public class HospedeDao implements ManipulacaoDeDados{
 
 	@Override
 	/**
-	 * Método para criaçao do objeto Hospede no banco de dados
+	 * Mï¿½todo para criaï¿½ao do objeto Hospede no banco de dados
 	 * 
 	 * @param object {@link Object}
 	 **/
@@ -33,20 +33,16 @@ public class HospedeDao implements ManipulacaoDeDados{
 			conexao = ConexaoMysql.getConexaoMySQL();
 			Hospede hospede = new Hospede();
 			hospede = (Hospede) object;
-			Endereco endereco = new Endereco(hospede.getEndereco());
-			EnderecoDao endDao = new EnderecoDao();
-			int endereco_id = endDao.create(endereco);
 			
-			
-			String sql = "INSERT INTO hospede (nome, cpf, email, telefone, palavra_passe, hospede_id)"
+			String sql = "INSERT INTO hospede (nome, cpf, email, telefone, palavra_passe, endereco_id)"
 						+ " VALUES ("
 						+ " '" + hospede.getNome() + "' ," 
 						+ " '" + hospede.getCpf() + "' ," 
 						+ " '" + hospede.getEmail() + "' ,"
 						+ " '" + hospede.getTelefone() + "' ,"
 						+ " '" + hospede.getPalavra_passe() + "' ,"
-						+ " '" + endereco_id + "' ,"
-						+ " ')";
+						+ hospede.getEndereco().getId()
+						+ ")";
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
@@ -60,7 +56,7 @@ public class HospedeDao implements ManipulacaoDeDados{
 
 	@Override
 	/**
-	 * Método para alteraçao do objeto Hospede no banco de dados
+	 * Mï¿½todo para alteraï¿½ao do objeto Hospede no banco de dados
 	 * 
 	 * @param object {@link Object}
 	 **/
@@ -88,7 +84,7 @@ public class HospedeDao implements ManipulacaoDeDados{
 
 	@Override
 	/**
-	 * Método para listagem do objetos Hospedes no banco de dados
+	 * Mï¿½todo para listagem do objetos Hospedes no banco de dados
 	 * 
 	 * @return listaHospede {@link HashSet<object>}
 	 **/
@@ -125,6 +121,11 @@ public class HospedeDao implements ManipulacaoDeDados{
 	}
 
 	@Override
+	/**
+	 * MÃ©todo para busca do objeto Hospede no banco de dados
+	 * pelo id
+	 * @return hospede {@link Hospede}
+	 **/
 	public Object getById(int id) {
 		Connection conexao;
 		Hospede hospede = new Hospede();
@@ -152,9 +153,23 @@ public class HospedeDao implements ManipulacaoDeDados{
 	}
 
 	@Override
+	/**
+	 * MÃ©todo para deletar o objeto 
+	 * Hospede no banco de dados por Id
+	 * 
+	 * @param hospede {@link Hospede}
+	 **/
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		Connection conexao;
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "DELETE FROM hospede WHERE id =" + id;
+						
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.execute();
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}	
 	}
 
 	@Override
@@ -164,6 +179,12 @@ public class HospedeDao implements ManipulacaoDeDados{
 	}
 
 	@Override
+	/**
+	 * O mÃ©todo pega o ultimo ID inserido no banco de dados
+	 * 
+	 * @param rs {@link ResultSet}
+	 * @return resultado {@link int}
+	 **/
 	public int getLastInsertedId(ResultSet rs) {
 
 		int resultado = 0;
