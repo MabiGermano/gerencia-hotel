@@ -67,13 +67,16 @@ public class HospedeDao implements ManipulacaoDeDados{
 			conexao = ConexaoMysql.getConexaoMySQL();
 			Hospede hospede = (Hospede) object;
 			
+			EnderecoDao endDao = new EnderecoDao();
+			endDao.updade(hospede.getEndereco());
+			
 			String sql = "UPDATE hospede SET "
 						+ "nome = '" + hospede.getNome()+ "' ," 
 						+ "cpf = '" + hospede.getCpf() + "' ," 
 						+ "email = '" + hospede.getEmail() + "' ," 
 						+ "telefone = '" + hospede.getTelefone() + "' ,"
 						+ "palavra_passe = '" + hospede.getPalavra_passe() + "' ,"
-						+ "hospede_id = '" + hospede.getEndereco().getId() + "' ,"
+						+ "endereco_id = '" + hospede.getEndereco().getId() + "' "
 						+ "WHERE id = " + hospede.getId();
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
@@ -132,20 +135,23 @@ public class HospedeDao implements ManipulacaoDeDados{
 		Hospede hospede = new Hospede();
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			EnderecoDao endDao = new EnderecoDao();
 			String sql = "SELECT * FROM hospede WHERE id =" + id;
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			
 			ResultSet result =  ps.executeQuery();				
-			hospede.setId(result.getInt("id"));
-			hospede.setNome(result.getString("nome"));
-			hospede.setCpf(result.getString("cpf"));
-			hospede.setEmail(result.getString("email"));
-			hospede.setTelefone(result.getString("telefone"));
-			hospede.setPalavra_passe(result.getString("palavra_passe"));
-			Endereco endereco = (Endereco) endDao.getById(result.getInt("endereco_id"));
-			hospede.setEndereco(endereco);
+			if(result != null && result.next()) {
+				EnderecoDao endDao = new EnderecoDao();
+				hospede.setId(result.getInt("id"));
+				hospede.setNome(result.getString("nome"));
+				hospede.setCpf(result.getString("cpf"));
+				hospede.setEmail(result.getString("email"));
+				hospede.setTelefone(result.getString("telefone"));
+				hospede.setPalavra_passe(result.getString("palavra_passe"));
+				Endereco endereco = (Endereco) endDao.getById(result.getInt("endereco_id"));
+				hospede.setEndereco(endereco);	
+			}
+			
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}

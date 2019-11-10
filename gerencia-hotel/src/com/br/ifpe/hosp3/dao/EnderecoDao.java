@@ -145,17 +145,18 @@ public class EnderecoDao implements ManipulacaoDeDados {
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			
-			ResultSet result =  ps.executeQuery();				
-			endereco.setId(result.getInt("id"));
-			endereco.setRua(result.getString("rua"));
-			endereco.setNumero(result.getString("numero"));
-			endereco.setBairro(result.getString("bairro"));
-			endereco.setCep(result.getString("cep"));
-			endereco.setComplemento(result.getString("complemento"));
-			endereco.setCidade(result.getString("cidade"));
-			endereco.setEstado(result.getString("estado"));
-			endereco.setPais(result.getString("pais"));
-			
+			ResultSet result =  ps.executeQuery();	
+			if(result != null && result.next()) {
+				endereco.setId(result.getInt("id"));
+				endereco.setRua(result.getString("rua"));
+				endereco.setNumero(result.getString("numero"));
+				endereco.setBairro(result.getString("bairro"));
+				endereco.setCep(result.getString("cep"));
+				endereco.setComplemento(result.getString("complemento"));
+				endereco.setCidade(result.getString("cidade"));
+				endereco.setEstado(result.getString("estado"));
+				endereco.setPais(result.getString("pais"));	
+			}			
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
