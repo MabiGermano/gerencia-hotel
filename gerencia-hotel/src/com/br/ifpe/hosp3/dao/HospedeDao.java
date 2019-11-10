@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashSet;
 
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
@@ -44,7 +45,7 @@ public class HospedeDao implements ManipulacaoDeDados{
 						+ hospede.getEndereco().getId()
 						+ ")";
 			
-			PreparedStatement ps = conexao.prepareStatement(sql);
+			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.execute();
 			retorno = this.getLastInsertedId(ps.getGeneratedKeys());
 		} catch (IOException | SQLException e) {

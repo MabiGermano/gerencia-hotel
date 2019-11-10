@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashSet;
 
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
@@ -34,7 +35,7 @@ public class EnderecoDao implements ManipulacaoDeDados {
 			endereco = (Endereco) object;
 			
 			String sql = "INSERT INTO endereco (rua, numero, cep, "
-						+ "bairro, pais, cidade, complemento)"
+						+ "bairro, pais, cidade, estado,complemento)"
 						+ " VALUES ("
 						+ " '" + endereco.getRua() + "' ," 
 						+ " '" + endereco.getNumero() + "' ," 
@@ -46,7 +47,7 @@ public class EnderecoDao implements ManipulacaoDeDados {
 						+ " '" + endereco.getComplemento() 
 						+ " ')";
 			
-			PreparedStatement ps = conexao.prepareStatement(sql);
+			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.execute();
 			resultado = this.getLastInsertedId(ps.getGeneratedKeys());
 		} catch (IOException | SQLException e) {
