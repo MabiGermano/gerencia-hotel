@@ -1,10 +1,10 @@
 package com.br.ifpe.hosp3.connection;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -33,9 +33,15 @@ public class ConexaoMysql {
 	 **/
 	public static Properties getProperties() throws IOException {
         Properties props = new Properties();
-        FileInputStream file = new FileInputStream(
-                "./src/application.properties");
-        props.load(file);
+//        FileInputStream file = new FileInputStream(
+//                "./src/application.properties");
+        URL url = ClassLoader.getSystemResource("./application.properties");
+        if(url != null) {
+        	props.load(url.openStream());
+        }else {
+        	System.out.println("deu erro kakakak");
+        }
+        //props.load(file);
         return props;
     }
 	
