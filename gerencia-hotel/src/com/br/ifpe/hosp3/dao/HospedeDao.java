@@ -41,7 +41,7 @@ public class HospedeDao implements ManipulacaoDeDados{
 						+ " '" + hospede.getCpf() + "' ," 
 						+ " '" + hospede.getEmail() + "' ,"
 						+ " '" + hospede.getTelefone() + "' ,"
-						+ " '" + hospede.getPalavra_passe() + "' ,"
+						+ " '" + hospede.getPalavraPasse() + "' ,"
 						+ hospede.getEndereco().getId()
 						+ ")";
 			
@@ -75,7 +75,7 @@ public class HospedeDao implements ManipulacaoDeDados{
 						+ "cpf = '" + hospede.getCpf() + "' ," 
 						+ "email = '" + hospede.getEmail() + "' ," 
 						+ "telefone = '" + hospede.getTelefone() + "' ,"
-						+ "palavra_passe = '" + hospede.getPalavra_passe() + "' ,"
+						+ "palavra_passe = '" + hospede.getPalavraPasse() + "' ,"
 						+ "endereco_id = '" + hospede.getEndereco().getId() + "' "
 						+ "WHERE id = " + hospede.getId();
 						
@@ -112,7 +112,7 @@ public class HospedeDao implements ManipulacaoDeDados{
 				hospede.setCpf(result.getString("cpf"));
 				hospede.setEmail(result.getString("email"));
 				hospede.setTelefone(result.getString("telefone"));
-				hospede.setPalavra_passe(result.getString("palavra_passe"));
+				hospede.setPalavraPasse(result.getString("palavra_passe"));
 				hospede.setEndereco(endereco);
 			
 				listaHospede.add(hospede);
@@ -147,7 +147,7 @@ public class HospedeDao implements ManipulacaoDeDados{
 				hospede.setCpf(result.getString("cpf"));
 				hospede.setEmail(result.getString("email"));
 				hospede.setTelefone(result.getString("telefone"));
-				hospede.setPalavra_passe(result.getString("palavra_passe"));
+				hospede.setPalavraPasse(result.getString("palavra_passe"));
 				Endereco endereco = (Endereco) endDao.getById(result.getInt("endereco_id"));
 				hospede.setEndereco(endereco);	
 			}
