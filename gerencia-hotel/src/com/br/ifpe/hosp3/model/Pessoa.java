@@ -24,6 +24,9 @@ public abstract class Pessoa
 		this.palavraPasse = palavraPasse;
 		this.endereco = endereco;
 	}
+	public Pessoa() {
+		
+	}
 
 	/**
 	 * @return nome {@link String}

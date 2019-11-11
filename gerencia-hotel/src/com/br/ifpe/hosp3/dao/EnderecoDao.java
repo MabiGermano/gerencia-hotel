@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashSet;
 
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
@@ -14,26 +15,27 @@ import com.br.ifpe.hosp3.model.Endereco;
 /**
  * @author Maria Beatriz Germano
  * 
- * Classe com métodos de manipulação de dados no banco
- * referente ao objeto Endereço
+ * Classe com m�todos de manipula��o de dados no banco
+ * referente ao objeto Endere�o
  **/
 public class EnderecoDao implements ManipulacaoDeDados {
 
 	@Override
 	/**
-	 * Método para criação do objeto Endereço no banco de dados
+	 * M�todo para cria�ao do objeto Endere�o no banco de dados
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void create(Object object) {
+	public int create(Object object) {
 		Connection conexao;
+		int resultado = 0;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			Endereco endereco = new Endereco();
 			endereco = (Endereco) object;
 			
 			String sql = "INSERT INTO endereco (rua, numero, cep, "
-						+ "bairro, pais, cidade, complemento)"
+						+ "bairro, pais, cidade, estado,complemento)"
 						+ " VALUES ("
 						+ " '" + endereco.getRua() + "' ," 
 						+ " '" + endereco.getNumero() + "' ," 
@@ -45,11 +47,14 @@ public class EnderecoDao implements ManipulacaoDeDados {
 						+ " '" + endereco.getComplemento() 
 						+ " ')";
 			
-			PreparedStatement ps = conexao.prepareStatement(sql);
+			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.execute();
+			resultado = this.getLastInsertedId(ps.getGeneratedKeys());
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
+		
+		return resultado;
 	}
 
 	@Override
@@ -140,17 +145,18 @@ public class EnderecoDao implements ManipulacaoDeDados {
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			
-			ResultSet result =  ps.executeQuery();				
-			endereco.setId(result.getInt("id"));
-			endereco.setRua(result.getString("rua"));
-			endereco.setNumero(result.getString("numero"));
-			endereco.setBairro(result.getString("bairro"));
-			endereco.setCep(result.getString("cep"));
-			endereco.setComplemento(result.getString("complemento"));
-			endereco.setCidade(result.getString("cidade"));
-			endereco.setEstado(result.getString("estado"));
-			endereco.setPais(result.getString("pais"));
-			
+			ResultSet result =  ps.executeQuery();	
+			if(result != null && result.next()) {
+				endereco.setId(result.getInt("id"));
+				endereco.setRua(result.getString("rua"));
+				endereco.setNumero(result.getString("numero"));
+				endereco.setBairro(result.getString("bairro"));
+				endereco.setCep(result.getString("cep"));
+				endereco.setComplemento(result.getString("complemento"));
+				endereco.setCidade(result.getString("cidade"));
+				endereco.setEstado(result.getString("estado"));
+				endereco.setPais(result.getString("pais"));	
+			}			
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -183,5 +189,27 @@ public class EnderecoDao implements ManipulacaoDeDados {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	/**
+	 * O método pega o ultimo ID inserido no banco de dados
+	 * 
+	 * @param rs {@link ResultSet}
+	 **/
+	public int getLastInsertedId(ResultSet rs) {
+		int resultado = 0;
+	
+		try {
+			if(rs.next()) {
+				resultado = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+		return resultado;
+	}
+	
+	
 
 }
