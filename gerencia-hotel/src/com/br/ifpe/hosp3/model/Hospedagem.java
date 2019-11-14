@@ -19,6 +19,11 @@ public class Hospedagem
 		this.quarto = quarto;
 	}
 	
+	public Hospedagem() 
+	{
+
+	}
+
 	/**
 	 * @return id {@link int}
 	 */

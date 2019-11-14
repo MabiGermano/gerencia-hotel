@@ -1,6 +1,8 @@
 package com.br.ifpe.hosp3.dao;
 
+import com.br.ifpe.hosp3.model.Endereco;
 import com.br.ifpe.hosp3.model.Hospede;
+import com.br.ifpe.hosp3.model.Quarto;
 
 public class TestesDao {
 
@@ -20,6 +22,12 @@ public class TestesDao {
 		hospede.getEndereco().setRua("Eu vou deixar você me sarar com amor");
 		hospDao.updade(hospede);
 		System.out.println(hospede.getEndereco().getBairro());
+		
+//		Quarto quarto = new Quarto((float) 100.00, 2, "Casal", "54", true);
+		
+//		QuartoDao quartoDao = new QuartoDao();
+//		int id_quarto = quartoDao.create(quarto);
+//		quarto.setId(id_quarto);
 	}
 
 }

@@ -25,6 +25,19 @@ public class Quarto
 		this.disponivel = disponivel;
 	}
 	
+	
+	
+	public Quarto(float valor, int quantidadePessoas, String tipo, String numero, boolean disponivel) 
+	{
+		this.valor = valor;
+		this.quantidadePessoas = quantidadePessoas;
+		this.tipo = tipo;
+		this.numero = numero;
+		this.disponivel = disponivel;
+	}
+
+
+
 	public Quarto() {
 		
 	}
