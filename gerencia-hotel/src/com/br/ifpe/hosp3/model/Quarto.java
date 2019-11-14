@@ -24,6 +24,10 @@ public class Quarto
 		this.numero = numero;
 		this.disponivel = disponivel;
 	}
+	
+	public Quarto() {
+		
+	}
 
 	/**
 	 * @return id {@link int}
