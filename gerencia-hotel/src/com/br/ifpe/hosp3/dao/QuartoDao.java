@@ -36,8 +36,8 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 			String sql = "INSERT INTO quarto (valor, quantidade_pessoas, "
 					    + "tipo, numero, disponivel)"
 					    + "VALUES ("
-					    + " '" + quarto.getValor() + "' ,"
-					    + " '" + quarto.getQuantidadePessoas() + "' ,"
+					    + 		 quarto.getValor() + " ,"
+					    + 		 quarto.getQuantidadePessoas() + " ,"
 					    + " '" + quarto.getTipo() + "' ,"
 					    + " '" + quarto.getNumero() + "' ,"
 					    +		 quarto.isDisponivel()

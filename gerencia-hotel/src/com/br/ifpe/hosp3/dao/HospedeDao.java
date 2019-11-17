@@ -204,7 +204,12 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 		return resultado;
 	}
 	
-	private boolean verifyIsCpfRegistred(String cpf) {
+	/**
+	 * Método verifica se CPF já está registrado no banco de dados
+	 * @param cpf {@link String}
+	 * @return retorno {@link boolean}
+	 **/
+	public boolean verifyIsCpfRegistred(String cpf) {
 		Connection conexao;
 		boolean retorno = false;
 		try {
