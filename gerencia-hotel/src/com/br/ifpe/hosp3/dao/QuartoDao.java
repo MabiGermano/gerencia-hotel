@@ -33,15 +33,15 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			
-			String sql = "INSERT INTO quarto (valor, quantidadePessoas, "
+			String sql = "INSERT INTO quarto (valor, quantidade_pessoas, "
 					    + "tipo, numero, disponivel)"
 					    + "VALUES ("
 					    + " '" + quarto.getValor() + "' ,"
 					    + " '" + quarto.getQuantidadePessoas() + "' ,"
 					    + " '" + quarto.getTipo() + "' ,"
 					    + " '" + quarto.getNumero() + "' ,"
-					    + " '" + quarto.isDisponivel()
-					    + " ')";
+					    +		 quarto.isDisponivel()
+					    + " )";
 			
 			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.execute();

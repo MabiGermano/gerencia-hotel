@@ -31,8 +31,8 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 		Connection conexao;
 		int retorno = 0;
 		try {
-			conexao = ConexaoMysql.getConexaoMySQL();
 			
+			conexao = ConexaoMysql.getConexaoMySQL();
 			String sql = "INSERT INTO hospede (nome, cpf, email, telefone, palavra_passe, endereco_id)"
 						+ " VALUES ("
 						+ " '" + hospede.getNome() + "' ," 
@@ -202,5 +202,26 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 		}
 	
 		return resultado;
+	}
+	
+	private boolean verifyIsCpfRegistred(String cpf) {
+		Connection conexao;
+		boolean retorno = false;
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM hospede WHERE cpf =" + cpf;
+						
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			
+			ResultSet result =  ps.executeQuery();				
+			if(result != null && result.next()) {
+				retorno = true;	
+			}
+
+			ConexaoMysql.FecharConexao();
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+		return retorno;
 	}
 }

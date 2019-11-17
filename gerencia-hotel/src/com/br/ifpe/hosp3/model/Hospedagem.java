@@ -19,6 +19,12 @@ public class Hospedagem
 		this.quarto = quarto;
 	}
 	
+	public Hospedagem(Hospede hospede, Quarto quarto) 
+	{
+		this.hospede = hospede;
+		this.quarto = quarto;
+	}
+	
 	public Hospedagem() 
 	{
 
