@@ -136,7 +136,7 @@ public class EnderecoDao implements ManipulacaoDeDados {
 	 * @param id {@link int}
 	 * @return endereco {@link Endereco}
 	 **/
-	public Object getById(int id) {
+	public Endereco getById(int id) {
 		Connection conexao;
 		Endereco endereco = new Endereco();
 		try {

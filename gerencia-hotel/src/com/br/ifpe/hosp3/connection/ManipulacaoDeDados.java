@@ -9,42 +9,42 @@ import java.util.HashSet;
  * Interface para implementação de métodos comuns aos objetos
  * na manipulação de dados no banco
  **/
-public interface ManipulacaoDeDados {
+public interface ManipulacaoDeDados<Type> {
 
 	/**
-	 * @param object {@link Object}
+	 * @param type {@link Type}
 	 **/
-	public int create(Object object);
+	public int create(Type type);
 	
 	/**
-	 * @param object {@link Object}
+	 * @param type {@link Type}
 	 **/
-	public void updade(Object object);
+	public void updade(Type type);
 
 	/**
-	 * @return HashSet {@link HashSet<Object>}
+	 * @return HashSet {@link HashSet<Type>}
 	 **/
-	public HashSet<Object> listAll();
+	public HashSet<Type> listAll();
 
 	/**
 	 * @param id {@link int}
-	 * @return object {@link Object}
+	 * @return type {@link Type}
 	 **/
-	public Object getById(int id);
+	public Type getById(int id);
 	
 	/**
-	 * @param id {@link int}
+	 * @param id {@link dint}
 	 **/
 	public void delete(int id);
 
 	/**
-	 * @param object {@link Object}
+	 * @param type {@link Type}
 	 **/
-	public void softDelete(Object object);
+	public void softDelete(Type type);
 	
 	/**
 	 * @param rs {@link ResultSet}
-	 * @return int {@link int}}
+	 * @return int {@link int}
 	 **/
 	public int getLastInsertedId(ResultSet rs);
 
