@@ -1,7 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
 /**
- * @author Tayná Alexandra
+ * @author Taynï¿½ Alexandra
  *
  * Classe Registro 
  */
@@ -9,22 +9,25 @@ package com.br.ifpe.hosp3.model;
 public class Registro 
 {
 	private int id;
-	private boolean flagAtivo;
+	private boolean flagAtivo = true;
 	private String pagamento;
 	private Hospedagem hospedagem;
-	private Quarto quarto;
-	private ConsumoExtra consumoExtra;
 	private Funcionario funcionario;
 	
-	public Registro(int id, boolean flag_ativo, String pagamento, Hospedagem hospedagem, 
-			Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) {
+	public Registro(int id, String pagamento, Hospedagem hospedagem, Funcionario funcionario) {
 		this.id = id;
-		this.flagAtivo = flagAtivo;
 		this.pagamento = pagamento;
 		this.hospedagem = hospedagem;
-		this.quarto = quarto;
-		this.consumoExtra = consumoExtra;
 		this.funcionario = funcionario;
+	}
+	
+	public Registro(String pagamento, Hospedagem hospedagem, Funcionario funcionario) {
+		this.pagamento = pagamento;
+		this.hospedagem = hospedagem;
+		this.funcionario = funcionario;
+	}
+	public Registro() {
+		
 	}
 
 	/**
@@ -89,38 +92,6 @@ public class Registro
 	public void setHospedagem(Hospedagem hospedagem) 
 	{
 		this.hospedagem = hospedagem;
-	}
-
-	/**
-	 * @return quarto {@link Quarto}
-	 */
-	public Quarto getQuarto() 
-	{
-		return quarto;
-	}
-
-	/**
-	 * @param quarto {@link Quarto}
-	 */
-	public void setQuarto(Quarto quarto) 
-	{
-		this.quarto = quarto;
-	}
-
-	/**
-	 * @return consumoExtra {@link ConsumoExtra}
-	 */
-	public ConsumoExtra getConsumoExtra() 
-	{
-		return consumoExtra;
-	}
-
-	/**
-	 * @param consumoExtra {@link ConsumoExtra}
-	 */
-	public void setConsumoExtra(ConsumoExtra consumoExtra) 
-	{
-		this.consumoExtra = consumoExtra;
 	}
 
 	/**

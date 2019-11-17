@@ -1,7 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
 /**
- * @author Tayná Alexandra
+ * @author Taynï¿½ Alexandra
  *
  * Classe Consumo Extra 
  */
@@ -11,12 +11,14 @@ public class ConsumoExtra
 	private int id;
 	private String descricao;
 	private float valor;
+	private Hospedagem hospedagem;
 	
-	public ConsumoExtra(int id, String descricao, float valor) 
+	public ConsumoExtra(int id, String descricao, float valor, Hospedagem hospedagem) 
 	{
 		this.id = id;
 		this.descricao = descricao;
 		this.valor = valor;
+		this.hospedagem = hospedagem;
 	}
 	
 	public ConsumoExtra() {
@@ -69,6 +71,18 @@ public class ConsumoExtra
 	public void setValor(float valor) 
 	{
 		this.valor = valor;
+	}
+	/**
+	 * @return hospedagem {@link Hospedagem}
+	 */
+	public Hospedagem getHospedagem() {
+		return hospedagem;
+	}
+	/**
+	 * @param hospedagem {@link Hospedagem}
+	 */
+	public void setHospedagem(Hospedagem hospedagem) {
+		this.hospedagem = hospedagem;
 	}
 	
 }
