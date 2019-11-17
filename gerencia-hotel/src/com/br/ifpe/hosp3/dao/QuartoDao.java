@@ -65,11 +65,11 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 			conexao = ConexaoMysql.getConexaoMySQL();
 			
 			String sql = "UPDATE quarto SET "
-						+ "valor = '" + quarto.getValor() + "' ,"
-					    + "quantidade_pessoas = '" + quarto.getQuantidadePessoas() + "' ,"
+						+ "valor = " + quarto.getValor() + " ,"
+					    + "quantidade_pessoas = " + quarto.getQuantidadePessoas() + " ,"
 					    + "tipo = '" + quarto.getTipo() + "' ,"
 					    + "numero = '" + quarto.getNumero() + "' ,"
-					    + "disponivel = '" + quarto.isDisponivel() + "' "
+					    + "disponivel = " + quarto.isDisponivel()
 					    + "WHERE id = " + quarto.getId();
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
