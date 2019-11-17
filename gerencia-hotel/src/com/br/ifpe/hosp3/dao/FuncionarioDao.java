@@ -13,7 +13,7 @@ import com.br.ifpe.hosp3.connection.ManipulacaoDeDados;
 import com.br.ifpe.hosp3.model.Endereco;
 import com.br.ifpe.hosp3.model.Funcionario;
 
-public class FuncionarioDao implements ManipulacaoDeDados{
+public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 	
 	@Override
 	/**
@@ -21,13 +21,11 @@ public class FuncionarioDao implements ManipulacaoDeDados{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public int create(Object object) {
+	public int create(Funcionario funcionario) {
 		Connection conexao;
 		int retorno = 0;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			Funcionario funcionario = new Funcionario();
-			funcionario = (Funcionario) object;
 			
 			String sql = "INSERT INTO funcionario (nome, cpf, email, telefone, palavra_passe, endereco_id)"
 						+ " VALUES ("
@@ -55,11 +53,10 @@ public class FuncionarioDao implements ManipulacaoDeDados{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void updade(Object object) {
+	public void updade(Funcionario funcionario) {
 		Connection conexao;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			Funcionario funcionario = (Funcionario) object;
 			
 			EnderecoDao endDao = new EnderecoDao();
 			endDao.updade(funcionario.getEndereco());
@@ -86,9 +83,9 @@ public class FuncionarioDao implements ManipulacaoDeDados{
 	 * 
 	 * @return listaFuncionario {@link HashSet<object>}
 	 **/
-	public HashSet<Object> listAll() {
+	public HashSet<Funcionario> listAll() {
 		Connection conexao;
-		HashSet<Object> listaFuncionario = new HashSet<>();
+		HashSet<Funcionario> listaFuncionario = new HashSet<>();
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			String sql = "SELECT * FROM funcionario";
@@ -99,7 +96,7 @@ public class FuncionarioDao implements ManipulacaoDeDados{
 			
 			while(result.next()) {
 				EnderecoDao endDao = new EnderecoDao();
-				Endereco endereco = (Endereco) endDao.getById(result.getInt("endereco_id"));
+				Endereco endereco = endDao.getById(result.getInt("endereco_id"));
 				Funcionario funcionario = new Funcionario();
 				funcionario.setId(result.getInt("id"));
 				funcionario.setNome(result.getString("nome"));
@@ -124,7 +121,7 @@ public class FuncionarioDao implements ManipulacaoDeDados{
 	 * pelo id
 	 * @return funcionario {@link Funcionario}
 	 **/
-	public Object getById(int id) {
+	public Funcionario getById(int id) {
 		Connection conexao;
 		Funcionario funcionario = new Funcionario();
 		try {
@@ -142,7 +139,7 @@ public class FuncionarioDao implements ManipulacaoDeDados{
 				funcionario.setEmail(result.getString("email"));
 				funcionario.setTelefone(result.getString("telefone"));
 				funcionario.setPalavraPasse(result.getString("palavra_passe"));
-				Endereco endereco = (Endereco) endDao.getById(result.getInt("endereco_id"));
+				Endereco endereco = endDao.getById(result.getInt("endereco_id"));
 				funcionario.setEndereco(endereco);	
 			}
 			
@@ -174,7 +171,7 @@ public class FuncionarioDao implements ManipulacaoDeDados{
 	}
 
 	@Override
-	public void softDelete(Object object) {
+	public void softDelete(Funcionario funcionario) {
 		// TODO Auto-generated method stub
 		
 	}

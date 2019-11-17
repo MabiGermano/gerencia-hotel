@@ -15,27 +15,25 @@ import com.br.ifpe.hosp3.model.Hospede;
 import com.br.ifpe.hosp3.model.Quarto;
 
 /**
- * @author Tayná Alexandra
+ * @author Taynï¿½ Alexandra
  * 
- * Classe com métodos de manipulação de dados no banco
+ * Classe com mï¿½todos de manipulaï¿½ï¿½o de dados no banco
  * referente ao objeto Hospedagem
  **/
 
-public class HospedagemDao implements ManipulacaoDeDados{
+public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 
 	@Override
 	/**
-	 * Método para criação do objeto Hospedagem no banco de dados
+	 * Mï¿½todo para criaï¿½ï¿½o do objeto Hospedagem no banco de dados
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public int create(Object object) {
+	public int create(Hospedagem hospedagem) {
 		Connection conexao;
 		int retorno = 0;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			Hospedagem hospedagem = new Hospedagem();
-			hospedagem = (Hospedagem) object;
 			
 			String sql = "INSERT INTO hospedagem (hospede_id, quarto_id)"
 						+ " VALUES ("
@@ -55,15 +53,14 @@ public class HospedagemDao implements ManipulacaoDeDados{
 
 	@Override
 	/**
-	 * Método para alteração do objeto Hospedagem no banco de dados
+	 * Mï¿½todo para alteraï¿½ï¿½o do objeto Hospedagem no banco de dados
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void updade(Object object) {
+	public void updade(Hospedagem hospedagem) {
 		Connection conexao;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			Hospedagem hospedagem = (Hospedagem) object;
 			
 			HospedeDao hospDao = new HospedeDao();
 			hospDao.updade(hospedagem.getHospede());
@@ -86,13 +83,13 @@ public class HospedagemDao implements ManipulacaoDeDados{
 
 	@Override
 	/**
-	 * Método para listagem do objetos Hospedagem no banco de dados
+	 * Mï¿½todo para listagem do objetos Hospedagem no banco de dados
 	 * 
 	 * @return listaHospedagem {@link HashSet<object>}
 	 **/
-	public HashSet<Object> listAll() {
+	public HashSet<Hospedagem> listAll() {
 		Connection conexao;
-		HashSet<Object> listaHospedagem = new HashSet<>();
+		HashSet<Hospedagem> listaHospedagem = new HashSet<>();
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			String sql = "SELECT * FROM hospedagem";
@@ -103,10 +100,10 @@ public class HospedagemDao implements ManipulacaoDeDados{
 			
 			while(result.next()) {
 				HospedeDao hospDao = new HospedeDao();
-				Hospede hospede = (Hospede) hospDao.getById(result.getInt("hospede_id"));
+				Hospede hospede = hospDao.getById(result.getInt("hospede_id"));
 				
 				QuartoDao quartoDao = new QuartoDao();
-				Quarto quarto = (Quarto) quartoDao.getById(result.getInt("quarto_id"));
+				Quarto quarto = quartoDao.getById(result.getInt("quarto_id"));
 				
 				Hospedagem hospedagem = new Hospedagem();
 				hospedagem.setId(result.getInt("id"));
@@ -124,11 +121,11 @@ public class HospedagemDao implements ManipulacaoDeDados{
 
 	@Override
 	/**
-	 * Método para busca do objeto Hospedagem no banco de dados
+	 * Mï¿½todo para busca do objeto Hospedagem no banco de dados
 	 * pelo id
 	 * @return hospedagem {@link Hospedagem}
 	 **/
-	public Object getById(int id) {
+	public Hospedagem getById(int id) {
 		Connection conexao;
 		Hospedagem hospedagem = new Hospedagem();
 		try {
@@ -143,9 +140,9 @@ public class HospedagemDao implements ManipulacaoDeDados{
 				QuartoDao quartoDao = new QuartoDao();
 				
 				hospedagem.setId(result.getInt("id"));
-				Hospede hospede = (Hospede) hospDao.getById(result.getInt("hospede_id"));
+				Hospede hospede = hospDao.getById(result.getInt("hospede_id"));
 				hospedagem.setHospede(hospede);
-				Quarto quarto = (Quarto) quartoDao.getById(result.getInt("quarto_id"));
+				Quarto quarto = quartoDao.getById(result.getInt("quarto_id"));
 				hospedagem.setQuarto(quarto);
 			}
 			
@@ -158,7 +155,7 @@ public class HospedagemDao implements ManipulacaoDeDados{
 
 	@Override
 	/**
-	 * Método para deletar o objeto 
+	 * Mï¿½todo para deletar o objeto 
 	 * Hospedagem no banco de dados por Id
 	 * 
 	 * @param hospedagem {@link Hospedagem}
@@ -177,14 +174,14 @@ public class HospedagemDao implements ManipulacaoDeDados{
 	}
 
 	@Override
-	public void softDelete(Object object) {
+	public void softDelete(Hospedagem hospedagem) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	/**
-	 * O método pega o ultimo ID inserido no banco de dados
+	 * O mï¿½todo pega o ultimo ID inserido no banco de dados
 	 * 
 	 * @param rs {@link ResultSet}
 	 * @return resultado {@link int}

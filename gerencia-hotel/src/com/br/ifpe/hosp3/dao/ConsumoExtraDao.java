@@ -13,27 +13,25 @@ import com.br.ifpe.hosp3.connection.ManipulacaoDeDados;
 import com.br.ifpe.hosp3.model.ConsumoExtra;
 
 /**
- * @author Tayná Alexandra
+ * @author Taynï¿½ Alexandra
  * 
- * Classe com métodos de manipulaçao de dados no banco
+ * Classe com mï¿½todos de manipulaï¿½ao de dados no banco
  * referente ao objeto ConsumoExtra
  **/
 
-public class ConsumoExtraDao implements ManipulacaoDeDados {
+public class ConsumoExtraDao implements ManipulacaoDeDados<ConsumoExtra> {
 
 	@Override
 	/**
-	 * Método para criação do objeto ConsumoExtra no banco de dados
+	 * Mï¿½todo para criaï¿½ï¿½o do objeto ConsumoExtra no banco de dados
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public int create(Object object) {
+	public int create(ConsumoExtra consumoExtra) {
 		Connection conexao;
 		int resultado = 0;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			ConsumoExtra consumoExtra = new ConsumoExtra();
-			consumoExtra = (ConsumoExtra) object;
 			
 			String sql = "INSERT INTO consumo_extra (descricao, valor)"
 						+ "VALUES ("
@@ -53,16 +51,14 @@ public class ConsumoExtraDao implements ManipulacaoDeDados {
 
 	@Override
 	/**
-	 * Método para alterar o objeto ConsumoExtra no banco de dados
+	 * Mï¿½todo para alterar o objeto ConsumoExtra no banco de dados
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void updade(Object object) {
+	public void updade(ConsumoExtra consumoExtra) {
 		Connection conexao;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			ConsumoExtra consumoExtra = new ConsumoExtra();
-			consumoExtra = (ConsumoExtra) object;
 			
 			String sql = "UPDATE consumo_extra set"
 						+ "descricao = '" + consumoExtra.getDescricao() + "' ,"
@@ -78,14 +74,14 @@ public class ConsumoExtraDao implements ManipulacaoDeDados {
 
 	@Override
 	/**
-	 * Método de listagem para todos os objetos 
+	 * Mï¿½todo de listagem para todos os objetos 
 	 * de ConsumoExtra no banco de dados
 	 * 
 	 * @return listaConsumoExtra {@link HashSet<ConsumoExtra>}
 	 **/
-	public HashSet<Object> listAll() {
+	public HashSet<ConsumoExtra> listAll() {
 		Connection conexao;
-		HashSet<Object> listaConsumoExtra = new HashSet<>();
+		HashSet<ConsumoExtra> listaConsumoExtra = new HashSet<>();
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			String sql = "SELECT * FROM consumo_extra";
@@ -113,13 +109,13 @@ public class ConsumoExtraDao implements ManipulacaoDeDados {
 
 	@Override
 	/**
-	 * Método para listar o objeto 
+	 * Mï¿½todo para listar o objeto 
 	 * ConsumoExtra no banco de dados por ID
 	 * 
 	 * @param id {@link int}
 	 * @return consumoExtra {@link ConsumoExtra}
 	 **/
-	public Object getById(int id) {
+	public ConsumoExtra getById(int id) {
 		Connection conexao;
 		ConsumoExtra consumoExtra = new ConsumoExtra();
 		try {
@@ -143,7 +139,7 @@ public class ConsumoExtraDao implements ManipulacaoDeDados {
 
 	@Override
 	/**
-	 * Método para deletar o objeto 
+	 * Mï¿½todo para deletar o objeto 
 	 * ConsumoExtra no banco de dados por Id
 	 * 
 	 * @param id {@link Int}
@@ -162,14 +158,14 @@ public class ConsumoExtraDao implements ManipulacaoDeDados {
 	}
 
 	@Override
-	public void softDelete(Object object) {
+	public void softDelete(ConsumoExtra consumoExtra) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	/**
-	 * O método pega o ultimo ID inserido no banco de dados
+	 * O mï¿½todo pega o ultimo ID inserido no banco de dados
 	 * 
 	 * @param rs {@link ResultSet}
 	 **/

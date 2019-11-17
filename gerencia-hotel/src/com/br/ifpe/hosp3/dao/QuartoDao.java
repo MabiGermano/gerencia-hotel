@@ -13,27 +13,25 @@ import com.br.ifpe.hosp3.connection.ManipulacaoDeDados;
 import com.br.ifpe.hosp3.model.Quarto;
 
 /**
- * @author Tayná Alexandra
+ * @author Taynï¿½ Alexandra
  * 
- * Classe com métodos de manipulaçao de dados no banco
+ * Classe com mï¿½todos de manipulaï¿½ao de dados no banco
  * referente ao objeto Quarto
  **/
 
-public class QuartoDao implements ManipulacaoDeDados{
+public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 
 	@Override
 	/**
-	 * Método para criação do objeto Quarto no banco de dados
+	 * Mï¿½todo para criaï¿½ï¿½o do objeto Quarto no banco de dados
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public int create(Object object) {
+	public int create(Quarto quarto) {
 		Connection conexao;
 		int resultado = 0;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			Quarto quarto = new Quarto();
-			quarto = (Quarto) object;
 			
 			String sql = "INSERT INTO quarto (valor, quantidadePessoas, "
 					    + "tipo, numero, disponivel)"
@@ -57,16 +55,14 @@ public class QuartoDao implements ManipulacaoDeDados{
 
 	@Override
 	/**
-	 * Método para alterar o objeto Quarto no banco de dados
+	 * Mï¿½todo para alterar o objeto Quarto no banco de dados
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void updade(Object object) {
+	public void updade(Quarto quarto) {
 		Connection conexao;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			Quarto quarto = new Quarto();
-			quarto = (Quarto) object;
 			
 			String sql = "UPDATE quarto SET "
 						+ "valor = '" + quarto.getValor() + "' ,"
@@ -85,14 +81,14 @@ public class QuartoDao implements ManipulacaoDeDados{
 
 	@Override
 	/**
-	 * Método de listagem para todos os objetos 
+	 * Mï¿½todo de listagem para todos os objetos 
 	 * de Quarto no banco de dados
 	 * 
 	 * @return listaQuarto {@link HashSet<Quarto>}
 	 **/
-	public HashSet<Object> listAll() {
+	public HashSet<Quarto> listAll() {
 		Connection conexao;
-		HashSet<Object> listaQuarto = new HashSet<>();
+		HashSet<Quarto> listaQuarto = new HashSet<>();
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			String sql = "SELECT * FROM quarto";
@@ -123,13 +119,13 @@ public class QuartoDao implements ManipulacaoDeDados{
 
 	@Override
 	/**
-	 * Método para listar o objeto 
+	 * Mï¿½todo para listar o objeto 
 	 * Quarto no banco de dados por ID
 	 * 
 	 * @param id {@link int}
 	 * @return quarto {@link Quarto}
 	 **/
-	public Object getById(int id) {
+	public Quarto getById(int id) {
 		Connection conexao;
 		Quarto quarto = new Quarto();
 		try {
@@ -156,7 +152,7 @@ public class QuartoDao implements ManipulacaoDeDados{
 
 	@Override
 	/**
-	 * Método para deletar o objeto 
+	 * Mï¿½todo para deletar o objeto 
 	 * Quarto no banco de dados por Id
 	 * 
 	 * @param id {@link Int}
@@ -175,14 +171,14 @@ public class QuartoDao implements ManipulacaoDeDados{
 	}
 
 	@Override
-	public void softDelete(Object object) {
+	public void softDelete(Quarto quarto) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	/**
-	 * O método pega o ultimo ID inserido no banco de dados
+	 * O mï¿½todo pega o ultimo ID inserido no banco de dados
 	 * 
 	 * @param rs {@link ResultSet}
 	 **/

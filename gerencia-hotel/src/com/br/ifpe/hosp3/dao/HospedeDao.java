@@ -19,7 +19,7 @@ import com.br.ifpe.hosp3.model.Hospede;
  * Classe com m�todos de manipula��o de dados no banco
  * referente ao objeto Hospede
  **/
-public class HospedeDao implements ManipulacaoDeDados{
+public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 
 	@Override
 	/**
@@ -27,13 +27,11 @@ public class HospedeDao implements ManipulacaoDeDados{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public int create(Object object) {
+	public int create(Hospede hospede) {
 		Connection conexao;
 		int retorno = 0;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			Hospede hospede = new Hospede();
-			hospede = (Hospede) object;
 			
 			String sql = "INSERT INTO hospede (nome, cpf, email, telefone, palavra_passe, endereco_id)"
 						+ " VALUES ("
@@ -61,11 +59,10 @@ public class HospedeDao implements ManipulacaoDeDados{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void updade(Object object) {
+	public void updade(Hospede hospede) {
 		Connection conexao;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			Hospede hospede = (Hospede) object;
 			
 			EnderecoDao endDao = new EnderecoDao();
 			endDao.updade(hospede.getEndereco());
@@ -92,9 +89,9 @@ public class HospedeDao implements ManipulacaoDeDados{
 	 * 
 	 * @return listaHospede {@link HashSet<object>}
 	 **/
-	public HashSet<Object> listAll() {
+	public HashSet<Hospede> listAll() {
 		Connection conexao;
-		HashSet<Object> listaHospede = new HashSet<>();
+		HashSet<Hospede> listaHospede = new HashSet<>();
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			String sql = "SELECT * FROM hospede";
@@ -105,7 +102,7 @@ public class HospedeDao implements ManipulacaoDeDados{
 			
 			while(result.next()) {
 				EnderecoDao endDao = new EnderecoDao();
-				Endereco endereco = (Endereco) endDao.getById(result.getInt("endereco_id"));
+				Endereco endereco = endDao.getById(result.getInt("endereco_id"));
 				Hospede hospede = new Hospede();
 				hospede.setId(result.getInt("id"));
 				hospede.setNome(result.getString("nome"));
@@ -130,7 +127,7 @@ public class HospedeDao implements ManipulacaoDeDados{
 	 * pelo id
 	 * @return hospede {@link Hospede}
 	 **/
-	public Object getById(int id) {
+	public Hospede getById(int id) {
 		Connection conexao;
 		Hospede hospede = new Hospede();
 		try {
@@ -148,7 +145,7 @@ public class HospedeDao implements ManipulacaoDeDados{
 				hospede.setEmail(result.getString("email"));
 				hospede.setTelefone(result.getString("telefone"));
 				hospede.setPalavraPasse(result.getString("palavra_passe"));
-				Endereco endereco = (Endereco) endDao.getById(result.getInt("endereco_id"));
+				Endereco endereco = endDao.getById(result.getInt("endereco_id"));
 				hospede.setEndereco(endereco);	
 			}
 			
@@ -180,7 +177,7 @@ public class HospedeDao implements ManipulacaoDeDados{
 	}
 
 	@Override
-	public void softDelete(Object object) {
+	public void softDelete(Hospede hospede) {
 		// TODO Auto-generated method stub
 		
 	}

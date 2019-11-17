@@ -18,7 +18,7 @@ import com.br.ifpe.hosp3.model.Endereco;
  * Classe com m�todos de manipula��o de dados no banco
  * referente ao objeto Endere�o
  **/
-public class EnderecoDao implements ManipulacaoDeDados {
+public class EnderecoDao implements ManipulacaoDeDados<Endereco> {
 
 	@Override
 	/**
@@ -26,13 +26,11 @@ public class EnderecoDao implements ManipulacaoDeDados {
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public int create(Object object) {
+	public int create(Endereco endereco) {
 		Connection conexao;
 		int resultado = 0;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			Endereco endereco = new Endereco();
-			endereco = (Endereco) object;
 			
 			String sql = "INSERT INTO endereco (rua, numero, cep, "
 						+ "bairro, pais, cidade, estado,complemento)"
@@ -63,12 +61,10 @@ public class EnderecoDao implements ManipulacaoDeDados {
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void updade(Object object) {
+	public void updade(Endereco endereco) {
 		Connection conexao;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			Endereco endereco = new Endereco();
-			endereco = (Endereco) object;
 			
 			String sql = "UPDATE endereco SET "
 						+ "rua = '" + endereco.getRua() + "' ," 
@@ -95,9 +91,9 @@ public class EnderecoDao implements ManipulacaoDeDados {
 	 * 
 	 * @return listaEndereco {@link HashSet<Endereco>}
 	 **/
-	public HashSet<Object> listAll() {
+	public HashSet<Endereco> listAll() {
 		Connection conexao;
-		HashSet<Object> listaEndereco = new HashSet<>();
+		HashSet<Endereco> listaEndereco = new HashSet<>();
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			String sql = "SELECT * FROM endereco";
@@ -185,7 +181,7 @@ public class EnderecoDao implements ManipulacaoDeDados {
 	}
 	
 	@Override
-	public void softDelete(Object object) {
+	public void softDelete(Endereco endereco) {
 		// TODO Auto-generated method stub
 		
 	}
