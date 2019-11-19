@@ -1,7 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
 /**
- * @author Tayná Alexandra
+ * @author Taynï¿½ Alexandra
  *
  * Classe Registro 
  */
@@ -15,10 +15,14 @@ public class Registro
 	private Quarto quarto;
 	private ConsumoExtra consumoExtra;
 	private Funcionario funcionario;
-	private boolean deleted;
 	
+<<<<<<< HEAD
+	public Registro(int id, boolean flagAtivo, String pagamento, Hospede hospede, Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) 
+	{
+=======
 	public Registro(int id, boolean flag_ativo, String pagamento, Hospedagem hospedagem, 
 			Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) {
+>>>>>>> c4021b88133ce377f2b73fed4a90566d535e1f82
 		this.id = id;
 		this.flagAtivo = flagAtivo;
 		this.pagamento = pagamento;
@@ -138,22 +142,6 @@ public class Registro
 	public void setFuncionario(Funcionario funcionario) 
 	{
 		this.funcionario = funcionario;
-	}
-
-	/**
-	 * @return deleted {@link boolean}
-	 */
-	public boolean isDeleted()
-	{
-		return deleted;
-	}
-
-	/**
-	 * @param deleted {@link boolean}
-	 */
-	public void setDeleted(boolean deleted)
-	{
-		this.deleted = deleted;
 	}
 	
 }

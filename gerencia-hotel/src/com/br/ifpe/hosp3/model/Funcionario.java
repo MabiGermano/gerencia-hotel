@@ -12,6 +12,10 @@ public class Funcionario extends Pessoa
 	private String codigo;
 	private boolean deleted;
 	
+	public Funcionario() {
+		
+	}
+	
 	public Funcionario(String nome, String cpf, String email, String telefone, String palavra_passe, Endereco endereco, int id, String codigo) 
 	{
 		super(nome, cpf, email, telefone, palavra_passe, endereco);

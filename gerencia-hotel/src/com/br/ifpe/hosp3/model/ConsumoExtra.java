@@ -19,6 +19,10 @@ public class ConsumoExtra
 		this.descricao = descricao;
 		this.valor = valor;
 	}
+	
+	public ConsumoExtra() {
+		
+	}
 
 	/**
 	 * @return id {@link int}

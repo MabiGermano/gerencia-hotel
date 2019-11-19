@@ -16,6 +16,13 @@ public class Hospede extends Pessoa
 		super(nome, cpf, email, telefone, palavra_passe, endereco);
 		this.id = id;
 	}
+	public Hospede(String nome, String cpf, String email, String telefone, String palavra_passe, Endereco endereco) 
+	{
+		super(nome, cpf, email, telefone, palavra_passe, endereco);
+	}
+	public Hospede() {
+		
+	}
 
 	/**
 	 * @return id {@link int}

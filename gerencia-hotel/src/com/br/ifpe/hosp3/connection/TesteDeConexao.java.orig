@@ -1,0 +1,13 @@
+package com.br.ifpe.hosp3.connection;
+
+<<<<<<< HEAD:gerencia-hotel/src/com/br/ifpe/hosp3/connection/TesteDeConexao.java
+public class TesteDeConexao {
+=======
+public class TesteDeConex„o {
+>>>>>>> c4021b88133ce377f2b73fed4a90566d535e1f82:gerencia-hotel/src/com/br/ifpe/hosp3/connection/TesteDeConex√£o.java
+
+	public static void main(String[] args) {
+		
+	}
+
+}

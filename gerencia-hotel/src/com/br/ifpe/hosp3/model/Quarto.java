@@ -10,20 +10,37 @@ public class Quarto
 {
 	private int id;
 	private float valor;
-	private int quantidade_pessoas;
+	private int quantidadePessoas;
 	private String tipo;
 	private String numero;
 	private boolean disponivel;
 	private boolean deleted;
 	
-	public Quarto(int id, float valor, int quantidade_pessoas, String tipo, String numero, boolean disponivel) 
+	public Quarto(int id, float valor, int quantidadePessoas, String tipo, String numero, boolean disponivel) 
 	{
 		this.id = id;
 		this.valor = valor;
-		this.quantidade_pessoas = quantidade_pessoas;
+		this.quantidadePessoas = quantidadePessoas;
 		this.tipo = tipo;
 		this.numero = numero;
 		this.disponivel = disponivel;
+	}
+	
+	
+	
+	public Quarto(float valor, int quantidadePessoas, String tipo, String numero, boolean disponivel) 
+	{
+		this.valor = valor;
+		this.quantidadePessoas = quantidadePessoas;
+		this.tipo = tipo;
+		this.numero = numero;
+		this.disponivel = disponivel;
+	}
+
+
+
+	public Quarto() {
+		
 	}
 
 	/**
@@ -59,19 +76,19 @@ public class Quarto
 	}
 
 	/**
-	 * @return quantidade_pessoas {@link int}
+	 * @return quantidadePessoas {@link int}
 	 */
-	public int getQuantidade_pessoas() 
+	public int getQuantidadePessoas() 
 	{
-		return quantidade_pessoas;
+		return quantidadePessoas;
 	}
 
 	/**
-	 * @param quantidade_pessoas {@link int}
+	 * @param quantidadePessoas {@link int}
 	 */
-	public void setQuantidade_pessoas(int quantidade_pessoas) 
+	public void setQuantidadePessoas(int quantidadePessoas) 
 	{
-		this.quantidade_pessoas = quantidade_pessoas;
+		this.quantidadePessoas = quantidadePessoas;
 	}
 
 	/**
