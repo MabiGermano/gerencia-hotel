@@ -71,8 +71,15 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `hosp3`.`consumo_extra` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(45) NULL,
+  `hospedagem_id` INT NULL,
   `valor` FLOAT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+   INDEX `fk_consumo_extra_1_idx` (`hospedagem_id` ASC),
+  CONSTRAINT `fk_consumo_extra_1`
+    FOREIGN KEY (`hospedagem_id`)
+    REFERENCES `hosp3`.`hospedagem` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -127,19 +134,12 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `hosp3`.`registro` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `flag_ativo` TINYINT(1) NULL,
-  `consumo_id` INT NULL,
   `pagamento` VARCHAR(45) NULL,
   `funcionario_id` INT NULL,
   `hospedagem_id` INT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_registro_1_idx` (`consumo_id` ASC),
   INDEX `fk_registro_4_idx` (`funcionario_id` ASC),
   INDEX `fk_registro_2_idx` (`hospedagem_id` ASC),
-  CONSTRAINT `fk_registro_1`
-    FOREIGN KEY (`consumo_id`)
-    REFERENCES `hosp3`.`consumo_extra` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_registro_4`
     FOREIGN KEY (`funcionario_id`)
     REFERENCES `hosp3`.`funcionario` (`id`)

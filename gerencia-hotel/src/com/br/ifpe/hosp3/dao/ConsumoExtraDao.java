@@ -33,11 +33,12 @@ public class ConsumoExtraDao implements ManipulacaoDeDados<ConsumoExtra> {
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			
-			String sql = "INSERT INTO consumo_extra (descricao, valor)"
+			String sql = "INSERT INTO consumo_extra (descricao, valor, hospedagem_id)"
 						+ "VALUES ("
 						+ " '" + consumoExtra.getDescricao() + "' ,"
-						+ " '" + consumoExtra.getValor()
-						+ " ')";
+						+ 		consumoExtra.getValor() + " ,"
+						+  		consumoExtra.getHospedagem().getId()
+						+ " )";
 			
 			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.execute();
@@ -62,7 +63,8 @@ public class ConsumoExtraDao implements ManipulacaoDeDados<ConsumoExtra> {
 			
 			String sql = "UPDATE consumo_extra set"
 						+ "descricao = '" + consumoExtra.getDescricao() + "' ,"
-						+ "valor = '" + consumoExtra.getValor() + "' "
+						+ "valor = " + consumoExtra.getValor() + " ,"
+						+ "hospedagem_id = " + consumoExtra.getHospedagem().getId()
 						+ "WHERE id = " + consumoExtra.getId();
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
