@@ -7,15 +7,15 @@ import com.br.ifpe.hosp3.model.Funcionario;
 
 public class FuncionarioController {
 
-	public static boolean login(Funcionario funcionario) throws IOException {
-		boolean isCorrespondente = false;
+	public static Funcionario login(Funcionario funcionario) throws IOException {
+		Funcionario funcionarioCorrespondente = null;
 		try {
 			FuncionarioDao funcionarioDao = new FuncionarioDao();
-			isCorrespondente = funcionarioDao.autentication(funcionario);
-		} catch (IOException e) {
+			funcionarioCorrespondente = funcionarioDao.autentication(funcionario);
+		} catch (NullPointerException e) {
 			throw e;
 		}
-		return isCorrespondente;
+		return funcionarioCorrespondente;
 	}
 
 }

@@ -24,7 +24,7 @@ public abstract class Pessoa
 		this.email = email;
 		this.telefone = telefone;
 		this.endereco = endereco;
-		this.setPalavraPasse(palavraPasse);
+		this.palavraPasse = palavraPasse;
 	}
 	
 	public Pessoa() {
@@ -109,7 +109,7 @@ public abstract class Pessoa
 	public void setPalavraPasse(String palavraPasse) 
 	{
 		
-		this.palavraPasse = Criptografia.criptografar(palavraPasse);
+		this.palavraPasse = palavraPasse;
 	}
 
 	/**
