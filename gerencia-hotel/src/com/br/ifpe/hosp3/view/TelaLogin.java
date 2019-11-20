@@ -72,7 +72,7 @@ public class TelaLogin extends javax.swing.JFrame {
             if(connection != null) {
                 lblStatus.setText("Conectado");
             } else {
-                lblStatus.setText("NÃ£o conectado");
+                lblStatus.setText("Não conectado");
             }
     }
 

@@ -86,7 +86,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         menuCadastroFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
-        menuCadastroFuncionario.setText("Funcion√°rio");
+        menuCadastroFuncionario.setText("Funcion·rio");
         menuCadastroFuncionario.setEnabled(false);
         menuCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,17 +96,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuCadastro.add(menuCadastroFuncionario);
 
         menuCadastroHospede.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK));
-        menuCadastroHospede.setText("H√≥spede");
+        menuCadastroHospede.setText("HÛspede");
         menuCadastroHospede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuCadastroHospedeActionPerformed(evt);
+                try {
+					menuCadastroHospedeActionPerformed(evt);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
             }
         });
         menuCadastro.add(menuCadastroHospede);
 
         Menu.add(menuCadastro);
 
-        menuRelatorio.setText("Relat√≥rio");
+        menuRelatorio.setText("RelatÛrio");
         menuRelatorio.setEnabled(false);
 
         menuRelatorioHospedagem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
@@ -119,7 +123,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         Menu.add(menuRelatorio);
 
-        menuOpcoes.setText("Op√ß√µes");
+        menuOpcoes.setText("OpÁıes");
         menuOpcoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuOpcoesActionPerformed(evt);
@@ -181,7 +185,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     /**
      * 
-     * M√©todo para abrir a janela de cadastro de Funcion√°rio
+     * MÈtodo para abrir a janela de cadastro de Funcion·rio
      */
     private void menuCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroFuncionarioActionPerformed
         TelaFuncionario funcionario = null;
@@ -195,7 +199,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuCadastroFuncionarioActionPerformed
 /**
      * 
-     * M√©todo para formatar a data da tela principal
+     * MÈtodo para formatar a data da tela principal
      */
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Date data = new Date();
@@ -209,7 +213,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuOpcoesActionPerformed
 /**
      * 
-     * M√©todo sair do sistema
+     * MÈtodo sair do sistema
      */
     private void menuOpcoesSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesSairActionPerformed
         int sair = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Alerta", JOptionPane.YES_NO_OPTION);
@@ -220,9 +224,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuOpcoesSairActionPerformed
 /**
      * 
-     * M√©todo para abrir a janela de cadastro de H√≥spede
+     * MÈtodo para abrir a janela de cadastro de HÛspede
+     * @throws IOException 
      */
-    private void menuCadastroHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroHospedeActionPerformed
+    private void menuCadastroHospedeActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_menuCadastroHospedeActionPerformed
         TelaHospede hospede = new TelaHospede();
         hospede.setVisible(true);
         Component add;

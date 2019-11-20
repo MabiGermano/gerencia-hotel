@@ -21,7 +21,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     ResultSet rs = null;
 
     /**
-     * Cria nova tela de Funcion√°rio
+     * Cria nova tela de Funcion·rio
      *
      * @throws java.io.IOException
      */
@@ -33,7 +33,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     
     /**
      * 
-     * M√©todo para consulta dados de Funcion√°rio
+     * MÈtodo para consulta dados de Funcion·rio
      */
     private void consultar() {
         String sql = "select * from funcionario where nome=?";
@@ -50,7 +50,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 txtCodFunc.setText(rs.getString(7));
                 txtPassFunc.setText(rs.getString(8));
             } else {
-                JOptionPane.showMessageDialog(null, "Usu√°rio n√£o cadastrado");
+                JOptionPane.showMessageDialog(null, "Usu·rio n„o cadastrado");
                 txtNomeFunc.setText(null);
                 txtCpfFunc.setText(null);
                 txtEmailFunc.setText(null);
@@ -65,7 +65,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     
     /**
      * 
-     * M√©todo para adicionar dados de Funcion√°rio
+     * MÈtodo para adicionar dados de Funcion·rio
      */
     private void adicionar() {
         String sql = "insert into funcionario(id, nome, cpf, endereco_id, email, telefone, codigo, palavra_passe) values(?,?,?,?,?,?,?,?)";
@@ -86,9 +86,9 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 int adicionado = pst.executeUpdate();
 
                 if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "Usu√°rio cadastrado com sucesso");
+                    JOptionPane.showMessageDialog(null, "Usu·rio cadastrado com sucesso");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Usu√°rio n√£o p√¥de ser cadastrado. Tente novamente.");
+                    JOptionPane.showMessageDialog(null, "Usu·rio n„o pode ser cadastrado. Tente novamente.");
                 }
             }
         } catch (Exception e) {
@@ -98,7 +98,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     
     /**
      * 
-     * M√©todo para alterar dados de Funcion√°rio
+     * MÈtodo para alterar dados de Funcion·rio
      */
     public void alterar(){
         String sql = "update funcionario set nome=?, cpf=?, endereco_id=?, email=?, telefone=?, codigo=?, palavra_passe=? where id=?";
@@ -160,7 +160,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Funcion√°rio");
+        setTitle("Funcion\u00E1rio");
 
         lblNomeFunc.setText("Nome");
 
