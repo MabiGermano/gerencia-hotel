@@ -30,7 +30,7 @@ public class TelaLogin extends javax.swing.JFrame {
 	public void logar() {
 		try {
 			Funcionario funcionarioForm = new Funcionario(txtCodigo.getText(), txtSenha.getText());
-			Funcionario funcionarioEncontrado = FuncionarioController.login(funcionarioForm);
+			Funcionario funcionarioEncontrado = FuncionarioController.autentication(funcionarioForm);
 			if (funcionarioEncontrado != null) {
 				if (funcionarioEncontrado.getCargo() == "666") {
 					TelaPrincipal principal = new TelaPrincipal();

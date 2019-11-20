@@ -189,13 +189,13 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 	}
 	
 	/**
-	 * Método para autenticação do funcionário no sistema
+	 * Método de busca de funcionário pelo código
 	 * 
 	 *  @param funcionario {@link Funcionario}
 	 *  @return retorno {@link boolean}
 	 *  @throws IOException {@link IOException}
 	 **/
-	public Funcionario autentication(Funcionario funcionario) throws IOException {
+	public Funcionario getByCode(Funcionario funcionario) throws IOException {
 		Connection conexao;
 		Funcionario funcionarioEncontrado = null;
 		try {
@@ -205,16 +205,9 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 			ResultSet result =  ps.executeQuery();				
 			Funcionario funcionarioCompare = new Funcionario();
 			if(result != null && result.next()) {
-
-				funcionarioCompare = this.constructObject(funcionarioCompare, result);
-				funcionario.setPalavraPasse(Criptografia.criptografar(funcionario.getPalavraPasse()));
-				
-				if(funcionarioCompare.getCodigo().equals(funcionario.getCodigo())
-					&& funcionarioCompare.getPalavraPasse().equals(funcionario.getPalavraPasse())) {
-					funcionarioEncontrado = funcionarioCompare;
-				}
+				funcionarioEncontrado = this.constructObject(funcionarioCompare, result);
 			}else {
-				throw new NullPointerException("Ops, código não registrado");
+				throw new NullPointerException("Email ou senha incorretos, tente novamente");
 			}
 		} catch (IOException | SQLException e) {
 			throw new IOException("Ops... erro na busca, contacte nosso suporte");
@@ -248,7 +241,16 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 		}
 		return retorno;
 	}
-
+	
+	/**
+	 * Montagem de objeto funcionário a partir do resultado da busca
+	 * 
+	 * @param funcionario {@link Funcionario}
+	 * @param result {@link ResultSet}
+	 * 
+	 * @return funcionario {@link Funcionario}
+	 * @throws SQLException {@link SQLException}
+	 **/
 	private Funcionario constructObject(Funcionario funcionario, ResultSet result) throws SQLException {
 		EnderecoDao endDao = new EnderecoDao();
 		Endereco endereco = endDao.getById(result.getInt("endereco_id"));
