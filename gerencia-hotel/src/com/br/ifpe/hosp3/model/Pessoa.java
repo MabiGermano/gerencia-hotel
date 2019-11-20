@@ -1,7 +1,9 @@
 package com.br.ifpe.hosp3.model;
 
+import com.br.ifpe.hosp3.util.Criptografia;
+
 /**
- * @author Tayná Alexandra
+ * @author Taynï¿½ Alexandra
  *
  * Classe abstrata Pessoa
  */
@@ -21,9 +23,10 @@ public abstract class Pessoa
 		this.cpf = cpf;
 		this.email = email;
 		this.telefone = telefone;
-		this.palavraPasse = palavraPasse;
 		this.endereco = endereco;
+		this.setPalavraPasse(palavraPasse);
 	}
+	
 	public Pessoa() {
 		
 	}
@@ -105,7 +108,8 @@ public abstract class Pessoa
 	 */
 	public void setPalavraPasse(String palavraPasse) 
 	{
-		this.palavraPasse = palavraPasse;
+		
+		this.palavraPasse = Criptografia.criptografar(palavraPasse);
 	}
 
 	/**

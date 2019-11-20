@@ -27,11 +27,13 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			
-			String sql = "INSERT INTO funcionario (nome, cpf, email, telefone, palavra_passe, endereco_id)"
+			String sql = "INSERT INTO funcionario (nome, cpf, email, cargo, codigo, telefone, palavra_passe, endereco_id)"
 						+ " VALUES ("
 						+ " '" + funcionario.getNome() + "' ," 
 						+ " '" + funcionario.getCpf() + "' ," 
 						+ " '" + funcionario.getEmail() + "' ,"
+						+ " '" + funcionario.getCargo() + "' ,"
+						+ " '" + funcionario.getCodigo() + "' ,"
 						+ " '" + funcionario.getTelefone() + "' ,"
 						+ " '" + funcionario.getPalavraPasse() + "' ,"
 						+ funcionario.getEndereco().getId()
@@ -65,6 +67,7 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 						+ "nome = '" + funcionario.getNome()+ "' ," 
 						+ "cpf = '" + funcionario.getCpf() + "' ," 
 						+ "email = '" + funcionario.getEmail() + "' ," 
+						+ "cargo = '" + funcionario.getCargo() + "' ,"
 						+ "telefone = '" + funcionario.getTelefone() + "' ,"
 						+ "palavra_passe = '" + funcionario.getPalavraPasse() + "' ,"
 						+ "endereco_id = '" + funcionario.getEndereco().getId() + "' "
@@ -102,6 +105,8 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 				funcionario.setNome(result.getString("nome"));
 				funcionario.setCpf(result.getString("cpf"));
 				funcionario.setEmail(result.getString("email"));
+				funcionario.setCargo(result.getString("cargo"));
+				funcionario.setCodigo(result.getString("codigo"));
 				funcionario.setTelefone(result.getString("telefone"));
 				funcionario.setPalavraPasse(result.getString("palavra_passe"));
 				funcionario.setEndereco(endereco);
@@ -137,6 +142,8 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 				funcionario.setNome(result.getString("nome"));
 				funcionario.setCpf(result.getString("cpf"));
 				funcionario.setEmail(result.getString("email"));
+				funcionario.setCargo(result.getString("cargo"));
+				funcionario.setCodigo(result.getString("codigo"));
 				funcionario.setTelefone(result.getString("telefone"));
 				funcionario.setPalavraPasse(result.getString("palavra_passe"));
 				Endereco endereco = endDao.getById(result.getInt("endereco_id"));
@@ -196,6 +203,66 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 		}
 	
 		return resultado;
+	}
+	
+	/**
+	 * Método para autenticação do funcionário no sistema
+	 * 
+	 *  @param funcionario {@link Funcionario}
+	 *  @return retorno {@link boolean}
+	 *  @throws IOException {@link IOException}
+	 **/
+	public boolean autentication(Funcionario funcionario) throws IOException {
+		Connection conexao;
+		boolean retorno = false;
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM funcionario WHERE codigo =" + funcionario.getCodigo();
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ResultSet result =  ps.executeQuery();				
+			Funcionario funcionarioCompare = new Funcionario();
+			if(result != null && result.next()) {
+				funcionarioCompare.setCodigo(result.getString("codigo"));
+				funcionarioCompare.setPalavraPasse(result.getString("palavra_passe"));
+				
+				if(funcionarioCompare.getCodigo().equals(funcionario.getCodigo())
+					&& funcionarioCompare.getPalavraPasse().equals(funcionario.getPalavraPasse())) {
+					retorno = true;
+				}
+			}else {
+				throw new NullPointerException("Ops, código não registrado");
+			}
+		} catch (IOException | SQLException e) {
+			throw new IOException("Ops... erro na busca, contacte nosso suporte");
+		} 
+		
+		return retorno;
+	}
+	
+	/**
+	 * Método verifica se CPF já está registrado no banco de dados
+	 * @param cpf {@link String}
+	 * @return retorno {@link boolean}
+	 **/
+	public boolean verifyIsCpfRegistred(String cpf) {
+		Connection conexao;
+		boolean retorno = false;
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM hospede WHERE cpf =" + cpf;
+						
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			
+			ResultSet result =  ps.executeQuery();				
+			if(result != null && result.next()) {
+				retorno = true;	
+			}
+
+			ConexaoMysql.FecharConexao();
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+		return retorno;
 	}
 
 }

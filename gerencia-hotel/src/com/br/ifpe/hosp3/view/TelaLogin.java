@@ -26,37 +26,19 @@ public class TelaLogin extends javax.swing.JFrame {
     ResultSet rs = null;
     
 	public void logar(){
-        String sql = "select * from funcionario where email=? and palavra_passe=?";
-                
-        try {
-            pst = connection.prepareStatement(sql);
-            pst.setString(1, txtEmail.getText());
-            pst.setString(2, txtSenha.getText());
-            
-            rs = pst.executeQuery();
-            
-            if (rs.next()) {
-	            	String perfil = rs.getString(7);
-	            	if(perfil.equals("25B")) {
-	                TelaPrincipal principal = new TelaPrincipal();
-	                principal.setVisible(true);
-	                TelaPrincipal.menuRelatorio.setEnabled(true);
-	                TelaPrincipal.menuCadastroFuncionario.setEnabled(true);
-	                TelaPrincipal.lblUsuario.setText(rs.getString(2));
-	                connection.close();
-	                this.dispose();
-	            	}else {
-	                	TelaPrincipal principal = new TelaPrincipal();
-		                principal.setVisible(true);
-		                this.dispose();
-	                }
-            } else {
-                JOptionPane.showMessageDialog(null, "E-mail e/ou senha inválido(s)");
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        } 
+		FuncionarioController.login();
+		TelaPrincipal principal = new TelaPrincipal();
+        principal.setVisible(true);
+        TelaPrincipal.menuRelatorio.setEnabled(true);
+        TelaPrincipal.menuCadastroFuncionario.setEnabled(true);
+        TelaPrincipal.lblUsuario.setText(rs.getString(2));
+        
+        
+        else 
+        
+        	TelaPrincipal principal = new TelaPrincipal();
+        principal.setVisible(true);
+        this.dispose();
     }
     
     /**
