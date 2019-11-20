@@ -5,19 +5,22 @@
  */
 package com.br.ifpe.hosp3.view;
 
+import java.awt.Component;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 
 /**
  *
- * @author THG
+ * @author Thaysa Gomes
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaPrincipal
+     * Cria nova tela Principal
      */
     public TelaPrincipal() {
         initComponents();
@@ -32,13 +35,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Desktop = new javax.swing.JDesktopPane();
+        desktop = new javax.swing.JDesktopPane();
         lblUsuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblData = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         Menu = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
-        MenuCadastroFuncionario = new javax.swing.JMenuItem();
+        menuCadastroFuncionario = new javax.swing.JMenuItem();
         menuCadastroHospede = new javax.swing.JMenuItem();
         menuRelatorio = new javax.swing.JMenu();
         menuRelatorioHospedagem = new javax.swing.JMenuItem();
@@ -55,39 +59,49 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
-        Desktop.setLayout(DesktopLayout);
-        DesktopLayout.setHorizontalGroup(
-            DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
         );
-        DesktopLayout.setVerticalGroup(
-            DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
         lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         lblUsuario.setText("Usuário");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\THG\\Downloads\\BD\\logo.png")); // NOI18N
-
         lblData.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblData.setText("Data");
 
-        menuCadastro.setText("Cadastro");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/icons/logo.png"))); // NOI18N
 
-        MenuCadastroFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
-        MenuCadastroFuncionario.setText("Funcionário");
-        MenuCadastroFuncionario.setEnabled(false);
-        MenuCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
+        menuCadastro.setText("Cadastro");
+        menuCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuCadastroFuncionarioActionPerformed(evt);
+                menuCadastroActionPerformed(evt);
             }
         });
-        menuCadastro.add(MenuCadastroFuncionario);
+
+        menuCadastroFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
+        menuCadastroFuncionario.setText("Funcionário");
+        menuCadastroFuncionario.setEnabled(false);
+        menuCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastroFuncionarioActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuCadastroFuncionario);
 
         menuCadastroHospede.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK));
         menuCadastroHospede.setText("Hóspede");
+        menuCadastroHospede.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastroHospedeActionPerformed(evt);
+            }
+        });
         menuCadastro.add(menuCadastroHospede);
 
         Menu.add(menuCadastro);
@@ -129,14 +143,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(83, 83, 83))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel1)
+                        .addGap(49, 49, 49))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblData)
                             .addComponent(lblUsuario))
@@ -144,44 +160,78 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Desktop)
+            .addComponent(desktop)
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(lblUsuario)
                 .addGap(18, 18, 18)
                 .addComponent(lblData)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(61, 61, 61))))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void MenuCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadastroFuncionarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MenuCadastroFuncionarioActionPerformed
-
+    /**
+     * 
+     * Método para abrir a janela de cadastro de Funcionário
+     */
+    private void menuCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroFuncionarioActionPerformed
+        TelaFuncionario funcionario = null;
+        try {
+            funcionario = new TelaFuncionario();
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        funcionario.setVisible(true);
+        desktop.add(funcionario);
+    }//GEN-LAST:event_menuCadastroFuncionarioActionPerformed
+/**
+     * 
+     * Método para formatar a data da tela principal
+     */
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Date data = new Date();
         DateFormat formataData = DateFormat.getDateInstance(DateFormat.SHORT);
         lblData.setText(formataData.format(data));
-        
-        
+
     }//GEN-LAST:event_formWindowActivated
 
     private void menuOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_menuOpcoesActionPerformed
-
+/**
+     * 
+     * Método sair do sistema
+     */
     private void menuOpcoesSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesSairActionPerformed
         int sair = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Alerta", JOptionPane.YES_NO_OPTION);
-        
+
         if (sair == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_menuOpcoesSairActionPerformed
+/**
+     * 
+     * Método para abrir a janela de cadastro de Hóspede
+     */
+    private void menuCadastroHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroHospedeActionPerformed
+        TelaHospede hospede = new TelaHospede();
+        hospede.setVisible(true);
+        Component add;
+        add = desktop.add(hospede);
+    }//GEN-LAST:event_menuCadastroHospedeActionPerformed
+
+    private void menuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroActionPerformed
+        
+    }//GEN-LAST:event_menuCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,21 +261,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaPrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaPrincipal().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenuBar Menu;
-    public static javax.swing.JMenuItem MenuCadastroFuncionario;
+    private javax.swing.JDesktopPane desktop;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblData;
-    private javax.swing.JLabel lblUsuario;
+    public static javax.swing.JLabel lblUsuario;
     private javax.swing.JMenu menuCadastro;
+    public static javax.swing.JMenuItem menuCadastroFuncionario;
     private javax.swing.JMenuItem menuCadastroHospede;
     private javax.swing.JMenu menuOpcoes;
     private javax.swing.JMenuItem menuOpcoesSair;
