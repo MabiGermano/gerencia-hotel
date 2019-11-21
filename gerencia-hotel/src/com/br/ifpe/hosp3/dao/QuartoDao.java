@@ -46,6 +46,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.execute();
 			resultado = this.getLastInsertedId(ps.getGeneratedKeys());
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -74,6 +75,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}	
@@ -110,6 +112,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 				
 				listaQuarto.add(quarto);
 			}
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -142,7 +145,8 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 				quarto.setTipo(result.getString("tipo"));
 				quarto.setNumero(result.getString("numero"));
 				quarto.setDisponivel(result.getBoolean("disponivel"));	
-			}			
+			}
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -165,6 +169,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}

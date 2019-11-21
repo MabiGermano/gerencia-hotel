@@ -43,6 +43,7 @@ public class ConsumoExtraDao implements ManipulacaoDeDados<ConsumoExtra> {
 			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.execute();
 			resultado = this.getLastInsertedId(ps.getGeneratedKeys());
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -69,6 +70,7 @@ public class ConsumoExtraDao implements ManipulacaoDeDados<ConsumoExtra> {
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}		
@@ -102,6 +104,7 @@ public class ConsumoExtraDao implements ManipulacaoDeDados<ConsumoExtra> {
 			
 				listaConsumoExtra.add(consumoExtra);
 			}
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -132,6 +135,7 @@ public class ConsumoExtraDao implements ManipulacaoDeDados<ConsumoExtra> {
 				consumoExtra.setDescricao(result.getString("descricao"));
 				consumoExtra.setValor(result.getFloat("valor"));
 			}
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -154,6 +158,7 @@ public class ConsumoExtraDao implements ManipulacaoDeDados<ConsumoExtra> {
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
