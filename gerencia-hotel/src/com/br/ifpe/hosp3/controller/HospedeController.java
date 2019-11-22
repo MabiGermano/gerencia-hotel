@@ -4,6 +4,7 @@ import com.br.ifpe.hosp3.dao.EnderecoDao;
 import com.br.ifpe.hosp3.dao.HospedeDao;
 import com.br.ifpe.hosp3.model.Endereco;
 import com.br.ifpe.hosp3.model.Hospede;
+import com.br.ifpe.hosp3.util.Criptografia;
 
 /**
  * @author Maria Beatriz Germano
@@ -22,6 +23,7 @@ public class HospedeController {
 			
 			HospedeDao hospedeDao = new HospedeDao();
 			hospede.setEndereco(endereco);
+			hospede.setPalavraPasse(Criptografia.criptografar(hospede.getPalavraPasse()));
 			hospede.setId(hospedeDao.create(hospede));
 			if(hospede.getId() != null){
 				hospedeRetorno = hospede;

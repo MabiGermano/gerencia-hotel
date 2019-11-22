@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package com.br.ifpe.hosp3.view;
+import java.awt.Color;
+
 import javax.swing.JOptionPane;
 
 import com.br.ifpe.hosp3.controller.HospedeController;
@@ -84,41 +86,25 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         lblEmailHospede = new javax.swing.JLabel();
         txtEmailHospede = new javax.swing.JTextField();
         
-        lblCodHospede = new javax.swing.JLabel();
-        txtCodHospede = new javax.swing.JTextField();
-        
         lblPassHospede = new javax.swing.JLabel();
-        txtPassHospede = new javax.swing.JTextField();
+        txtPassHospede = new javax.swing.JPasswordField(10);
         
         btnAddHospede = new javax.swing.JButton();
-        btnEditHospede = new javax.swing.JButton();
-        btnSearchHospede = new javax.swing.JButton();
-        btnDelHospede = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Hóspede");
 
-        btnAddHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
-        btnAddHospede.setToolTipText("Adicionar");
+        //btnAddHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource("./../resources/img/"))); // NOI18N /*iconfinder*/
+        btnAddHospede.setText("Adicionar");
+        
+        Color cor = new Color(46,139, 87);
+        btnAddHospede.setBackground(cor);
         btnAddHospede.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAddHospede.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnAddHospede.setPreferredSize(new java.awt.Dimension(80, 50));
 
-        btnEditHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N
-        btnEditHospede.setToolTipText("Editar");
-        btnEditHospede.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEditHospede.setPreferredSize(new java.awt.Dimension(80, 80));
-
-        btnSearchHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N
-        btnSearchHospede.setToolTipText("Pesquisar");
-        btnSearchHospede.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSearchHospede.setPreferredSize(new java.awt.Dimension(80, 80));
-
-        btnDelHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N
-        btnDelHospede.setToolTipText("Deletar");
-        btnDelHospede.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDelHospede.setPreferredSize(new java.awt.Dimension(80, 80));
+       
 
         lblCpfHospede.setText("CPF");
 
@@ -133,8 +119,6 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         lblTelHospede.setText("Telefone");
 
         lblBairroHospede.setText("Bairro");
-
-        lblCodHospede.setText("Código");
 
         lblPaisHospede.setText("País");
 
@@ -191,10 +175,6 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCodHospede)
-                                    .addComponent(txtCodHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(165, 165, 165)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPassHospede)
                                     .addComponent(txtPassHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lblRuaHospede, javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,13 +221,8 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
                                         .addComponent(txtTelHospede, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAddHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(btnEditHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnSearchHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnDelHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                        .addGap(46, 46, 46)))
+                    .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,27 +275,22 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
                             .addComponent(txtTelHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCodHospede)
                             .addComponent(lblPassHospede))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCodHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPassHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblBairroHospede)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSearchHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAddHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEditHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnDelHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnAddHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, 
+                    			javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     private void txtNomeHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeHospedeActionPerformed
         // TODO add your handling code here:
@@ -358,14 +328,10 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
     
     private javax.swing.JButton btnAddHospede;
-    private javax.swing.JButton btnDelHospede;
-    private javax.swing.JButton btnEditHospede;
-    private javax.swing.JButton btnSearchHospede;
     private javax.swing.JLabel lblBairroHospede;
     private javax.swing.JLabel lblEstadoHospede;
     private javax.swing.JLabel lblCepHospede;
     private javax.swing.JLabel lblCidadeHospede;
-    private javax.swing.JLabel lblCodHospede;
     private javax.swing.JLabel lblCompHospede;
     private javax.swing.JLabel lblCpfHospede;
     private javax.swing.JLabel lblEmailHospede;
@@ -379,7 +345,6 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtEstadoHospede;
     private javax.swing.JTextField txtCepHospede;
     private javax.swing.JTextField txtCidadeHospede;
-    private javax.swing.JTextField txtCodHospede;
     private javax.swing.JTextField txtCompHospede;
     private javax.swing.JTextField txtCpfHospede;
     private javax.swing.JTextField txtEmailHospede;
