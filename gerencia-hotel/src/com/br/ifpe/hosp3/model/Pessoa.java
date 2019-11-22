@@ -10,6 +10,7 @@ import com.br.ifpe.hosp3.util.Criptografia;
 
 public abstract class Pessoa 
 {
+	private Integer id;
 	private String nome;
 	private String cpf;
 	private String email;
@@ -29,6 +30,23 @@ public abstract class Pessoa
 	
 	public Pessoa() {
 		
+	}
+	
+
+	/**
+	 * @return id {@link int}
+	 */
+	public Integer getId() 
+	{
+		return id;
+	}
+
+	/**
+	 * @param id {@link int}
+	 */
+	public void setId(Integer id) 
+	{
+		this.id = id;
 	}
 
 	/**

@@ -188,7 +188,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAddFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/icons/iconfinder_document_text_add_103511.png"))); // NOI18N
+        btnAddFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
         btnAddFunc.setToolTipText("Adicionar");
         btnAddFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddFunc.setPreferredSize(new java.awt.Dimension(80, 80));
@@ -198,12 +198,12 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEditFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/icons/iconfinder_document_text_edit_103514.png"))); // NOI18N
+        btnEditFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
         btnEditFunc.setToolTipText("Editar");
         btnEditFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditFunc.setPreferredSize(new java.awt.Dimension(80, 80));
 
-        btnSearchFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/icons/iconfinder_files-folders-05_808579.png"))); // NOI18N
+        btnSearchFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
         btnSearchFunc.setToolTipText("Pesquisar");
         btnSearchFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSearchFunc.setPreferredSize(new java.awt.Dimension(80, 80));
@@ -213,7 +213,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDelFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/icons/iconfinder_document_text_cancel_103512.png"))); // NOI18N
+        btnDelFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
         btnDelFunc.setToolTipText("Deletar");
         btnDelFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDelFunc.setPreferredSize(new java.awt.Dimension(80, 80));
