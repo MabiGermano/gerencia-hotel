@@ -12,6 +12,7 @@ import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.connection.ManipulacaoDeDados;
 import com.br.ifpe.hosp3.model.Endereco;
 import com.br.ifpe.hosp3.model.Funcionario;
+import com.br.ifpe.hosp3.util.Criptografia;
 
 public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 	
@@ -27,13 +28,15 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			
-			String sql = "INSERT INTO funcionario (nome, cpf, email, telefone, palavra_passe, endereco_id)"
+			String sql = "INSERT INTO funcionario (nome, cpf, email, cargo, codigo, telefone, palavra_passe, endereco_id)"
 						+ " VALUES ("
 						+ " '" + funcionario.getNome() + "' ," 
 						+ " '" + funcionario.getCpf() + "' ," 
 						+ " '" + funcionario.getEmail() + "' ,"
+						+ " '" + funcionario.getCargo() + "' ,"
+						+ " '" + funcionario.getCodigo() + "' ,"
 						+ " '" + funcionario.getTelefone() + "' ,"
-						+ " '" + funcionario.getPalavraPasse() + "' ,"
+						+ " '" + Criptografia.criptografar(funcionario.getPalavraPasse()) + "' ,"
 						+ funcionario.getEndereco().getId()
 						+ ")";
 			
@@ -65,8 +68,9 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 						+ "nome = '" + funcionario.getNome()+ "' ," 
 						+ "cpf = '" + funcionario.getCpf() + "' ," 
 						+ "email = '" + funcionario.getEmail() + "' ," 
+						+ "cargo = '" + funcionario.getCargo() + "' ,"
 						+ "telefone = '" + funcionario.getTelefone() + "' ,"
-						+ "palavra_passe = '" + funcionario.getPalavraPasse() + "' ,"
+						+ "palavra_passe = '" + Criptografia.criptografar(funcionario.getPalavraPasse()) + "' ,"
 						+ "endereco_id = '" + funcionario.getEndereco().getId() + "' "
 						+ "WHERE id = " + funcionario.getId();
 						
@@ -95,16 +99,9 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 			ResultSet result =  ps.executeQuery();
 			
 			while(result.next()) {
-				EnderecoDao endDao = new EnderecoDao();
-				Endereco endereco = endDao.getById(result.getInt("endereco_id"));
+				
 				Funcionario funcionario = new Funcionario();
-				funcionario.setId(result.getInt("id"));
-				funcionario.setNome(result.getString("nome"));
-				funcionario.setCpf(result.getString("cpf"));
-				funcionario.setEmail(result.getString("email"));
-				funcionario.setTelefone(result.getString("telefone"));
-				funcionario.setPalavraPasse(result.getString("palavra_passe"));
-				funcionario.setEndereco(endereco);
+				funcionario = this.constructObject(funcionario, result);
 			
 				listaFuncionario.add(funcionario);
 			}
@@ -132,15 +129,8 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 			
 			ResultSet result =  ps.executeQuery();				
 			if(result != null && result.next()) {
-				EnderecoDao endDao = new EnderecoDao();
-				funcionario.setId(result.getInt("id"));
-				funcionario.setNome(result.getString("nome"));
-				funcionario.setCpf(result.getString("cpf"));
-				funcionario.setEmail(result.getString("email"));
-				funcionario.setTelefone(result.getString("telefone"));
-				funcionario.setPalavraPasse(result.getString("palavra_passe"));
-				Endereco endereco = endDao.getById(result.getInt("endereco_id"));
-				funcionario.setEndereco(endereco);	
+
+				funcionario = this.constructObject(funcionario, result);
 			}
 			
 		} catch (IOException | SQLException e) {
@@ -197,5 +187,82 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 	
 		return resultado;
 	}
+	
+	/**
+	 * Método de busca de funcionário pelo código
+	 * 
+	 *  @param funcionario {@link Funcionario}
+	 *  @return retorno {@link boolean}
+	 *  @throws IOException {@link IOException}
+	 **/
+	public Funcionario getByCode(Funcionario funcionario) throws IOException {
+		Connection conexao;
+		Funcionario funcionarioEncontrado = null;
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM funcionario WHERE codigo = '" + funcionario.getCodigo() + "'";
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ResultSet result =  ps.executeQuery();				
+			Funcionario funcionarioCompare = new Funcionario();
+			if(result != null && result.next()) {
+				funcionarioEncontrado = this.constructObject(funcionarioCompare, result);
+			}else {
+				throw new NullPointerException("Email ou senha incorretos, tente novamente");
+			}
+		} catch (IOException | SQLException e) {
+			throw new IOException("Ops... erro na busca, contacte nosso suporte");
+		} 
+		
+		return funcionarioEncontrado;
+	}
+	
+	/**
+	 * Método verifica se CPF já está registrado no banco de dados
+	 * @param cpf {@link String}
+	 * @return retorno {@link boolean}
+	 **/
+	public boolean verifyIsCpfRegistred(String cpf) {
+		Connection conexao;
+		boolean retorno = false;
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM hospede WHERE cpf =" + cpf;
+						
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			
+			ResultSet result =  ps.executeQuery();				
+			if(result != null && result.next()) {
+				retorno = true;	
+			}
 
+			ConexaoMysql.FecharConexao();
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+		return retorno;
+	}
+	
+	/**
+	 * Montagem de objeto funcionário a partir do resultado da busca
+	 * 
+	 * @param funcionario {@link Funcionario}
+	 * @param result {@link ResultSet}
+	 * 
+	 * @return funcionario {@link Funcionario}
+	 * @throws SQLException {@link SQLException}
+	 **/
+	private Funcionario constructObject(Funcionario funcionario, ResultSet result) throws SQLException {
+		EnderecoDao endDao = new EnderecoDao();
+		Endereco endereco = endDao.getById(result.getInt("endereco_id"));
+		funcionario.setId(result.getInt("id"));
+		funcionario.setNome(result.getString("nome"));
+		funcionario.setCpf(result.getString("cpf"));
+		funcionario.setEmail(result.getString("email"));
+		funcionario.setCargo(result.getString("cargo"));
+		funcionario.setCodigo(result.getString("codigo"));
+		funcionario.setTelefone(result.getString("telefone"));
+		funcionario.setPalavraPasse(result.getString("palavra_passe"));
+		funcionario.setEndereco(endereco);
+		return funcionario;
+	}
 }

@@ -102,7 +102,7 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 				FuncionarioDao funcionarioDao = new FuncionarioDao();
 				Funcionario funcionario = funcionarioDao.getById(result.getInt("hospedagem_id"));
 				
-				Registro registro = new Registro();
+				Registro registro = new Registro(0, false, sql, hospedagem, null, null, funcionario);
 				registro.setId(result.getInt("id"));
 				registro.setHospedagem(hospedagem);
 				registro.setFuncionario(funcionario);
@@ -126,7 +126,7 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 	 **/
 	public Registro getById(int id) {
 		Connection conexao;
-		Registro registro = new Registro();
+		Registro registro = new Registro(id, false, null, null, null, null, null);
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			String sql = "SELECT * FROM registro WHERE id =" + id;
