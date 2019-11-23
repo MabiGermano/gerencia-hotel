@@ -49,12 +49,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hosp3`.`hospede` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(80) NULL,
-  `cpf` VARCHAR(14) NULL,
-  `email` VARCHAR(45) NULL,
+  `nome` VARCHAR(80) NOT NULL,
+  `cpf` VARCHAR(14) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
   `endereco_id` INT NULL,
   `telefone` VARCHAR(15) NULL,
-  `palavra_passe` VARCHAR(45) NULL,
+  `palavra_passe` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_hospede_1_idx` (`endereco_id` ASC),
   CONSTRAINT `fk_hospede_1`
@@ -71,8 +71,15 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `hosp3`.`consumo_extra` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(45) NULL,
+  `hospedagem_id` INT NULL,
   `valor` FLOAT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+   INDEX `fk_consumo_extra_1_idx` (`hospedagem_id` ASC),
+  CONSTRAINT `fk_consumo_extra_1`
+    FOREIGN KEY (`hospedagem_id`)
+    REFERENCES `hosp3`.`hospedagem` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -81,13 +88,14 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hosp3`.`funcionario` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(80) NULL,
-  `cpf` VARCHAR(14) NULL,
+  `nome` VARCHAR(80) NOT NULL,
+  `cpf` VARCHAR(14) NOT NULL,
   `endereco_id` INT NULL,
-  `email` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NOT NULL,
   `telefone` VARCHAR(15) NULL,
   `codigo` VARCHAR(10) NULL,
-  `palavra_passe` VARCHAR(45) NULL,
+  `cargo` VARCHAR(45) NULL,
+  `palavra_passe` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_funcionario_1_idx` (`endereco_id` ASC),
   CONSTRAINT `fk_funcionario_1`

@@ -1,42 +1,30 @@
 package com.br.ifpe.hosp3.model;
 
 /**
- * @author Tayná Alexandra
+ * @author Taynï¿½ Alexandra
  *
  * Classe Funcionario que herda da classe Pessoa 
  */
 
 public class Funcionario extends Pessoa
 {
-	private int id;
 	private String codigo;
-	private boolean deleted;
+	private String cargo;
 	
 	public Funcionario() {
 		
 	}
 	
-	public Funcionario(String nome, String cpf, String email, String telefone, String palavra_passe, Endereco endereco, int id, String codigo) 
+	public Funcionario(String nome, String cpf, String email, String telefone, String palavra_passe, 
+						Endereco endereco, int id, String cargo, String codigo) 
 	{
 		super(nome, cpf, email, telefone, palavra_passe, endereco);
-		this.id = id;
+		this.cargo = cargo;
 		this.codigo = codigo;
 	}
-
-	/**
-	 * @return id {@link int}
-	 */
-	public int getId() 
-	{
-		return id;
-	}
-
-	/**
-	 * @param id {@link int}
-	 */
-	public void setId(int id) 
-	{
-		this.id = id;
+	public Funcionario(String codigo, String palavraPasse) {
+		super(null, null, null, null, palavraPasse, null);
+		this.codigo = codigo;
 	}
 
 	/**
@@ -56,19 +44,17 @@ public class Funcionario extends Pessoa
 	}
 
 	/**
-	 * @return deleted {@link boolean}
+	 * @return cargo {@link String}
 	 */
-	public boolean isDeleted()
-	{
-		return deleted;
+	public String getCargo() {
+		return this.cargo;
 	}
 
 	/**
-	 * @param deleted {@link boolean}
+	 * @param cargo {@link String}
 	 */
-	public void setDeleted(boolean deleted)
-	{
-		this.deleted = deleted;
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
-
+	
 }

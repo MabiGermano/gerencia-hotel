@@ -21,7 +21,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     ResultSet rs = null;
 
     /**
-     * Cria nova tela de Funcion·rio
+     * Cria nova tela de Funcion√°rio
      *
      * @throws java.io.IOException
      */
@@ -33,7 +33,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     
     /**
      * 
-     * MÈtodo para consulta dados de Funcion·rio
+     * M√©todo para consulta dados de Funcion√°rio
      */
     private void consultar() {
         String sql = "select * from funcionario where nome=?";
@@ -50,7 +50,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 txtCodFunc.setText(rs.getString(7));
                 txtPassFunc.setText(rs.getString(8));
             } else {
-                JOptionPane.showMessageDialog(null, "Usu·rio n„o cadastrado");
+                JOptionPane.showMessageDialog(null, "Usu√°rio n√£o cadastrado");
                 txtNomeFunc.setText(null);
                 txtCpfFunc.setText(null);
                 txtEmailFunc.setText(null);
@@ -65,7 +65,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     
     /**
      * 
-     * MÈtodo para adicionar dados de Funcion·rio
+     * M√©todo para adicionar dados de Funcion√°rio
      */
     private void adicionar() {
         String sql = "insert into funcionario(id, nome, cpf, endereco_id, email, telefone, codigo, palavra_passe) values(?,?,?,?,?,?,?,?)";
@@ -86,9 +86,9 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 int adicionado = pst.executeUpdate();
 
                 if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "Usu·rio cadastrado com sucesso");
+                    JOptionPane.showMessageDialog(null, "Usu√°rio cadastrado com sucesso");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Usu·rio n„o pode ser cadastrado. Tente novamente.");
+                    JOptionPane.showMessageDialog(null, "Usu√°rio n√£o p√¥de ser cadastrado. Tente novamente.");
                 }
             }
         } catch (Exception e) {
@@ -98,7 +98,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     
     /**
      * 
-     * MÈtodo para alterar dados de Funcion·rio
+     * M√©todo para alterar dados de Funcion√°rio
      */
     public void alterar(){
         String sql = "update funcionario set nome=?, cpf=?, endereco_id=?, email=?, telefone=?, codigo=?, palavra_passe=? where id=?";
@@ -160,7 +160,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Funcion\u00E1rio");
+        setTitle("Funcion√°rio");
 
         lblNomeFunc.setText("Nome");
 
@@ -188,7 +188,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAddFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/icons/iconfinder_document_text_add_103511.png"))); // NOI18N
+        btnAddFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
         btnAddFunc.setToolTipText("Adicionar");
         btnAddFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddFunc.setPreferredSize(new java.awt.Dimension(80, 80));
@@ -198,12 +198,12 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEditFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/icons/iconfinder_document_text_edit_103514.png"))); // NOI18N
+        btnEditFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
         btnEditFunc.setToolTipText("Editar");
         btnEditFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditFunc.setPreferredSize(new java.awt.Dimension(80, 80));
 
-        btnSearchFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/icons/iconfinder_files-folders-05_808579.png"))); // NOI18N
+        btnSearchFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
         btnSearchFunc.setToolTipText("Pesquisar");
         btnSearchFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSearchFunc.setPreferredSize(new java.awt.Dimension(80, 80));
@@ -213,7 +213,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDelFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/icons/iconfinder_document_text_cancel_103512.png"))); // NOI18N
+        btnDelFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
         btnDelFunc.setToolTipText("Deletar");
         btnDelFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDelFunc.setPreferredSize(new java.awt.Dimension(80, 80));
