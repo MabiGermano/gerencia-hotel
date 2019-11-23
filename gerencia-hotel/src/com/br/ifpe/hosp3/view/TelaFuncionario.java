@@ -141,9 +141,6 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         txtCodFunc = new javax.swing.JTextField();
         txtPassFunc = new javax.swing.JTextField();
         btnAddFunc = new javax.swing.JButton();
-        btnEditFunc = new javax.swing.JButton();
-        btnSearchFunc = new javax.swing.JButton();
-        btnDelFunc = new javax.swing.JButton();
         txtNumFunc = new javax.swing.JTextField();
         txtCepFunc = new javax.swing.JTextField();
         txtPaisFunc = new javax.swing.JTextField();
@@ -188,7 +185,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAddFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
+        btnAddFunc.setText("Adicionar");
         btnAddFunc.setToolTipText("Adicionar");
         btnAddFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddFunc.setPreferredSize(new java.awt.Dimension(80, 80));
@@ -197,26 +194,6 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 btnAddFuncActionPerformed(evt);
             }
         });
-
-        btnEditFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
-        btnEditFunc.setToolTipText("Editar");
-        btnEditFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEditFunc.setPreferredSize(new java.awt.Dimension(80, 80));
-
-        btnSearchFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
-        btnSearchFunc.setToolTipText("Pesquisar");
-        btnSearchFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSearchFunc.setPreferredSize(new java.awt.Dimension(80, 80));
-        btnSearchFunc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchFuncActionPerformed(evt);
-            }
-        });
-
-        btnDelFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N /*iconfinder*/
-        btnDelFunc.setToolTipText("Deletar");
-        btnDelFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDelFunc.setPreferredSize(new java.awt.Dimension(80, 80));
 
         txtPaisFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,14 +239,6 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                                 .addComponent(txtPassFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(lblEndIdFunc, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnAddFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(46, 46, 46)
-                            .addComponent(btnEditFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(32, 32, 32)
-                            .addComponent(btnSearchFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(35, 35, 35)
-                            .addComponent(btnDelFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
                             .addComponent(txtBairroFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(70, 70, 70)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -309,7 +278,8 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblNumFunc)
                                         .addGap(46, 46, 46))
-                                    .addComponent(txtTelFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtTelFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnAddFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -335,8 +305,11 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                     .addComponent(txtRuaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCepFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblBairroFunc)
+                        .addGap(263, 263, 263))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -353,7 +326,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtCompFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTelFunc)
                             .addComponent(lblEmailFunc))
@@ -369,33 +342,17 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCodFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPassFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSearchFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnAddFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnEditFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnDelFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblBairroFunc)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(37, 37, 37))
+                        .addGap(44, 44, 44)
+                        .addComponent(btnAddFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNomeFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeFuncActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeFuncActionPerformed
-
     private void txtRuaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaFuncActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRuaFuncActionPerformed
-
-    private void btnSearchFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchFuncActionPerformed
-        consultar();
-    }//GEN-LAST:event_btnSearchFuncActionPerformed
 
     private void btnAddFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFuncActionPerformed
         adicionar();
@@ -405,12 +362,13 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPaisFuncActionPerformed
 
+    private void txtNomeFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeFuncActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeFuncActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddFunc;
-    private javax.swing.JButton btnDelFunc;
-    private javax.swing.JButton btnEditFunc;
-    private javax.swing.JButton btnSearchFunc;
     private javax.swing.JLabel lblBairroFunc;
     private javax.swing.JLabel lblCepFunc;
     private javax.swing.JLabel lblCidadeFunc;

@@ -11,6 +11,12 @@ import javax.swing.JOptionPane;
 import com.br.ifpe.hosp3.controller.HospedeController;
 import com.br.ifpe.hosp3.model.Endereco;
 import com.br.ifpe.hosp3.model.Hospede;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
 /**
  *
@@ -74,8 +80,8 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     	lblCepHospede = new javax.swing.JLabel();
     	txtCepHospede = new javax.swing.JTextField();
         
-    	lblCpfHospede = new javax.swing.JLabel();
-    	txtCpfHospede = new javax.swing.JTextField();
+    	lblBuscaCpfHospede = new javax.swing.JLabel();
+    	txtBuscaCpfHospede = new javax.swing.JTextField();
     	
         lblTelHospede = new javax.swing.JLabel();
         txtTelHospede = new javax.swing.JTextField();
@@ -106,7 +112,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
        
 
-        lblCpfHospede.setText("CPF");
+        lblBuscaCpfHospede.setText("CPF");
 
         lblRuaHospede.setText("Rua");
 
@@ -155,139 +161,160 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         });
         
         lblNomeHospede.setText("Nome");
+        
+        JLabel label = new JLabel();
+        label.setText("CPF");
+        
+        textField = new JTextField();
+        
+        JButton btnPesquisar = new JButton("Pesquisar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblNomeHospede)
-                                .addComponent(txtNomeHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(51, 51, 51)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtCpfHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblCpfHospede)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPassHospede)
-                                    .addComponent(txtPassHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lblRuaHospede, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtBairroHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(70, 70, 70)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCepHospede)
-                                    .addComponent(lblCepHospede)
-                                    .addComponent(lblCompHospede)
-                                    .addComponent(txtCompHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(txtEmailHospede)
-                                                .addComponent(lblPaisHospede, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(txtPaisHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtCidadeHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblEmailHospede)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(94, 94, 94)
-                                                .addComponent(lblCidadeHospede)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lblBairroHospede))
-                                            .addComponent(txtRuaHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(23, 23, 23)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNumHospede, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblTelHospede)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblNumHospede)
-                                            .addGap(46, 46, 46))
-                                        .addComponent(txtTelHospede, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAddHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)))
-                    .addContainerGap(45, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(25)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addComponent(txtBuscaCpfHospede, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(btnPesquisar))
+        						.addComponent(lblBuscaCpfHospede)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        								.addComponent(lblRuaHospede, Alignment.LEADING)
+        								.addGroup(layout.createSequentialGroup()
+        									.addComponent(txtBairroHospede, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
+        									.addGap(70)
+        									.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        										.addComponent(txtCepHospede)
+        										.addComponent(lblCepHospede)
+        										.addComponent(lblCompHospede)
+        										.addComponent(txtCompHospede, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)))
+        								.addGroup(layout.createSequentialGroup()
+        									.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        										.addComponent(lblPaisHospede)
+        										.addGroup(layout.createSequentialGroup()
+        											.addComponent(txtPaisHospede, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+        											.addGap(18)
+        											.addComponent(txtCidadeHospede, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
+        										.addGroup(layout.createSequentialGroup()
+        											.addGap(94)
+        											.addComponent(lblCidadeHospede)))
+        									.addGap(91)
+        									.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        										.addComponent(txtNumHospede, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+        										.addComponent(lblNumHospede))
+        									.addGap(46))
+        								.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        									.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        										.addComponent(lblNomeHospede)
+        										.addComponent(txtNomeHospede, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE))
+        									.addGap(26)
+        									.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        										.addGroup(layout.createSequentialGroup()
+        											.addComponent(label, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+        											.addGap(201))
+        										.addComponent(txtRuaHospede, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))
+        									.addGap(18)
+        									.addGroup(layout.createSequentialGroup()
+        										.addGap(10)
+        										.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        											.addComponent(txtEmailHospede, Alignment.TRAILING, 198, 198, 198)
+        											.addComponent(lblEmailHospede)))))
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(lblBairroHospede)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        								.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        									.addComponent(lblPassHospede)
+        									.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        										.addComponent(btnAddHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        										.addComponent(txtPassHospede, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)))
+        								.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        									.addComponent(lblTelHospede)
+        									.addComponent(txtTelHospede, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE))))))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(57)
+        					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE))
+        				.addGap(564)
+        				.addGap(564))
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblNomeHospede)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomeHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCpfHospede)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCpfHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRuaHospede)
-                    .addComponent(lblNumHospede)
-                    .addComponent(lblCepHospede))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtRuaHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCepHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblCompHospede)
-                                .addComponent(lblPaisHospede, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(lblCidadeHospede, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtPaisHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCidadeHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtBairroHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCompHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTelHospede)
-                            .addComponent(lblEmailHospede))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmailHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPassHospede))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPassHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblBairroHospede)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAddHospede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, 
-                    			javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(30)
+        			.addComponent(lblBuscaCpfHospede)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(txtBuscaCpfHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(btnPesquisar))
+        			.addGap(81)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        					.addGroup(layout.createSequentialGroup()
+        						.addComponent(lblNomeHospede)
+        						.addPreferredGap(ComponentPlacement.RELATED)
+        						.addComponent(txtNomeHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        					.addGroup(layout.createSequentialGroup()
+        						.addComponent(lblEmailHospede)
+        						.addPreferredGap(ComponentPlacement.RELATED)
+        						.addComponent(txtEmailHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        				.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        					.addGroup(layout.createSequentialGroup()
+        						.addGap(20)
+        						.addComponent(txtRuaHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        					.addGroup(layout.createSequentialGroup()
+        						.addComponent(label)
+        						.addGap(26))))
+        			.addGap(6)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(19)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        								.addComponent(lblRuaHospede)
+        								.addComponent(lblNumHospede)
+        								.addComponent(lblCepHospede))
+        							.addGap(4)
+        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        								.addComponent(txtNumHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(txtCepHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        									.addComponent(lblCompHospede)
+        									.addComponent(lblPaisHospede, Alignment.TRAILING))
+        								.addComponent(lblCidadeHospede, Alignment.TRAILING))
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        								.addGroup(layout.createSequentialGroup()
+        									.addComponent(txtCompHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        									.addPreferredGap(ComponentPlacement.RELATED))
+        								.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        									.addComponent(txtPaisHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        									.addComponent(txtCidadeHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        									.addComponent(txtBairroHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+        						.addComponent(lblBairroHospede))
+        					.addGap(41)
+        					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(lblTelHospede)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(txtTelHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        					.addPreferredGap(ComponentPlacement.UNRELATED)
+        					.addComponent(lblPassHospede)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(txtPassHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        					.addGap(64)
+        					.addComponent(btnAddHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        			.addGap(347))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }
@@ -316,7 +343,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     	endereco.setRua(txtRuaHospede.getText());
     	
     	Hospede hospede = new Hospede();
-    	hospede.setCpf(txtCpfHospede.getText());
+    	hospede.setCpf(txtBuscaCpfHospede.getText());
     	hospede.setEmail(txtEmailHospede.getText());
     	hospede.setNome(txtNomeHospede.getText());
     	hospede.setPalavraPasse(txtPassHospede.getText());
@@ -333,7 +360,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblCepHospede;
     private javax.swing.JLabel lblCidadeHospede;
     private javax.swing.JLabel lblCompHospede;
-    private javax.swing.JLabel lblCpfHospede;
+    private javax.swing.JLabel lblBuscaCpfHospede;
     private javax.swing.JLabel lblEmailHospede;
     private javax.swing.JLabel lblNomeHospede;
     private javax.swing.JLabel lblNumHospede;
@@ -346,7 +373,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCepHospede;
     private javax.swing.JTextField txtCidadeHospede;
     private javax.swing.JTextField txtCompHospede;
-    private javax.swing.JTextField txtCpfHospede;
+    private javax.swing.JTextField txtBuscaCpfHospede;
     private javax.swing.JTextField txtEmailHospede;
     private javax.swing.JTextField txtNomeHospede;
     private javax.swing.JTextField txtNumHospede;
@@ -354,5 +381,5 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtPassHospede;
     private javax.swing.JTextField txtRuaHospede;
     private javax.swing.JTextField txtTelHospede;
-
+    private JTextField textField;
 }
