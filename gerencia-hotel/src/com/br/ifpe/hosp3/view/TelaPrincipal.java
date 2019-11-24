@@ -20,9 +20,16 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 	
 	/**
 	 *
@@ -53,13 +60,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
              ex.printStackTrace();
          }
         desktop = this.initDesktop(img);
-        lblUsuario = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        lblData = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        comboCadastro = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        btnCadastro = new javax.swing.JButton();
         Menu = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         menuCadastroFuncionario = new javax.swing.JMenuItem();
@@ -75,41 +75,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
-            }
-        });
-
-        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
-        desktop.setLayout(desktopLayout);
-        desktopLayout.setHorizontalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
-        );
-        desktopLayout.setVerticalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-        lblUsuario.setText("Usuário");
-
-        lblData.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblData.setText("Data");
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/logo.png"))); // NOI18N
-
-        comboCadastro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Hóspede", "Quarto" }));
-        comboCadastro.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboCadastroItemStateChanged(evt);
-            }
-        });
-
-        jLabel3.setText("Cadastro");
-
-        btnCadastro.setText("Ok");
-        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroActionPerformed(evt);
             }
         });
 
@@ -171,59 +136,91 @@ import javax.swing.LayoutStyle.ComponentPlacement;
         Menu.add(menuOpcoes);
 
         setJMenuBar(Menu);
+        
+        JPanel panel = new JPanel();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addComponent(desktop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addPreferredGap(ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-        					.addComponent(jLabel2)
-        					.addGap(40)
-        					.addComponent(jLabel1)
-        					.addGap(49))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(layout.createSequentialGroup()
-        							.addGap(30)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        								.addComponent(lblData)
-        								.addComponent(lblUsuario)))
-        						.addGroup(layout.createSequentialGroup()
-        							.addGap(18)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        								.addComponent(jLabel3)
-        								.addComponent(comboCadastro, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
-        								.addComponent(btnCadastro))))
-        					.addContainerGap(46, Short.MAX_VALUE))))
+        			.addComponent(desktop, GroupLayout.PREFERRED_SIZE, 631, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(panel, GroupLayout.PREFERRED_SIZE, 212, GroupLayout.PREFERRED_SIZE)
+        			.addGap(68))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
-        		.addComponent(desktop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        		.addComponent(desktop, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
         		.addGroup(layout.createSequentialGroup()
-        			.addGap(62)
-        			.addComponent(lblUsuario)
-        			.addGap(18)
-        			.addComponent(lblData)
-        			.addGap(45)
-        			.addComponent(jLabel3)
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(comboCadastro, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(btnCadastro)
-        			.addPreferredGap(ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-        					.addGap(79))
-        				.addGroup(layout.createSequentialGroup()
-        					.addComponent(jLabel1)
-        					.addGap(61))))
+        			.addComponent(panel, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
+        panel.setLayout(null);
+        lblUsuario = new javax.swing.JLabel();
+        lblUsuario.setBounds(32, 12, 112, 36);
+        panel.add(lblUsuario);
+        
+                lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+                lblUsuario.setText("Usuário");
+        jLabel2 = new javax.swing.JLabel();
+        jLabel2.setBounds(143, 23, 0, 0);
+        panel.add(jLabel2);
+                lblData = new javax.swing.JLabel();
+                lblData.setBounds(36, 57, 91, 23);
+                panel.add(lblData);
+                
+                        lblData.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+                        lblData.setText("Data");
+                        jLabel3 = new javax.swing.JLabel();
+                        jLabel3.setBounds(32, 122, 53, 14);
+                        panel.add(jLabel3);
+                        
+                                jLabel3.setText("Cadastro");
+                                comboCadastro = new javax.swing.JComboBox<>();
+                                comboCadastro.setBounds(32, 138, 95, 23);
+                                panel.add(comboCadastro);
+                                
+                                        comboCadastro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Hóspede", "Quarto" }));
+                                        btnCadastro = new javax.swing.JButton();
+                                        btnCadastro.setBounds(32, 167, 50, 24);
+                                        panel.add(btnCadastro);
+                                        
+                                                btnCadastro.setText("Ok");
+                                                jLabel1 = new javax.swing.JLabel();
+                                                jLabel1.setBounds(26, 230, 155, 155);
+                                                panel.add(jLabel1);
+                                                
+                                                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/logo.png")));
+                                                btnCadastro.addActionListener(new java.awt.event.ActionListener() {
+                                                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                                        btnCadastroActionPerformed(evt);
+                                                    }
+                                                });
+                                        comboCadastro.addItemListener(new java.awt.event.ItemListener() {
+                                            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                                                comboCadastroItemStateChanged(evt);
+                                            }
+                                        });
+        desktop.setLayout(null);
+        
+        
+        
+        Icon iconCheckin = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-in_p.png"));
+        btnCheckin = new JButton("Check-in", iconCheckin);
+        btnCheckin.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        	}
+        });
+        btnCheckin.setBounds(96, 33, 131, 45);
+        desktop.add(btnCheckin);
+        
+        Icon iconCheckout = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-out_p.png"));
+        JButton btnNewButton = new JButton("Check-out", iconCheckout);
+        btnNewButton.setBounds(389, 33, 131, 45);
+        desktop.add(btnNewButton);
+        
         getContentPane().setLayout(layout);
-        this.setPreferredSize(new Dimension(840, 435));
+        this.setPreferredSize(new Dimension(850, 440));
         pack();
         setLocationRelativeTo(null);
     }
@@ -382,4 +379,5 @@ import javax.swing.LayoutStyle.ComponentPlacement;
     private javax.swing.JMenuItem menuRelatorioConsumo;
     private javax.swing.JMenuItem menuRelatorioHospedagem;
     private BufferedImage img; 
+    private JButton btnCheckin;
 	}
