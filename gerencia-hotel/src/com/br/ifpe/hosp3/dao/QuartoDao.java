@@ -27,7 +27,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public int create(Quarto quarto) {
+	public int create(Quarto quarto) throws Exception {
 		Connection conexao;
 		int resultado = 0;
 		try {
@@ -47,7 +47,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 			ps.execute();
 			resultado = this.getLastInsertedId(ps.getGeneratedKeys());
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw new Exception("Não foi possível incluir quarto, dados inválidos");
 		}
 		
 		return resultado;

@@ -351,5 +351,4 @@
     public static javax.swing.JMenu menuRelatorio;
     private javax.swing.JMenuItem menuRelatorioConsumo;
     private javax.swing.JMenuItem menuRelatorioHospedagem;
-    // End of variables declaration//GEN-END:variables
 	}

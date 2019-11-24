@@ -27,7 +27,7 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public int create(Hospede hospede) {
+	public int create(Hospede hospede) throws Exception {
 		Connection conexao;
 		int retorno = 0;
 		try {
@@ -47,7 +47,7 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 			ps.execute();
 			retorno = this.getLastInsertedId(ps.getGeneratedKeys());
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw new Exception("Não fui possível incluir hospede, verifique os dados e tente novamente");
 		}
 		
 		return retorno;

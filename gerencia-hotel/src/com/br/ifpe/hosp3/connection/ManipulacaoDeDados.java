@@ -14,12 +14,12 @@ public interface ManipulacaoDeDados<Type> {
 	/**
 	 * @param type {@link Type}
 	 **/
-	public int create(Type type);
+	public int create(Type type) throws Exception;
 	
 	/**
 	 * @param type {@link Type}
 	 **/
-	public void updade(Type type);
+	public void updade(Type type)  throws Exception;
 
 	/**
 	 * @return HashSet {@link HashSet<Type>}
