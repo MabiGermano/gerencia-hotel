@@ -207,8 +207,13 @@ import javax.swing.LayoutStyle.ComponentPlacement;
         Icon iconCheckin = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-in_p.png"));
         btnCheckin = new JButton("Check-in", iconCheckin);
         btnCheckin.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent event) {
-        		btnCheckInActionPerformed(event);
+        	public void actionPerformed(java.awt.event.ActionEvent event) {
+        		try {
+					btnCheckInActionPerformed(event);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
         	}
         });
         btnCheckin.setBounds(96, 33, 131, 45);
@@ -297,13 +302,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
         // TODO add your handling code here:
     }//GEN-LAST:event_comboCadastroItemStateChanged
 
-    private void btnCheckInActionPerformed(ActionEvent event) {
+    private void btnCheckInActionPerformed(java.awt.event.ActionEvent event) throws IOException {
     	TelaCriarHospedagem novaHospedagem = null;
-    	try {
-    		novaHospedagem = new TelaCriarHospedagem();
-    	}catch(IOException ex) {
-    		Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-    	}
+    	novaHospedagem = new TelaCriarHospedagem();
     	novaHospedagem.setVisible(true);
     	desktop.add(novaHospedagem);
     }

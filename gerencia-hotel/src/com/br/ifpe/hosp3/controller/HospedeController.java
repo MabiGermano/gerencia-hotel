@@ -30,4 +30,22 @@ public class HospedeController {
 			throw e;
 		}
 	}
+	
+	public static Hospede buscarHospede(String cpf) throws Exception {
+		Hospede hospedeRetorno = null;
+		try {
+			HospedeDao hospedeDao = new HospedeDao();
+			hospedeRetorno = hospedeDao.findByCpf(cpf);
+			if(hospedeRetorno == null) {
+				throw new Exception("Hospede não encontrado, tente novamente");
+			}
+		} catch (Exception e) {
+			throw new Exception("Usuário não encontrado! "
+					+ "\n" + "Verifique: "
+					+ "\n" + "**CPF deve ter no máximo 14 digitos"
+					+ "\n" + "***CPF não pode estar vazio");
+		}
+		
+		return hospedeRetorno;
+	}
 }
