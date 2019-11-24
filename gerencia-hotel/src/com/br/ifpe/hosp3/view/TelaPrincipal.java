@@ -18,8 +18,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
 	
 	/**
 	 *
@@ -31,6 +34,7 @@ import javax.swing.JOptionPane;
 	     * Cria nova tela Principal
 	     */
 	    public TelaPrincipal() {
+	    	setResizable(false);
 	        initComponents();
 	    }
 	
@@ -41,9 +45,9 @@ import javax.swing.JOptionPane;
 	     */
 	    @SuppressWarnings("unchecked")
     private void initComponents() {
-
+	    
     	 try {
-    		 URL url = getClass().getResource("./img/looby.jpg");
+    		 URL url = getClass().getResource("./../img/lobby.jpg");
              img = ImageIO.read(new File(url.getPath()));
          } catch (Exception ex) {
              ex.printStackTrace();
@@ -67,8 +71,7 @@ import javax.swing.JOptionPane;
         menuOpcoesSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Hotel Renascença - Gerenciamento");
-        setResizable(false);
+        setTitle("Hosp3 - Gerencia");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -170,64 +173,64 @@ import javax.swing.JOptionPane;
         setJMenuBar(Menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel1)
-                        .addGap(49, 49, 49))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblData)
-                                    .addComponent(lblUsuario)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(comboCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnCadastro))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addComponent(desktop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addPreferredGap(ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+        					.addComponent(jLabel2)
+        					.addGap(40)
+        					.addComponent(jLabel1)
+        					.addGap(49))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(30)
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(lblData)
+        								.addComponent(lblUsuario)))
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(18)
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(jLabel3)
+        								.addComponent(comboCadastro, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(btnCadastro))))
+        					.addContainerGap(46, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(lblUsuario)
-                .addGap(18, 18, 18)
-                .addComponent(lblData)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCadastro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(61, 61, 61))))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addComponent(desktop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(62)
+        			.addComponent(lblUsuario)
+        			.addGap(18)
+        			.addComponent(lblData)
+        			.addGap(45)
+        			.addComponent(jLabel3)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(comboCadastro, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(btnCadastro)
+        			.addPreferredGap(ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+        					.addGap(79))
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(jLabel1)
+        					.addGap(61))))
         );
-
+        getContentPane().setLayout(layout);
+        this.setPreferredSize(new Dimension(840, 435));
         pack();
         setLocationRelativeTo(null);
     }
 	    
 	    private JDesktopPane initDesktop(BufferedImage img) {
 	    	return new JDesktopPane() {
-	            @Override
+	            @Override 
 	            protected void paintComponent(Graphics grphcs) {
 	                super.paintComponent(grphcs);
 	                grphcs.drawImage(img, 0, 0, null);
@@ -243,7 +246,7 @@ import javax.swing.JOptionPane;
 	     * 
 	     * Método para abrir a janela de cadastro de Funcionário
 	     */
-	    private void menuCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroFuncionarioActionPerformed
+	    private void menuCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {
 	        TelaFuncionario funcionario = null;
 	        try {
 	            funcionario = new TelaFuncionario();
@@ -252,17 +255,17 @@ import javax.swing.JOptionPane;
 	        }
 	        funcionario.setVisible(true);
 	        desktop.add(funcionario);
-	    }//GEN-LAST:event_menuCadastroFuncionarioActionPerformed
+	    }
 	/**
 	     * 
 	     * Método para formatar a data da tela principal
 	     */
-	    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+	    private void formWindowActivated(java.awt.event.WindowEvent evt) {
 	        Date data = new Date();
 	        DateFormat formataData = DateFormat.getDateInstance(DateFormat.SHORT);
 	        lblData.setText(formataData.format(data));
 	
-	    }//GEN-LAST:event_formWindowActivated
+	    }
 	
 	    private void menuOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesActionPerformed
 	      
@@ -361,7 +364,6 @@ import javax.swing.JOptionPane;
 	        });
 	    }
 	
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
     private javax.swing.JButton btnCadastro;
     private javax.swing.JComboBox<String> comboCadastro;
