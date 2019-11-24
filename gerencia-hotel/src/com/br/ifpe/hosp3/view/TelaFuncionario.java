@@ -408,7 +408,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPaisFuncActionPerformed
 
-    private void txtNomeFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeFuncActionPerformed
+    private void txtNomeFuncActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeFuncActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeFuncActionPerformed
 

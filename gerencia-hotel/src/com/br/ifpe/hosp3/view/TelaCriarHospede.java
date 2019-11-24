@@ -40,7 +40,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 	}
 
     /**
-     * Cria nova tela de Hóspede
+     * Cria nova tela de HÃ³spede
      */
     public TelaCriarHospede() {
         initComponents();
@@ -100,7 +100,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Hóspede");
+        setTitle("HÃ³spede");
 
         //btnAddHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource("./../resources/img/"))); // NOI18N /*iconfinder*/
         btnAddHospede.setText("Adicionar");
@@ -116,7 +116,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
         lblRuaHospede.setText("Rua");
 
-        lblNumHospede.setText("Número");
+        lblNumHospede.setText("NÃºmero");
 
         lblEmailHospede.setText("E-mail");
 
@@ -126,7 +126,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
         lblBairroHospede.setText("Bairro");
 
-        lblPaisHospede.setText("País");
+        lblPaisHospede.setText("PaÃ­s");
 
         lblPassHospede.setText("Palavra passe");
 
@@ -153,7 +153,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
             }
         });
         
-       //Adicionando evento para botão de salvar ouvir
+       //Adicionando evento para botÃ£o de salvar ouvir
         btnAddHospede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	btnAddHospedeAction(evt);
