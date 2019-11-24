@@ -11,6 +11,12 @@ import javax.swing.JOptionPane;
 import com.br.ifpe.hosp3.controller.HospedeController;
 import com.br.ifpe.hosp3.model.Endereco;
 import com.br.ifpe.hosp3.model.Hospede;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
 /**
  *
@@ -34,7 +40,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 	}
 
     /**
-     * Cria nova tela de HÃ³spede
+     * Cria nova tela de Hóspede
      */
     public TelaCriarHospede() {
         initComponents();
@@ -94,7 +100,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("HÃ³spede");
+        setTitle("Hóspede");
 
         //btnAddHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource("./../resources/img/"))); // NOI18N /*iconfinder*/
         btnAddHospede.setText("Adicionar");
@@ -110,7 +116,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
         lblRuaHospede.setText("Rua");
 
-        lblNumHospede.setText("NÃºmero");
+        lblNumHospede.setText("Número");
 
         lblEmailHospede.setText("E-mail");
 
@@ -120,7 +126,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
         lblBairroHospede.setText("Bairro");
 
-        lblPaisHospede.setText("PaÃ­s");
+        lblPaisHospede.setText("País");
 
         lblPassHospede.setText("Palavra passe");
 
@@ -147,7 +153,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
             }
         });
         
-       //Adicionando evento para botÃ£o de salvar ouvir
+       //Adicionando evento para botão de salvar ouvir
         btnAddHospede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	btnAddHospedeAction(evt);
@@ -155,6 +161,13 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         });
         
         lblNomeHospede.setText("Nome");
+        
+        JLabel label = new JLabel();
+        label.setText("CPF");
+        
+        textField = new JTextField();
+        
+        JButton btnPesquisar = new JButton("Pesquisar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -288,6 +301,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
                     			javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }
@@ -354,5 +368,5 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtPassHospede;
     private javax.swing.JTextField txtRuaHospede;
     private javax.swing.JTextField txtTelHospede;
-
+    private JTextField textField;
 }

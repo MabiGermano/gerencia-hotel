@@ -335,8 +335,11 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                     .addComponent(txtRuaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCepFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblBairroFunc)
+                        .addGap(263, 263, 263))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,6 +407,10 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     private void txtPaisFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPaisFuncActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPaisFuncActionPerformed
+
+    private void txtNomeFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeFuncActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeFuncActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

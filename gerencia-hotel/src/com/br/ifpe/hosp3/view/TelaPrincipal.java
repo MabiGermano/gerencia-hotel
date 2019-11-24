@@ -51,7 +51,7 @@
 	        menuOpcoesSair = new javax.swing.JMenuItem();
 	
 	        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-	        setTitle("Hotel Renascen√ßa - Gerenciamento");
+	        setTitle("Hotel RenascenÁa - Gerenciamento");
 	        setResizable(false);
 	        addWindowListener(new java.awt.event.WindowAdapter() {
 	            public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -71,7 +71,7 @@
 	        );
 	
 	        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-	        lblUsuario.setText("Usu√°rio");
+	        lblUsuario.setText("Usu·rio");
 	
 	        lblData.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 	        lblData.setText("Data");
@@ -86,7 +86,7 @@
 	        });
 	
 	        menuCadastroFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
-	        menuCadastroFuncionario.setText("Funcion√°rio");
+	        menuCadastroFuncionario.setText("Funcion·rio");
 	        menuCadastroFuncionario.setEnabled(false);
 	        menuCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +96,7 @@
 	        menuCadastro.add(menuCadastroFuncionario);
 	
 	        menuCadastroHospede.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK));
-	        menuCadastroHospede.setText("H√≥spede");
+	        menuCadastroHospede.setText("HÛspede");
 	        menuCadastroHospede.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
 	                menuCadastroHospedeActionPerformed(evt);
@@ -106,7 +106,7 @@
 	
 	        Menu.add(menuCadastro);
 	
-	        menuRelatorio.setText("Relat√≥rio");
+	        menuRelatorio.setText("RelatÛrio");
 	        menuRelatorio.setEnabled(false);
 	
 	        menuRelatorioHospedagem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
@@ -119,7 +119,7 @@
 	
 	        Menu.add(menuRelatorio);
 	
-	        menuOpcoes.setText("Op√ß√µes");
+	        menuOpcoes.setText("OpÁıes");
 	        menuOpcoes.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
 	                menuOpcoesActionPerformed(evt);
@@ -181,7 +181,7 @@
 	    }// </editor-fold>//GEN-END:initComponents
 	    /**
 	     * 
-	     * M√©todo para abrir a janela de cadastro de Funcion√°rio
+	     * MÈtodo para abrir a janela de cadastro de Funcion·rio
 	     */
 	    private void menuCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroFuncionarioActionPerformed
 	        TelaFuncionario funcionario = null;
@@ -195,7 +195,7 @@
 	    }//GEN-LAST:event_menuCadastroFuncionarioActionPerformed
 	/**
 	     * 
-	     * M√©todo para formatar a data da tela principal
+	     * MÈtodo para formatar a data da tela principal
 	     */
 	    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 	        Date data = new Date();
@@ -209,7 +209,7 @@
 	    }//GEN-LAST:event_menuOpcoesActionPerformed
 	/**
 	     * 
-	     * M√©todo sair do sistema
+	     * MÈtodo sair do sistema
 	     */
 	    private void menuOpcoesSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpcoesSairActionPerformed
 	        int sair = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Alerta", JOptionPane.YES_NO_OPTION);
@@ -220,7 +220,7 @@
 	    }//GEN-LAST:event_menuOpcoesSairActionPerformed
 	/**
 	     * 
-	     * M√©todo para abrir a janela de cadastro de H√≥spede
+	     * MÈtodo para abrir a janela de cadastro de HÛspede
 	     */
 	    private void menuCadastroHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroHospedeActionPerformed
 	        TelaCriarHospede hospede = new TelaCriarHospede();
@@ -232,6 +232,41 @@
 	    private void menuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroActionPerformed
 	        
 	    }//GEN-LAST:event_menuCadastroActionPerformed
+
+    private void comboCadastroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboCadastroItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboCadastroItemStateChanged
+
+    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
+        String sel = comboCadastro.getSelectedItem().toString();
+
+        if (sel.equals("Funcion·rio")) {
+                TelaFuncionario funcionario = null;
+            try {
+                funcionario = new TelaFuncionario();
+            } catch (IOException ex) {
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                funcionario.setVisible(true);
+            Component add;
+            add = desktop.add(funcionario);
+        }
+        if (sel.equals("HÛspede")) {
+               TelaCriarHospede hospede = new TelaCriarHospede();
+                hospede.setVisible(true);
+                Component add;
+                add = desktop.add(hospede);
+        }
+        if (sel.equals("Quarto")) {
+                TelaCriarQuarto quarto = new TelaCriarQuarto();
+                quarto.setVisible(true);
+                Component add;
+                add = desktop.add(quarto);
+        }
+        else {
+            
+        }
+    }//GEN-LAST:event_btnCadastroActionPerformed
 	
 	    /**
 	     * @param args the command line arguments
@@ -266,20 +301,23 @@
 	        });
 	    }
 	
-	    // Variables declaration - do not modify//GEN-BEGIN:variables
-	    private javax.swing.JMenuBar Menu;
-	    private javax.swing.JDesktopPane desktop;
-	    private javax.swing.JLabel jLabel1;
-	    private javax.swing.JLabel jLabel2;
-	    private javax.swing.JLabel lblData;
-	    public static javax.swing.JLabel lblUsuario;
-	    private javax.swing.JMenu menuCadastro;
-	    public static javax.swing.JMenuItem menuCadastroFuncionario;
-	    private javax.swing.JMenuItem menuCadastroHospede;
-	    private javax.swing.JMenu menuOpcoes;
-	    private javax.swing.JMenuItem menuOpcoesSair;
-	    public static javax.swing.JMenu menuRelatorio;
-	    private javax.swing.JMenuItem menuRelatorioConsumo;
-	    private javax.swing.JMenuItem menuRelatorioHospedagem;
-	    // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar Menu;
+    private javax.swing.JButton btnCadastro;
+    private javax.swing.JComboBox<String> comboCadastro;
+    private javax.swing.JDesktopPane desktop;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblData;
+    public static javax.swing.JLabel lblUsuario;
+    private javax.swing.JMenu menuCadastro;
+    public static javax.swing.JMenuItem menuCadastroFuncionario;
+    private javax.swing.JMenuItem menuCadastroHospede;
+    private javax.swing.JMenu menuOpcoes;
+    private javax.swing.JMenuItem menuOpcoesSair;
+    public static javax.swing.JMenu menuRelatorio;
+    private javax.swing.JMenuItem menuRelatorioConsumo;
+    private javax.swing.JMenuItem menuRelatorioHospedagem;
+    // End of variables declaration//GEN-END:variables
 	}
