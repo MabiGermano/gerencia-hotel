@@ -8,6 +8,8 @@
 	import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -27,9 +29,6 @@ import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 	
 	/**
 	 *
@@ -208,7 +207,8 @@ import javax.swing.SwingConstants;
         Icon iconCheckin = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-in_p.png"));
         btnCheckin = new JButton("Check-in", iconCheckin);
         btnCheckin.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent arg0) {
+        	public void actionPerformed(ActionEvent event) {
+        		btnCheckInActionPerformed(event);
         	}
         });
         btnCheckin.setBounds(96, 33, 131, 45);
@@ -297,6 +297,17 @@ import javax.swing.SwingConstants;
         // TODO add your handling code here:
     }//GEN-LAST:event_comboCadastroItemStateChanged
 
+    private void btnCheckInActionPerformed(ActionEvent event) {
+    	TelaCriarHospedagem novaHospedagem = null;
+    	try {
+    		novaHospedagem = new TelaCriarHospedagem();
+    	}catch(IOException ex) {
+    		Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+    	}
+    	novaHospedagem.setVisible(true);
+    	desktop.add(novaHospedagem);
+    }
+    
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         String sel = comboCadastro.getSelectedItem().toString();
 
