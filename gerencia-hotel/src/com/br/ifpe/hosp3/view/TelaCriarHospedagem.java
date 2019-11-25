@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Logger;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -28,9 +27,13 @@ import javax.swing.table.DefaultTableModel;
 
 import com.br.ifpe.hosp3.controller.HospedeController;
 import com.br.ifpe.hosp3.controller.QuartoController;
+import com.br.ifpe.hosp3.controller.RegistroHospedagemController;
+import com.br.ifpe.hosp3.dao.HospedagemDao;
+import com.br.ifpe.hosp3.model.Funcionario;
 import com.br.ifpe.hosp3.model.Hospedagem;
 import com.br.ifpe.hosp3.model.Hospede;
 import com.br.ifpe.hosp3.model.Quarto;
+import com.br.ifpe.hosp3.model.Registro;
 import com.br.ifpe.hosp3.util.ButtonEditor;
 import com.br.ifpe.hosp3.util.ButtonRenderer;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
@@ -38,6 +41,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
  * Classe de interface gráfica para criação de hospedagem
  **/
 public class TelaCriarHospedagem extends JInternalFrame {
+	Funcionario funcionario;
 	private JTextField textCpf;
 	private DefaultTableModel modelTableHospede;
 	private DefaultTableModel modelTableQuarto;
@@ -165,14 +169,45 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		});
 	    btnCancelar.setBounds(38, 264, 138, 33);
 	    panel.add(btnCancelar);
+	    btnCancelar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cancelarCriacao();
+				
+			}
+		});
 	    listarQuartosDisponiveis();
 		getContentPane().setLayout(groupLayout);
 
 	}
+	public TelaCriarHospedagem(Funcionario funcionario) {
+		this();
+		this.funcionario = funcionario;
+	}
+	/**
+	 * Método para fechar o frame de criação
+	 **/
+	private void cancelarCriacao() {
+		this.dispose();
+	}
 	
-	
+	/**
+	 * Método de ação na interface para criação de registro de hospedagem
+	 * 
+	 **/
 	private void criarRegistroHospedagem() {
-		
+		try {
+			Registro registro = new Registro();
+			registro.setFuncionario(this.funcionario);
+			registro.setHospedagem(this.hospedagem);
+			registro.setValor(this.hospedagem.getQuarto().getValor());
+			RegistroHospedagemController.criarRegistroHospedagem(registro);
+			JOptionPane.showMessageDialog(null, "Check-in realizado com sucesso.");
+			this.dispose();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
 	}
 	/**
 	 * Método de ação para popular tabela e executar ação ao selecionar hospede
@@ -219,7 +254,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	    		quarto.getQuantidadePessoas() ,quarto.getValor(), "selecionar"})
 	    .forEach(quarto -> modelTableQuarto.addRow(quarto));
 	    
-	    listaQuartos.stream().forEach(quartoSelecionado -> {
+	    listaQuartos.forEach(quartoSelecionado -> {
 	    	tableQuartos.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
 				
 				@Override
@@ -227,7 +262,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 					System.out.println("stop " + quartoSelecionado.getId());
 					modelTableQuarto.getDataVector().removeAllElements();
 					modelTableQuarto.addRow(new Object[]{quartoSelecionado.getNumero(), quartoSelecionado.getTipo(), 
-							quartoSelecionado.getQuantidadePessoas(), quartoSelecionado.getValor(), "Escolhido"});
+							quartoSelecionado.getQuantidadePessoas(), quartoSelecionado.getValor(), "Ok"});
 					hospedagem.setQuarto(quartoSelecionado);
 				}
 				

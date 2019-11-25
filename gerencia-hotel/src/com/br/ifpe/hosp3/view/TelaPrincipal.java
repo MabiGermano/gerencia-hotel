@@ -8,7 +8,6 @@
 	import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -29,6 +28,8 @@ import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import com.br.ifpe.hosp3.model.Funcionario;
 	
 	/**
 	 *
@@ -36,12 +37,17 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 	 */
 	public class TelaPrincipal extends javax.swing.JFrame {
 	
+		Funcionario funcionario;
 	    /**
 	     * Cria nova tela Principal
 	     */
 	    public TelaPrincipal() {
 	    	setResizable(false);
 	        initComponents();
+	    }
+	    public TelaPrincipal(Funcionario funcionario) {
+	    	this();
+	    	this.funcionario = funcionario;
 	    }
 	
 	    /**
@@ -304,7 +310,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
     private void btnCheckInActionPerformed(java.awt.event.ActionEvent event) throws IOException {
     	TelaCriarHospedagem novaHospedagem = null;
-    	novaHospedagem = new TelaCriarHospedagem();
+    	novaHospedagem = new TelaCriarHospedagem(this.funcionario);
     	novaHospedagem.setVisible(true);
     	desktop.add(novaHospedagem);
     }

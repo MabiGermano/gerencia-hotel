@@ -59,7 +59,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void updade(Quarto quarto) {
+	public void updade(Quarto quarto) throws Exception {
 		Connection conexao;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
@@ -70,12 +70,12 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 					    + "tipo = '" + quarto.getTipo() + "' ,"
 					    + "numero = '" + quarto.getNumero() + "' ,"
 					    + "disponivel = " + quarto.isDisponivel()
-					    + "WHERE id = " + quarto.getId();
+					    + " WHERE id = " + quarto.getId();
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw e;
 		}	
 	}
 

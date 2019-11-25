@@ -36,14 +36,14 @@ public class TelaLogin extends javax.swing.JFrame {
 			Funcionario funcionarioEncontrado = FuncionarioController.autentication(funcionarioForm);
 			if (funcionarioEncontrado != null) {
 				if (funcionarioEncontrado.getCargo() == "666") {
-					TelaPrincipal principal = new TelaPrincipal();
+					TelaPrincipal principal = new TelaPrincipal(funcionarioEncontrado);
 					principal.setVisible(true);
 					TelaPrincipal.menuRelatorio.setEnabled(true);
 					TelaPrincipal.menuCadastroFuncionario.setEnabled(true);
 					TelaPrincipal.lblUsuario.setText(funcionarioEncontrado.getNome());
 					this.dispose();
 				} else {
-					TelaPrincipal principal = new TelaPrincipal();
+					TelaPrincipal principal = new TelaPrincipal(funcionarioEncontrado);
 					principal.setVisible(true);
 					this.dispose();
 				}
