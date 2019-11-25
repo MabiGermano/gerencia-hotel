@@ -13,12 +13,7 @@ public class Quarto
 	private int quantidadePessoas;
 	private String tipo;
 	private String numero;
-<<<<<<< HEAD
-	private boolean disponivel;
-	private boolean deleted;
-=======
 	private boolean disponivel = true;
->>>>>>> dbed038269aac1f663d06d8da734822a64c09c4d
 	
 	public Quarto(int id, float valor, int quantidadePessoas, String tipo, String numero, boolean disponivel) 
 	{
@@ -141,22 +136,5 @@ public class Quarto
 	public void setDisponivel(boolean disponivel) 
 	{
 		this.disponivel = disponivel;
-	}
-
-	/**
-	 * @return deleted {@link boolean}
-	 */
-	public boolean isDeleted()
-	{
-		return deleted;
-	}
-
-	/**
-	 * @param deleted {@link boolean}
-	 */
-	public void setDeleted(boolean deleted)
-	{
-		this.deleted = deleted;
 	}	
-	
 }

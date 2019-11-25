@@ -7,12 +7,12 @@ import com.br.ifpe.hosp3.model.Registro;
 
 /**
  * @author Maria Beatriz Germano
- * Classe controladora para gest√£o das regras de neg√≥cio 
+ * Classe controladora para gest„o das regras de negÛcio 
  * relacionadas ao Registro de Hospedagem
  **/
 public class RegistroHospedagemController {
 	/**
-	 * M√©todo contendo a regra de neg√≥cio necess√°ria para cria√ß√£o do registro de hospedagem
+	 * MÈtodo contendo a regra de negÛcio necess·ria para criaÁ„o do registro de hospedagem
 	 * comunicando com as classes de interface com o banco de dados
 	 * 
 	 * @param registro {@link Registro}
@@ -30,7 +30,7 @@ public class RegistroHospedagemController {
 			RegistroDao registroDao = new RegistroDao();
 			registroDao.create(registro);
 		}catch(Exception e){
-			throw new Exception("Erro na inclus√£o do registro");
+			throw new Exception("Erro na inclus„o do registro");
 		}
 	}
 }

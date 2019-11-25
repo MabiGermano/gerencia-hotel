@@ -1,7 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
 /**
- * @author Tayná Alexandra
+ * @author Taynï¿½ Alexandra
  *
  *         Classe Endereco
  */
@@ -16,7 +16,6 @@ public class Endereco {
 	private String cidade;
 	private String estado;
 	private String complemento;
-	private boolean deleted;
 
 	public Endereco() {
 
@@ -187,20 +186,4 @@ public class Endereco {
 		this.complemento = complemento;
 	}
 
-	/**
-	 * @return deleted {@link boolean}
-	 */
-	public boolean isDeleted()
-	{
-		return deleted;
-	}
-
-	/**
-	 * @param deleted {@link boolean}
-	 */
-	public void setDeleted(boolean deleted)
-	{
-		this.deleted = deleted;
-	}
-	
 }

@@ -1,26 +1,26 @@
-package com.br.ifpe.hosp3.model;
+pacote com.br.ifpe.hosp3.model;
 
-/**
- * @author Taynï¿½ Alexandra
+/ **
+ * @author Tayn  Alexandra
  *
  * Classe Registro 
- */
+ * /
 
 public class Registro 
 {
 	private int id;
-	private boolean flagAtivo;
-	private String pagamento;
-	private Hospedagem hospedagem;
-	private Quarto quarto;
-	private ConsumoExtra consumoExtra;
+	flagAtivo booleano privado;
+	pagamento String privado;
+	hospedagem privada;
+	quarto privado;
+	privado ConsumoExtra consumoExtra;
 	private Funcionario funcionario;
 	
-<<<<<<< HEAD
-	public Registro(int id, boolean flagAtivo, String pagamento, Hospede hospede, Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) 
+<<<<<<< CABEÇA
+	registro público (identificação int, sinalizador booleanoAtivo, String pagamento, Hospede hospede, Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) 
 	{
 =======
-	public Registro(int id, boolean flag_ativo, String pagamento, Hospedagem hospedagem, 
+	registro público (identificação int, boolean flag_ativo, String pagamento, Hospedagem hospedagem, 
 			Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) {
 >>>>>>> c4021b88133ce377f2b73fed4a90566d535e1f82
 		this.id = id;
@@ -32,114 +32,114 @@ public class Registro
 		this.funcionario = funcionario;
 	}
 
-	/**
+	/ **
 	 * @return id {@link int}
-	 */
-	public int getId() 
+	 * /
+	public int getId () 
 	{
-		return id;
+		id de retorno;
 	}
 
-	/**
+	/ **
 	 * @param id {@link int}
-	 */
-	public void setId(int id) 
+	 * /
+	público void setId (int id) 
 	{
 		this.id = id;
 	}
 
-	/**
+	/ **
 	 * @return flagAtivo {@link boolean}
-	 */
-	public boolean isFlagAtivo() 
+	 * /
+	booleano público isFlagAtivo () 
 	{
-		return flagAtivo;
+		retornar flagAtivo;
 	}
 
-	/**
+	/ **
 	 * @param flagAtivo {@link boolean}
-	 */
-	public void setFlagAtivo(boolean flagAtivo) 
+	 * /
+	public void setFlagAtivo (bandeira booleanaAtivo) 
 	{
 		this.flagAtivo = flagAtivo;
 	}
 
-	/**
+	/ **
 	 * @return pagamento {@link String}
-	 */
-	public String getPagamento() 
+	 * /
+	public String getPagamento () 
 	{
-		return pagamento;
+		retorno pagamento;
 	}
 
-	/**
+	/ **
 	 * @param pagamento {@link String}
-	 */
-	public void setPagamento(String pagamento) 
+	 * /
+	public void setPagamento (String pagamento) 
 	{
 		this.pagamento = pagamento;
 	}
 
-	/**
+	/ **
 	 * @return hospede {@link Hospede}
-	 */
-	public Hospedagem getHospedagem() 
+	 * /
+	public Hospedagem getHospedagem () 
 	{
-		return hospedagem;
+		retornar hospedagem;
 	}
 
-	/**
+	/ **
 	 * @param hospede {@link Hospede}
-	 */
-	public void setHospedagem(Hospedagem hospedagem) 
+	 * /
+	public void setHospedagem (Hospedagem hospedagem) 
 	{
 		this.hospedagem = hospedagem;
 	}
 
-	/**
+	/ **
 	 * @return quarto {@link Quarto}
-	 */
-	public Quarto getQuarto() 
+	 * /
+	quarto público getQuarto () 
 	{
-		return quarto;
+		retornar quarto;
 	}
 
-	/**
+	/ **
 	 * @param quarto {@link Quarto}
-	 */
-	public void setQuarto(Quarto quarto) 
+	 * /
+	public void setQuarto (Quarto quarto) 
 	{
 		this.quarto = quarto;
 	}
 
-	/**
-	 * @return consumoExtra {@link ConsumoExtra}
-	 */
-	public ConsumoExtra getConsumoExtra() 
+	/ **
+	 * @retorno consumoExtra {@link ConsumoExtra}
+	 * /
+	public ConsumoExtra getConsumoExtra () 
 	{
-		return consumoExtra;
+		retornar consumoExtra;
 	}
 
-	/**
+	/ **
 	 * @param consumoExtra {@link ConsumoExtra}
-	 */
-	public void setConsumoExtra(ConsumoExtra consumoExtra) 
+	 * /
+	public void setConsumoExtra (ConsumoExtra consumoExtra) 
 	{
 		this.consumoExtra = consumoExtra;
 	}
 
-	/**
+	/ **
 	 * @return funcionario {@link Funcionario}
-	 */
-	public Funcionario getFuncionario() 
+	 * /
+	public Funcionario getFuncionario () 
 	{
-		return funcionario;
+		retorno funcionario;
 	}
 
-	/**
+	/ **
 	 * @param funcionario {@link Funcionario}
-	 */
-	public void setFuncionario(Funcionario funcionario) 
+	 * /
+	public void setFuncionario (Funcionario funcionario) 
 	{
 		this.funcionario = funcionario;
 	}
