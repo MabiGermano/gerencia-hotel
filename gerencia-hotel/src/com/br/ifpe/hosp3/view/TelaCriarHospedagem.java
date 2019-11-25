@@ -155,6 +155,14 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	    scrollPaneTableQuarto.setViewportView(tableQuartos);
 	    btnSalvar.setBounds(312, 264, 108, 33);
 	    panel.add(btnSalvar);
+	    btnSalvar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				criarRegistroHospedagem();
+				
+			}
+		});
 	    btnCancelar.setBounds(38, 264, 138, 33);
 	    panel.add(btnCancelar);
 	    listarQuartosDisponiveis();
@@ -162,6 +170,10 @@ public class TelaCriarHospedagem extends JInternalFrame {
 
 	}
 	
+	
+	private void criarRegistroHospedagem() {
+		
+	}
 	/**
 	 * Método de ação para popular tabela e executar ação ao selecionar hospede
 	 * 
