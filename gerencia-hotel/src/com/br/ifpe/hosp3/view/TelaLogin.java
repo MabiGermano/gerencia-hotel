@@ -7,10 +7,13 @@ package com.br.ifpe.hosp3.view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,8 +21,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
+import com.br.ifpe.hosp3.connection.EstruturaBD;
 import com.br.ifpe.hosp3.controller.FuncionarioController;
 import com.br.ifpe.hosp3.model.Funcionario;
+import javax.swing.JButton;
 
 /**
  *
@@ -54,6 +59,18 @@ public class TelaLogin extends javax.swing.JFrame {
 			 JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 
+	}
+	
+	public void resetarSistema() {
+		try {
+			EstruturaBD estrutura = new EstruturaBD();
+			estrutura.criarBanco();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Não foi possivel resetar a base de dados");
+		} 
+		
+		
+		
 	}
 
 	/**
@@ -132,7 +149,7 @@ public class TelaLogin extends javax.swing.JFrame {
 													}
 												});
 												lblStatus = new javax.swing.JLabel();
-												lblStatus.setBounds(265, 138, 79, 14);
+												lblStatus.setBounds(451, 11, 79, 14);
 												panel.add(lblStatus);
 												
 														lblStatus.setText("status");
@@ -148,12 +165,32 @@ public class TelaLogin extends javax.swing.JFrame {
 																gbc_panel.gridy = 0;
 																getContentPane().add(panel, gbc_panel);
 																
+																JButton btnResetSistema = new JButton("Reset sistema");
+																btnResetSistema.addActionListener(new ActionListener() {
+																	
+																	@Override
+																	public void actionPerformed(ActionEvent e) {
+																		actionResetSistema();
+																		
+																	}
+																});
+																btnResetSistema.setBounds(255, 134, 113, 23);
+																panel.add(btnResetSistema);
+																
 																
 
 		pack();
 		setLocationRelativeTo(null);
 	}// </editor-fold>//GEN-END:initComponents
 
+	private void actionResetSistema() {
+		int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja resetar o sistema? Todos os dados serão apagados", "Alerta", JOptionPane.YES_NO_OPTION);
+		
+		if(confirm == JOptionPane.YES_OPTION) {
+			
+			resetarSistema();
+		} 
+	}
 	private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtSenhaActionPerformed
 		// TODO add your handling code here:
 	}// GEN-LAST:event_txtSenhaActionPerformed
