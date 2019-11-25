@@ -15,8 +15,8 @@ import com.br.ifpe.hosp3.util.Criptografia;
  **/
 public class HospedeController {
 
-	public static Hospede criarHospede(Hospede hospede, Endereco endereco) {
-		Hospede hospedeRetorno = null;
+	public static void criarHospede(Hospede hospede, Endereco endereco) throws Exception {
+		
 		try {
 			EnderecoDao enderecoDao = new EnderecoDao();
 			endereco.setId(enderecoDao.create(endereco));
@@ -25,15 +25,27 @@ public class HospedeController {
 			hospede.setEndereco(endereco);
 			hospede.setPalavraPasse(Criptografia.criptografar(hospede.getPalavraPasse()));
 			hospede.setId(hospedeDao.create(hospede));
-			if(hospede.getId() != null){
-				hospedeRetorno = hospede;
-			}else {
-				throw new NullPointerException("Não foi possível incluir este usuário, verifique os dados inseridos e tente novamente");
-			}
 			
-		}catch(NullPointerException e) {
+		}catch(Exception e) {
 			throw e;
 		}
+	}
+	
+	public static Hospede buscarHospede(String cpf) throws Exception {
+		Hospede hospedeRetorno = null;
+		try {
+			HospedeDao hospedeDao = new HospedeDao();
+			hospedeRetorno = hospedeDao.findByCpf(cpf);
+			if(hospedeRetorno == null) {
+				throw new Exception("Hospede não encontrado, tente novamente");
+			}
+		} catch (Exception e) {
+			throw new Exception("Usuário não encontrado! "
+					+ "\n" + "Verifique: "
+					+ "\n" + "**CPF deve ter no máximo 14 digitos"
+					+ "\n" + "***CPF não pode estar vazio");
+		}
+		
 		return hospedeRetorno;
 	}
 }

@@ -17,24 +17,31 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JInternalFrame;
 
 /**
  *
  * @author Thaysa Gomes
  */
 public class TelaCriarHospede extends javax.swing.JInternalFrame {
-	
+
+
 	/**
+	 * Método de ação na interface para criar hospede 
 	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+	 * @param hospede {@link Hospede}
+	 * @param endereco {@link Endereco}
+	 * 
+	 * @throws Exception
+	 **/
 	public void criarHospede(Hospede hospede, Endereco endereco) {
 		try {
 			HospedeController.criarHospede(hospede, endereco);
 			JOptionPane.showMessageDialog(null, "Hospede " + hospede.getNome() + "Cadastrado com Sucesso!");
+			this.dispose();
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
+			this.dispose();
 		}
 		
 	}

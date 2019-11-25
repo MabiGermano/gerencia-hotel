@@ -5,18 +5,26 @@
  */
 package com.br.ifpe.hosp3.view;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
+import com.br.ifpe.hosp3.connection.EstruturaBD;
 import com.br.ifpe.hosp3.controller.FuncionarioController;
 import com.br.ifpe.hosp3.model.Funcionario;
+import javax.swing.JButton;
 
 /**
  *
@@ -33,14 +41,14 @@ public class TelaLogin extends javax.swing.JFrame {
 			Funcionario funcionarioEncontrado = FuncionarioController.autentication(funcionarioForm);
 			if (funcionarioEncontrado != null) {
 				if (funcionarioEncontrado.getCargo() == "666") {
-					TelaPrincipal principal = new TelaPrincipal();
+					TelaPrincipal principal = new TelaPrincipal(funcionarioEncontrado);
 					principal.setVisible(true);
 					TelaPrincipal.menuRelatorio.setEnabled(true);
 					TelaPrincipal.menuCadastroFuncionario.setEnabled(true);
 					TelaPrincipal.lblUsuario.setText(funcionarioEncontrado.getNome());
 					this.dispose();
 				} else {
-					TelaPrincipal principal = new TelaPrincipal();
+					TelaPrincipal principal = new TelaPrincipal(funcionarioEncontrado);
 					principal.setVisible(true);
 					this.dispose();
 				}
@@ -51,6 +59,18 @@ public class TelaLogin extends javax.swing.JFrame {
 			 JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 
+	}
+	
+	public void resetarSistema() {
+		try {
+			EstruturaBD estrutura = new EstruturaBD();
+			estrutura.criarBanco();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "N„o foi possivel resetar a base de dados");
+		} 
+		
+		
+		
 	}
 
 	/**
@@ -81,82 +101,96 @@ public class TelaLogin extends javax.swing.JFrame {
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
-		txtCodigo = new javax.swing.JTextField();
-		txtSenha = new javax.swing.JPasswordField();
-		jLabel1 = new javax.swing.JLabel();
-		jLabel2 = new javax.swing.JLabel();
-		loginButton = new javax.swing.JButton();
-		lblStatus = new javax.swing.JLabel();
-		jLabel4 = new javax.swing.JLabel();
-		jLabel3 = new javax.swing.JLabel();
-
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Hotel Renascen√ßa ");
 		setResizable(false);
-
-		txtSenha.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				txtSenhaActionPerformed(evt);
-			}
-		});
-
-		jLabel1.setText("E-mail");
-
-		jLabel2.setText("Senha");
-
-		loginButton.setText("Entrar");
-		loginButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				loginButtonActionPerformed(evt);
-			}
-		});
-
-		lblStatus.setText("status");
-
-		jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/icons/logo.png"))); // NOI18N
-
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup()
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(jLabel4)
-						.addGap(335, 335, 335))
-				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup().addGap(43, 43, 43)
-						.addComponent(jLabel3).addGap(41, 41, 41)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-								.addComponent(lblStatus).addComponent(jLabel1).addComponent(jLabel2))
-						.addGap(12, 12, 12)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-										layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-												.addComponent(txtSenha).addComponent(txtCodigo,
-														javax.swing.GroupLayout.PREFERRED_SIZE, 148,
-														javax.swing.GroupLayout.PREFERRED_SIZE))
-								.addComponent(loginButton, javax.swing.GroupLayout.Alignment.TRAILING))
-						.addContainerGap(82, Short.MAX_VALUE)));
-		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup().addGap(23, 23, 23).addComponent(jLabel4).addGap(9, 9, 9)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-						.createSequentialGroup()
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel1))
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel2))
-						.addGap(18, 18, 18)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(loginButton).addComponent(lblStatus)))
-						.addComponent(jLabel3))
-				.addContainerGap(33, Short.MAX_VALUE)));
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{540, 0};
+		gridBagLayout.rowHeights = new int[]{181, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		getContentPane().setLayout(gridBagLayout);
+		
+		panel = new JPanel();
+		panel.setLayout(null);
+		jLabel3 = new javax.swing.JLabel();
+		jLabel3.setBounds(47, 17, 152, 152);
+		panel.add(jLabel3);
+		
+				jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/logo.png")));
+				jLabel4 = new javax.swing.JLabel();
+				jLabel4.setBounds(246, 81, 0, 0);
+				panel.add(jLabel4);
+				jLabel2 = new javax.swing.JLabel();
+				jLabel2.setBounds(276, 81, 36, 14);
+				panel.add(jLabel2);
+				
+						jLabel2.setText("Senha");
+						jLabel1 = new javax.swing.JLabel();
+						jLabel1.setBounds(265, 43, 47, 14);
+						panel.add(jLabel1);
+						
+								jLabel1.setText("C√≥digo");
+								
+										txtCodigo = new javax.swing.JTextField();
+										txtCodigo.setBounds(330, 38, 164, 24);
+										panel.add(txtCodigo);
+										txtSenha = new javax.swing.JPasswordField();
+										txtSenha.setBounds(330, 74, 164, 25);
+										panel.add(txtSenha);
+										loginButton = new javax.swing.JButton();
+										loginButton.setBounds(424, 133, 70, 24);
+										panel.add(loginButton);
+										
+												loginButton.setText("Entrar");
+												loginButton.addActionListener(new java.awt.event.ActionListener() {
+													public void actionPerformed(java.awt.event.ActionEvent evt) {
+														loginButtonActionPerformed(evt);
+													}
+												});
+												lblStatus = new javax.swing.JLabel();
+												lblStatus.setBounds(451, 11, 79, 14);
+												panel.add(lblStatus);
+												
+														lblStatus.setText("status");
+														
+																txtSenha.addActionListener(new java.awt.event.ActionListener() {
+																	public void actionPerformed(java.awt.event.ActionEvent evt) {
+																		txtSenhaActionPerformed(evt);
+																	}
+																});
+																GridBagConstraints gbc_panel = new GridBagConstraints();
+																gbc_panel.fill = GridBagConstraints.BOTH;
+																gbc_panel.gridx = 0;
+																gbc_panel.gridy = 0;
+																getContentPane().add(panel, gbc_panel);
+																
+																JButton btnResetSistema = new JButton("Reset sistema");
+																btnResetSistema.addActionListener(new ActionListener() {
+																	
+																	@Override
+																	public void actionPerformed(ActionEvent e) {
+																		actionResetSistema();
+																		
+																	}
+																});
+																btnResetSistema.setBounds(255, 134, 113, 23);
+																panel.add(btnResetSistema);
+																
+																
 
 		pack();
 		setLocationRelativeTo(null);
 	}// </editor-fold>//GEN-END:initComponents
 
+	private void actionResetSistema() {
+		int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja resetar o sistema? Todos os dados ser„o apagados", "Alerta", JOptionPane.YES_NO_OPTION);
+		
+		if(confirm == JOptionPane.YES_OPTION) {
+			
+			resetarSistema();
+		} 
+	}
 	private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtSenhaActionPerformed
 		// TODO add your handling code here:
 	}// GEN-LAST:event_txtSenhaActionPerformed
@@ -213,4 +247,5 @@ public class TelaLogin extends javax.swing.JFrame {
 	private javax.swing.JButton loginButton;
 	private javax.swing.JTextField txtCodigo;
 	private javax.swing.JPasswordField txtSenha;
+	private JPanel panel;
 }
