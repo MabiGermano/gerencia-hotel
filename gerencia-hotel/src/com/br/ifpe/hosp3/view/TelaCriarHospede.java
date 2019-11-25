@@ -140,10 +140,10 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         lblEmailHospede.setBounds(25, 241, 46, 14);
         getContentPane().add(lblEmailHospede);
         
-        textField = new JTextField();
-        textField.setBounds(25, 259, 247, 20);
-        getContentPane().add(textField);
-        textField.setColumns(10);
+        txtEmailHospede = new JTextField();
+        txtEmailHospede.setBounds(25, 259, 247, 20);
+        getContentPane().add(txtEmailHospede);
+        txtEmailHospede.setColumns(10);
         
         lblRua = new JLabel("Rua");
         lblRua.setBounds(320, 241, 46, 14);
@@ -209,13 +209,31 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         txtEstadoHospede.setColumns(10);
         
         lblPassHospede = new JLabel("Palavra passe");
-        lblPassHospede.setBounds(145, 349, 79, 14);
+        lblPassHospede.setBounds(454, 349, 79, 14);
         getContentPane().add(lblPassHospede);
         
         txtPassHospede = new JTextField();
-        txtPassHospede.setBounds(145, 366, 86, 20);
+        txtPassHospede.setBounds(454, 366, 86, 20);
         getContentPane().add(txtPassHospede);
         txtPassHospede.setColumns(10);
+        
+        lblCompHospede = new JLabel("Complemento");
+        lblCompHospede.setBounds(121, 349, 86, 14);
+        getContentPane().add(lblCompHospede);
+        
+        txtCompHospede = new JTextField();
+        txtCompHospede.setBounds(121, 366, 155, 20);
+        getContentPane().add(txtCompHospede);
+        txtCompHospede.setColumns(10);
+        
+        lblTelHospede = new JLabel("Telefone");
+        lblTelHospede.setBounds(296, 349, 134, 14);
+        getContentPane().add(lblTelHospede);
+        
+        txtTelHospede = new JTextField();
+        txtTelHospede.setBounds(296, 366, 134, 20);
+        getContentPane().add(txtTelHospede);
+        txtTelHospede.setColumns(10);
 
         pack();
     }
@@ -258,7 +276,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNomeHospede;
     private javax.swing.JTextField txtRuaHospede;
     private JLabel lblEmailHospede;
-    private JTextField textField;
+    private JTextField txtEmailHospede;
     private JLabel lblRua;
     private JTextField textField_1;
     private JLabel lblNumHospede;
@@ -275,4 +293,8 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     private JTextField txtEstadoHospede;
     private JLabel lblPassHospede;
     private JTextField txtPassHospede;
+    private JLabel lblCompHospede;
+    private JTextField txtCompHospede;
+    private JLabel lblTelHospede;
+    private JTextField txtTelHospede;
 }
