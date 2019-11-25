@@ -84,8 +84,8 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		lblCheckInTitle.setBounds(188, 13, 90, 14);
         panel.add(lblCheckInTitle);
 		
-		JLabel lblBuscarHospede = new JLabel("Buscar Hospede");
-		lblBuscarHospede.setBounds(55, 54, 96, 14);
+		JLabel lblBuscarHospede = new JLabel("Buscar Hospede(CPF)");
+		lblBuscarHospede.setBounds(23, 53, 139, 14);
 		panel.add(lblBuscarHospede);
 		
 		textCpf = new JTextField();
@@ -115,6 +115,8 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		model.addColumn("Ações");
 	    
 	    table = new JTable(model);
+
+	    
 	    scrollpaneTable.setViewportView(table);
 		getContentPane().setLayout(groupLayout);
 
@@ -123,6 +125,9 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	private void btnBuscaHospedeAction(ActionEvent event) {
 		
 		Hospede hospede = this.buscarHospede();
+		model.getDataVector().removeAllElements();
+		textCpf.setText("");
+		
 		table.getColumn("Ações").setCellRenderer(new ButtonRenderer());
 	    table.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
 	    table.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
@@ -130,8 +135,9 @@ public class TelaCriarHospedagem extends JInternalFrame {
 			@Override
 			public void editingStopped(ChangeEvent e) {
 				System.out.println("stop " + hospede.getId());
-				scrollpaneTable.remove(table);
-				scrollpaneTable.repaint();
+				model.getDataVector().removeAllElements();
+				model.addRow(new Object[]{hospede.getNome(), hospede.getCpf(), hospede.getTelefone(), "Escolhido"});
+				
 				
 			}
 			
@@ -141,10 +147,10 @@ public class TelaCriarHospedagem extends JInternalFrame {
 				
 			}
 		});
-		
 		model.addRow(new Object[]{hospede.getNome(), hospede.getCpf(), hospede.getTelefone(), "selecionar"});
 		
 	}
+	
 	
 	public void selectHospedeAction(Integer id) {
 		

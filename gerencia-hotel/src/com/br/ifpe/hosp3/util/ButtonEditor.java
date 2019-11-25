@@ -8,6 +8,8 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
+
+import org.apache.ibatis.exceptions.IbatisException;
 /**
  * @author Maria Beatriz Germano
  * 
@@ -49,16 +51,24 @@ public class ButtonEditor extends DefaultCellEditor {
 
 	@Override
 	public Object getCellEditorValue() {
+		String retorno = label;
 		if (isPushed) {
-			return "Escolhido";
+			this.setEnabled();
+			if(!this.button.isEnabled()) {
+				retorno = "Escolhido";
+			};
 		}
 		isPushed = false;
-		return label;
+		return retorno;
 	}
 
 	@Override
 	public boolean stopCellEditing() {
 		isPushed = false;
 		return super.stopCellEditing();
+	}
+	
+	private void setEnabled() {
+		this.button.setEnabled(!this.button.isEnabled());
 	}
 }
