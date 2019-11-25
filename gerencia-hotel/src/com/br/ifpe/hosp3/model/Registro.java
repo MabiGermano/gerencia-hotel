@@ -15,7 +15,11 @@ public class Registro
 	private Quarto quarto;
 	private ConsumoExtra consumoExtra;
 	private Funcionario funcionario;
+<<<<<<< HEAD
 	private boolean deleted;
+=======
+	private double valor;
+>>>>>>> dbed038269aac1f663d06d8da734822a64c09c4d
 	
 	public Registro(int id, boolean flag_ativo, String pagamento, Hospedagem hospedagem, 
 			Quarto quarto, ConsumoExtra consumoExtra, Funcionario funcionario) {
@@ -141,6 +145,7 @@ public class Registro
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @return deleted {@link boolean}
 	 */
 	public boolean isDeleted()
@@ -155,5 +160,21 @@ public class Registro
 	{
 		this.deleted = deleted;
 	}
+=======
+	 * @return valor {@link double}
+	 */
+	public double getValor() {
+		return valor;
+	}
+
+	/**
+	 * @param valor {@link double}
+	 */
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	
+	
+>>>>>>> dbed038269aac1f663d06d8da734822a64c09c4d
 	
 }

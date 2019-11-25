@@ -27,7 +27,7 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public int create(Hospede hospede) {
+	public int create(Hospede hospede) throws Exception {
 		Connection conexao;
 		int retorno = 0;
 		try {
@@ -47,7 +47,7 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 			ps.execute();
 			retorno = this.getLastInsertedId(ps.getGeneratedKeys());
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw new Exception("Não fui possível incluir hospede, verifique os dados e tente novamente");
 		}
 		
 		return retorno;
@@ -156,6 +156,43 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 		return hospede;
 	}
 
+	/**
+	 * Método para busca do objeto Hospede no banco de dados
+	 * pelo cpf
+	 * @param cpf {@link String}
+	 * @return hospede {@link Hospede}
+	 * @throws Exception 
+	 **/
+	public Hospede findByCpf(String cpf) throws Exception {
+		Connection conexao;
+		Hospede hospede = new Hospede();
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM hospede WHERE cpf ='" + cpf + "'";
+						
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			
+			ResultSet result =  ps.executeQuery();				
+			if(result != null && result.next()) {
+				EnderecoDao endDao = new EnderecoDao();
+				hospede.setId(result.getInt("id"));
+				hospede.setNome(result.getString("nome"));
+				hospede.setCpf(result.getString("cpf"));
+				hospede.setEmail(result.getString("email"));
+				hospede.setTelefone(result.getString("telefone"));
+				hospede.setPalavraPasse(result.getString("palavra_passe"));
+				Endereco endereco = endDao.getById(result.getInt("endereco_id"));
+				hospede.setEndereco(endereco);	
+			}else {
+				hospede = null;
+			}
+			
+		} catch (IOException | SQLException e) {
+			throw e;
+		}
+
+		return hospede;
+	}
 	@Override
 	/**
 	 * Método para deletar o objeto 

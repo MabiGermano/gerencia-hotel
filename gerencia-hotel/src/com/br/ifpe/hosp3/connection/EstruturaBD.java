@@ -15,7 +15,7 @@ public class EstruturaBD {
 	 *   @throws IOException {@link IOException}
 	 *   @throws SQLException {@link SQLException}
 	 **/
-	public static void criarBanco() throws SQLException, IOException {
+	public void criarBanco() throws SQLException, IOException {
 		ConexaoMysql.lerScript("./lib/banco_gerencia_hotel.sql");
 	}
 	
@@ -26,7 +26,7 @@ public class EstruturaBD {
 	 * @throws IOException {@link IOException}
 	 * @throws SQLException {@link SQLException}
 	 **/
-	public static void popularBanco() throws IOException, SQLException {
+	public void popularBanco() throws IOException, SQLException {
 		ConexaoMysql.lerScript("./lib/dump_hosp3.sql");
 	} 
 	

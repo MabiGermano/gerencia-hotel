@@ -28,8 +28,9 @@ public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 	 * M�todo para cria��o do objeto Hospedagem no banco de dados
 	 * 
 	 * @param object {@link Object}
+	 * @throws Exception
 	 **/
-	public int create(Hospedagem hospedagem) {
+	public int create(Hospedagem hospedagem) throws Exception {
 		Connection conexao;
 		int retorno = 0;
 		try {
@@ -45,7 +46,7 @@ public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 			ps.execute();
 			retorno = this.getLastInsertedId(ps.getGeneratedKeys());
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw e;
 		}
 		
 		return retorno;
@@ -57,7 +58,7 @@ public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void updade(Hospedagem hospedagem) {
+	public void updade(Hospedagem hospedagem) throws Exception {
 		Connection conexao;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
