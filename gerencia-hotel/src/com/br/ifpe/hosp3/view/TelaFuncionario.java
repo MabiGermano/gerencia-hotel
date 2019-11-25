@@ -9,6 +9,11 @@ import java.sql.*;
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -127,32 +132,59 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lblNomeFunc = new javax.swing.JLabel();
+        lblNomeFunc.setBounds(45, 50, 27, 14);
         lblCpfFunc = new javax.swing.JLabel();
+        lblCpfFunc.setBounds(316, 50, 19, 14);
         lblEndIdFunc = new javax.swing.JLabel();
+        lblEndIdFunc.setBounds(45, 108, 19, 14);
         lblEmailFunc = new javax.swing.JLabel();
+        lblEmailFunc.setBounds(45, 280, 28, 14);
         lblTelFunc = new javax.swing.JLabel();
+        lblTelFunc.setBounds(288, 280, 42, 14);
         lblCodFunc = new javax.swing.JLabel();
+        lblCodFunc.setBounds(45, 331, 33, 14);
         lblPassFunc = new javax.swing.JLabel();
+        lblPassFunc.setBounds(288, 331, 67, 14);
         txtNomeFunc = new javax.swing.JTextField();
+        txtNomeFunc.setBounds(45, 70, 220, 20);
         txtCpfFunc = new javax.swing.JTextField();
+        txtCpfFunc.setBounds(316, 70, 162, 20);
         txtRuaFunc = new javax.swing.JTextField();
+        txtRuaFunc.setBounds(45, 126, 220, 20);
         txtEmailFunc = new javax.swing.JTextField();
+        txtEmailFunc.setBounds(45, 300, 195, 20);
         txtTelFunc = new javax.swing.JTextField();
+        txtTelFunc.setBounds(288, 300, 190, 20);
         txtCodFunc = new javax.swing.JTextField();
+        txtCodFunc.setBounds(45, 351, 78, 20);
         txtPassFunc = new javax.swing.JTextField();
+        txtPassFunc.setBounds(288, 351, 190, 20);
         btnAddFunc = new javax.swing.JButton();
+        btnAddFunc.setBounds(398, 404, 80, 42);
         txtNumFunc = new javax.swing.JTextField();
+        txtNumFunc.setBounds(288, 126, 47, 20);
         txtCepFunc = new javax.swing.JTextField();
+        txtCepFunc.setBounds(381, 126, 97, 20);
         txtPaisFunc = new javax.swing.JTextField();
+        txtPaisFunc.setBounds(177, 181, 76, 20);
         txtBairroFunc = new javax.swing.JTextField();
+        txtBairroFunc.setBounds(45, 181, 117, 20);
         txtCidadeFunc = new javax.swing.JTextField();
+        txtCidadeFunc.setBounds(263, 181, 100, 20);
         txtCompFunc = new javax.swing.JTextField();
+        txtCompFunc.setBounds(45, 249, 195, 20);
         lblNumFunc = new javax.swing.JLabel();
+        lblNumFunc.setBounds(288, 108, 37, 14);
         lblCepFunc = new javax.swing.JLabel();
+        lblCepFunc.setBounds(381, 108, 19, 14);
         lblBairroFunc = new javax.swing.JLabel();
+        lblBairroFunc.setBounds(45, 161, 28, 14);
         lblPaisFunc = new javax.swing.JLabel();
+        lblPaisFunc.setBounds(177, 161, 19, 14);
         lblCidadeFunc = new javax.swing.JLabel();
+        lblCidadeFunc.setBounds(263, 161, 47, 14);
         lblCompFunc = new javax.swing.JLabel();
+        lblCompFunc.setBounds(45, 229, 195, 14);
 
         setClosable(true);
         setIconifiable(true);
@@ -212,140 +244,43 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         lblCidadeFunc.setText("Cidade");
 
         lblCompFunc.setText("Complemento");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNomeFunc)
-                            .addComponent(txtNomeFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCpfFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCpfFunc)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblCodFunc)
-                                .addComponent(txtCodFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(165, 165, 165)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblPassFunc)
-                                .addComponent(txtPassFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(lblEndIdFunc, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(txtBairroFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(70, 70, 70)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtCepFunc, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                                .addComponent(lblCepFunc)
-                                .addComponent(lblCompFunc)
-                                .addComponent(txtCompFunc)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtEmailFunc)
-                                            .addComponent(lblPaisFunc, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtPaisFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtCidadeFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblEmailFunc)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(94, 94, 94)
-                                            .addComponent(lblCidadeFunc)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblBairroFunc))
-                                        .addComponent(txtRuaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(23, 23, 23)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNumFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblTelFunc)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblNumFunc)
-                                        .addGap(46, 46, 46))
-                                    .addComponent(txtTelFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addComponent(btnAddFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 46, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblNomeFunc)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomeFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCpfFunc)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCpfFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEndIdFunc)
-                    .addComponent(lblNumFunc)
-                    .addComponent(lblCepFunc))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtRuaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCepFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblBairroFunc)
-                        .addGap(263, 263, 263))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblCompFunc)
-                                .addComponent(lblPaisFunc, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(lblCidadeFunc, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtPaisFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCidadeFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtBairroFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCompFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTelFunc)
-                            .addComponent(lblEmailFunc))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmailFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCodFunc)
-                            .addComponent(lblPassFunc))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCodFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44)
-                        .addComponent(btnAddFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49))))
-        );
+        getContentPane().setLayout(null);
+        getContentPane().add(lblNomeFunc);
+        getContentPane().add(txtNomeFunc);
+        getContentPane().add(txtCpfFunc);
+        getContentPane().add(lblCpfFunc);
+        getContentPane().add(lblCodFunc);
+        getContentPane().add(txtCodFunc);
+        getContentPane().add(lblPassFunc);
+        getContentPane().add(txtPassFunc);
+        getContentPane().add(lblEndIdFunc);
+        getContentPane().add(txtBairroFunc);
+        getContentPane().add(txtCepFunc);
+        getContentPane().add(lblCepFunc);
+        getContentPane().add(lblCompFunc);
+        getContentPane().add(txtCompFunc);
+        getContentPane().add(txtEmailFunc);
+        getContentPane().add(lblPaisFunc);
+        getContentPane().add(txtPaisFunc);
+        getContentPane().add(txtCidadeFunc);
+        getContentPane().add(lblEmailFunc);
+        getContentPane().add(lblCidadeFunc);
+        getContentPane().add(lblBairroFunc);
+        getContentPane().add(txtRuaFunc);
+        getContentPane().add(txtNumFunc);
+        getContentPane().add(lblTelFunc);
+        getContentPane().add(lblNumFunc);
+        getContentPane().add(txtTelFunc);
+        getContentPane().add(btnAddFunc);
+        
+        lblEstadoFunc = new JLabel("Estado");
+        lblEstadoFunc.setBounds(381, 161, 46, 14);
+        getContentPane().add(lblEstadoFunc);
+        
+        txtEstadoFunc = new JTextField();
+        txtEstadoFunc.setBounds(381, 181, 97, 20);
+        getContentPane().add(txtEstadoFunc);
+        txtEstadoFunc.setColumns(10);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -395,5 +330,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtPassFunc;
     private javax.swing.JTextField txtRuaFunc;
     private javax.swing.JTextField txtTelFunc;
+    private JLabel lblEstadoFunc;
+    private JTextField txtEstadoFunc;
     // End of variables declaration//GEN-END:variables
 }
