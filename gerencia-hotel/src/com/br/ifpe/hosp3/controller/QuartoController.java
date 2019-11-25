@@ -1,7 +1,8 @@
 package com.br.ifpe.hosp3.controller;
 
-import java.io.IOException;
-import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import com.br.ifpe.hosp3.dao.QuartoDao;
 import com.br.ifpe.hosp3.model.Quarto;
@@ -30,5 +31,23 @@ public class QuartoController {
 		} catch (Exception e) {
 			throw e;
 		}
+	}
+	
+	/**
+	 * Método contendo a regra de negócio necessária para listagem dos quartos
+	 * comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @return listaQuartos {@link Set<Quarto>}
+	 * @throws Exception
+	 **/
+	public static Set<Quarto> listarQuartos() throws Exception{
+		QuartoDao quartoDao = new QuartoDao();
+		Set<Quarto> listaQuartos = new HashSet<>();
+		try {
+			listaQuartos = quartoDao.listAll();
+		} catch (Exception e) {
+			throw new Exception("Ocorreu um erro na consulta de quartos, tente novamente mais tarde");
+		}
+		return listaQuartos;
 	}
 }

@@ -86,12 +86,12 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 	 * 
 	 * @return listaQuarto {@link HashSet<Quarto>}
 	 **/
-	public HashSet<Quarto> listAll() {
+	public HashSet<Quarto> listAll() throws Exception {
 		Connection conexao;
 		HashSet<Quarto> listaQuarto = new HashSet<>();
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			String sql = "SELECT * FROM quarto";
+			String sql = "SELECT * FROM quarto where disponivel =" + true;
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			
@@ -111,7 +111,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 				listaQuarto.add(quarto);
 			}
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw e;
 		}
 
 		return listaQuarto;
