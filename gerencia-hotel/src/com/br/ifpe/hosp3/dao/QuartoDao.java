@@ -78,7 +78,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 			throw e;
 		}	
 	}
-
+	
 	@Override
 	/**
 	 * M�todo de listagem para todos os objetos 
@@ -87,6 +87,44 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 	 * @return listaQuarto {@link HashSet<Quarto>}
 	 **/
 	public HashSet<Quarto> listAll() throws Exception {
+		Connection conexao;
+		HashSet<Quarto> listaQuarto = new HashSet<>();
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM quarto";
+						
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			
+			ResultSet result =  ps.executeQuery();
+			
+			while(result.next()) {
+				
+				Quarto quarto = new Quarto();
+				
+				quarto.setId(result.getInt("id"));
+				quarto.setValor(result.getFloat("valor"));
+				quarto.setQuantidadePessoas(result.getInt("quantidade_pessoas"));
+				quarto.setTipo(result.getString("tipo"));
+				quarto.setNumero(result.getString("numero"));
+				quarto.setDisponivel(result.getBoolean("disponivel"));
+				
+				listaQuarto.add(quarto);
+			}
+		} catch (IOException | SQLException e) {
+			throw e;
+		}
+
+		return listaQuarto;
+	}
+
+	@Override
+	/**
+	 * M�todo de listagem para todos os objetos 
+	 * de Quarto setados como disponível no banco de dados
+	 * 
+	 * @return listaQuarto {@link HashSet<Quarto>}
+	 **/
+	public HashSet<Quarto> listDisponible() throws Exception {
 		Connection conexao;
 		HashSet<Quarto> listaQuarto = new HashSet<>();
 		try {

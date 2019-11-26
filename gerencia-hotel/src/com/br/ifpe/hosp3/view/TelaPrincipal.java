@@ -320,7 +320,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		desktop.add(novaHospedagem);
 	}
 
-	private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCadastroActionPerformed
+	private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {
 		String sel = comboCadastro.getSelectedItem().toString();
 
 		if (sel.equals("Funcionário")) {
@@ -341,14 +341,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 			add = desktop.add(hospede);
 		}
 		if (sel.equals("Quarto")) {
-			TelaCriarQuarto quarto = new TelaCriarQuarto();
+			TelaListagemQuarto quarto = new TelaListagemQuarto();
 			quarto.setVisible(true);
 			Component add;
 			add = desktop.add(quarto);
 		} else {
 
 		}
-	}// GEN-LAST:event_btnCadastroActionPerformed
+	}
 
 	/**
 	 * @param args the command line arguments

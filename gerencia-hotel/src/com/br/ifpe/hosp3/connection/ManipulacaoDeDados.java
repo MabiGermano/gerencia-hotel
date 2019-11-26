@@ -25,6 +25,11 @@ public interface ManipulacaoDeDados<Type> {
 	 * @return HashSet {@link HashSet<Type>}
 	 **/
 	public HashSet<Type> listAll() throws Exception;
+	
+	/**
+	 * @return HashSet {@link HashSet<Type>}
+	 **/
+	public HashSet<Type> listDisponible() throws Exception;
 
 	/**
 	 * @param id {@link int}

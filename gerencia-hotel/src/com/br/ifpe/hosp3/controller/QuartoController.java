@@ -35,6 +35,24 @@ public class QuartoController {
 	
 	/**
 	 * Método contendo a regra de negócio necessária para listagem dos quartos
+	 * disponíveis no sistema, comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @return listaQuartos {@link Set<Quarto>}
+	 * @throws Exception
+	 **/
+	public static Set<Quarto> listarQuartosDisponiveis() throws Exception{
+		QuartoDao quartoDao = new QuartoDao();
+		Set<Quarto> listaQuartos = new HashSet<>();
+		try {
+			listaQuartos = quartoDao.listDisponible();
+		} catch (Exception e) {
+			throw new Exception("Ocorreu um erro na consulta de quartos, tente novamente mais tarde");
+		}
+		return listaQuartos;
+	}
+	
+	/**
+	 * Método contendo a regra de negócio necessária para listagem dos quartos
 	 * comunicando com a classe de interface com o banco de dados
 	 * 
 	 * @return listaQuartos {@link Set<Quarto>}

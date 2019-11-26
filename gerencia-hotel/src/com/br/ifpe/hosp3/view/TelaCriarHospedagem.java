@@ -28,7 +28,6 @@ import javax.swing.table.DefaultTableModel;
 import com.br.ifpe.hosp3.controller.HospedeController;
 import com.br.ifpe.hosp3.controller.QuartoController;
 import com.br.ifpe.hosp3.controller.RegistroHospedagemController;
-import com.br.ifpe.hosp3.dao.HospedagemDao;
 import com.br.ifpe.hosp3.model.Funcionario;
 import com.br.ifpe.hosp3.model.Hospedagem;
 import com.br.ifpe.hosp3.model.Hospede;
@@ -283,7 +282,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		Set<Quarto> listaQuartos = new HashSet<>();
 		
 		try {
-			listaQuartos = QuartoController.listarQuartos();
+			listaQuartos = QuartoController.listarQuartosDisponiveis();
 		} catch (Exception e) {
 			
 		}
