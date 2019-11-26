@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//gerencia-hotel/src/com/br/ifpe/hosp3/dao/FuncionarioDao.java=UTF-8
 encoding//gerencia-hotel/src/com/br/ifpe/hosp3/dao/HospedagemDao.java=UTF-8
 encoding//gerencia-hotel/src/com/br/ifpe/hosp3/dao/HospedeDao.java=UTF-8
+encoding//gerencia-hotel/src/com/br/ifpe/hosp3/dao/RegistroDao.java=UTF-8
 encoding//gerencia-hotel/src/com/br/ifpe/hosp3/model/ConsumoExtra.java=UTF-8
 encoding//gerencia-hotel/src/com/br/ifpe/hosp3/model/Endereco.java=UTF-8
 encoding//gerencia-hotel/src/com/br/ifpe/hosp3/model/Funcionario.java=UTF-8

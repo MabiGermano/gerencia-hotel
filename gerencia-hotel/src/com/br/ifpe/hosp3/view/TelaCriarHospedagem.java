@@ -35,10 +35,10 @@ import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.model.Registro;
 import com.br.ifpe.hosp3.util.ButtonEditor;
 import com.br.ifpe.hosp3.util.ButtonRenderer;
-//import com.jgoodies.forms.factories.DefaultComponentFactory;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 /**
  * @author Maria Beatriz Germano
- * Classe de interface grÃ¡fica para criaÃ§Ã£o de hospedagem
+ * Classe de interface gráfica para criação de hospedagem
  **/
 public class TelaCriarHospedagem extends JInternalFrame {
 	Funcionario funcionario;
@@ -129,23 +129,23 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		modelTableHospede.addColumn("Nome");
 		modelTableHospede.addColumn("CPF");
 		modelTableHospede.addColumn("Telefone");
-		modelTableHospede.addColumn("AÃ§Ãµes");
+		modelTableHospede.addColumn("Ações");
 	    
 	    table = new JTable(modelTableHospede);
 
 	    
 	    scrollpaneTable.setViewportView(table);
 	    
-	    lblQuartosDisponveis = new JLabel("Quartos disponÃ­veis");
+	    lblQuartosDisponveis = new JLabel("Quartos disponíveis");
 	    lblQuartosDisponveis.setBounds(10, 161, 139, 14);
 	    panel.add(lblQuartosDisponveis);
 	    
 	    modelTableQuarto = new DefaultTableModel();
-	    modelTableQuarto.addColumn("NÃºmero");
+	    modelTableQuarto.addColumn("Número");
 	    modelTableQuarto.addColumn("Tipo");
 	    modelTableQuarto.addColumn("Qtd. Pessoas");
 	    modelTableQuarto.addColumn("Valor");
-	    modelTableQuarto.addColumn("AÃ§Ãµes");
+	    modelTableQuarto.addColumn("Ações");
 	    
 	    
 	    scrollpaneTable.setViewportView(table);
@@ -186,14 +186,14 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		this.funcionario = funcionario;
 	}
 	/**
-	 * MÃ©todo para fechar o frame de criaÃ§Ã£o
+	 * Método para fechar o frame de criação
 	 **/
 	private void cancelarCriacao() {
 		this.dispose();
 	}
 	
 	/**
-	 * MÃ©todo de aÃ§Ã£o na interface para criaÃ§Ã£o de registro de hospedagem
+	 * Método de ação na interface para criação de registro de hospedagem
 	 * 
 	 **/
 	private void criarRegistroHospedagem() {
@@ -210,7 +210,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		}
 	}
 	/**
-	 * MÃ©todo de aÃ§Ã£o para popular tabela e executar aÃ§Ã£o ao selecionar hospede
+	 * Método de ação para popular tabela e executar ação ao selecionar hospede
 	 * 
 	 * @param event {@link ActionEvent}
 	 **/
@@ -220,9 +220,9 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		modelTableHospede.getDataVector().removeAllElements();
 		textCpf.setText("");
 		
-		table.getColumn("AÃ§Ãµes").setCellRenderer(new ButtonRenderer());
-	    table.getColumn("AÃ§Ãµes").setCellEditor(new ButtonEditor(new JCheckBox()));
-	    table.getColumn("AÃ§Ãµes").getCellEditor().addCellEditorListener(new CellEditorListener() {
+		table.getColumn("Ações").setCellRenderer(new ButtonRenderer());
+	    table.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
+	    table.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
 			
 			@Override
 			public void editingStopped(ChangeEvent e) {
@@ -243,19 +243,19 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		
 	}
 	/**
-	 * MÃ©todo para listagem dos quartos disponÃ­veis e execuÃ§Ã£o de aÃ§Ã£o de seleÃ§Ã£o de quarto
+	 * Método para listagem dos quartos disponíveis e execução de ação de seleção de quarto
 	 **/
 	private void listarQuartosDisponiveis() {
 		Set<Quarto> listaQuartos = this.buscarQuartosDisponiveis();
-		tableQuartos.getColumn("AÃ§Ãµes").setCellRenderer(new ButtonRenderer());
-		tableQuartos.getColumn("AÃ§Ãµes").setCellEditor(new ButtonEditor(new JCheckBox()));
+		tableQuartos.getColumn("Ações").setCellRenderer(new ButtonRenderer());
+		tableQuartos.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
 		
 	    listaQuartos.stream().map(quarto -> new Object[]{quarto.getNumero(), quarto.getTipo(), 
 	    		quarto.getQuantidadePessoas() ,quarto.getValor(), "selecionar"})
 	    .forEach(quarto -> modelTableQuarto.addRow(quarto));
 	    
 	    listaQuartos.forEach(quartoSelecionado -> {
-	    	tableQuartos.getColumn("AÃ§Ãµes").getCellEditor().addCellEditorListener(new CellEditorListener() {
+	    	tableQuartos.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
 				
 				@Override
 				public void editingStopped(ChangeEvent e) {
@@ -276,7 +276,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	    
 	}
 	/**
-	 * MÃ©todo de busca dos quartos disponÃ­veis
+	 * Método de busca dos quartos disponíveis
 	 * @return listaQuartos {@link Set<Quarto>}
 	 **/
 	private Set<Quarto> buscarQuartosDisponiveis() {
@@ -290,7 +290,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		return listaQuartos;
 	}
 	/**
-	 * MÃ©todo de busca do hospede a partir do cpf digitado
+	 * Método de busca do hospede a partir do cpf digitado
 	 * 
 	 * @return hospede {@link Hospede}
 	 **/
@@ -306,4 +306,3 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		return hospede;
 	}
 }
-

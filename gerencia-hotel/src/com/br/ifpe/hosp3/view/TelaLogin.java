@@ -112,24 +112,21 @@ public class TelaLogin extends javax.swing.JFrame {
 		
 		panel = new JPanel();
 		panel.setLayout(null);
-		jLabel3 = new javax.swing.JLabel();
-		jLabel3.setBounds(47, 17, 152, 152);
-		panel.add(jLabel3);
+		lblImgLogin = new javax.swing.JLabel();
+		lblImgLogin.setBounds(47, 17, 152, 152);
+		panel.add(lblImgLogin);
 		
-				jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/logo.png")));
-				jLabel4 = new javax.swing.JLabel();
-				jLabel4.setBounds(246, 81, 0, 0);
-				panel.add(jLabel4);
-				jLabel2 = new javax.swing.JLabel();
-				jLabel2.setBounds(276, 81, 36, 14);
-				panel.add(jLabel2);
+				lblImgLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/logo.png")));
+				lblSenhaLogin = new javax.swing.JLabel();
+				lblSenhaLogin.setBounds(276, 81, 36, 14);
+				panel.add(lblSenhaLogin);
 				
-						jLabel2.setText("Senha");
-						jLabel1 = new javax.swing.JLabel();
-						jLabel1.setBounds(265, 43, 47, 14);
-						panel.add(jLabel1);
+						lblSenhaLogin.setText("Senha");
+						lblCódigoLogin = new javax.swing.JLabel();
+						lblCódigoLogin.setBounds(265, 43, 47, 14);
+						panel.add(lblCódigoLogin);
 						
-								jLabel1.setText("CÃ³digo");
+								lblCódigoLogin.setText("C\u00F3digo");
 								
 										txtCodigo = new javax.swing.JTextField();
 										txtCodigo.setBounds(330, 38, 164, 24);
@@ -199,10 +196,9 @@ public class TelaLogin extends javax.swing.JFrame {
 	}// GEN-LAST:event_loginButtonActionPerformed
 
 	
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JLabel jLabel2;
-	private javax.swing.JLabel jLabel3;
-	private javax.swing.JLabel jLabel4;
+	private javax.swing.JLabel lblCódigoLogin;
+	private javax.swing.JLabel lblSenhaLogin;
+	private javax.swing.JLabel lblImgLogin;
 	private javax.swing.JLabel lblStatus;
 	private javax.swing.JButton loginButton;
 	private javax.swing.JTextField txtCodigo;

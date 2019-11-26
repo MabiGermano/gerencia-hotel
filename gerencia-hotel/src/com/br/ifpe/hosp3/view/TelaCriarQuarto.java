@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 import com.br.ifpe.hosp3.controller.QuartoController;
 import com.br.ifpe.hosp3.model.Quarto;
-//import com.jgoodies.forms.factories.DefaultComponentFactory;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
  *
@@ -35,14 +35,14 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
     }
 
     /**
-     * MÃ©todo de aÃ§Ã£o na interface para criaÃ§Ã£o de quarto
+     * Método de ação na interface para criação de quarto
      * @param quarto {@link Quarto}
      * @throws Exception
      **/
     public void criarQuarto(Quarto quarto) {
     	try {
     		QuartoController.criarQuarto(quarto);
-    		JOptionPane.showMessageDialog(null, "Quarto "+ quarto.getNumero() + "Ã­ncluido com sucesso");
+    		JOptionPane.showMessageDialog(null, "Quarto "+ quarto.getNumero() + "íncluido com sucesso");
     		this.dispose();
     	}catch(Exception e) {
     		JOptionPane.showMessageDialog(null, e.getMessage());
@@ -112,7 +112,7 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
         lblValor.setBounds(106, 146, 55, 14);
         getContentPane().add(lblValor);
         
-        JLabel lblNmero = new JLabel("NÃºmero");
+        JLabel lblNmero = new JLabel("Número");
         lblNmero.setBounds(340, 60, 55, 14);
         getContentPane().add(lblNmero);
         

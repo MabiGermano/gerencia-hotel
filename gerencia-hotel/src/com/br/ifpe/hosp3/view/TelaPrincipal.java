@@ -170,7 +170,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		panel.add(lblUsuario);
 
 		lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-		lblUsuario.setText("Usuário");
+		lblUsuario.setText("Usu\u00E1rio");
 		jLabel2 = new javax.swing.JLabel();
 		jLabel2.setBounds(143, 23, 0, 0);
 		panel.add(jLabel2);
