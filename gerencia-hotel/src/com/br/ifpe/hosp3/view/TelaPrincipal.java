@@ -31,6 +31,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.br.ifpe.hosp3.model.Funcionario;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Color;
 
 /**
  *
@@ -164,7 +166,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 						.addContainerGap()));
 		panel.setLayout(null);
 		lblUsuario = new javax.swing.JLabel();
-		lblUsuario.setBounds(32, 12, 112, 36);
+		lblUsuario.setBounds(46, 11, 122, 36);
 		panel.add(lblUsuario);
 
 		lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
@@ -173,24 +175,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		jLabel2.setBounds(143, 23, 0, 0);
 		panel.add(jLabel2);
 		lblData = new javax.swing.JLabel();
-		lblData.setBounds(36, 57, 91, 23);
+		lblData.setBounds(66, 58, 91, 23);
 		panel.add(lblData);
 
 		lblData.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 		lblData.setText("Data");
 		jLabel3 = new javax.swing.JLabel();
-		jLabel3.setBounds(32, 122, 53, 14);
+		jLabel3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		jLabel3.setBounds(31, 117, 79, 14);
 		panel.add(jLabel3);
 
-		jLabel3.setText("Cadastro");
+		jLabel3.setText("Listar");
 		comboCadastro = new javax.swing.JComboBox<>();
-		comboCadastro.setBounds(32, 138, 95, 23);
+		comboCadastro.setBounds(31, 142, 136, 23);
 		panel.add(comboCadastro);
 
 		comboCadastro
 				.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Hóspede", "Quarto" }));
 		btnCadastro = new javax.swing.JButton();
-		btnCadastro.setBounds(32, 167, 50, 24);
+		btnCadastro.setBackground(new Color(192, 192, 192));
+		btnCadastro.setBounds(118, 176, 50, 24);
 		panel.add(btnCadastro);
 
 		btnCadastro.setText("Ok");
@@ -212,7 +216,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		Icon iconCheckin = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-in_p.png"));
 		btnCheckin = new JButton("Check-in", iconCheckin);
-		btnCheckin.setBounds(137, 32, 119, 40);
+		btnCheckin.setBounds(99, 32, 119, 40);
 		btnCheckin.addActionListener(new ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent event) {
 				try {
@@ -228,7 +232,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		Icon iconCheckout = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-out_p.png"));
 		JButton btnNewButton = new JButton("Check-out", iconCheckout);
-		btnNewButton.setBounds(421, 32, 127, 40);
+		btnNewButton.setBounds(405, 32, 127, 40);
 		desktop.add(btnNewButton);
 
 		getContentPane().setLayout(layout);
