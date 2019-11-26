@@ -1,6 +1,7 @@
 package com.br.ifpe.hosp3.connection;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -55,16 +56,14 @@ public class ConexaoMysql {
 	public static java.sql.Connection getConexaoMySQL() throws IOException {
 
 		Connection connection = null;
+		Properties prop = getProperties();
+		String driverName = prop.getProperty("prop.server.driverName");
+		String url = prop.getProperty("prop.server.url");
+		String username = prop.getProperty("prop.server.login");
+		String password = prop.getProperty("prop.server.password");
 
 		try {
-			Properties prop = getProperties();
-
-			String driverName = prop.getProperty("prop.server.driverName");
 			Class.forName(driverName);
-			String url = prop.getProperty("prop.server.url");
-			String username = prop.getProperty("prop.server.login");
-			String password = prop.getProperty("prop.server.password");
-
 			connection = (Connection) DriverManager.getConnection(url, username, password);
 
 			if (connection != null) {
@@ -82,9 +81,40 @@ public class ConexaoMysql {
 		} catch (SQLException e) {
 
 			System.out.println("Nao foi possivel conectar ao Banco de Dados.");
+			if(e.getErrorCode() == 1049){
+				url = prop.getProperty("prop.server.urlDefault");
+				connection = getConexaoDefault(url, username, password);
+				connection = (Connection) getConexaoMySQL();
+			}else {
+				connection = null; 
+			}
 
-			return null;
+			return connection;
 		}
+	}
+	/**
+	 * Método para criação automática do banco de dados caso ele não exista
+	 * @param url {@link String}
+	 * @param username {@link String}
+	 * @param password {@link String}
+	 * 
+	 * @return conexao {@link Connection}
+	 * @throws SQLException {@link SQLException}
+	 * @throws FileNotFoundException {@link FileNotFoundException}
+	 **/
+	private static Connection getConexaoDefault(String url,String username,String password) {
+		Connection conexao = null;
+		
+		try {
+			conexao = (Connection) DriverManager.getConnection(url, username, password);
+			ScriptRunner sr = new ScriptRunner(conexao);
+		    Reader reader = new BufferedReader(new FileReader("./resources/sql/banco_gerencia_hotel.sql"));
+		   
+		    sr.runScript(reader);
+		} catch (SQLException | FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return conexao;
 	}
 
 	/**
