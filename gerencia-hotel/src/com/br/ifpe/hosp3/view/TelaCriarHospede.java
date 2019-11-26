@@ -126,10 +126,10 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         panel.add(label);
         label.setText("CPF");
         
-        textField_1 = new JTextField();
-        textField_1.setBounds(245, 73, 220, 23);
-        panel.add(textField_1);
-        textField_1.setColumns(10);
+        txtCpf = new JTextField();
+        txtCpf.setBounds(245, 73, 220, 23);
+        panel.add(txtCpf);
+        txtCpf.setColumns(10);
         
         lblCepHospede = new JLabel("CEP");
         lblCepHospede.setBounds(41, 223, 46, 14);
@@ -272,7 +272,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     	endereco.setRua(txtRuaHospede.getText());
     	
     	Hospede hospede = new Hospede();
-    	hospede.setCpf(txtBuscaCpfHospede.getText());
+    	hospede.setCpf(txtCpf.getText());
     	hospede.setEmail(txtEmailHospede.getText());
     	hospede.setNome(txtNomeHospede.getText());
     	hospede.setPalavraPasse(txtPassHospede.getText());
@@ -290,7 +290,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     private JLabel lblEmailHospede;
     private JTextField txtEmailHospede;
     private JLabel lblRua;
-    private JTextField textField_1;
+    private JTextField txtCpf;
     private JLabel lblNumHospede;
     private JTextField txtNumHospede;
     private JLabel lblCepHospede;
