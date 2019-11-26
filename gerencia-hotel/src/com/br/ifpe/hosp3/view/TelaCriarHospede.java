@@ -18,6 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
 
 /**
  *
@@ -61,80 +64,73 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-    	txtRuaHospede = new javax.swing.JTextField();
-    	txtRuaHospede.setBounds(320, 210, 220, 20);
     	
 
     	lblEstadoHospede = new javax.swing.JLabel();
     	txtEstadoHospede = new javax.swing.JTextField();
-        
-    	lblBuscaCpfHospede = new javax.swing.JLabel();
-    	lblBuscaCpfHospede.setBounds(25, 30, 19, 14);
-    	txtBuscaCpfHospede = new javax.swing.JTextField();
-    	txtBuscaCpfHospede.setBounds(25, 51, 162, 20);
-        
-        lblNomeHospede = new javax.swing.JLabel();
-        lblNomeHospede.setBounds(25, 190, 27, 14);
-        txtNomeHospede = new javax.swing.JTextField();
-        txtNomeHospede.setBounds(25, 210, 247, 20);
-        
-        btnAddHospede = new javax.swing.JButton();
-        btnAddHospede.setBounds(25, 411, 80, 50);
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Hóspede");
-
-        //btnAddHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource("./../resources/img/"))); // NOI18N /*iconfinder*/
-        btnAddHospede.setText("Adicionar");
         
         Color cor = new Color(46,139, 87);
-        btnAddHospede.setBackground(cor);
-        btnAddHospede.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAddHospede.setPreferredSize(new java.awt.Dimension(80, 50));
-
-       
-
-        lblBuscaCpfHospede.setText("CPF");
-
-        txtNomeHospede.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeHospedeActionPerformed(evt);
-            }
-        });
-
-        txtRuaHospede.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRuaHospedeActionPerformed(evt);
-            }
-           
-        });
+        getContentPane().setLayout(null);
         
-       //Adicionando evento para botão de salvar ouvir
-        btnAddHospede.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	btnAddHospedeAction(evt);
-            }
-        });
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(0, 0, 552, 485);
+        getContentPane().add(scrollPane);
+        
+        panel = new JPanel();
+        scrollPane.setViewportView(panel);
+        panel.setLayout(null);
+        
+        lblNomeHospede = new javax.swing.JLabel();
+        lblNomeHospede.setBounds(46, 58, 34, 14);
+        panel.add(lblNomeHospede);
         
         lblNomeHospede.setText("Nome");
+        txtNomeHospede = new javax.swing.JTextField();
+        txtNomeHospede.setBounds(41, 73, 154, 23);
+        panel.add(txtNomeHospede);
+        
+                txtNomeHospede.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        txtNomeHospedeActionPerformed(evt);
+                    }
+                });
         
         JLabel label = new JLabel();
         label.setBounds(320, 190, 19, 14);
         label.setText("CPF");
-        
-        JButton btnPesquisar = new JButton("Pesquisar");
-        btnPesquisar.setBounds(193, 50, 79, 23);
-        getContentPane().setLayout(null);
-        getContentPane().add(txtBuscaCpfHospede);
-        getContentPane().add(btnPesquisar);
-        getContentPane().add(lblBuscaCpfHospede);
-        getContentPane().add(lblNomeHospede);
-        getContentPane().add(txtNomeHospede);
         getContentPane().add(label);
-        getContentPane().add(txtRuaHospede);
-        getContentPane().add(btnAddHospede);
+        txtRuaHospede = new javax.swing.JTextField();
+        txtRuaHospede.setBounds(320, 210, 220, 20);
+        
+                txtRuaHospede.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        txtRuaHospedeActionPerformed(evt);
+                    }
+                   
+                });
+                getContentPane().add(txtRuaHospede);
+        
+        btnAddHospede = new javax.swing.JButton();
+        btnAddHospede.setBounds(25, 411, 80, 50);
+        
+                //btnAddHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource("./../resources/img/"))); // NOI18N /*iconfinder*/
+                btnAddHospede.setText("Adicionar");
+                btnAddHospede.setBackground(cor);
+                btnAddHospede.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnAddHospede.setPreferredSize(new java.awt.Dimension(80, 50));
+                
+       //Adicionando evento para botão de salvar ouvir
+                btnAddHospede.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    	btnAddHospedeAction(evt);
+                    }
+                });
+                getContentPane().add(btnAddHospede);
         
         lblEmailHospede = new JLabel("E-mail");
         lblEmailHospede.setBounds(25, 241, 46, 14);
@@ -157,11 +153,6 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         lblNumHospede = new JLabel("Número");
         lblNumHospede.setBounds(25, 293, 46, 14);
         getContentPane().add(lblNumHospede);
-        
-        txtNumHospede = new JTextField();
-        txtNumHospede.setBounds(25, 310, 46, 20);
-        getContentPane().add(txtNumHospede);
-        txtNumHospede.setColumns(10);
         
         lblCepHospede = new JLabel("CEP");
         lblCepHospede.setBounds(103, 293, 46, 14);
@@ -234,6 +225,11 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         txtTelHospede.setBounds(296, 366, 134, 20);
         getContentPane().add(txtTelHospede);
         txtTelHospede.setColumns(10);
+        
+        txtNumHospede = new JTextField();
+        txtNumHospede.setBounds(25, 310, 46, 20);
+        getContentPane().add(txtNumHospede);
+        txtNumHospede.setColumns(10);
 
         pack();
     }
@@ -270,9 +266,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
     
     private javax.swing.JButton btnAddHospede;
-    private javax.swing.JLabel lblBuscaCpfHospede;
     private javax.swing.JLabel lblNomeHospede;
-    private javax.swing.JTextField txtBuscaCpfHospede;
     private javax.swing.JTextField txtNomeHospede;
     private javax.swing.JTextField txtRuaHospede;
     private JLabel lblEmailHospede;
@@ -297,4 +291,5 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     private JTextField txtCompHospede;
     private JLabel lblTelHospede;
     private JTextField txtTelHospede;
+    private JPanel panel;
 }
