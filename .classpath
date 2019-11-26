@@ -4,5 +4,10 @@
 	<classpathentry kind="src" path="gerencia-hotel/src"/>
 	<classpathentry kind="lib" path="gerencia-hotel/lib/mybatis-3.5.3.jar"/>
 	<classpathentry kind="lib" path="gerencia-hotel/lib/mysql-connector-java-5.1.48-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALUNO/gerencia-hotel/gerencia-hotel/resources/jgoodies-common-1.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALUNO/gerencia-hotel/gerencia-hotel/resources/jgoodies-common-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALUNO/gerencia-hotel/gerencia-hotel/resources/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALUNO/gerencia-hotel/gerencia-hotel/resources/jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALUNO/gerencia-hotel/gerencia-hotel/resources/miglayout15-swing.jar"/>
 	<classpathentry kind="output" path="gerencia-hotel/bin"/>
 </classpath>
