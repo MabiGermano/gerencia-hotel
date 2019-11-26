@@ -32,5 +32,4 @@ public class Criptografia {
 		}
 		return null;
 	}
-
 }

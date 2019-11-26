@@ -27,7 +27,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public int create(Quarto quarto) {
+	public int create(Quarto quarto) throws Exception {
 		Connection conexao;
 		int resultado = 0;
 		try {
@@ -48,7 +48,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 			resultado = this.getLastInsertedId(ps.getGeneratedKeys());
 			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw new Exception("Não foi possível incluir quarto, dados inválidos");
 		}
 		
 		return resultado;
@@ -60,7 +60,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void updade(Quarto quarto) {
+	public void updade(Quarto quarto) throws Exception {
 		Connection conexao;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
@@ -71,13 +71,13 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 					    + "tipo = '" + quarto.getTipo() + "' ,"
 					    + "numero = '" + quarto.getNumero() + "' ,"
 					    + "disponivel = " + quarto.isDisponivel()
-					    + "WHERE id = " + quarto.getId();
+					    + " WHERE id = " + quarto.getId();
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
 			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw e;
 		}	
 	}
 
@@ -88,12 +88,12 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 	 * 
 	 * @return listaQuarto {@link HashSet<Quarto>}
 	 **/
-	public HashSet<Quarto> listAll() {
+	public HashSet<Quarto> listAll() throws Exception {
 		Connection conexao;
 		HashSet<Quarto> listaQuarto = new HashSet<>();
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			String sql = "SELECT * FROM quarto";
+			String sql = "SELECT * FROM quarto where disponivel =" + true;
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			
@@ -114,7 +114,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 			}
 			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw e;
 		}
 
 		return listaQuarto;
