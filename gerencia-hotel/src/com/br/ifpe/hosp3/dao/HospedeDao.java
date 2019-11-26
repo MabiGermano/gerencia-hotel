@@ -266,4 +266,10 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 		}
 		return retorno;
 	}
+
+	@Override
+	public HashSet<Hospede> listDisponible() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

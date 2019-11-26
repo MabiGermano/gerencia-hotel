@@ -201,4 +201,10 @@ public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 		return resultado;
 	}
 
+	@Override
+	public HashSet<Hospedagem> listDisponible() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

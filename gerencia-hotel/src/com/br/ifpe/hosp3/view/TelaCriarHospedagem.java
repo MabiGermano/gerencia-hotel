@@ -37,6 +37,7 @@ import com.br.ifpe.hosp3.util.ButtonEditor;
 import com.br.ifpe.hosp3.util.ButtonRenderer;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 /**
+ * @author Maria Beatriz Germano
  * Classe de interface gráfica para criação de hospedagem
  **/
 public class TelaCriarHospedagem extends JInternalFrame {

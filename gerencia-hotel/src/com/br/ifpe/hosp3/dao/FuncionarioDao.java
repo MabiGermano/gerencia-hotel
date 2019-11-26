@@ -265,4 +265,10 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 		funcionario.setEndereco(endereco);
 		return funcionario;
 	}
+
+	@Override
+	public HashSet<Funcionario> listDisponible() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

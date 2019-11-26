@@ -30,6 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.br.ifpe.hosp3.model.Funcionario;
+import java.awt.FlowLayout;
 
 /**
  *
@@ -208,10 +209,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 				comboCadastroItemStateChanged(evt);
 			}
 		});
-		desktop.setLayout(null);
 
 		Icon iconCheckin = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-in_p.png"));
 		btnCheckin = new JButton("Check-in", iconCheckin);
+		btnCheckin.setBounds(137, 32, 119, 40);
 		btnCheckin.addActionListener(new ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent event) {
 				try {
@@ -222,12 +223,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 				}
 			}
 		});
-		btnCheckin.setBounds(96, 33, 131, 45);
+		desktop.setLayout(null);
 		desktop.add(btnCheckin);
 
 		Icon iconCheckout = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-out_p.png"));
 		JButton btnNewButton = new JButton("Check-out", iconCheckout);
-		btnNewButton.setBounds(389, 33, 131, 45);
+		btnNewButton.setBounds(421, 32, 127, 40);
 		desktop.add(btnNewButton);
 
 		getContentPane().setLayout(layout);

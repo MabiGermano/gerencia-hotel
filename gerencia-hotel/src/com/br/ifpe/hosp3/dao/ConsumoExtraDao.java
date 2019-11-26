@@ -184,4 +184,10 @@ public class ConsumoExtraDao implements ManipulacaoDeDados<ConsumoExtra> {
 		
 		return resultado;
 	}
+
+	@Override
+	public HashSet<ConsumoExtra> listDisponible() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -201,4 +201,10 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 	
 		return resultado;
 	}
+
+	@Override
+	public HashSet<Registro> listDisponible() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

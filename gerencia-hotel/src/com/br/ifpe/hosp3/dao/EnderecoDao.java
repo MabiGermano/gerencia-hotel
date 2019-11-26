@@ -205,6 +205,12 @@ public class EnderecoDao implements ManipulacaoDeDados<Endereco> {
 	
 		return resultado;
 	}
+
+	@Override
+	public HashSet<Endereco> listDisponible() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 
