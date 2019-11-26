@@ -43,6 +43,7 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.execute();
 			retorno = this.getLastInsertedId(ps.getGeneratedKeys());
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -76,6 +77,7 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -105,6 +107,7 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 			
 				listaFuncionario.add(funcionario);
 			}
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -132,7 +135,7 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 
 				funcionario = this.constructObject(funcionario, result);
 			}
-			
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -155,6 +158,7 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}	
@@ -209,6 +213,7 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 			}else {
 				throw new NullPointerException("Email ou senha incorretos, tente novamente");
 			}
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			throw new IOException("Ops... erro na busca, contacte nosso suporte");
 		} 

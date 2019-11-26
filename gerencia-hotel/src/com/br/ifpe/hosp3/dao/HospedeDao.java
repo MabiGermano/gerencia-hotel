@@ -46,6 +46,7 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.execute();
 			retorno = this.getLastInsertedId(ps.getGeneratedKeys());
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			throw new Exception("Não fui possível incluir hospede, verifique os dados e tente novamente");
 		}
@@ -78,6 +79,7 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -114,6 +116,7 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 			
 				listaHospede.add(hospede);
 			}
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -148,7 +151,7 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 				Endereco endereco = endDao.getById(result.getInt("endereco_id"));
 				hospede.setEndereco(endereco);	
 			}
-			
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -208,6 +211,7 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}	
@@ -259,7 +263,6 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 			if(result != null && result.next()) {
 				retorno = true;	
 			}
-
 			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();

@@ -14,6 +14,12 @@ import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JPanel;
+import java.awt.Color;
+import javax.swing.JButton;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Font;
 
 /**
  *
@@ -131,156 +137,173 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNomeFunc = new javax.swing.JLabel();
-        lblNomeFunc.setBounds(45, 50, 27, 14);
-        lblCpfFunc = new javax.swing.JLabel();
-        lblCpfFunc.setBounds(316, 50, 19, 14);
-        lblEndIdFunc = new javax.swing.JLabel();
-        lblEndIdFunc.setBounds(45, 108, 19, 14);
-        lblEmailFunc = new javax.swing.JLabel();
-        lblEmailFunc.setBounds(45, 280, 28, 14);
-        lblTelFunc = new javax.swing.JLabel();
-        lblTelFunc.setBounds(288, 280, 42, 14);
-        lblCodFunc = new javax.swing.JLabel();
-        lblCodFunc.setBounds(45, 331, 33, 14);
-        lblPassFunc = new javax.swing.JLabel();
-        lblPassFunc.setBounds(288, 331, 67, 14);
-        txtNomeFunc = new javax.swing.JTextField();
-        txtNomeFunc.setBounds(45, 70, 220, 20);
-        txtCpfFunc = new javax.swing.JTextField();
-        txtCpfFunc.setBounds(316, 70, 162, 20);
-        txtRuaFunc = new javax.swing.JTextField();
-        txtRuaFunc.setBounds(45, 126, 220, 20);
-        txtEmailFunc = new javax.swing.JTextField();
-        txtEmailFunc.setBounds(45, 300, 195, 20);
-        txtTelFunc = new javax.swing.JTextField();
-        txtTelFunc.setBounds(288, 300, 190, 20);
-        txtCodFunc = new javax.swing.JTextField();
-        txtCodFunc.setBounds(45, 351, 78, 20);
-        txtPassFunc = new javax.swing.JTextField();
-        txtPassFunc.setBounds(288, 351, 190, 20);
-        btnAddFunc = new javax.swing.JButton();
-        btnAddFunc.setBounds(398, 404, 80, 42);
-        txtNumFunc = new javax.swing.JTextField();
-        txtNumFunc.setBounds(288, 126, 47, 20);
-        txtCepFunc = new javax.swing.JTextField();
-        txtCepFunc.setBounds(381, 126, 97, 20);
-        txtPaisFunc = new javax.swing.JTextField();
-        txtPaisFunc.setBounds(177, 181, 76, 20);
-        txtBairroFunc = new javax.swing.JTextField();
-        txtBairroFunc.setBounds(45, 181, 117, 20);
-        txtCidadeFunc = new javax.swing.JTextField();
-        txtCidadeFunc.setBounds(263, 181, 100, 20);
-        txtCompFunc = new javax.swing.JTextField();
-        txtCompFunc.setBounds(45, 249, 195, 20);
-        lblNumFunc = new javax.swing.JLabel();
-        lblNumFunc.setBounds(288, 108, 37, 14);
-        lblCepFunc = new javax.swing.JLabel();
-        lblCepFunc.setBounds(381, 108, 19, 14);
-        lblBairroFunc = new javax.swing.JLabel();
-        lblBairroFunc.setBounds(45, 161, 28, 14);
-        lblPaisFunc = new javax.swing.JLabel();
-        lblPaisFunc.setBounds(177, 161, 19, 14);
-        lblCidadeFunc = new javax.swing.JLabel();
-        lblCidadeFunc.setBounds(263, 161, 47, 14);
-        lblCompFunc = new javax.swing.JLabel();
-        lblCompFunc.setBounds(45, 229, 195, 14);
-
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Funcionário");
-
-        lblNomeFunc.setText("Nome");
-
-        lblCpfFunc.setText("CPF");
-
-        lblEndIdFunc.setText("Rua");
-
-        lblEmailFunc.setText("E-mail");
-
-        lblTelFunc.setText("Telefone");
-
-        lblCodFunc.setText("Código");
-
-        lblPassFunc.setText("Palavra passe");
-
-        txtNomeFunc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeFuncActionPerformed(evt);
-            }
-        });
-
-        txtRuaFunc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRuaFuncActionPerformed(evt);
-            }
-        });
-
-        btnAddFunc.setText("Adicionar");
-        btnAddFunc.setToolTipText("Adicionar");
-        btnAddFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAddFunc.setPreferredSize(new java.awt.Dimension(80, 80));
-        btnAddFunc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddFuncActionPerformed(evt);
-            }
-        });
-
-        txtPaisFunc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPaisFuncActionPerformed(evt);
-            }
-        });
-
-        lblNumFunc.setText("Número");
-
-        lblCepFunc.setText("CEP");
-
-        lblBairroFunc.setText("Bairro");
-
-        lblPaisFunc.setText("País");
-
-        lblCidadeFunc.setText("Cidade");
-
-        lblCompFunc.setText("Complemento");
         getContentPane().setLayout(null);
-        getContentPane().add(lblNomeFunc);
-        getContentPane().add(txtNomeFunc);
-        getContentPane().add(txtCpfFunc);
-        getContentPane().add(lblCpfFunc);
-        getContentPane().add(lblCodFunc);
-        getContentPane().add(txtCodFunc);
-        getContentPane().add(lblPassFunc);
-        getContentPane().add(txtPassFunc);
-        getContentPane().add(lblEndIdFunc);
-        getContentPane().add(txtBairroFunc);
-        getContentPane().add(txtCepFunc);
-        getContentPane().add(lblCepFunc);
-        getContentPane().add(lblCompFunc);
-        getContentPane().add(txtCompFunc);
-        getContentPane().add(txtEmailFunc);
-        getContentPane().add(lblPaisFunc);
-        getContentPane().add(txtPaisFunc);
-        getContentPane().add(txtCidadeFunc);
-        getContentPane().add(lblEmailFunc);
-        getContentPane().add(lblCidadeFunc);
-        getContentPane().add(lblBairroFunc);
-        getContentPane().add(txtRuaFunc);
-        getContentPane().add(txtNumFunc);
-        getContentPane().add(lblTelFunc);
-        getContentPane().add(lblNumFunc);
-        getContentPane().add(txtTelFunc);
-        getContentPane().add(btnAddFunc);
+        scrollPane.setBounds(0, 0, 514, 463);
+        getContentPane().add(scrollPane);
         
-        lblEstadoFunc = new JLabel("Estado");
-        lblEstadoFunc.setBounds(381, 161, 46, 14);
-        getContentPane().add(lblEstadoFunc);
-        
-        txtEstadoFunc = new JTextField();
-        txtEstadoFunc.setBounds(381, 181, 97, 20);
-        getContentPane().add(txtEstadoFunc);
-        txtEstadoFunc.setColumns(10);
+        JPanel panel = new JPanel();
+        scrollPane.setViewportView(panel);
+                        panel.setLayout(null);
+                
+                        lblNomeFunc = new javax.swing.JLabel();
+                        lblNomeFunc.setBounds(39, 59, 27, 14);
+                        panel.add(lblNomeFunc);
+                        
+                                lblNomeFunc.setText("Nome");
+                txtNomeFunc = new javax.swing.JTextField();
+                txtNomeFunc.setBounds(39, 74, 195, 25);
+                panel.add(txtNomeFunc);
+                lblCpfFunc = new javax.swing.JLabel();
+                lblCpfFunc.setBounds(284, 59, 176, 14);
+                panel.add(lblCpfFunc);
+                
+                        lblCpfFunc.setText("CPF");
+                        txtCpfFunc = new javax.swing.JTextField();
+                        txtCpfFunc.setBounds(284, 74, 190, 25);
+                        panel.add(txtCpfFunc);
+                        lblCodFunc = new javax.swing.JLabel();
+                        lblCodFunc.setBounds(39, 166, 33, 14);
+                        panel.add(lblCodFunc);
+                        
+                                lblCodFunc.setText("Código");
+                                txtCodFunc = new javax.swing.JTextField();
+                                txtCodFunc.setBounds(39, 183, 78, 25);
+                                panel.add(txtCodFunc);
+                                lblPassFunc = new javax.swing.JLabel();
+                                lblPassFunc.setBounds(277, 112, 67, 14);
+                                panel.add(lblPassFunc);
+                                
+                                        lblPassFunc.setText("Palavra passe");
+                                        txtPassFunc = new javax.swing.JTextField();
+                                        txtPassFunc.setBounds(277, 129, 197, 25);
+                                        panel.add(txtPassFunc);
+                                        lblCepFunc = new javax.swing.JLabel();
+                                        lblCepFunc.setBounds(350, 166, 117, 14);
+                                        panel.add(lblCepFunc);
+                                        
+                                                lblCepFunc.setText("CEP");
+                                        txtCepFunc = new javax.swing.JTextField();
+                                        txtCepFunc.setBounds(350, 183, 124, 25);
+                                        panel.add(txtCepFunc);
+                                        lblCompFunc = new javax.swing.JLabel();
+                                        lblCompFunc.setBounds(39, 283, 195, 14);
+                                        panel.add(lblCompFunc);
+                                        
+                                                lblCompFunc.setText("Complemento");
+                                                txtCompFunc = new javax.swing.JTextField();
+                                                txtCompFunc.setBounds(39, 300, 207, 25);
+                                                panel.add(txtCompFunc);
+                                                lblPaisFunc = new javax.swing.JLabel();
+                                                lblPaisFunc.setBounds(183, 336, 19, 14);
+                                                panel.add(lblPaisFunc);
+                                                
+                                                        lblPaisFunc.setText("País");
+                                                        txtPaisFunc = new javax.swing.JTextField();
+                                                        txtPaisFunc.setBounds(183, 352, 76, 25);
+                                                        panel.add(txtPaisFunc);
+                                                                lblEmailFunc = new javax.swing.JLabel();
+                                                                lblEmailFunc.setBounds(39, 110, 28, 14);
+                                                                panel.add(lblEmailFunc);
+                                                                
+                                                                        lblEmailFunc.setText("E-mail");
+                                                                        txtEmailFunc = new javax.swing.JTextField();
+                                                                        txtEmailFunc.setBounds(39, 129, 195, 25);
+                                                                        panel.add(txtEmailFunc);
+                                                                        lblCidadeFunc = new javax.swing.JLabel();
+                                                                        lblCidadeFunc.setBounds(293, 283, 47, 14);
+                                                                        panel.add(lblCidadeFunc);
+                                                                        
+                                                                                lblCidadeFunc.setText("Cidade");
+                                                                                txtCidadeFunc = new javax.swing.JTextField();
+                                                                                txtCidadeFunc.setBounds(293, 301, 181, 25);
+                                                                                panel.add(txtCidadeFunc);
+                                                                                lblBairroFunc = new javax.swing.JLabel();
+                                                                                lblBairroFunc.setBounds(350, 223, 28, 14);
+                                                                                panel.add(lblBairroFunc);
+                                                                                
+                                                                                        lblBairroFunc.setText("Bairro");
+                                                                                        txtBairroFunc = new javax.swing.JTextField();
+                                                                                        txtBairroFunc.setBounds(350, 241, 124, 25);
+                                                                                        panel.add(txtBairroFunc);
+                                                                                        lblEndIdFunc = new javax.swing.JLabel();
+                                                                                        lblEndIdFunc.setBounds(39, 222, 19, 14);
+                                                                                        panel.add(lblEndIdFunc);
+                                                                                        
+                                                                                                lblEndIdFunc.setText("Rua");
+                                                                                                txtRuaFunc = new javax.swing.JTextField();
+                                                                                                txtRuaFunc.setBounds(39, 241, 220, 25);
+                                                                                                panel.add(txtRuaFunc);
+                                                                                                lblNumFunc = new javax.swing.JLabel();
+                                                                                                lblNumFunc.setBounds(282, 226, 37, 14);
+                                                                                                panel.add(lblNumFunc);
+                                                                                                
+                                                                                                        lblNumFunc.setText("Número");
+                                                                                                        txtNumFunc = new javax.swing.JTextField();
+                                                                                                        txtNumFunc.setBounds(282, 241, 47, 25);
+                                                                                                        panel.add(txtNumFunc);
+                                                                                                        lblTelFunc = new javax.swing.JLabel();
+                                                                                                        lblTelFunc.setBounds(159, 166, 154, 14);
+                                                                                                        panel.add(lblTelFunc);
+                                                                                                        
+                                                                                                                lblTelFunc.setText("Telefone");
+                                                                                                                txtTelFunc = new javax.swing.JTextField();
+                                                                                                                txtTelFunc.setBounds(159, 183, 154, 25);
+                                                                                                                panel.add(txtTelFunc);
+                                                                                                                
+                                                                                                                lblEstadoFunc = new JLabel("Estado");
+                                                                                                                lblEstadoFunc.setBounds(39, 336, 46, 14);
+                                                                                                                panel.add(lblEstadoFunc);
+                                                                                                                
+                                                                                                                txtEstadoFunc = new JTextField();
+                                                                                                                txtEstadoFunc.setBounds(39, 352, 97, 25);
+                                                                                                                panel.add(txtEstadoFunc);
+                                                                                                                txtEstadoFunc.setColumns(10);
+                                                                                                                btnAddFunc = new javax.swing.JButton();
+                                                                                                                btnAddFunc.setBackground(new Color(0, 128, 0));
+                                                                                                                btnAddFunc.setBounds(379, 401, 95, 35);
+                                                                                                                panel.add(btnAddFunc);
+                                                                                                                
+                                                                                                                        btnAddFunc.setText("Adicionar");
+                                                                                                                        btnAddFunc.setToolTipText("Adicionar");
+                                                                                                                        btnAddFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                                                                                                                        btnAddFunc.setPreferredSize(new java.awt.Dimension(80, 80));
+                                                                                                                        
+                                                                                                                        btnCancelar = new JButton("Cancelar");
+                                                                                                                        btnCancelar.setBackground(new Color(0, 128, 0));
+                                                                                                                        btnCancelar.setBounds(265, 401, 95, 35);
+                                                                                                                        panel.add(btnCancelar);
+                                                                                                                        
+                                                                                                                        JLabel lblCadastrarFuncionrio = DefaultComponentFactory.getInstance().createTitle("Cadastrar Funcionário");
+                                                                                                                        lblCadastrarFuncionrio.setFont(new Font("Tahoma", Font.PLAIN, 14));
+                                                                                                                        lblCadastrarFuncionrio.setBounds(179, 22, 140, 14);
+                                                                                                                        panel.add(lblCadastrarFuncionrio);
+                                                                                                                        btnAddFunc.addActionListener(new java.awt.event.ActionListener() {
+                                                                                                                            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                                                                                                                btnAddFuncActionPerformed(evt);
+                                                                                                                            }
+                                                                                                                        });
+                                                                                                
+                                                                                                        txtRuaFunc.addActionListener(new java.awt.event.ActionListener() {
+                                                                                                            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                                                                                                txtRuaFuncActionPerformed(evt);
+                                                                                                            }
+                                                                                                        });
+                                                        
+                                                                txtPaisFunc.addActionListener(new java.awt.event.ActionListener() {
+                                                                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                                                        txtPaisFuncActionPerformed(evt);
+                                                                    }
+                                                                });
+                
+                        txtNomeFunc.addActionListener(new java.awt.event.ActionListener() {
+                            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                txtNomeFuncActionPerformed(evt);
+                            }
+                        });
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -332,5 +355,6 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTelFunc;
     private JLabel lblEstadoFunc;
     private JTextField txtEstadoFunc;
-    // End of variables declaration//GEN-END:variables
+    private final JScrollPane scrollPane = new JScrollPane();
+    private JButton btnCancelar;
 }
