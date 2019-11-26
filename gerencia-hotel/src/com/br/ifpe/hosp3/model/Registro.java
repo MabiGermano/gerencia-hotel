@@ -13,6 +13,7 @@ public class Registro
 	private String pagamento;
 	private Hospedagem hospedagem;
 	private Funcionario funcionario;
+	private double valor;
 	
 	public Registro(int id, String pagamento, Hospedagem hospedagem, Funcionario funcionario) {
 		this.id = id;
@@ -109,5 +110,21 @@ public class Registro
 	{
 		this.funcionario = funcionario;
 	}
+
+	/**
+	 * @return valor {@link double}
+	 */
+	public double getValor() {
+		return valor;
+	}
+
+	/**
+	 * @param valor {@link double}
+	 */
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	
+	
 	
 }

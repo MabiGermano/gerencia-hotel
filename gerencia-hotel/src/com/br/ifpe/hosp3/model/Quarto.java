@@ -1,7 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
 /**
- * @author Tayná Alexandra
+ * @author Taynï¿½ Alexandra
  *
  * Classe Quarto 
  */
@@ -13,7 +13,7 @@ public class Quarto
 	private int quantidadePessoas;
 	private String tipo;
 	private String numero;
-	private boolean disponivel;
+	private boolean disponivel = true;
 	
 	public Quarto(int id, float valor, int quantidadePessoas, String tipo, String numero, boolean disponivel) 
 	{

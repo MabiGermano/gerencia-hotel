@@ -21,8 +21,9 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 	 * M�todo para cria��o do objeto Registro no banco de dados
 	 * 
 	 * @param object {@link Object}
+	 * @throws Exception
 	 **/
-	public int create(Registro registro) {
+	public int create(Registro registro) throws Exception {
 		Connection conexao;
 		int retorno = 0;
 		try {
@@ -30,10 +31,10 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 			
 			String sql = "INSERT INTO registro (flag_ativo, pagamento, funcionario_id, hospedagem_id)"
 						+ " VALUES ("
-						+ registro.isFlagAtivo() + " ,"
+						+ registro.isFlagAtivo() + " ,'"
 						+ registro.getPagamento() + "' ,"
 						+ registro.getFuncionario().getId() + " ,"
-						+ registro.getHospedagem().getId() + " ,"
+						+ registro.getHospedagem().getId() 
 						+ ")";
 			
 			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -41,7 +42,7 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 			retorno = this.getLastInsertedId(ps.getGeneratedKeys());
 			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw e;
 		}
 		
 		return retorno;
@@ -53,7 +54,7 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public void updade(Registro registro) {
+	public void updade(Registro registro) throws Exception {
 		Connection conexao;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();

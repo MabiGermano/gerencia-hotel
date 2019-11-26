@@ -8,7 +8,6 @@ package com.br.ifpe.hosp3.model;
 
 public class Funcionario extends Pessoa
 {
-	private int id;
 	private String codigo;
 	private String cargo;
 	
@@ -20,29 +19,12 @@ public class Funcionario extends Pessoa
 						Endereco endereco, int id, String cargo, String codigo) 
 	{
 		super(nome, cpf, email, telefone, palavra_passe, endereco);
-		this.id = id;
 		this.cargo = cargo;
 		this.codigo = codigo;
 	}
 	public Funcionario(String codigo, String palavraPasse) {
 		super(null, null, null, null, palavraPasse, null);
 		this.codigo = codigo;
-	}
-
-	/**
-	 * @return id {@link int}
-	 */
-	public int getId() 
-	{
-		return id;
-	}
-
-	/**
-	 * @param id {@link int}
-	 */
-	public void setId(int id) 
-	{
-		this.id = id;
 	}
 
 	/**

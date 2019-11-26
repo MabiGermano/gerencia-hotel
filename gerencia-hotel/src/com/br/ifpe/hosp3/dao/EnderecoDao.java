@@ -26,7 +26,7 @@ public class EnderecoDao implements ManipulacaoDeDados<Endereco> {
 	 * 
 	 * @param object {@link Object}
 	 **/
-	public int create(Endereco endereco) {
+	public int create(Endereco endereco) throws Exception {
 		Connection conexao;
 		int resultado = 0;
 		try {
@@ -50,7 +50,7 @@ public class EnderecoDao implements ManipulacaoDeDados<Endereco> {
 			resultado = this.getLastInsertedId(ps.getGeneratedKeys());
 			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw new Exception("Os dados de endereço estão incorretos, verefique e tente novamente");
 		}
 		
 		return resultado;
