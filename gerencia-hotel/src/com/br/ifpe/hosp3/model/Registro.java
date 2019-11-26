@@ -1,5 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
+import java.util.Date;
+
 /**
  * @author Tayn� Alexandra
  *
@@ -13,6 +15,8 @@ public class Registro
 	private String pagamento;
 	private Hospedagem hospedagem;
 	private Funcionario funcionario;
+	private Date dataCheckin;
+	private Date dataCheckout;
 	private double valor;
 	
 	public Registro(int id, String pagamento, Hospedagem hospedagem, Funcionario funcionario) {
@@ -20,6 +24,7 @@ public class Registro
 		this.pagamento = pagamento;
 		this.hospedagem = hospedagem;
 		this.funcionario = funcionario;
+		this.dataCheckin = new Date();
 	}
 	
 	public Registro(String pagamento, Hospedagem hospedagem, Funcionario funcionario) {
@@ -124,6 +129,35 @@ public class Registro
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
+
+	/**
+	 * @return dataCheckin {@link Date}
+	 */
+	public Date getDataCheckin() {
+		return dataCheckin;
+	}
+
+	/**
+	 * @param dataCheckin {@link Date}
+	 */
+	public void setDataCheckin(Date dataCheckin) {
+		this.dataCheckin = dataCheckin;
+	}
+
+	/**
+	 * @return dataCheckout {@link Date}
+	 */
+	public Date getDataCheckout() {
+		return dataCheckout;
+	}
+
+	/**
+	 * @param dataCheckout {@link Date}
+	 */
+	public void setDataCheckout(Date dataCheckout) {
+		this.dataCheckout = dataCheckout;
+	}
+	
 	
 	
 	

@@ -135,10 +135,19 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `hosp3`.`registro` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `flag_ativo` TINYINT(1) NULL,
+<<<<<<< HEAD
   `pagamento` VARCHAR(45) NOT NULL,
   `valor` FLOAT NOT NULL,
   `funcionario_id` INT NOT NULL,
   `hospedagem_id` INT NOT NULL,
+=======
+  `pagamento` VARCHAR(45) NULL,
+  `valor` FLOAT NULL,
+  `dataCheckin` DATE NULL,
+  `dataCheckout` DATE NULL,
+  `funcionario_id` INT NULL,
+  `hospedagem_id` INT NULL,
+>>>>>>> 316b16771f7991dfbae3b7938846643de513efa5
   PRIMARY KEY (`id`),
   INDEX `fk_registro_4_idx` (`funcionario_id` ASC),
   INDEX `fk_registro_2_idx` (`hospedagem_id` ASC),

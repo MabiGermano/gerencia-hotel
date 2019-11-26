@@ -45,6 +45,7 @@ public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.execute();
 			retorno = this.getLastInsertedId(ps.getGeneratedKeys());
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			throw e;
 		}
@@ -76,6 +77,7 @@ public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -113,6 +115,7 @@ public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 			
 				listaHospedagem.add(hospedagem);
 			}
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -146,7 +149,7 @@ public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 				Quarto quarto = quartoDao.getById(result.getInt("quarto_id"));
 				hospedagem.setQuarto(quarto);
 			}
-			
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -169,6 +172,7 @@ public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}	
@@ -199,6 +203,12 @@ public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 		}
 	
 		return resultado;
+	}
+
+	@Override
+	public HashSet<Hospedagem> listDisponible() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

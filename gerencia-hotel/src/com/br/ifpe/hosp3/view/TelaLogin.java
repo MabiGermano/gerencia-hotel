@@ -13,10 +13,10 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -24,7 +24,6 @@ import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.connection.EstruturaBD;
 import com.br.ifpe.hosp3.controller.FuncionarioController;
 import com.br.ifpe.hosp3.model.Funcionario;
-import javax.swing.JButton;
 
 /**
  *
@@ -66,7 +65,7 @@ public class TelaLogin extends javax.swing.JFrame {
 			EstruturaBD estrutura = new EstruturaBD();
 			estrutura.criarBanco();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Não foi possivel resetar a base de dados");
+			JOptionPane.showMessageDialog(null, "Nï¿½o foi possivel resetar a base de dados");
 		} 
 		
 		
@@ -184,7 +183,7 @@ public class TelaLogin extends javax.swing.JFrame {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void actionResetSistema() {
-		int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja resetar o sistema? Todos os dados serão apagados", "Alerta", JOptionPane.YES_NO_OPTION);
+		int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja resetar o sistema? Todos os dados serï¿½o apagados", "Alerta", JOptionPane.YES_NO_OPTION);
 		
 		if(confirm == JOptionPane.YES_OPTION) {
 			
@@ -199,46 +198,7 @@ public class TelaLogin extends javax.swing.JFrame {
 		logar();
 	}// GEN-LAST:event_loginButtonActionPerformed
 
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String args[]) {
-		/* Set the Nimbus look and feel */
-		// <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
-		// (optional) ">
-		/*
-		 * If Nimbus (introduced in Java SE 6) is not available, stay with the default
-		 * look and feel. For details see
-		 * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-		 */
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		}
-		// </editor-fold>
-
-		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(() -> {
-			try {
-				new TelaLogin().setVisible(true);
-			} catch (IOException ex) {
-				Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-			}
-		});
-	}
-
+	
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;

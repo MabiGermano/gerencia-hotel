@@ -28,7 +28,6 @@ import javax.swing.table.DefaultTableModel;
 import com.br.ifpe.hosp3.controller.HospedeController;
 import com.br.ifpe.hosp3.controller.QuartoController;
 import com.br.ifpe.hosp3.controller.RegistroHospedagemController;
-import com.br.ifpe.hosp3.dao.HospedagemDao;
 import com.br.ifpe.hosp3.model.Funcionario;
 import com.br.ifpe.hosp3.model.Hospedagem;
 import com.br.ifpe.hosp3.model.Hospede;
@@ -38,6 +37,7 @@ import com.br.ifpe.hosp3.util.ButtonEditor;
 import com.br.ifpe.hosp3.util.ButtonRenderer;
 //import com.jgoodies.forms.factories.DefaultComponentFactory;
 /**
+ * @author Maria Beatriz Germano
  * Classe de interface gráfica para criação de hospedagem
  **/
 public class TelaCriarHospedagem extends JInternalFrame {
@@ -283,7 +283,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		Set<Quarto> listaQuartos = new HashSet<>();
 		
 		try {
-			listaQuartos = QuartoController.listarQuartos();
+			listaQuartos = QuartoController.listarQuartosDisponiveis();
 		} catch (Exception e) {
 			
 		}

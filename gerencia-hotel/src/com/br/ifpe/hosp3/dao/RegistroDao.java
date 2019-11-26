@@ -40,6 +40,7 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 			PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.execute();
 			retorno = this.getLastInsertedId(ps.getGeneratedKeys());
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			throw e;
 		}
@@ -73,6 +74,7 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -111,6 +113,7 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 				registro.setPagamento(result.getString("pagamento"));
 			
 				listaRegistro.add(registro);
+				ConexaoMysql.FecharConexao();
 			}
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
@@ -147,7 +150,7 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 				Funcionario funcionario = funcionarioDao.getById(result.getInt("funcioario_id"));
 				registro.setFuncionario(funcionario);
 			}
-			
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -170,6 +173,7 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.execute();
+			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}	
@@ -200,5 +204,11 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 		}
 	
 		return resultado;
+	}
+
+	@Override
+	public HashSet<Registro> listDisponible() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
