@@ -167,3 +167,8 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+INSERT INTO `hosp3`.`endereco` (`rua`, `numero`, `cep`, `bairro`, `pais`, `cidade`, `estado`, `complemento`) VALUES ('TESTE', '0', 'TESTE', 'TESTE', 'TESTE', 'TESTE', 'TESTE', 'TESTE');
+SET @last_id = LAST_INSERT_ID();
+INSERT INTO `hosp3`.`funcionario` (`nome`, `cpf`, `endereco_id`, `email`, `telefone`, `codigo`, `cargo`, `palavra_passe`) VALUES ('Root', '000.000.000-00', @last_id, 'admin@admin.com', '000000000', 'admin', '666', '202CB962AC59075B964B07152D234B70');
