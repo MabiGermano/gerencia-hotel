@@ -22,11 +22,16 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
  */
 public class TelaCriarQuarto extends javax.swing.JInternalFrame {
 
+	private boolean alterar = false;
     /**
      * Creates new form TelaCriarQuarto
      */
     public TelaCriarQuarto() {
         initComponents();
+    }
+    public TelaCriarQuarto(Quarto quarto) {
+    	this();
+    	setFields(quarto);
     }
 
     /**
@@ -121,6 +126,13 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
         getContentPane().add(lblNovoQuarto_1);
 
         pack();
+    }
+    
+    private void setFields(Quarto quarto) {
+    	textNumero.setText(quarto.getNumero());
+    	textQtdPessoas.setText(String.valueOf(quarto.getQuantidadePessoas()));
+    	textValor.setText(String.valueOf(quarto.getValor()));
+    	this.alterar = true;
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
