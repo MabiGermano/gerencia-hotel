@@ -97,7 +97,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		menuCadastroFuncionario.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
-		menuCadastroFuncionario.setText("FuncionÃ¡rio");
+		menuCadastroFuncionario.setText("Funcionário");
 		menuCadastroFuncionario.setEnabled(false);
 		menuCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +108,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		menuCadastroHospede.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK));
-		menuCadastroHospede.setText("HÃ³spede");
+		menuCadastroHospede.setText("Hóspede");
 		menuCadastroHospede.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				menuCadastroHospedeActionPerformed(evt);
@@ -118,7 +118,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		Menu.add(menuCadastro);
 
-		menuRelatorio.setText("RelatÃ³rio");
+		menuRelatorio.setText("Relatório");
 
 		menuRelatorioHospedagem.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
@@ -132,7 +132,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		Menu.add(menuRelatorio);
 
-		menuOpcoes.setText("OpÃ§Ãµes");
+		menuOpcoes.setText("Opções");
 		menuOpcoes.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				menuOpcoesActionPerformed(evt);
@@ -170,7 +170,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		panel.add(lblUsuario);
 
 		lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-		lblUsuario.setText("Usu\u00E1rio");
+		lblUsuario.setText("Usuário");
 		jLabel2 = new javax.swing.JLabel();
 		jLabel2.setBounds(143, 23, 0, 0);
 		panel.add(jLabel2);
@@ -191,7 +191,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		panel.add(comboCadastro);
 
 		comboCadastro
-				.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FuncionÃ¡rio", "HÃ³spede", "Quarto" }));
+				.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Hóspede", "Quarto" }));
 		btnCadastro = new javax.swing.JButton();
 		btnCadastro.setBackground(new Color(192, 192, 192));
 		btnCadastro.setBounds(118, 176, 50, 24);
