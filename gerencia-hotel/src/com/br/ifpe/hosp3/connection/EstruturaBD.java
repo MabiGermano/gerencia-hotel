@@ -16,7 +16,7 @@ public class EstruturaBD {
 	 *   @throws SQLException {@link SQLException}
 	 **/
 	public void criarBanco() throws SQLException, IOException {
-		ConexaoMysql.lerScript("./resource/sql/banco_gerencia_hotel.sql");
+		ConexaoMysql.lerScript("./resources/sql/banco_gerencia_hotel.sql");
 	}
 	
 	/**

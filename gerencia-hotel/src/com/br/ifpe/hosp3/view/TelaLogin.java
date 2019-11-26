@@ -65,6 +65,8 @@ public class TelaLogin extends javax.swing.JFrame {
 			EstruturaBD estrutura = new EstruturaBD();
 			estrutura.criarBanco();
 		} catch (Exception e) {
+			System.out.println(e.getCause());
+			System.out.println(e.getMessage());
 			JOptionPane.showMessageDialog(null, "N�o foi possivel resetar a base de dados");
 		} 
 		
