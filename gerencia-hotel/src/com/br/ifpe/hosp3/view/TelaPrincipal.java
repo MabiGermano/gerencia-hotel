@@ -28,8 +28,16 @@ import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.sql.*;
 
+import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.model.Funcionario;
+
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
+import java.awt.event.ActionEvent;
 	
 	/**
 	 *
@@ -37,11 +45,19 @@ import com.br.ifpe.hosp3.model.Funcionario;
 	 */
 	public class TelaPrincipal extends javax.swing.JFrame {
 	
+		Connection connection = null;
+		
 		Funcionario funcionario;
 	    /**
 	     * Cria nova tela Principal
 	     */
 	    public TelaPrincipal() {
+	    	try {
+				connection = ConexaoMysql.getConexaoMySQL();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 	    	setResizable(false);
 	        initComponents();
 	    }
@@ -71,6 +87,25 @@ import com.br.ifpe.hosp3.model.Funcionario;
         menuCadastroHospede = new javax.swing.JMenuItem();
         menuRelatorio = new javax.swing.JMenu();
         menuRelatorioHospedagem = new javax.swing.JMenuItem();
+        
+        //relatório de hospedagem
+        menuRelatorioHospedagem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
+        		
+        		if (confirma == JOptionPane.YES_OPTION) {
+        			//imprimindo com o framework JasperReport
+        			try {
+        				JasperPrint imprime = JasperFillManager.fillReport("C:\\reports\\hospedes.jasper", null, connection);
+        				JasperViewer.viewReport(imprime,false);
+        			} catch (Exception e) {
+        				JOptionPane.showMessageDialog(null, e);
+        			}
+        			
+        		}
+        		
+        	}
+        });
         menuRelatorioConsumo = new javax.swing.JMenuItem();
         menuOpcoes = new javax.swing.JMenu();
         menuOpcoesSair = new javax.swing.JMenuItem();
