@@ -52,7 +52,7 @@ public class TelaLogin extends javax.swing.JFrame {
 					this.dispose();
 				}
 			}else {
-				 JOptionPane.showMessageDialog(null, "OH-Ow CÃ³digo ou senha incorretos... Tente novamente");
+				 JOptionPane.showMessageDialog(null, "OH-Ow Código ou senha incorretos... Tente novamente");
 			}
 		} catch (Exception e) {
 			 JOptionPane.showMessageDialog(null, e.getMessage());
@@ -65,7 +65,7 @@ public class TelaLogin extends javax.swing.JFrame {
 			EstruturaBD estrutura = new EstruturaBD();
 			estrutura.criarBanco();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Nï¿½o foi possivel resetar a base de dados");
+			JOptionPane.showMessageDialog(null, "Não foi possível resetar a base de dados");
 		} 
 		
 		
@@ -86,7 +86,7 @@ public class TelaLogin extends javax.swing.JFrame {
 		if (connection != null) {
 			lblStatus.setText("Conectado");
 		} else {
-			lblStatus.setText("NÃ£o conectado");
+			lblStatus.setText("Não conectado");
 		}
 	}
 
@@ -180,7 +180,7 @@ public class TelaLogin extends javax.swing.JFrame {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void actionResetSistema() {
-		int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja resetar o sistema? Todos os dados serï¿½o apagados", "Alerta", JOptionPane.YES_NO_OPTION);
+		int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja resetar o sistema? Todos os dados serãoo apagados", "Alerta", JOptionPane.YES_NO_OPTION);
 		
 		if(confirm == JOptionPane.YES_OPTION) {
 			
