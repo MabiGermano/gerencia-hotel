@@ -141,9 +141,6 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         txtCodFunc = new javax.swing.JTextField();
         txtPassFunc = new javax.swing.JTextField();
         btnAddFunc = new javax.swing.JButton();
-        btnEditFunc = new javax.swing.JButton();
-        btnSearchFunc = new javax.swing.JButton();
-        btnDelFunc = new javax.swing.JButton();
         txtNumFunc = new javax.swing.JTextField();
         txtCepFunc = new javax.swing.JTextField();
         txtPaisFunc = new javax.swing.JTextField();
@@ -244,12 +241,6 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnAddFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(46, 46, 46)
-                            .addComponent(btnEditFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(32, 32, 32)
-                            .addComponent(btnSearchFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(35, 35, 35)
-                            .addComponent(btnDelFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
                             .addComponent(txtBairroFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(70, 70, 70)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -291,9 +282,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                                         .addGap(46, 46, 46))
                                     .addComponent(txtTelFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addComponent(btnAddFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(txtTelFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(0, 46, Short.MAX_VALUE))
-        );
+        ));
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -357,7 +346,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                             .addComponent(txtPassFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
                         .addComponent(btnAddFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49))))
+                        .addGap(49, 49, 49))
         );
 
         pack();

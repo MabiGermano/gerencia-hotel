@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 import com.br.ifpe.hosp3.controller.QuartoController;
 import com.br.ifpe.hosp3.model.Quarto;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
+//import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
  *

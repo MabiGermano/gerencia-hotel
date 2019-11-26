@@ -36,7 +36,7 @@ import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.model.Registro;
 import com.br.ifpe.hosp3.util.ButtonEditor;
 import com.br.ifpe.hosp3.util.ButtonRenderer;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
+//import com.jgoodies.forms.factories.DefaultComponentFactory;
 /**
  * Classe de interface gráfica para criação de hospedagem
  **/
