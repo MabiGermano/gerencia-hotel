@@ -18,6 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
 
 /**
  *
@@ -62,266 +65,171 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
     	
-    	lblBairroHospede = new javax.swing.JLabel();
-    	txtBairroHospede = new javax.swing.JTextField();
-    	
-    	lblCompHospede = new javax.swing.JLabel();
-    	txtCompHospede = new javax.swing.JTextField();
-    	
-    	lblRuaHospede = new javax.swing.JLabel();
-    	txtRuaHospede = new javax.swing.JTextField();
-    	
-    	lblNumHospede = new javax.swing.JLabel();
-    	txtNumHospede = new javax.swing.JTextField();
-    	
 
     	lblEstadoHospede = new javax.swing.JLabel();
     	txtEstadoHospede = new javax.swing.JTextField();
-    	
-    	lblCidadeHospede = new javax.swing.JLabel();
-    	txtCidadeHospede = new javax.swing.JTextField();
-    	
-    	lblPaisHospede = new javax.swing.JLabel();
-    	txtPaisHospede = new javax.swing.JTextField();
-    	
-    	lblCepHospede = new javax.swing.JLabel();
-    	txtCepHospede = new javax.swing.JTextField();
-        
-    	lblBuscaCpfHospede = new javax.swing.JLabel();
-    	txtBuscaCpfHospede = new javax.swing.JTextField();
-    	
-        lblTelHospede = new javax.swing.JLabel();
-        txtTelHospede = new javax.swing.JTextField();
-        
-        lblNomeHospede = new javax.swing.JLabel();
-        txtNomeHospede = new javax.swing.JTextField();
-        
-        lblEmailHospede = new javax.swing.JLabel();
-        txtEmailHospede = new javax.swing.JTextField();
-        
-        lblPassHospede = new javax.swing.JLabel();
-        txtPassHospede = new javax.swing.JPasswordField(10);
-        
-        btnAddHospede = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Hóspede");
-
-        //btnAddHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource("./../resources/img/"))); // NOI18N /*iconfinder*/
-        btnAddHospede.setText("Adicionar");
         
         Color cor = new Color(46,139, 87);
-        btnAddHospede.setBackground(cor);
-        btnAddHospede.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAddHospede.setPreferredSize(new java.awt.Dimension(80, 50));
-
-       
-
-        lblBuscaCpfHospede.setText("CPF");
-
-        lblRuaHospede.setText("Rua");
-
-        lblNumHospede.setText("Número");
-
-        lblEmailHospede.setText("E-mail");
-
-        lblCepHospede.setText("CEP");
-
-        lblTelHospede.setText("Telefone");
-
-        lblBairroHospede.setText("Bairro");
-
-        lblPaisHospede.setText("País");
-
-        lblPassHospede.setText("Palavra passe");
-
-        lblCidadeHospede.setText("Cidade");
-
-        txtNomeHospede.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeHospedeActionPerformed(evt);
-            }
-        });
-
-        lblCompHospede.setText("Complemento");
-
-        txtRuaHospede.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRuaHospedeActionPerformed(evt);
-            }
-           
-        });
-
-        txtPaisHospede.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPaisHospedeActionPerformed(evt);
-            }
-        });
+        getContentPane().setLayout(null);
         
-       //Adicionando evento para botão de salvar ouvir
-        btnAddHospede.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	btnAddHospedeAction(evt);
-            }
-        });
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(0, 0, 552, 485);
+        getContentPane().add(scrollPane);
+        
+        panel = new JPanel();
+        scrollPane.setViewportView(panel);
+        panel.setLayout(null);
+        
+        lblNomeHospede = new javax.swing.JLabel();
+        lblNomeHospede.setBounds(46, 58, 34, 14);
+        panel.add(lblNomeHospede);
         
         lblNomeHospede.setText("Nome");
+        txtNomeHospede = new javax.swing.JTextField();
+        txtNomeHospede.setBounds(41, 73, 154, 23);
+        panel.add(txtNomeHospede);
+        
+                txtNomeHospede.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        txtNomeHospedeActionPerformed(evt);
+                    }
+                });
         
         JLabel label = new JLabel();
+        label.setBounds(320, 190, 19, 14);
         label.setText("CPF");
+        getContentPane().add(label);
+        txtRuaHospede = new javax.swing.JTextField();
+        txtRuaHospede.setBounds(320, 210, 220, 20);
         
-        textField = new JTextField();
+                txtRuaHospede.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        txtRuaHospedeActionPerformed(evt);
+                    }
+                   
+                });
+                getContentPane().add(txtRuaHospede);
         
-        JButton btnPesquisar = new JButton("Pesquisar");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(25)
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(layout.createSequentialGroup()
-        							.addComponent(txtBuscaCpfHospede, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(btnPesquisar))
-        						.addComponent(lblBuscaCpfHospede)
-        						.addGroup(layout.createSequentialGroup()
-        							.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
-        								.addComponent(lblRuaHospede, Alignment.LEADING)
-        								.addGroup(layout.createSequentialGroup()
-        									.addComponent(txtBairroHospede, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
-        									.addGap(70)
-        									.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        										.addComponent(txtCepHospede)
-        										.addComponent(lblCepHospede)
-        										.addComponent(lblCompHospede)
-        										.addComponent(txtCompHospede, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)))
-        								.addGroup(layout.createSequentialGroup()
-        									.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        										.addComponent(lblPaisHospede)
-        										.addGroup(layout.createSequentialGroup()
-        											.addComponent(txtPaisHospede, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-        											.addGap(18)
-        											.addComponent(txtCidadeHospede, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
-        										.addGroup(layout.createSequentialGroup()
-        											.addGap(94)
-        											.addComponent(lblCidadeHospede)))
-        									.addGap(91)
-        									.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        										.addComponent(txtNumHospede, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
-        										.addComponent(lblNumHospede))
-        									.addGap(46))
-        								.addGroup(Alignment.LEADING, layout.createSequentialGroup()
-        									.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        										.addComponent(lblNomeHospede)
-        										.addComponent(txtNomeHospede, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE))
-        									.addGap(26)
-        									.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        										.addGroup(layout.createSequentialGroup()
-        											.addComponent(label, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-        											.addGap(201))
-        										.addComponent(txtRuaHospede, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))
-        									.addGap(18)
-        									.addGroup(layout.createSequentialGroup()
-        										.addGap(10)
-        										.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        											.addComponent(txtEmailHospede, Alignment.TRAILING, 198, 198, 198)
-        											.addComponent(lblEmailHospede)))))
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(lblBairroHospede)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
-        								.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        									.addComponent(lblPassHospede)
-        									.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        										.addComponent(btnAddHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        										.addComponent(txtPassHospede, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)))
-        								.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        									.addComponent(lblTelHospede)
-        									.addComponent(txtTelHospede, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE))))))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(57)
-        					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE))
-        				.addGap(564)
-        				.addGap(564))
-        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-        	layout.createParallelGroup(Alignment.TRAILING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addGap(30)
-        			.addComponent(lblBuscaCpfHospede)
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(txtBuscaCpfHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(btnPesquisar))
-        			.addGap(81)
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        					.addGroup(layout.createSequentialGroup()
-        						.addComponent(lblNomeHospede)
-        						.addPreferredGap(ComponentPlacement.RELATED)
-        						.addComponent(txtNomeHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addGroup(layout.createSequentialGroup()
-        						.addComponent(lblEmailHospede)
-        						.addPreferredGap(ComponentPlacement.RELATED)
-        						.addComponent(txtEmailHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-        				.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        					.addGroup(layout.createSequentialGroup()
-        						.addGap(20)
-        						.addComponent(txtRuaHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addGroup(layout.createSequentialGroup()
-        						.addComponent(label)
-        						.addGap(26))))
-        			.addGap(6)
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(19)
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(layout.createSequentialGroup()
-        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        								.addComponent(lblRuaHospede)
-        								.addComponent(lblNumHospede)
-        								.addComponent(lblCepHospede))
-        							.addGap(4)
-        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        								.addComponent(txtNumHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        								.addComponent(txtCepHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        								.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        									.addComponent(lblCompHospede)
-        									.addComponent(lblPaisHospede, Alignment.TRAILING))
-        								.addComponent(lblCidadeHospede, Alignment.TRAILING))
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        								.addGroup(layout.createSequentialGroup()
-        									.addComponent(txtCompHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        									.addPreferredGap(ComponentPlacement.RELATED))
-        								.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        									.addComponent(txtPaisHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        									.addComponent(txtCidadeHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        									.addComponent(txtBairroHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-        						.addComponent(lblBairroHospede))
-        					.addGap(41)
-        					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(layout.createSequentialGroup()
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(lblTelHospede)
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(txtTelHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        					.addPreferredGap(ComponentPlacement.UNRELATED)
-        					.addComponent(lblPassHospede)
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(txtPassHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        					.addGap(64)
-        					.addComponent(btnAddHospede, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-        			.addGap(347))
-        );
-        getContentPane().setLayout(layout);
+        btnAddHospede = new javax.swing.JButton();
+        btnAddHospede.setBounds(25, 411, 80, 50);
+        
+                //btnAddHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource("./../resources/img/"))); // NOI18N /*iconfinder*/
+                btnAddHospede.setText("Adicionar");
+                btnAddHospede.setBackground(cor);
+                btnAddHospede.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnAddHospede.setPreferredSize(new java.awt.Dimension(80, 50));
+                
+       //Adicionando evento para botão de salvar ouvir
+                btnAddHospede.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    	btnAddHospedeAction(evt);
+                    }
+                });
+                getContentPane().add(btnAddHospede);
+        
+        lblEmailHospede = new JLabel("E-mail");
+        lblEmailHospede.setBounds(25, 241, 46, 14);
+        getContentPane().add(lblEmailHospede);
+        
+        txtEmailHospede = new JTextField();
+        txtEmailHospede.setBounds(25, 259, 247, 20);
+        getContentPane().add(txtEmailHospede);
+        txtEmailHospede.setColumns(10);
+        
+        lblRua = new JLabel("Rua");
+        lblRua.setBounds(320, 241, 46, 14);
+        getContentPane().add(lblRua);
+        
+        textField_1 = new JTextField();
+        textField_1.setBounds(320, 259, 220, 20);
+        getContentPane().add(textField_1);
+        textField_1.setColumns(10);
+        
+        lblNumHospede = new JLabel("Número");
+        lblNumHospede.setBounds(25, 293, 46, 14);
+        getContentPane().add(lblNumHospede);
+        
+        lblCepHospede = new JLabel("CEP");
+        lblCepHospede.setBounds(103, 293, 46, 14);
+        getContentPane().add(lblCepHospede);
+        
+        txtCepHospede = new JTextField();
+        txtCepHospede.setBounds(103, 310, 107, 20);
+        getContentPane().add(txtCepHospede);
+        txtCepHospede.setColumns(10);
+        
+        lblBairroHospede = new JLabel("Bairro");
+        lblBairroHospede.setBounds(237, 290, 46, 14);
+        getContentPane().add(lblBairroHospede);
+        
+        txtBairroHospede = new JTextField();
+        txtBairroHospede.setBounds(237, 310, 86, 20);
+        getContentPane().add(txtBairroHospede);
+        txtBairroHospede.setColumns(10);
+        
+        lblPaisHospede = new JLabel("País");
+        lblPaisHospede.setBounds(347, 290, 46, 14);
+        getContentPane().add(lblPaisHospede);
+        
+        txtPaisHospede = new JTextField();
+        txtPaisHospede.setBounds(346, 310, 86, 20);
+        getContentPane().add(txtPaisHospede);
+        txtPaisHospede.setColumns(10);
+        
+        lblCidadeHospede = new JLabel("Cidade");
+        lblCidadeHospede.setBounds(455, 293, 46, 14);
+        getContentPane().add(lblCidadeHospede);
+        
+        txtCidadeHospede = new JTextField();
+        txtCidadeHospede.setBounds(454, 310, 86, 20);
+        getContentPane().add(txtCidadeHospede);
+        txtCidadeHospede.setColumns(10);
+        
+        lblEstadoHospede = new JLabel("Estado");
+        lblEstadoHospede.setBounds(25, 349, 46, 14);
+        getContentPane().add(lblEstadoHospede);
+        
+        txtEstadoHospede = new JTextField();
+        txtEstadoHospede.setBounds(25, 366, 86, 20);
+        getContentPane().add(txtEstadoHospede);
+        txtEstadoHospede.setColumns(10);
+        
+        lblPassHospede = new JLabel("Palavra passe");
+        lblPassHospede.setBounds(454, 349, 79, 14);
+        getContentPane().add(lblPassHospede);
+        
+        txtPassHospede = new JTextField();
+        txtPassHospede.setBounds(454, 366, 86, 20);
+        getContentPane().add(txtPassHospede);
+        txtPassHospede.setColumns(10);
+        
+        lblCompHospede = new JLabel("Complemento");
+        lblCompHospede.setBounds(121, 349, 86, 14);
+        getContentPane().add(lblCompHospede);
+        
+        txtCompHospede = new JTextField();
+        txtCompHospede.setBounds(121, 366, 155, 20);
+        getContentPane().add(txtCompHospede);
+        txtCompHospede.setColumns(10);
+        
+        lblTelHospede = new JLabel("Telefone");
+        lblTelHospede.setBounds(296, 349, 134, 14);
+        getContentPane().add(lblTelHospede);
+        
+        txtTelHospede = new JTextField();
+        txtTelHospede.setBounds(296, 366, 134, 20);
+        getContentPane().add(txtTelHospede);
+        txtTelHospede.setColumns(10);
+        
+        txtNumHospede = new JTextField();
+        txtNumHospede.setBounds(25, 310, 46, 20);
+        getContentPane().add(txtNumHospede);
+        txtNumHospede.setColumns(10);
 
         pack();
     }
@@ -333,10 +241,6 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     private void txtRuaHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaHospedeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRuaHospedeActionPerformed
-
-    private void txtPaisHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPaisHospedeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPaisHospedeActionPerformed
 
     private void btnAddHospedeAction(java.awt.event.ActionEvent evt) {
     	Endereco endereco = new Endereco();
@@ -362,31 +266,30 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
     
     private javax.swing.JButton btnAddHospede;
-    private javax.swing.JLabel lblBairroHospede;
-    private javax.swing.JLabel lblEstadoHospede;
-    private javax.swing.JLabel lblCepHospede;
-    private javax.swing.JLabel lblCidadeHospede;
-    private javax.swing.JLabel lblCompHospede;
-    private javax.swing.JLabel lblBuscaCpfHospede;
-    private javax.swing.JLabel lblEmailHospede;
     private javax.swing.JLabel lblNomeHospede;
-    private javax.swing.JLabel lblNumHospede;
-    private javax.swing.JLabel lblPaisHospede;
-    private javax.swing.JLabel lblPassHospede;
-    private javax.swing.JLabel lblRuaHospede;
-    private javax.swing.JLabel lblTelHospede;
-    private javax.swing.JTextField txtBairroHospede;
-    private javax.swing.JTextField txtEstadoHospede;
-    private javax.swing.JTextField txtCepHospede;
-    private javax.swing.JTextField txtCidadeHospede;
-    private javax.swing.JTextField txtCompHospede;
-    private javax.swing.JTextField txtBuscaCpfHospede;
-    private javax.swing.JTextField txtEmailHospede;
     private javax.swing.JTextField txtNomeHospede;
-    private javax.swing.JTextField txtNumHospede;
-    private javax.swing.JTextField txtPaisHospede;
-    private javax.swing.JTextField txtPassHospede;
     private javax.swing.JTextField txtRuaHospede;
-    private javax.swing.JTextField txtTelHospede;
-    private JTextField textField;
+    private JLabel lblEmailHospede;
+    private JTextField txtEmailHospede;
+    private JLabel lblRua;
+    private JTextField textField_1;
+    private JLabel lblNumHospede;
+    private JTextField txtNumHospede;
+    private JLabel lblCepHospede;
+    private JTextField txtCepHospede;
+    private JLabel lblBairroHospede;
+    private JTextField txtBairroHospede;
+    private JLabel lblPaisHospede;
+    private JTextField txtPaisHospede;
+    private JLabel lblCidadeHospede;
+    private JTextField txtCidadeHospede;
+    private JLabel lblEstadoHospede;
+    private JTextField txtEstadoHospede;
+    private JLabel lblPassHospede;
+    private JTextField txtPassHospede;
+    private JLabel lblCompHospede;
+    private JTextField txtCompHospede;
+    private JLabel lblTelHospede;
+    private JTextField txtTelHospede;
+    private JPanel panel;
 }
