@@ -101,7 +101,7 @@ public class TelaLogin extends javax.swing.JFrame {
 	private void initComponents() {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setTitle("Hotel Renascença ");
+		setTitle("Hotel Renascen\u00E7a ");
 		setResizable(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{540, 0};

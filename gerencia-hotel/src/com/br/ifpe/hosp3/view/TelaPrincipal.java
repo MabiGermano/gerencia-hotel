@@ -171,21 +171,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
 		lblUsuario.setText("Usuário");
-		jLabel2 = new javax.swing.JLabel();
-		jLabel2.setBounds(143, 23, 0, 0);
-		panel.add(jLabel2);
 		lblData = new javax.swing.JLabel();
 		lblData.setBounds(66, 58, 91, 23);
 		panel.add(lblData);
 
 		lblData.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 		lblData.setText("Data");
-		jLabel3 = new javax.swing.JLabel();
-		jLabel3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		jLabel3.setBounds(31, 117, 79, 14);
-		panel.add(jLabel3);
+		lblListar = new javax.swing.JLabel();
+		lblListar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblListar.setBounds(31, 117, 79, 14);
+		panel.add(lblListar);
 
-		jLabel3.setText("Listar");
+		lblListar.setText("Listar");
 		comboCadastro = new javax.swing.JComboBox<>();
 		comboCadastro.setBounds(31, 142, 136, 23);
 		panel.add(comboCadastro);
@@ -198,11 +195,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		panel.add(btnCadastro);
 
 		btnCadastro.setText("Ok");
-		jLabel1 = new javax.swing.JLabel();
-		jLabel1.setBounds(26, 230, 155, 155);
-		panel.add(jLabel1);
+		lblLogoTelaPrinc = new javax.swing.JLabel();
+		lblLogoTelaPrinc.setText("Logo");
+		lblLogoTelaPrinc.setBounds(26, 230, 155, 155);
+		panel.add(lblLogoTelaPrinc);
 
-		jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/logo.png")));
+		lblLogoTelaPrinc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/logo.png")));
 		btnCadastro.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				btnCadastroActionPerformed(evt);
@@ -231,9 +229,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		desktop.add(btnCheckin);
 
 		Icon iconCheckout = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-out_p.png"));
-		JButton btnNewButton = new JButton("Check-out", iconCheckout);
-		btnNewButton.setBounds(405, 32, 127, 40);
-		desktop.add(btnNewButton);
+		JButton btnCheckout = new JButton("Check-out", iconCheckout);
+		btnCheckout.setBounds(405, 32, 127, 40);
+		desktop.add(btnCheckout);
 
 		getContentPane().setLayout(layout);
 		this.setPreferredSize(new Dimension(850, 440));
@@ -399,9 +397,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private javax.swing.JButton btnCadastro;
 	private javax.swing.JComboBox<String> comboCadastro;
 	private javax.swing.JDesktopPane desktop;
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JLabel jLabel2;
-	private javax.swing.JLabel jLabel3;
+	private javax.swing.JLabel lblLogoTelaPrinc;
+	private javax.swing.JLabel lblListar;
 	private javax.swing.JLabel lblData;
 	public static javax.swing.JLabel lblUsuario;
 	private javax.swing.JMenu menuCadastro;
