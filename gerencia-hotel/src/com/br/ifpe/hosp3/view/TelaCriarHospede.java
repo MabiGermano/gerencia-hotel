@@ -21,6 +21,10 @@ import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -86,7 +90,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         panel.setLayout(null);
         
         lblNomeHospede = new javax.swing.JLabel();
-        lblNomeHospede.setBounds(46, 58, 34, 14);
+        lblNomeHospede.setBounds(42, 57, 34, 14);
         panel.add(lblNomeHospede);
         
         lblNomeHospede.setText("Nome");
@@ -94,18 +98,21 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         txtNomeHospede.setBounds(41, 73, 154, 23);
         panel.add(txtNomeHospede);
         
-                txtNomeHospede.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        txtNomeHospedeActionPerformed(evt);
-                    }
-                });
+        lblEmailHospede = new JLabel("E-mail");
+        lblEmailHospede.setBounds(41, 111, 46, 14);
+        panel.add(lblEmailHospede);
         
-        JLabel label = new JLabel();
-        label.setBounds(320, 190, 19, 14);
-        label.setText("CPF");
-        getContentPane().add(label);
+        txtEmailHospede = new JTextField();
+        txtEmailHospede.setBounds(41, 129, 247, 23);
+        panel.add(txtEmailHospede);
+        txtEmailHospede.setColumns(10);
+        
+        lblRua = new JLabel("Rua");
+        lblRua.setBounds(183, 163, 46, 14);
+        panel.add(lblRua);
         txtRuaHospede = new javax.swing.JTextField();
-        txtRuaHospede.setBounds(320, 210, 220, 20);
+        txtRuaHospede.setBounds(183, 180, 220, 23);
+        panel.add(txtRuaHospede);
         
                 txtRuaHospede.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,16 +120,121 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
                     }
                    
                 });
-                getContentPane().add(txtRuaHospede);
         
-        btnAddHospede = new javax.swing.JButton();
-        btnAddHospede.setBounds(25, 411, 80, 50);
+        JLabel label = new JLabel();
+        label.setBounds(244, 57, 19, 14);
+        panel.add(label);
+        label.setText("CPF");
         
-                //btnAddHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource("./../resources/img/"))); // NOI18N /*iconfinder*/
-                btnAddHospede.setText("Adicionar");
-                btnAddHospede.setBackground(cor);
-                btnAddHospede.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnAddHospede.setPreferredSize(new java.awt.Dimension(80, 50));
+        textField_1 = new JTextField();
+        textField_1.setBounds(245, 73, 220, 23);
+        panel.add(textField_1);
+        textField_1.setColumns(10);
+        
+        lblCepHospede = new JLabel("CEP");
+        lblCepHospede.setBounds(41, 223, 46, 14);
+        panel.add(lblCepHospede);
+        
+        txtCepHospede = new JTextField();
+        txtCepHospede.setBounds(41, 241, 107, 23);
+        panel.add(txtCepHospede);
+        txtCepHospede.setColumns(10);
+        
+        lblBairroHospede = new JLabel("Bairro");
+        lblBairroHospede.setBounds(344, 275, 63, 14);
+        panel.add(lblBairroHospede);
+        
+        txtBairroHospede = new JTextField();
+        txtBairroHospede.setBounds(344, 294, 121, 23);
+        panel.add(txtBairroHospede);
+        txtBairroHospede.setColumns(10);
+        
+        lblPaisHospede = new JLabel("Pa\u00EDs");
+        lblPaisHospede.setBounds(182, 223, 46, 14);
+        panel.add(lblPaisHospede);
+        
+        txtPaisHospede = new JTextField();
+        txtPaisHospede.setBounds(182, 241, 106, 23);
+        panel.add(txtPaisHospede);
+        txtPaisHospede.setColumns(10);
+        
+        lblCidadeHospede = new JLabel("Cidade");
+        lblCidadeHospede.setBounds(323, 223, 46, 14);
+        panel.add(lblCidadeHospede);
+        
+        txtCidadeHospede = new JTextField();
+        txtCidadeHospede.setBounds(323, 241, 142, 23);
+        panel.add(txtCidadeHospede);
+        txtCidadeHospede.setColumns(10);
+        
+        lblEstadoHospede_1 = new JLabel("Estado");
+        lblEstadoHospede_1.setBounds(41, 275, 46, 14);
+        panel.add(lblEstadoHospede_1);
+        
+        txtEstadoHospede_1 = new JTextField();
+        txtEstadoHospede_1.setBounds(41, 294, 86, 23);
+        panel.add(txtEstadoHospede_1);
+        txtEstadoHospede_1.setColumns(10);
+        
+        lblPassHospede = new JLabel("Palavra passe");
+        lblPassHospede.setBounds(323, 116, 107, 14);
+        panel.add(lblPassHospede);
+        
+        txtPassHospede = new JTextField();
+        txtPassHospede.setBounds(323, 132, 142, 20);
+        panel.add(txtPassHospede);
+        txtPassHospede.setColumns(10);
+        
+        lblCompHospede = new JLabel("Complemento");
+        lblCompHospede.setBounds(156, 275, 86, 14);
+        panel.add(lblCompHospede);
+        
+        txtCompHospede = new JTextField();
+        txtCompHospede.setBounds(156, 294, 155, 23);
+        panel.add(txtCompHospede);
+        txtCompHospede.setColumns(10);
+        
+        lblTelHospede = new JLabel("Telefone");
+        lblTelHospede.setBounds(42, 163, 134, 14);
+        panel.add(lblTelHospede);
+        
+        txtTelHospede = new JTextField();
+        txtTelHospede.setBounds(42, 181, 120, 23);
+        panel.add(txtTelHospede);
+        txtTelHospede.setColumns(10);
+        
+        lblNumHospede = new JLabel("N\u00FAmero");
+        lblNumHospede.setBounds(420, 163, 46, 14);
+        panel.add(lblNumHospede);
+        
+        txtNumHospede = new JTextField();
+        txtNumHospede.setBounds(420, 179, 46, 23);
+        panel.add(txtNumHospede);
+        txtNumHospede.setColumns(10);
+                
+                JLabel lblCadastrarHspede = DefaultComponentFactory.getInstance().createTitle("Cadastrar Hóspede");
+                lblCadastrarHspede.setFont(new Font("Tahoma", Font.PLAIN, 14));
+                lblCadastrarHspede.setBounds(194, 23, 117, 14);
+                panel.add(lblCadastrarHspede);
+                
+                btnAddHospede = new javax.swing.JButton();
+                btnAddHospede.setBounds(370, 350, 95, 35);
+                panel.add(btnAddHospede);
+                
+                        //btnAddHospede.setIcon(new javax.swing.ImageIcon(getClass().getResource("./../resources/img/"))); // NOI18N /*iconfinder*/
+                        btnAddHospede.setText("Adicionar");
+                        btnAddHospede.setBackground(cor);
+                        btnAddHospede.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                        btnAddHospede.setPreferredSize(new java.awt.Dimension(80, 50));
+                        
+                        JButton btnCancelar = new JButton("Cancelar");
+                        btnCancelar.addActionListener(new ActionListener() {
+                        	public void actionPerformed(ActionEvent arg0) {
+                        	}
+                        });
+                        btnCancelar.setBackground(new Color(0, 128, 0));
+                        btnCancelar.setBounds(265, 350, 95, 35);
+                        panel.add(btnCancelar);
                 
        //Adicionando evento para botão de salvar ouvir
                 btnAddHospede.addActionListener(new java.awt.event.ActionListener() {
@@ -130,106 +242,12 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
                     	btnAddHospedeAction(evt);
                     }
                 });
-                getContentPane().add(btnAddHospede);
         
-        lblEmailHospede = new JLabel("E-mail");
-        lblEmailHospede.setBounds(25, 241, 46, 14);
-        getContentPane().add(lblEmailHospede);
-        
-        txtEmailHospede = new JTextField();
-        txtEmailHospede.setBounds(25, 259, 247, 20);
-        getContentPane().add(txtEmailHospede);
-        txtEmailHospede.setColumns(10);
-        
-        lblRua = new JLabel("Rua");
-        lblRua.setBounds(320, 241, 46, 14);
-        getContentPane().add(lblRua);
-        
-        textField_1 = new JTextField();
-        textField_1.setBounds(320, 259, 220, 20);
-        getContentPane().add(textField_1);
-        textField_1.setColumns(10);
-        
-        lblNumHospede = new JLabel("Número");
-        lblNumHospede.setBounds(25, 293, 46, 14);
-        getContentPane().add(lblNumHospede);
-        
-        lblCepHospede = new JLabel("CEP");
-        lblCepHospede.setBounds(103, 293, 46, 14);
-        getContentPane().add(lblCepHospede);
-        
-        txtCepHospede = new JTextField();
-        txtCepHospede.setBounds(103, 310, 107, 20);
-        getContentPane().add(txtCepHospede);
-        txtCepHospede.setColumns(10);
-        
-        lblBairroHospede = new JLabel("Bairro");
-        lblBairroHospede.setBounds(237, 290, 46, 14);
-        getContentPane().add(lblBairroHospede);
-        
-        txtBairroHospede = new JTextField();
-        txtBairroHospede.setBounds(237, 310, 86, 20);
-        getContentPane().add(txtBairroHospede);
-        txtBairroHospede.setColumns(10);
-        
-        lblPaisHospede = new JLabel("País");
-        lblPaisHospede.setBounds(347, 290, 46, 14);
-        getContentPane().add(lblPaisHospede);
-        
-        txtPaisHospede = new JTextField();
-        txtPaisHospede.setBounds(346, 310, 86, 20);
-        getContentPane().add(txtPaisHospede);
-        txtPaisHospede.setColumns(10);
-        
-        lblCidadeHospede = new JLabel("Cidade");
-        lblCidadeHospede.setBounds(455, 293, 46, 14);
-        getContentPane().add(lblCidadeHospede);
-        
-        txtCidadeHospede = new JTextField();
-        txtCidadeHospede.setBounds(454, 310, 86, 20);
-        getContentPane().add(txtCidadeHospede);
-        txtCidadeHospede.setColumns(10);
-        
-        lblEstadoHospede = new JLabel("Estado");
-        lblEstadoHospede.setBounds(25, 349, 46, 14);
-        getContentPane().add(lblEstadoHospede);
-        
-        txtEstadoHospede = new JTextField();
-        txtEstadoHospede.setBounds(25, 366, 86, 20);
-        getContentPane().add(txtEstadoHospede);
-        txtEstadoHospede.setColumns(10);
-        
-        lblPassHospede = new JLabel("Palavra passe");
-        lblPassHospede.setBounds(454, 349, 79, 14);
-        getContentPane().add(lblPassHospede);
-        
-        txtPassHospede = new JTextField();
-        txtPassHospede.setBounds(454, 366, 86, 20);
-        getContentPane().add(txtPassHospede);
-        txtPassHospede.setColumns(10);
-        
-        lblCompHospede = new JLabel("Complemento");
-        lblCompHospede.setBounds(121, 349, 86, 14);
-        getContentPane().add(lblCompHospede);
-        
-        txtCompHospede = new JTextField();
-        txtCompHospede.setBounds(121, 366, 155, 20);
-        getContentPane().add(txtCompHospede);
-        txtCompHospede.setColumns(10);
-        
-        lblTelHospede = new JLabel("Telefone");
-        lblTelHospede.setBounds(296, 349, 134, 14);
-        getContentPane().add(lblTelHospede);
-        
-        txtTelHospede = new JTextField();
-        txtTelHospede.setBounds(296, 366, 134, 20);
-        getContentPane().add(txtTelHospede);
-        txtTelHospede.setColumns(10);
-        
-        txtNumHospede = new JTextField();
-        txtNumHospede.setBounds(25, 310, 46, 20);
-        getContentPane().add(txtNumHospede);
-        txtNumHospede.setColumns(10);
+                txtNomeHospede.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        txtNomeHospedeActionPerformed(evt);
+                    }
+                });
 
         pack();
     }
@@ -247,7 +265,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     	endereco.setBairro(txtBairroHospede.getText());
     	endereco.setCep(txtCepHospede.getText());
     	endereco.setCidade(txtCidadeHospede.getText());
-    	endereco.setEstado(txtEstadoHospede.getText());
+    	endereco.setEstado(txtEstadoHospede_1.getText());
     	endereco.setComplemento(txtCompHospede.getText());
     	endereco.setNumero(txtNumHospede.getText());
     	endereco.setPais(txtPaisHospede.getText());
@@ -284,7 +302,9 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     private JLabel lblCidadeHospede;
     private JTextField txtCidadeHospede;
     private JLabel lblEstadoHospede;
+    private JLabel lblEstadoHospede_1;
     private JTextField txtEstadoHospede;
+    private JTextField txtEstadoHospede_1;
     private JLabel lblPassHospede;
     private JTextField txtPassHospede;
     private JLabel lblCompHospede;
