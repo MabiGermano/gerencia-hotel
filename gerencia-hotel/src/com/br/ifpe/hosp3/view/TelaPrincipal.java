@@ -5,8 +5,10 @@
  */
 package com.br.ifpe.hosp3.view;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -25,16 +27,15 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 
 import com.br.ifpe.hosp3.model.Funcionario;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
+import com.br.ifpe.hosp3.util.TratadorEventos;
 
 /**
  *
@@ -284,10 +285,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private void menuCadastroQuartoActionPerformed() {
 		TelaCriarQuarto telaCriaQuarto = null;
 		telaCriaQuarto = new TelaCriarQuarto();
-		telaCriaQuarto.setVisible(true);
 		btnCheckin.setVisible(false);
 		btnCheckout.setVisible(false);
+		telaCriaQuarto.show();
+		
+		
+		tratadorEventos = new TratadorEventos(this);
+		telaCriaQuarto.addInternalFrameListener(tratadorEventos);
 		desktop.add(telaCriaQuarto);
+		
+		
+	}
+	
+	public void executeBtnVisible() {
+		btnCheckin.setVisible(true);
+		btnCheckout.setVisible(true);
 	}
 	/**
 	 * 
@@ -433,5 +445,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private BufferedImage img;
 	private JButton btnCheckin;
 	private JButton btnCheckout;
+	
+	
+	public javax.swing.JDesktopPane getDesktop() {
+		return desktop;
+	}
+
+	public void setDesktop(javax.swing.JDesktopPane desktop) {
+		this.desktop = desktop;
+	}
+
+	public JButton getBtnCheckin() {
+		return btnCheckin;
+	}
+
+	public void setBtnCheckin(JButton btnCheckin) {
+		this.btnCheckin = btnCheckin;
+	}
+
+	public JButton getBtnCheckout() {
+		return btnCheckout;
+	}
+
+	public void setBtnCheckout(JButton btnCheckout) {
+		this.btnCheckout = btnCheckout;
+	}
+
 	private JMenuItem mntmQuarto;
+	private TratadorEventos tratadorEventos;
 }
