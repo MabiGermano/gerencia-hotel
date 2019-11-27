@@ -33,6 +33,8 @@ import com.br.ifpe.hosp3.model.Funcionario;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -117,6 +119,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		menuCadastro.add(menuCadastroHospede);
 
 		Menu.add(menuCadastro);
+		
+		mntmQuarto = new JMenuItem("Quarto");
+		mntmQuarto.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				menuCadastroQuartoActionPerformed();
+			}
+		});
+		menuCadastro.add(mntmQuarto);
 
 		menuRelatorio.setText("Relatório");
 
@@ -231,9 +241,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		desktop.add(btnCheckin);
 
 		Icon iconCheckout = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-out_p.png"));
-		JButton btnNewButton = new JButton("Check-out", iconCheckout);
-		btnNewButton.setBounds(405, 32, 127, 40);
-		desktop.add(btnNewButton);
+		btnCheckout = new JButton("Check-out", iconCheckout);
+		btnCheckout.setBounds(405, 32, 127, 40);
+		desktop.add(btnCheckout);
 
 		getContentPane().setLayout(layout);
 		this.setPreferredSize(new Dimension(850, 440));
@@ -271,6 +281,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		desktop.add(funcionario);
 	}
 
+	private void menuCadastroQuartoActionPerformed() {
+		TelaCriarQuarto telaCriaQuarto = null;
+		telaCriaQuarto = new TelaCriarQuarto();
+		telaCriaQuarto.setVisible(true);
+		btnCheckin.setVisible(false);
+		btnCheckout.setVisible(false);
+		desktop.add(telaCriaQuarto);
+	}
 	/**
 	 * 
 	 * Método para formatar a data da tela principal
@@ -414,4 +432,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private javax.swing.JMenuItem menuRelatorioHospedagem;
 	private BufferedImage img;
 	private JButton btnCheckin;
+	private JButton btnCheckout;
+	private JMenuItem mntmQuarto;
 }
