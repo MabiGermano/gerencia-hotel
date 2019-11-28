@@ -10,11 +10,13 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -34,21 +36,33 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
+import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.model.Funcionario;
 import com.br.ifpe.hosp3.util.TratadorEventos;
+
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
  * @author Thaysa Gomes
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+	Connection connection = null;
+	
 	Funcionario funcionario;
 
 	/**
 	 * Cria nova tela Principal
 	 */
 	public TelaPrincipal() {
+		try {
+			connection = ConexaoMysql.getConexaoMySQL();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setResizable(false);
 		initComponents();
 	}
@@ -78,7 +92,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		menuCadastroFuncionario = new javax.swing.JMenuItem();
 		menuCadastroHospede = new javax.swing.JMenuItem();
 		menuRelatorio = new javax.swing.JMenu();
-		menuRelatorioHospedagem = new javax.swing.JMenuItem();
+		menuRelatorioHospede = new javax.swing.JMenuItem();
+		menuRelatorioHospede.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão do relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
+				if (confirma == JOptionPane.YES_OPTION) {
+					try {
+						JasperPrint imprime = JasperFillManager.fillReport("gerencia-hotel\\resources\\arquivos\\hospedes.jasper", null, connection);
+						JasperViewer.viewReport(imprime, false);
+					} catch (Exception e) {
+						JOptionPane.showMessageDialog(null, e);
+					} 
+				}
+				
+				
+			}
+		});
 		menuRelatorioConsumo = new javax.swing.JMenuItem();
 		menuOpcoes = new javax.swing.JMenu();
 		menuOpcoesSair = new javax.swing.JMenuItem();
@@ -131,10 +160,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		menuRelatorio.setText("Relatório");
 
-		menuRelatorioHospedagem.setAccelerator(
+		menuRelatorioHospede.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
-		menuRelatorioHospedagem.setText("Hospedagem");
-		menuRelatorio.add(menuRelatorioHospedagem);
+		menuRelatorioHospede.setText("Hóspede");
+		menuRelatorio.add(menuRelatorioHospede);
 
 		menuRelatorioConsumo.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
@@ -290,7 +319,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		telaCriaQuarto.show();
 		
 		
-		tratadorEventos = new TratadorEventos(this);
+		TratadorEventos tratadorEventos = new TratadorEventos(this);
 		telaCriaQuarto.addInternalFrameListener(tratadorEventos);
 		desktop.add(telaCriaQuarto);
 		
@@ -437,40 +466,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private javax.swing.JMenu menuCadastro;
 	public static javax.swing.JMenuItem menuCadastroFuncionario;
 	private javax.swing.JMenuItem menuCadastroHospede;
+	private JMenuItem mntmQuarto;
+	TratadorEventos tratadorEventos;
 	private javax.swing.JMenu menuOpcoes;
 	private javax.swing.JMenuItem menuOpcoesSair;
 	public static javax.swing.JMenu menuRelatorio;
 	private javax.swing.JMenuItem menuRelatorioConsumo;
-	private javax.swing.JMenuItem menuRelatorioHospedagem;
+	private javax.swing.JMenuItem menuRelatorioHospede;
 	private BufferedImage img;
 	private JButton btnCheckin;
 	private JButton btnCheckout;
-	
-	
-	public javax.swing.JDesktopPane getDesktop() {
-		return desktop;
-	}
-
-	public void setDesktop(javax.swing.JDesktopPane desktop) {
-		this.desktop = desktop;
-	}
-
-	public JButton getBtnCheckin() {
-		return btnCheckin;
-	}
-
-	public void setBtnCheckin(JButton btnCheckin) {
-		this.btnCheckin = btnCheckin;
-	}
-
-	public JButton getBtnCheckout() {
-		return btnCheckout;
-	}
-
-	public void setBtnCheckout(JButton btnCheckout) {
-		this.btnCheckout = btnCheckout;
-	}
-
-	private JMenuItem mntmQuarto;
-	private TratadorEventos tratadorEventos;
 }

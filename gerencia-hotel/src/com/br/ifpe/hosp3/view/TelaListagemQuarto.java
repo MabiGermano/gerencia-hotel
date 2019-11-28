@@ -87,8 +87,9 @@ public class TelaListagemQuarto extends JInternalFrame {
 							quarto.getQuantidadePessoas(), quarto.getValor(), "Ok" });
 					TelaCriarQuarto alterarQuarto = new TelaCriarQuarto(quarto);
 					alterarQuarto.setVisible(true);
-//					Component add;
-//					add = desktop.add(quarto);
+					Component add;
+				//	add = desktop.add(quarto);
+					
 				}
 
 				@Override
@@ -105,7 +106,6 @@ public class TelaListagemQuarto extends JInternalFrame {
 	}
 
 	private Set<Quarto> buscarQuartos() {
-
 		Set<Quarto> listaQuartos = new HashSet<>();
 		try {
 			listaQuartos = QuartoController.listarQuartos();
