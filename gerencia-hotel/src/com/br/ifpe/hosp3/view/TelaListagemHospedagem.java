@@ -1,24 +1,43 @@
 package com.br.ifpe.hosp3.view;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.table.DefaultTableModel;
+
+
+import com.br.ifpe.hosp3.controller.RegistroHospedagemController;
+import com.br.ifpe.hosp3.model.Hospedagem;
+
+import com.br.ifpe.hosp3.util.ButtonEditor;
+import com.br.ifpe.hosp3.util.ButtonRenderer;
 
 public class TelaListagemHospedagem extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private DefaultTableModel modelTableHospedagem;
 	private JTable tableListaHospedagem;
 	private JTextField txtBuscaCpf;
 	private JTextField txtBuscarNumQuarto;
+	private RegistroHospedagemController registroHospedagemController = new RegistroHospedagemController();
+	private Hospedagem hospedagem;
 
 	/**
 	 * Create the frame.
@@ -88,6 +107,48 @@ setBounds(100, 100, 644, 349);
 		tableListaHospedagem = new JTable(modelTableHospedagem);
 		scrollTableHospedagem.setViewportView(tableListaHospedagem);
 		
+		listarHospedagens();
+	}
+
+	private void listarHospedagens() {
+		Set<Hospedagem> listaHospedagens = this.buscarHospedagens();
+		tableListaHospedagem.getColumn("Ações").setCellRenderer(new ButtonRenderer());
+		tableListaHospedagem.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
+		
+		listaHospedagens.stream().forEach(hospedagem -> {
+			Object[] objeto = new Object[] { hospedagem.getHospede(), hospedagem.getQuarto(), "", "Editar"};
+			
+			tableListaHospedagem.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
+
+				@Override
+				public void editingCanceled(ChangeEvent arg0) {
+					System.out.println("stop " + hospedagem.getId());
+					modelTableHospedagem.getDataVector().removeAllElements();
+					modelTableHospedagem.addRow(new Object[] { hospedagem.getHospede(), hospedagem.getQuarto(), "", "Ok"});
+					TelaCriarHospedagem alterarHospedagem = new TelaCriarHospedagem();
+					alterarHospedagem.setVisible(true);
+					Component add;
+				}
+
+				@Override
+				public void editingStopped(ChangeEvent arg0) {
+					System.out.println("Cancel");
+		
+				}
+			});
+			
+			modelTableHospedagem.addRow(objeto);
+		});
+	}
+
+	private Set<Hospedagem> buscarHospedagens() {
+		Set<Hospedagem> listaHospedagens = new HashSet<>();
+		try {
+			listaHospedagens = registroHospedagemController.listarHospedagens();
+		} catch (Exception e) {
+
+		}
+		return listaHospedagens;
 	}
 
 }
