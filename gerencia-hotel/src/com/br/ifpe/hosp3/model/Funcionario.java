@@ -1,7 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
 /**
- * @author Tayn� Alexandra
+ * @author Tayná Alexandra
  *
  * Classe Funcionario que herda da classe Pessoa 
  */

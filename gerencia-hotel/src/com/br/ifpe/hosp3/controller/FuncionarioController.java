@@ -1,9 +1,13 @@
 package com.br.ifpe.hosp3.controller;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.br.ifpe.hosp3.dao.FuncionarioDao;
+import com.br.ifpe.hosp3.dao.QuartoDao;
 import com.br.ifpe.hosp3.model.Funcionario;
+import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.util.Criptografia;
 
 /**
@@ -39,6 +43,24 @@ public class FuncionarioController {
 			throw e;
 		}
 		return funcionarioCorrespondente;
+	}
+	
+	/**
+	 * Método contendo a regra de negócio necessária para listagem dos funcionários
+	 * comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @return listaFuncionarios {@link Set<Funcionario>}
+	 * @throws Exception
+	 **/
+	public Set<Funcionario> listarFuncionarios() throws Exception{
+		FuncionarioDao funcionarioDao = new FuncionarioDao();
+		Set<Funcionario> listaFuncionarios = new HashSet<>();
+		try {
+			listaFuncionarios = funcionarioDao.listAll();
+		} catch (Exception e) {
+			throw new Exception("Ocorreu um erro na consulta de funcionarios, tente novamente mais tarde");
+		}
+		return listaFuncionarios;
 	}
 
 }

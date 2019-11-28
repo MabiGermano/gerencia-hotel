@@ -7,6 +7,8 @@ package com.br.ifpe.hosp3.view;
 
 import java.sql.*;
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
+import com.br.ifpe.hosp3.model.Funcionario;
+
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.GroupLayout.Alignment;
@@ -26,6 +28,7 @@ import java.awt.Font;
  * @author Thaysa Gomes
  */
 public class TelaFuncionario extends javax.swing.JInternalFrame {
+	private boolean alterar = false;
 
     Connection connection = null;
     PreparedStatement pst = null;
@@ -40,9 +43,18 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         initComponents();
 
         connection = ConexaoMysql.getConexaoMySQL();
+        
+        
     }
     
-    /**
+    public TelaFuncionario(Funcionario funcionario) throws IOException {
+    	this();
+    	setFields(funcionario);
+	}
+
+    
+
+	/**
      * 
      * Método para consulta dados de Funcionário
      */
@@ -307,6 +319,15 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void setFields(Funcionario funcionario) {
+    	txtCodFunc.setText(funcionario.getCodigo());
+    	txtNomeFunc.setText(funcionario.getNome());
+    	txtCpfFunc.setText(funcionario.getCpf());
+    	txtEmailFunc.setText(funcionario.getEmail());
+    	txtTelFunc.setText(funcionario.getTelefone());
+    	this.alterar = true;
+	}
 
     private void txtRuaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaFuncActionPerformed
         // TODO add your handling code here:

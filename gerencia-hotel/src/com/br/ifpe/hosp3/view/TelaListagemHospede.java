@@ -27,7 +27,8 @@ public class TelaListagemHospede extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public TelaListagemHospede() {
-		setBounds(100, 100, 644, 349);
+		setClosable(true);
+		setBounds(100, 100, 623, 347);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -38,16 +39,16 @@ public class TelaListagemHospede extends JInternalFrame {
 		
 		JLabel lblHspedes = new JLabel("Hóspedes");
 		lblHspedes.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblHspedes.setBounds(276, 11, 73, 26);
+		lblHspedes.setBounds(266, 11, 73, 26);
 		panel.add(lblHspedes);
 		
 		txtBuscaNome = new JTextField();
-		txtBuscaNome.setBounds(417, 48, 157, 25);
+		txtBuscaNome.setBounds(399, 48, 157, 25);
 		panel.add(txtBuscaNome);
 		txtBuscaNome.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Buscar Nome:");
-		lblNome.setBounds(345, 52, 73, 14);
+		lblNome.setBounds(318, 53, 81, 14);
 		panel.add(lblNome);
 		
 		JButton btnBuscarPorNome = new JButton("");
@@ -56,15 +57,15 @@ public class TelaListagemHospede extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnBuscarPorNome.setBounds(584, 48, 32, 25);
+		btnBuscarPorNome.setBounds(566, 48, 32, 25);
 		panel.add(btnBuscarPorNome);
 		
 		JLabel lblCpf = new JLabel("Buscar CPF:");
-		lblCpf.setBounds(10, 52, 73, 14);
+		lblCpf.setBounds(10, 52, 86, 14);
 		panel.add(lblCpf);
 		
 		txtBuscarCpf = new JTextField();
-		txtBuscarCpf.setBounds(74, 48, 157, 25);
+		txtBuscarCpf.setBounds(76, 48, 157, 25);
 		panel.add(txtBuscarCpf);
 		txtBuscarCpf.setColumns(10);
 		
@@ -74,23 +75,22 @@ public class TelaListagemHospede extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnBuscarPorCpf.setBounds(242, 48, 32, 25);
+		btnBuscarPorCpf.setBounds(243, 48, 32, 25);
 		panel.add(btnBuscarPorCpf);
 		
 		JScrollPane scrollTableHospede = new JScrollPane();
-		scrollTableHospede.setBounds(10, 82, 606, 224);
+		scrollTableHospede.setBounds(10, 82, 585, 224);
 		panel.add(scrollTableHospede);
 		
-		tableListaHospede = new JTable();
-		tableListaHospede.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Nome", "CPF", "Email", "Telefone", "A\u00E7\u00F5es"
-			}
-		));
-		scrollTableHospede.setViewportView(tableListaHospede);
+		modelTableHospede = new DefaultTableModel();
+		modelTableHospede.addColumn("Nome");
+		modelTableHospede.addColumn("CPF");
+		modelTableHospede.addColumn("Email");
+		modelTableHospede.addColumn("Telefone");
+		modelTableHospede.addColumn("Ações");
 		
+		tableListaHospede = new JTable(modelTableHospede);
+		scrollTableHospede.setViewportView(tableListaHospede);
 		
 
 	}

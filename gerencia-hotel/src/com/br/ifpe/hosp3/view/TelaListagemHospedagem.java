@@ -24,6 +24,7 @@ public class TelaListagemHospedagem extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public TelaListagemHospedagem() {
+		setClosable(true);
 setBounds(100, 100, 644, 349);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -78,17 +79,15 @@ setBounds(100, 100, 644, 349);
 		scrollTableHospedagem.setBounds(10, 82, 606, 224);
 		panel.add(scrollTableHospedagem);
 		
-		tableListaHospedagem = new JTable();
-		tableListaHospedagem.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				
-			}
-		));
+		modelTableHospedagem = new DefaultTableModel();
+		modelTableHospedagem.addColumn("Hóspede");
+		modelTableHospedagem.addColumn("Nº Quarto");
+		modelTableHospedagem.addColumn("Valor");
+		modelTableHospedagem.addColumn("Ações");
+		
+		tableListaHospedagem = new JTable(modelTableHospedagem);
 		scrollTableHospedagem.setViewportView(tableListaHospedagem);
-
-
+		
 	}
 
 }
