@@ -211,9 +211,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
 		lblUsuario.setText("Usuário");
-		jLabel2 = new javax.swing.JLabel();
-		jLabel2.setBounds(143, 23, 0, 0);
-		panel.add(jLabel2);
+		
 		lblData = new javax.swing.JLabel();
 		lblData.setBounds(66, 58, 91, 23);
 		panel.add(lblData);
@@ -406,7 +404,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 			add = desktop.add(hospede);
 		}
 		if (sel.equals("Quarto")) {
-			TelaListagemQuarto quarto = new TelaListagemQuarto();
+			TelaListagemQuarto quarto = new TelaListagemQuarto(this);
 			quarto.setVisible(true);
 			Component add;
 			add = desktop.add(quarto);
@@ -476,4 +474,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private BufferedImage img;
 	private JButton btnCheckin;
 	private JButton btnCheckout;
+
+	public javax.swing.JDesktopPane getDesktop() {
+		return desktop;
+	}
+
+	public void setDesktop(javax.swing.JDesktopPane desktop) {
+		this.desktop = desktop;
+	}
+	
+	
 }

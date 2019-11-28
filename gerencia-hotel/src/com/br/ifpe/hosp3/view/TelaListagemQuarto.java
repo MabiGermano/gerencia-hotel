@@ -1,10 +1,10 @@
 package com.br.ifpe.hosp3.view;
 
-import java.awt.Component;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.swing.JCheckBox;
+import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,15 +18,18 @@ import com.br.ifpe.hosp3.controller.QuartoController;
 import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.util.ButtonEditor;
 import com.br.ifpe.hosp3.util.ButtonRenderer;
+import com.br.ifpe.hosp3.util.TratadorEventos;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
- * @author Maria Beatriz Germano Classe de interface gráfica para listagem de
+ * @author Maria Beatriz Germano Classe de interface grÃ¡fica para listagem de
  *         quartos
  **/
 public class TelaListagemQuarto extends JInternalFrame {
 	private JTable table;
 	private DefaultTableModel modelTableQuarto;
+	private TelaPrincipal desktop;
+	private TratadorEventos tratadorEventos;
 
 	/**
 	 * Create the frame.
@@ -55,29 +58,34 @@ public class TelaListagemQuarto extends JInternalFrame {
 		panel.add(scrollTableQuarto);
 
 		modelTableQuarto = new DefaultTableModel();
-		modelTableQuarto.addColumn("Número");
+		modelTableQuarto.addColumn("NÃºmero");
 		modelTableQuarto.addColumn("Tipo");
 		modelTableQuarto.addColumn("Qtd. Pessoas");
 		modelTableQuarto.addColumn("Valor");
-		modelTableQuarto.addColumn("Disponível");
-		modelTableQuarto.addColumn("Ações");
+		modelTableQuarto.addColumn("DisponÃ­vel");
+		modelTableQuarto.addColumn("AÃ§Ãµes");
 
 		table = new JTable(modelTableQuarto);
 		scrollTableQuarto.setViewportView(table);
 
 		listarQuartos();
 	}
+	public TelaListagemQuarto(TelaPrincipal desktop) {
+		this();
+		this.desktop = desktop;
+	}
 
 	private void listarQuartos() {
 		Set<Quarto> listaQuartos = this.buscarQuartos();
-		table.getColumn("Ações").setCellRenderer(new ButtonRenderer());
-		table.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
 
 		listaQuartos.stream().forEach(quarto -> {
+			table.getColumn("AÃ§Ãµes").setCellRenderer(new ButtonRenderer());
+			table.getColumn("AÃ§Ãµes").setCellEditor(new ButtonEditor(new JCheckBox()));
 			Object[] objeto = new Object[] { quarto.getNumero(), quarto.getTipo(), quarto.getQuantidadePessoas(),
-					quarto.getValor(), quarto.isDisponivel() ? "Sim" : "Não", "Editar" };
-
-			table.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
+					quarto.getValor(), quarto.isDisponivel() ? "Sim" : "NÃ£o", "Editar" };
+			modelTableQuarto.addRow(objeto);
+			
+			table.getColumn("AÃ§Ãµes").getCellEditor().addCellEditorListener(new CellEditorListener() {
 
 				@Override
 				public void editingStopped(ChangeEvent e) {
@@ -86,9 +94,10 @@ public class TelaListagemQuarto extends JInternalFrame {
 					modelTableQuarto.addRow(new Object[] { quarto.getNumero(), quarto.getTipo(),
 							quarto.getQuantidadePessoas(), quarto.getValor(), "Ok" });
 					TelaCriarQuarto alterarQuarto = new TelaCriarQuarto(quarto);
+					desktop.getDesktop().add(alterarQuarto);
 					alterarQuarto.setVisible(true);
-					Component add;
-				//	add = desktop.add(quarto);
+					tratadorEventos = new TratadorEventos(desktop);
+					alterarQuarto.addInternalFrameListener(tratadorEventos);
 					
 				}
 
@@ -99,16 +108,16 @@ public class TelaListagemQuarto extends JInternalFrame {
 				}
 
 			});
-
-			modelTableQuarto.addRow(objeto);
 		});
 
+		
 	}
 
 	private Set<Quarto> buscarQuartos() {
 		Set<Quarto> listaQuartos = new HashSet<>();
 		try {
-			listaQuartos = QuartoController.listarQuartos();
+			QuartoController quartoController = new QuartoController();
+			listaQuartos = quartoController.listarQuartos();
 		} catch (Exception e) {
 
 		}

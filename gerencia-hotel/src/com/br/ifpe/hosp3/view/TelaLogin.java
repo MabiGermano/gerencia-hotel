@@ -50,7 +50,7 @@ public class TelaLogin extends javax.swing.JFrame {
 					this.dispose();
 				}
 			}else {
-				 JOptionPane.showMessageDialog(null, "OH-Ow Código ou senha incorretos... Tente novamente");
+				 JOptionPane.showMessageDialog(null, "OH-Ow Cï¿½digo ou senha incorretos... Tente novamente");
 			}
 		} catch (Exception e) {
 			 JOptionPane.showMessageDialog(null, e.getMessage());
@@ -66,7 +66,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
 			System.out.println(e.getCause());
 			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "Não foi possivel resetar a base de dados");
+			JOptionPane.showMessageDialog(null, "Nï¿½o foi possivel resetar a base de dados");
 
 		} 
 		
@@ -88,7 +88,7 @@ public class TelaLogin extends javax.swing.JFrame {
 		if (connection != null) {
 			lblStatus.setText("Conectado");
 		} else {
-			lblStatus.setText("Não conectado");
+			lblStatus.setText("Nï¿½o conectado");
 		}
 	}
 
@@ -124,11 +124,11 @@ public class TelaLogin extends javax.swing.JFrame {
 				panel.add(lblSenhaLogin);
 				
 						lblSenhaLogin.setText("Senha");
-						lblCódigoLogin = new javax.swing.JLabel();
-						lblCódigoLogin.setBounds(265, 43, 47, 14);
-						panel.add(lblCódigoLogin);
+						lblCodigoLogin = new javax.swing.JLabel();
+						lblCodigoLogin.setBounds(265, 43, 47, 14);
+						panel.add(lblCodigoLogin);
 						
-								lblCódigoLogin.setText("C\u00F3digo");
+								lblCodigoLogin.setText("C\u00F3digo");
 								
 										txtCodigo = new javax.swing.JTextField();
 										txtCodigo.setBounds(330, 38, 164, 24);
@@ -182,7 +182,7 @@ public class TelaLogin extends javax.swing.JFrame {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void actionResetSistema() {
-		int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja resetar o sistema? Todos os dados serãoo apagados", "Alerta", JOptionPane.YES_NO_OPTION);
+		int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja resetar o sistema? Todos os dados serï¿½oo apagados", "Alerta", JOptionPane.YES_NO_OPTION);
 		
 		if(confirm == JOptionPane.YES_OPTION) {
 			
@@ -198,7 +198,7 @@ public class TelaLogin extends javax.swing.JFrame {
 	}// GEN-LAST:event_loginButtonActionPerformed
 
 	
-	private javax.swing.JLabel lblCódigoLogin;
+	private javax.swing.JLabel lblCodigoLogin;
 	private javax.swing.JLabel lblSenhaLogin;
 	private javax.swing.JLabel lblImgLogin;
 	private javax.swing.JLabel lblStatus;

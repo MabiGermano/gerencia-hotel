@@ -48,6 +48,7 @@ public class TratadorEventos implements InternalFrameListener {
 
 	@Override
 	public void internalFrameOpened(InternalFrameEvent arg0) {
+		
 	}
 
 }

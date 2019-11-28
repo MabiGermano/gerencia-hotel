@@ -24,8 +24,6 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 public class TelaCriarQuarto extends javax.swing.JInternalFrame {
 
 	private boolean alterar = false;
-	private JLabel title;
-	private Quarto quarto;
     /**
      * Creates new form TelaCriarQuarto
      */
@@ -38,29 +36,19 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
     }
 
     /**
-     * MÃ©todo de aÃ§Ã£o na interface para criaÃ§Ã£o de quarto
+     * Método de ação na interface para criação de quarto
      * @param quarto {@link Quarto}
      * @throws Exception
      **/
     public void criarQuarto(Quarto quarto) {
     	try {
-    		QuartoController quartoController = new QuartoController();
-    		quartoController.criarQuarto(quarto);
+    		QuartoController.criarQuarto(quarto);
+<<<<<<< HEAD
     		JOptionPane.showMessageDialog(null, "Quarto "+ quarto.getNumero() + "Ã­ncluido com sucesso");
     		this.setClosed(true);
-    		this.dispose();
-    		
-    	}catch(Exception e) {
-    		JOptionPane.showMessageDialog(null, e.getMessage());
-    	}
-    }
-    
-    public void alterarQuarto(Quarto quarto) {
-    	try {
-    		QuartoController quartoController = new QuartoController();
-    		quartoController.alterarQuarto(quarto);
-    		JOptionPane.showMessageDialog(null, "Quarto "+ quarto.getNumero() + " Ã­ncluido com sucesso");
-    		this.setClosed(true);
+=======
+    		JOptionPane.showMessageDialog(null, "Quarto "+ quarto.getNumero() + "íncluido com sucesso");
+>>>>>>> a816b41dab716289b2580a7690a4804db39541a5
     		this.dispose();
     		
     	}catch(Exception e) {
@@ -81,8 +69,8 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
         lblCpfFunc1.setBounds(340, 146, 24, 14);
         boxTipo = new javax.swing.JComboBox<>();
         boxTipo.setBounds(340, 167, 121, 23);
-        btnSalvar = new javax.swing.JButton();
-        btnSalvar.setBounds(321, 272, 74, 24);
+        jButton1 = new javax.swing.JButton();
+        jButton1.setBounds(321, 272, 74, 24);
 
         lblCpfFunc.setText("CPF");
 
@@ -97,16 +85,16 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
 
         boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Simples", "Suite" }));
 
-        btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
         getContentPane().setLayout(null);
         getContentPane().add(boxTipo);
         getContentPane().add(lblCpfFunc1);
-        getContentPane().add(btnSalvar);
+        getContentPane().add(jButton1);
         
         textNumero = new JTextField();
         textNumero.setBounds(340, 87, 121, 23);
@@ -131,52 +119,42 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
         lblValor.setBounds(106, 146, 55, 14);
         getContentPane().add(lblValor);
         
-        JLabel lblNmero = new JLabel("NÃºmero");
+        JLabel lblNmero = new JLabel("Número");
         lblNmero.setBounds(340, 60, 55, 14);
         getContentPane().add(lblNmero);
         
-        btnCancelar = new JButton("Cancelar");
+        JButton btnCancelar = new JButton("Cancelar");
         btnCancelar.setBounds(148, 272, 98, 24);
         getContentPane().add(btnCancelar);
         
-        title = DefaultComponentFactory.getInstance().createTitle("Novo Quarto");
-        title.setFont(new Font("Dialog", Font.BOLD, 15));
-        title.setBounds(243, 12, 90, 14);
-        getContentPane().add(title);
+        JLabel lblNovoQuarto_1 = DefaultComponentFactory.getInstance().createTitle("Novo Quarto");
+        lblNovoQuarto_1.setFont(new Font("Dialog", Font.BOLD, 15));
+        lblNovoQuarto_1.setBounds(243, 12, 90, 14);
+        getContentPane().add(lblNovoQuarto_1);
 
         pack();
     }
     
     private void setFields(Quarto quarto) {
-    	this.quarto = quarto;
     	textNumero.setText(quarto.getNumero());
     	textQtdPessoas.setText(String.valueOf(quarto.getQuantidadePessoas()));
     	textValor.setText(String.valueOf(quarto.getValor()));
     	this.alterar = true;
-    	this.title.setText("Alterar Quarto");
-    	
     }
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {
- 
-    	if(!this.alterar) {
-    		Quarto quarto = new Quarto();
-        	quarto.setNumero(textNumero.getText());
-        	quarto.setQuantidadePessoas(Integer.parseInt(textQtdPessoas.getText()));
-        	quarto.setTipo(boxTipo.getToolTipText());
-        	quarto.setValor(Float.parseFloat(textValor.getText()));
-        	
-        	this.criarQuarto(quarto);
-    	}else{
-    		this.alterarQuarto(quarto);
-    	}
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    	Quarto quarto = new Quarto();
+    	quarto.setNumero(textNumero.getText());
+    	quarto.setQuantidadePessoas(Integer.parseInt(textQtdPessoas.getText()));
+    	quarto.setTipo(boxTipo.getToolTipText());
+    	quarto.setValor(Float.parseFloat(textValor.getText()));
     	
+    	this.criarQuarto(quarto);
         
     }
 
 
-    private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> boxTipo;
     private javax.swing.JLabel lblCpfFunc;
     private javax.swing.JLabel lblCpfFunc1;

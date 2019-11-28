@@ -71,4 +71,5 @@ public class ButtonEditor extends DefaultCellEditor {
 	private void setEnabled() {
 		this.button.setEnabled(!this.button.isEnabled());
 	}
+	
 }
