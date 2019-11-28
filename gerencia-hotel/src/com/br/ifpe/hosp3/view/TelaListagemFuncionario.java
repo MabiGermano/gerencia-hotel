@@ -13,6 +13,8 @@ import com.br.ifpe.hosp3.model.Funcionario;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TelaListagemFuncionario extends JInternalFrame {
 	private DefaultTableModel modelTableFuncionario;
@@ -35,25 +37,43 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		
 		JLabel lblFuncionarios = new JLabel("Funcionários");
 		lblFuncionarios.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblFuncionarios.setBounds(276, 11, 95, 26);
+		lblFuncionarios.setBounds(276, 11, 83, 26);
 		panel.add(lblFuncionarios);
 		
 		txtBuscaNome = new JTextField();
-		txtBuscaNome.setBounds(319, 48, 157, 23);
+		txtBuscaNome.setBounds(417, 48, 157, 25);
 		panel.add(txtBuscaNome);
 		txtBuscaNome.setColumns(10);
 		
-		JButton btnBuscarPorNome = new JButton("Buscar Nome");
-		btnBuscarPorNome.setBounds(487, 47, 95, 23);
+		JLabel lblNome = new JLabel("Buscar Nome:");
+		lblNome.setBounds(345, 52, 73, 14);
+		panel.add(lblNome);
+		
+		JButton btnBuscarPorNome = new JButton("");
+		btnBuscarPorNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/serch_p.png")));
+		btnBuscarPorNome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnBuscarPorNome.setBounds(584, 48, 32, 25);
 		panel.add(btnBuscarPorNome);
 		
+		JLabel lblCpf = new JLabel("Buscar CPF:");
+		lblCpf.setBounds(10, 52, 73, 14);
+		panel.add(lblCpf);
+		
 		txtBuscarCpf = new JTextField();
-		txtBuscarCpf.setBounds(39, 48, 157, 23);
+		txtBuscarCpf.setBounds(74, 48, 157, 25);
 		panel.add(txtBuscarCpf);
 		txtBuscarCpf.setColumns(10);
 		
-		JButton btnBuscarPorCpf = new JButton("Buscar CPF");
-		btnBuscarPorCpf.setBounds(206, 48, 95, 23);
+		JButton btnBuscarPorCpf = new JButton("");
+		btnBuscarPorCpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/serch_p.png")));
+		btnBuscarPorCpf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnBuscarPorCpf.setBounds(242, 48, 32, 25);
 		panel.add(btnBuscarPorCpf);
 		
 		JScrollPane scrollTableFuncionario = new JScrollPane();
@@ -65,7 +85,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Nome", "CPF", "Email", "Endere\u00E7o", "Telefone", "A\u00E7\u00F5es"
+				"C\u00F3digo", "Nome", "CPF", "Email", "Telefone", "A\u00E7\u00F5es"
 			}
 		));
 		scrollTableFuncionario.setViewportView(tableListaFuncionario);
