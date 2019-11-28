@@ -29,23 +29,38 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.model.Funcionario;
+
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
+import java.sql.Connection;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 
 /**
  *
  * @author Thaysa Gomes
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+	Connection connection = null;
+	
 	Funcionario funcionario;
 
 	/**
 	 * Cria nova tela Principal
 	 */
 	public TelaPrincipal() {
+		try {
+			connection = ConexaoMysql.getConexaoMySQL();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setResizable(false);
 		initComponents();
 	}
@@ -75,7 +90,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		menuCadastroFuncionario = new javax.swing.JMenuItem();
 		menuCadastroHospede = new javax.swing.JMenuItem();
 		menuRelatorio = new javax.swing.JMenu();
-		menuRelatorioHospedagem = new javax.swing.JMenuItem();
+		menuRelatorioHospede = new javax.swing.JMenuItem();
+		menuRelatorioHospede.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão do relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
+				if (confirma == JOptionPane.YES_OPTION) {
+					try {
+						JasperPrint imprime = JasperFillManager.fillReport("gerencia-hotel\\resources\\arquivos\\hospedes.jasper", null, connection);
+						JasperViewer.viewReport(imprime, false);
+					} catch (Exception e) {
+						JOptionPane.showMessageDialog(null, e);
+					} 
+				}
+				
+				
+			}
+		});
 		menuRelatorioConsumo = new javax.swing.JMenuItem();
 		menuOpcoes = new javax.swing.JMenu();
 		menuOpcoesSair = new javax.swing.JMenuItem();
@@ -120,10 +150,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		menuRelatorio.setText("Relatório");
 
-		menuRelatorioHospedagem.setAccelerator(
+		menuRelatorioHospede.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
-		menuRelatorioHospedagem.setText("Hospedagem");
-		menuRelatorio.add(menuRelatorioHospedagem);
+		menuRelatorioHospede.setText("Hóspede");
+		menuRelatorio.add(menuRelatorioHospede);
 
 		menuRelatorioConsumo.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
@@ -411,7 +441,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private javax.swing.JMenuItem menuOpcoesSair;
 	public static javax.swing.JMenu menuRelatorio;
 	private javax.swing.JMenuItem menuRelatorioConsumo;
-	private javax.swing.JMenuItem menuRelatorioHospedagem;
+	private javax.swing.JMenuItem menuRelatorioHospede;
 	private BufferedImage img;
 	private JButton btnCheckin;
 }

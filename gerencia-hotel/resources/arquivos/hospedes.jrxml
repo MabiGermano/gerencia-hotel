@@ -54,7 +54,7 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="28" splitType="Stretch">
 			<staticText>
 				<reportElement x="17" y="0" width="23" height="20" uuid="dfe04c86-befd-47bb-b395-e97b3c4b93fd"/>
 				<textElement>
@@ -93,7 +93,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="36" splitType="Stretch">
 			<textField>
 				<reportElement x="17" y="0" width="34" height="20" uuid="b67d7679-f9f1-4c99-9963-28d3e022aef9"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
