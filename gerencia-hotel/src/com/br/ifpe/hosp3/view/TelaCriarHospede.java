@@ -55,8 +55,9 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
     /**
      * Cria nova tela de Hóspede
+     * @param hospede 
      */
-    public TelaCriarHospede() {
+    public TelaCriarHospede(Hospede hospede) {
         initComponents();
     }
 

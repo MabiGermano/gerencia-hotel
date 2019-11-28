@@ -115,6 +115,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		tableListaFuncionario = new JTable(modelTableFuncionario);
 		scrollTableFuncionario.setViewportView(tableListaFuncionario);
 		
+		listarFuncionarios();
 	}
 
 	private void listarFuncionarios() {
