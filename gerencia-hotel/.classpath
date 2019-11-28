@@ -5,9 +5,6 @@
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.48-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="lib/mybatis-3.5.3.jar"/>
-	<classpathentry kind="lib" path="jgoodies-common-1.8.0.jar" sourcepath="jgoodies-common-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
 	<classpathentry kind="lib" path="lib/jasperreports-5.6.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-beanutils-1.8.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-collections-3.2.1.jar"/>
@@ -16,7 +13,11 @@
 	<classpathentry kind="lib" path="lib/groovy-all-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/iText-2.1.7.js2.jar"/>
 	<classpathentry kind="lib" path="lib/jasperreports-fonts-5.6.0.jar"/>
-	<classpathentry kind="lib" path="jgoodies-common-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="resources/jgoodies-common-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="resources/jgoodies-common-1.8.0.jar"/>
+	<classpathentry kind="lib" path="resources/jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="resources/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="lib" path="resources/miglayout-src.zip"/>
+	<classpathentry kind="lib" path="resources/miglayout15-swing.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
