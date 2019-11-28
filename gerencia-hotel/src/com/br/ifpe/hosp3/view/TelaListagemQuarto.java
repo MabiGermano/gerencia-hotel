@@ -21,7 +21,7 @@ import com.br.ifpe.hosp3.util.ButtonRenderer;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
- * @author Maria Beatriz Germano Classe de interface grÃ¡fica para listagem de
+ * @author Maria Beatriz Germano Classe de interface gráfica para listagem de
  *         quartos
  **/
 public class TelaListagemQuarto extends JInternalFrame {
@@ -55,12 +55,12 @@ public class TelaListagemQuarto extends JInternalFrame {
 		panel.add(scrollTableQuarto);
 
 		modelTableQuarto = new DefaultTableModel();
-		modelTableQuarto.addColumn("NÃºmero");
+		modelTableQuarto.addColumn("Número");
 		modelTableQuarto.addColumn("Tipo");
 		modelTableQuarto.addColumn("Qtd. Pessoas");
 		modelTableQuarto.addColumn("Valor");
-		modelTableQuarto.addColumn("DisponÃ­vel");
-		modelTableQuarto.addColumn("AÃ§Ãµes");
+		modelTableQuarto.addColumn("Disponível");
+		modelTableQuarto.addColumn("Ações");
 
 		table = new JTable(modelTableQuarto);
 		scrollTableQuarto.setViewportView(table);
@@ -70,14 +70,14 @@ public class TelaListagemQuarto extends JInternalFrame {
 
 	private void listarQuartos() {
 		Set<Quarto> listaQuartos = this.buscarQuartos();
-		table.getColumn("AÃ§Ãµes").setCellRenderer(new ButtonRenderer());
-		table.getColumn("AÃ§Ãµes").setCellEditor(new ButtonEditor(new JCheckBox()));
+		table.getColumn("Ações").setCellRenderer(new ButtonRenderer());
+		table.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
 
 		listaQuartos.stream().forEach(quarto -> {
 			Object[] objeto = new Object[] { quarto.getNumero(), quarto.getTipo(), quarto.getQuantidadePessoas(),
-					quarto.getValor(), quarto.isDisponivel() ? "Sim" : "NÃ£o", "Editar" };
+					quarto.getValor(), quarto.isDisponivel() ? "Sim" : "Não", "Editar" };
 
-			table.getColumn("AÃ§Ãµes").getCellEditor().addCellEditorListener(new CellEditorListener() {
+			table.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
 
 				@Override
 				public void editingStopped(ChangeEvent e) {

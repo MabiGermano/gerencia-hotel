@@ -9,7 +9,7 @@ import com.br.ifpe.hosp3.util.Criptografia;
 /**
  * @author Maria Beatriz Germano
  * 
- * Classe controladora para gest√£o das regras de neg√≥cio 
+ * Classe controladora para gest„o das regras de negÛcio 
  * relacionadas ao Hospede
  * 
  **/
@@ -37,13 +37,13 @@ public class HospedeController {
 			HospedeDao hospedeDao = new HospedeDao();
 			hospedeRetorno = hospedeDao.findByCpf(cpf);
 			if(hospedeRetorno == null) {
-				throw new Exception("Hospede n√£o encontrado, tente novamente");
+				throw new Exception("Hospede n„o encontrado, tente novamente");
 			}
 		} catch (Exception e) {
-			throw new Exception("Usu√°rio n√£o encontrado! "
+			throw new Exception("Usu·rio n„o encontrado! "
 					+ "\n" + "Verifique: "
-					+ "\n" + "**CPF deve ter no m√°ximo 14 digitos"
-					+ "\n" + "***CPF n√£o pode estar vazio");
+					+ "\n" + "**CPF deve ter no m·ximo 14 digitos"
+					+ "\n" + "***CPF n„o pode estar vazio");
 		}
 		
 		return hospedeRetorno;

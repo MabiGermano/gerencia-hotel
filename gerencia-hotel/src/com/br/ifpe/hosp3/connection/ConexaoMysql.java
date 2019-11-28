@@ -21,7 +21,7 @@ import com.mysql.jdbc.Connection;
  **/
 public class ConexaoMysql {
 
-	public static String status = "NÃ£o conectou...";
+	public static String status = "Não conectou...";
 
 	public ConexaoMysql() {
 		
@@ -69,7 +69,7 @@ public class ConexaoMysql {
 			if (connection != null) {
 				status = ("STATUS--->Conectado com sucesso!");
 			} else {
-				status = ("STATUS--->NÃ£o foi possivel realizar conexÃ£o");
+				status = ("STATUS--->Não foi possivel realizar conexão");
 			}
 
 			return connection;
@@ -80,7 +80,7 @@ public class ConexaoMysql {
 
 		} catch (SQLException e) {
 
-			System.out.println("Nao foi possivel conectar ao Banco de Dados.");
+			System.out.println("Não foi possivel conectar ao Banco de Dados.");
 			if(e.getErrorCode() == 1049){
 				url = prop.getProperty("prop.server.urlDefault");
 				connection = getConexaoDefault(url, username, password);
@@ -88,6 +88,7 @@ public class ConexaoMysql {
 			}else {
 				connection = null; 
 			}
+
 
 			return connection;
 		}

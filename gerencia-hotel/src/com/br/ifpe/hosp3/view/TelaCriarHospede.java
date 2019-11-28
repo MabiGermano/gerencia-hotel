@@ -34,7 +34,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
 
 	/**
-	 * M√©todo de a√ß√£o na interface para criar hospede 
+	 * MÈtodo de aÁ„o na interface para criar hospede 
 	 * 
 	 * @param hospede {@link Hospede}
 	 * @param endereco {@link Endereco}
@@ -54,7 +54,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 	}
 
     /**
-     * Cria nova tela de H√≥spede
+     * Cria nova tela de HÛspede
      */
     public TelaCriarHospede() {
         initComponents();
@@ -76,7 +76,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("H√≥spede");
+        setTitle("HÛspede");
         
         Color cor = new Color(46,139, 87);
         getContentPane().setLayout(null);
@@ -121,10 +121,10 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
                    
                 });
         
-        JLabel label = new JLabel();
-        label.setBounds(244, 57, 19, 14);
-        panel.add(label);
-        label.setText("CPF");
+        JLabel lblCpfHospede = new JLabel();
+        lblCpfHospede.setBounds(244, 57, 19, 14);
+        panel.add(lblCpfHospede);
+        lblCpfHospede.setText("CPF");
         
         txtCpf = new JTextField();
         txtCpf.setBounds(245, 73, 220, 23);
@@ -212,7 +212,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         panel.add(txtNumHospede);
         txtNumHospede.setColumns(10);
                 
-                JLabel lblCadastrarHspede = DefaultComponentFactory.getInstance().createTitle("Cadastrar H√≥spede");
+                JLabel lblCadastrarHspede = DefaultComponentFactory.getInstance().createTitle("Cadastrar HÛspede");
                 lblCadastrarHspede.setFont(new Font("Tahoma", Font.PLAIN, 14));
                 lblCadastrarHspede.setBounds(194, 23, 117, 14);
                 panel.add(lblCadastrarHspede);
@@ -236,7 +236,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
                         btnCancelar.setBounds(265, 350, 95, 35);
                         panel.add(btnCancelar);
                 
-       //Adicionando evento para bot√£o de salvar ouvir
+       //Adicionando evento para bot„o de salvar ouvir
                 btnAddHospede.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                     	btnAddHospedeAction(evt);

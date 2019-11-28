@@ -19,6 +19,7 @@
 -- Table structure for table `consumo_extra`
 --
 CREATE DATABASE IF NOT EXISTS hosp3;
+USE `hosp3`;
 DROP TABLE IF EXISTS `hosp3`.`consumo_extra`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

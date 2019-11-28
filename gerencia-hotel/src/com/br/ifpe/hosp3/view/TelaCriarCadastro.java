@@ -49,14 +49,14 @@ public class TelaCriarCadastro extends javax.swing.JFrame {
             pst.setString(8, txtPassCadastro.getText());
 
             if ((txtNomeCadastro.getText().isEmpty()) || (txtCpfCadastro.getText().isEmpty()) || (txtRuaCadastro.getText().isEmpty()) || (txtEmailCadastro.getText().isEmpty()) || (txtTelCadastro.getText().isEmpty()) || (txtCodCadastro.getText().isEmpty()) || (txtPassCadastro.getText().isEmpty())) {
-                JOptionPane.showMessageDialog(null, "Insira as informa√ß√µes em todos os campos.");
+                JOptionPane.showMessageDialog(null, "Insira as informaÁıes em todos os campos.");
             } else {
                 int adicionado = pst.executeUpdate();
 
                 if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "Usu√°rio cadastrado com sucesso");
+                    JOptionPane.showMessageDialog(null, "Usu·rio cadastrado com sucesso");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Usu√°rio n√£o p√¥de ser cadastrado. Tente novamente.");
+                    JOptionPane.showMessageDialog(null, "Usu·rio n„o pÙde ser cadastrado. Tente novamente.");
                 }
             }
         } catch (Exception e) {
@@ -124,11 +124,11 @@ public class TelaCriarCadastro extends javax.swing.JFrame {
             }
         });
 
-        lblNumCadastro.setText("N√∫mero");
+        lblNumCadastro.setText("N˙mero");
 
         lblCepCadastro.setText("CEP");
 
-        lblPaisCadastro.setText("Pa√≠s");
+        lblPaisCadastro.setText("PaÌs");
 
         txtPaisCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +146,7 @@ public class TelaCriarCadastro extends javax.swing.JFrame {
 
         lblTelCadastro.setText("Telefone");
 
-        lblCodCadastro.setText("C√≥digo");
+        lblCodCadastro.setText("CÛdigo");
 
         lblPassCadastro.setText("Palavra passe");
 

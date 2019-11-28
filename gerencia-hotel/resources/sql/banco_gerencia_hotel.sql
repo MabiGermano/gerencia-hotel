@@ -18,11 +18,11 @@ USE `hosp3` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hosp3`.`quarto` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `valor` FLOAT NULL,
-  `quantidade_pessoas` INT NULL,
-  `tipo` VARCHAR(45) NULL,
-  `numero` VARCHAR(45) NULL,
-  `disponivel` TINYINT(1) NULL,
+  `valor` FLOAT NOT NULL,
+  `quantidade_pessoas` INT NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  `numero` VARCHAR(45) NOT NULL,
+  `disponivel` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -32,13 +32,13 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hosp3`.`endereco` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `rua` VARCHAR(45) NULL,
-  `numero` VARCHAR(3) NULL,
-  `cep` VARCHAR(9) NULL,
-  `bairro` VARCHAR(45) NULL,
-  `pais` VARCHAR(45) NULL,
-  `cidade` VARCHAR(45) NULL,
-  `estado` VARCHAR(45) NULL,
+  `rua` VARCHAR(45) NOT NULL,
+  `numero` VARCHAR(3) NOT NULL,
+  `cep` VARCHAR(9) NOT NULL,
+  `bairro` VARCHAR(45) NOT NULL,
+  `pais` VARCHAR(45) NOT NULL,
+  `cidade` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
   `complemento` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -51,9 +51,9 @@ CREATE TABLE IF NOT EXISTS `hosp3`.`hospede` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(80) NOT NULL,
   `cpf` VARCHAR(14) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `endereco_id` INT NULL,
-  `telefone` VARCHAR(15) NULL,
+  `email` VARCHAR(45) UNIQUE NOT NULL,
+  `endereco_id` INT NOT NULL,
+  `telefone` VARCHAR(15) NOT NULL,
   `palavra_passe` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_hospede_1_idx` (`endereco_id` ASC),
@@ -70,9 +70,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hosp3`.`consumo_extra` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `descricao` VARCHAR(45) NULL,
-  `hospedagem_id` INT NULL,
-  `valor` FLOAT NULL,
+  `descricao` VARCHAR(45) NOT NULL,
+  `hospedagem_id` INT NOT NULL,
+  `valor` FLOAT NOT NULL,
   PRIMARY KEY (`id`),
    INDEX `fk_consumo_extra_1_idx` (`hospedagem_id` ASC),
   CONSTRAINT `fk_consumo_extra_1`
@@ -90,11 +90,11 @@ CREATE TABLE IF NOT EXISTS `hosp3`.`funcionario` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(80) NOT NULL,
   `cpf` VARCHAR(14) NOT NULL,
-  `endereco_id` INT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `telefone` VARCHAR(15) NULL,
-  `codigo` VARCHAR(10) NULL,
-  `cargo` VARCHAR(45) NULL,
+  `endereco_id` INT NOT NULL,
+  `email` VARCHAR(45) UNIQUE NOT NULL,
+  `telefone` VARCHAR(15) NOT NULL,
+  `codigo` VARCHAR(10) NOT NULL,
+  `cargo` VARCHAR(45) NOT NULL,
   `palavra_passe` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_funcionario_1_idx` (`endereco_id` ASC),
@@ -135,12 +135,19 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `hosp3`.`registro` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `flag_ativo` TINYINT(1) NULL,
+<<<<<<< HEAD
+  `pagamento` VARCHAR(45) NOT NULL,
+  `valor` FLOAT NOT NULL,
+  `funcionario_id` INT NOT NULL,
+  `hospedagem_id` INT NOT NULL,
+=======
   `pagamento` VARCHAR(45) NULL,
   `valor` FLOAT NULL,
   `dataCheckin` DATE NULL,
   `dataCheckout` DATE NULL,
   `funcionario_id` INT NULL,
   `hospedagem_id` INT NULL,
+>>>>>>> 316b16771f7991dfbae3b7938846643de513efa5
   PRIMARY KEY (`id`),
   INDEX `fk_registro_4_idx` (`funcionario_id` ASC),
   INDEX `fk_registro_2_idx` (`hospedagem_id` ASC),

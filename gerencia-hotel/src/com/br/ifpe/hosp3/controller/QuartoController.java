@@ -10,13 +10,13 @@ import com.br.ifpe.hosp3.model.Quarto;
 /**
  * @author Maria Beatriz Germano
  * 
- * Classe controladora para gest√£o das regras de neg√≥cio 
+ * Classe controladora para gest„o das regras de negÛcio 
  * relacionadas ao Quarto
  **/
 public class QuartoController {
 	
 	/**
-	 * M√©todo contendo a regra de neg√≥cio necess√°ria para cria√ß√£o do quarto
+	 * MÈtodo contendo a regra de negÛcio necess·ria para criaÁ„o do quarto
 	 * comunicando com a classe de interface com o banco de dados
 	 * 
 	 * @param quarto {@link Quarto}
@@ -34,6 +34,9 @@ public class QuartoController {
 	}
 	
 	/**
+<<<<<<< HEAD
+	 * MÈtodo contendo a regra de negÛcio necess·ria para listagem dos quartos
+=======
 	 * M√©todo contendo a regra de neg√≥cio necess√°ria para listagem dos quartos
 	 * dispon√≠veis no sistema, comunicando com a classe de interface com o banco de dados
 	 * 
@@ -53,6 +56,7 @@ public class QuartoController {
 	
 	/**
 	 * M√©todo contendo a regra de neg√≥cio necess√°ria para listagem dos quartos
+>>>>>>> 316b16771f7991dfbae3b7938846643de513efa5
 	 * comunicando com a classe de interface com o banco de dados
 	 * 
 	 * @return listaQuartos {@link Set<Quarto>}

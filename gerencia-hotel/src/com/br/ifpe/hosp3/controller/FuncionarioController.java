@@ -9,14 +9,14 @@ import com.br.ifpe.hosp3.util.Criptografia;
 /**
  * @author Maria Beatriz Germano
  * 
- * Classe controladora para gestÃ£o das regras de negÃ³cio 
- * relacionadas ao funcionÃ¡rio
+ * Classe controladora para gestão das regras de negócio 
+ * relacionadas ao funcionário
  * 
  **/
 public class FuncionarioController {
 
 	/**
-	 * MÃ©todo estÃ¡tico para autenticaÃ§Ã£o do funcionÃ¡rio
+	 * Método estático para autenticação do funcionário
 	 * 
 	 * @param funcionario {@link Funcionario}
 	 * @return funcionarioCorrespondente {@link Funcionario}
@@ -33,7 +33,7 @@ public class FuncionarioController {
 			if (!(funcionarioCorrespondente.getCodigo().equals(funcionario.getCodigo())
 					&& funcionarioCorrespondente.getPalavraPasse().equals(funcionario.getPalavraPasse()))) {
 				
-				throw new NullPointerException("Ops, nÃ£o foi possivel encontrar o funcionÃ¡rio");
+				throw new NullPointerException("Ops, não foi possivel encontrar o funcionário");
 			}
 		} catch (NullPointerException e) {
 			throw e;

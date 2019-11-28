@@ -70,7 +70,7 @@ public class TelaRelatorioDatas extends JFrame {
 		contentPane.add(txtDataCheckout);
 		txtDataCheckout.setColumns(10);
 		
-		JButton btnImprimirRelatorioDatas = new JButton("    Imprimir relatório");
+		JButton btnImprimirRelatorioDatas = new JButton("Imprimir relat\u00F3rio");
 		btnImprimirRelatorioDatas.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnImprimirRelatorioDatas.setIcon(new ImageIcon(TelaRelatorioDatas.class.getResource("/com/br/ifpe/hosp3/img/iconfinder_print_172530.png")));
 		btnImprimirRelatorioDatas.addActionListener(new ActionListener() {

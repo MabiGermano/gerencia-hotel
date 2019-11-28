@@ -32,7 +32,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     ResultSet rs = null;
 
     /**
-     * Cria nova tela de Funcion√°rio
+     * Cria nova tela de Funcion·rio
      *
      * @throws java.io.IOException
      */
@@ -44,7 +44,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     
     /**
      * 
-     * M√©todo para consulta dados de Funcion√°rio
+     * MÈtodo para consulta dados de Funcion·rio
      */
     private void consultar() {
         String sql = "select * from funcionario where nome=?";
@@ -61,7 +61,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 txtCodFunc.setText(rs.getString(7));
                 txtPassFunc.setText(rs.getString(8));
             } else {
-                JOptionPane.showMessageDialog(null, "Usu√°rio n√£o cadastrado");
+                JOptionPane.showMessageDialog(null, "Usu·rio n„o cadastrado");
                 txtNomeFunc.setText(null);
                 txtCpfFunc.setText(null);
                 txtEmailFunc.setText(null);
@@ -76,7 +76,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     
     /**
      * 
-     * M√©todo para adicionar dados de Funcion√°rio
+     * MÈtodo para adicionar dados de Funcion·rio
      */
     private void adicionar() {
         String sql = "insert into funcionario(id, nome, cpf, endereco_id, email, telefone, codigo, palavra_passe) values(?,?,?,?,?,?,?,?)";
@@ -92,14 +92,14 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
             pst.setString(8, txtPassFunc.getText());
 
             if ((txtNomeFunc.getText().isEmpty()) || (txtCpfFunc.getText().isEmpty()) || (txtRuaFunc.getText().isEmpty()) || (txtEmailFunc.getText().isEmpty()) || (txtTelFunc.getText().isEmpty()) || (txtCodFunc.getText().isEmpty()) || (txtPassFunc.getText().isEmpty())) {
-                JOptionPane.showMessageDialog(null, "Insira as informa√ß√µes em todos os campos.");
+                JOptionPane.showMessageDialog(null, "Insira as informaÁıes em todos os campos.");
             } else {
                 int adicionado = pst.executeUpdate();
 
                 if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "Usu√°rio cadastrado com sucesso");
+                    JOptionPane.showMessageDialog(null, "Usu·rio cadastrado com sucesso");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Usu√°rio n√£o p√¥de ser cadastrado. Tente novamente.");
+                    JOptionPane.showMessageDialog(null, "Usu·rio n„o pÙde ser cadastrado. Tente novamente.");
                 }
             }
         } catch (Exception e) {
@@ -109,7 +109,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     
     /**
      * 
-     * M√©todo para alterar dados de Funcion√°rio
+     * MÈtodo para alterar dados de Funcion·rio
      */
     public void alterar(){
         String sql = "update funcionario set nome=?, cpf=?, endereco_id=?, email=?, telefone=?, codigo=?, palavra_passe=? where id=?";
@@ -140,7 +140,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Funcion√°rio");
+        setTitle("Funcion·rio");
         getContentPane().setLayout(null);
         scrollPane.setBounds(0, 0, 514, 463);
         getContentPane().add(scrollPane);
@@ -169,7 +169,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                         lblCodFunc.setBounds(39, 166, 33, 14);
                         panel.add(lblCodFunc);
                         
-                                lblCodFunc.setText("C√≥digo");
+                                lblCodFunc.setText("CÛdigo");
                                 txtCodFunc = new javax.swing.JTextField();
                                 txtCodFunc.setBounds(39, 183, 78, 25);
                                 panel.add(txtCodFunc);
@@ -201,7 +201,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                                                 lblPaisFunc.setBounds(183, 336, 19, 14);
                                                 panel.add(lblPaisFunc);
                                                 
-                                                        lblPaisFunc.setText("Pa√≠s");
+                                                        lblPaisFunc.setText("PaÌs");
                                                         txtPaisFunc = new javax.swing.JTextField();
                                                         txtPaisFunc.setBounds(183, 352, 76, 25);
                                                         panel.add(txtPaisFunc);
@@ -241,7 +241,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                                                                                                 lblNumFunc.setBounds(282, 226, 37, 14);
                                                                                                 panel.add(lblNumFunc);
                                                                                                 
-                                                                                                        lblNumFunc.setText("N√∫mero");
+                                                                                                        lblNumFunc.setText("N˙mero");
                                                                                                         txtNumFunc = new javax.swing.JTextField();
                                                                                                         txtNumFunc.setBounds(282, 241, 47, 25);
                                                                                                         panel.add(txtNumFunc);
@@ -277,7 +277,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                                                                                                                         btnCancelar.setBounds(265, 401, 95, 35);
                                                                                                                         panel.add(btnCancelar);
                                                                                                                         
-                                                                                                                        JLabel lblCadastrarFuncionrio = DefaultComponentFactory.getInstance().createTitle("Cadastrar Funcion√°rio");
+                                                                                                                        JLabel lblCadastrarFuncionrio = DefaultComponentFactory.getInstance().createTitle("Cadastrar Funcion·rio");
                                                                                                                         lblCadastrarFuncionrio.setFont(new Font("Tahoma", Font.PLAIN, 14));
                                                                                                                         lblCadastrarFuncionrio.setBounds(179, 22, 140, 14);
                                                                                                                         panel.add(lblCadastrarFuncionrio);
