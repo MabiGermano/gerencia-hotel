@@ -220,9 +220,9 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		modelTableHospede.getDataVector().removeAllElements();
 		textCpf.setText("");
 		
-		table.getColumn("A��es").setCellRenderer(new ButtonRenderer());
-	    table.getColumn("A��es").setCellEditor(new ButtonEditor(new JCheckBox()));
-	    table.getColumn("A��es").getCellEditor().addCellEditorListener(new CellEditorListener() {
+		table.getColumn("Ações").setCellRenderer(new ButtonRenderer());
+	    table.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
+	    table.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
 			
 			@Override
 			public void editingStopped(ChangeEvent e) {
@@ -247,15 +247,15 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	 **/
 	private void listarQuartosDisponiveis() {
 		Set<Quarto> listaQuartos = this.buscarQuartosDisponiveis();
-		tableQuartos.getColumn("A��es").setCellRenderer(new ButtonRenderer());
-		tableQuartos.getColumn("A��es").setCellEditor(new ButtonEditor(new JCheckBox()));
+		tableQuartos.getColumn("Ações").setCellRenderer(new ButtonRenderer());
+		tableQuartos.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
 		
 	    listaQuartos.stream().map(quarto -> new Object[]{quarto.getNumero(), quarto.getTipo(), 
 	    		quarto.getQuantidadePessoas() ,quarto.getValor(), "selecionar"})
 	    .forEach(quarto -> modelTableQuarto.addRow(quarto));
 	    
 	    listaQuartos.forEach(quartoSelecionado -> {
-	    	tableQuartos.getColumn("A��es").getCellEditor().addCellEditorListener(new CellEditorListener() {
+	    	tableQuartos.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
 				
 				@Override
 				public void editingStopped(ChangeEvent e) {
