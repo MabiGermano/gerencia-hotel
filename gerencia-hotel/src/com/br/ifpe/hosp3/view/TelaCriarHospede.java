@@ -122,10 +122,10 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
                    
                 });
         
-        JLabel label = new JLabel();
-        label.setBounds(244, 57, 19, 14);
-        panel.add(label);
-        label.setText("CPF");
+        JLabel lblCpfHospede = new JLabel();
+        lblCpfHospede.setBounds(244, 57, 19, 14);
+        panel.add(lblCpfHospede);
+        lblCpfHospede.setText("CPF");
         
         txtCpf = new JTextField();
         txtCpf.setBounds(245, 73, 220, 23);

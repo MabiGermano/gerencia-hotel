@@ -456,8 +456,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private javax.swing.JButton btnCadastro;
 	private javax.swing.JComboBox<String> comboCadastro;
 	private javax.swing.JDesktopPane desktop;
-	private javax.swing.JLabel lblLogoTelaPrinc;
-	private javax.swing.JLabel lblListar;
+	private javax.swing.JLabel jLabel1;
+	private javax.swing.JLabel jLabel2;
+	private javax.swing.JLabel jLabel3;
 	private javax.swing.JLabel lblData;
 	public static javax.swing.JLabel lblUsuario;
 	private javax.swing.JMenu menuCadastro;
@@ -473,14 +474,4 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private BufferedImage img;
 	private JButton btnCheckin;
 	private JButton btnCheckout;
-
-	public javax.swing.JDesktopPane getDesktop() {
-		return desktop;
-	}
-
-	public void setDesktop(javax.swing.JDesktopPane desktop) {
-		this.desktop = desktop;
-	}
-	
-	
 }
