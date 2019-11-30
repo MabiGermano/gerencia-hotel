@@ -387,29 +387,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		String sel = comboCadastro.getSelectedItem().toString();
 
 		if (sel.equals("Funcionário")) {
-			TelaFuncionario funcionario = null;
-			try {
-				funcionario = new TelaFuncionario();
-			} catch (IOException ex) {
-				Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-			}
+			TelaListagemFuncionario funcionario = null;
+			funcionario = new TelaListagemFuncionario();
 			funcionario.setVisible(true);
 			Component add;
 			add = desktop.add(funcionario);
-		}
-		if (sel.equals("Hóspede")) {
-			TelaCriarHospede hospede = new TelaCriarHospede();
+		} else if (sel.equals("Hóspede")) {
+			TelaListagemHospede hospede = new TelaListagemHospede();
 			hospede.setVisible(true);
 			Component add;
 			add = desktop.add(hospede);
-		}
-		if (sel.equals("Quarto")) {
-			TelaListagemQuarto quarto = new TelaListagemQuarto(this);
+		} else if (sel.equals("Quarto")) {
+			TelaListagemQuarto quarto = new TelaListagemQuarto();
 			quarto.setVisible(true);
 			Component add;
 			add = desktop.add(quarto);
-		} else {
-
+		} else if (sel.equals("Hospedagem")) {
+			TelaListagemHospedagem hospedagem = new TelaListagemHospedagem();
+			hospedagem.setVisible(true);
+			Component add;
+			add = desktop.add(hospedagem);
+		} else { 
+			
 		}
 	}
 
@@ -457,8 +456,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private javax.swing.JButton btnCadastro;
 	private javax.swing.JComboBox<String> comboCadastro;
 	private javax.swing.JDesktopPane desktop;
-	private javax.swing.JLabel lblLogoTelaPrinc;
-	private javax.swing.JLabel lblListar;
+	private javax.swing.JLabel jLabel1;
+	private javax.swing.JLabel jLabel2;
+	private javax.swing.JLabel jLabel3;
 	private javax.swing.JLabel lblData;
 	public static javax.swing.JLabel lblUsuario;
 	private javax.swing.JMenu menuCadastro;
@@ -474,14 +474,4 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private BufferedImage img;
 	private JButton btnCheckin;
 	private JButton btnCheckout;
-
-	public javax.swing.JDesktopPane getDesktop() {
-		return desktop;
-	}
-
-	public void setDesktop(javax.swing.JDesktopPane desktop) {
-		this.desktop = desktop;
-	}
-	
-	
 }

@@ -34,7 +34,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
 
 	/**
-	 * MÈtodo de aÁ„o na interface para criar hospede 
+	 * M√©todo de a√ß√£o na interface para criar hospede 
 	 * 
 	 * @param hospede {@link Hospede}
 	 * @param endereco {@link Endereco}
@@ -54,9 +54,10 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 	}
 
     /**
-     * Cria nova tela de HÛspede
+     * Cria nova tela de H√≥spede
+     * @param hospede 
      */
-    public TelaCriarHospede() {
+    public TelaCriarHospede(Hospede hospede) {
         initComponents();
     }
 
@@ -76,7 +77,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("HÛspede");
+        setTitle("H√≥spede");
         
         Color cor = new Color(46,139, 87);
         getContentPane().setLayout(null);
@@ -212,7 +213,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         panel.add(txtNumHospede);
         txtNumHospede.setColumns(10);
                 
-                JLabel lblCadastrarHspede = DefaultComponentFactory.getInstance().createTitle("Cadastrar HÛspede");
+                JLabel lblCadastrarHspede = DefaultComponentFactory.getInstance().createTitle("Cadastrar H√≥spede");
                 lblCadastrarHspede.setFont(new Font("Tahoma", Font.PLAIN, 14));
                 lblCadastrarHspede.setBounds(194, 23, 117, 14);
                 panel.add(lblCadastrarHspede);
@@ -236,7 +237,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
                         btnCancelar.setBounds(265, 350, 95, 35);
                         panel.add(btnCancelar);
                 
-       //Adicionando evento para bot„o de salvar ouvir
+       //Adicionando evento para bot√£o de salvar ouvir
                 btnAddHospede.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                     	btnAddHospedeAction(evt);
