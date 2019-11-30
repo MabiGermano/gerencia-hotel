@@ -5,7 +5,6 @@
  */
 package com.br.ifpe.hosp3.view;
 import java.awt.Font;
-import java.util.StringTokenizer;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,7 +13,6 @@ import javax.swing.JTextField;
 
 import com.br.ifpe.hosp3.controller.QuartoController;
 import com.br.ifpe.hosp3.model.Quarto;
-import com.br.ifpe.hosp3.util.TratadorEventos;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**

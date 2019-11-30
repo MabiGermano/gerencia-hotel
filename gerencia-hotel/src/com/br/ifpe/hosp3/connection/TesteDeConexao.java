@@ -1,7 +1,6 @@
 package com.br.ifpe.hosp3.connection;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 public class TesteDeConexao {

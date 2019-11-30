@@ -5,26 +5,21 @@
  */
 package com.br.ifpe.hosp3.view;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 import com.br.ifpe.hosp3.controller.HospedeController;
 import com.br.ifpe.hosp3.model.Endereco;
 import com.br.ifpe.hosp3.model.Hospede;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JInternalFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 /**
  *
@@ -33,6 +28,7 @@ import java.awt.event.ActionEvent;
 public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
 
+	private Hospede hospede;
 	/**
 	 * Método de ação na interface para criar hospede 
 	 * 
@@ -61,6 +57,10 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public TelaCriarHospede(Hospede hospede) {
+    	this();
+    	this.hospede = hospede;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

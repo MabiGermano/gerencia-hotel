@@ -8,8 +8,6 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
-
-import org.apache.ibatis.exceptions.IbatisException;
 /**
  * @author Maria Beatriz Germano
  * 

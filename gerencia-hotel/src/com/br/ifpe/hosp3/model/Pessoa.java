@@ -1,7 +1,5 @@
 package com.br.ifpe.hosp3.model;
 
-import com.br.ifpe.hosp3.util.Criptografia;
-
 /**
  * @author Tayn� Alexandra
  *

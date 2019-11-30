@@ -1,7 +1,6 @@
 package com.br.ifpe.hosp3.controller;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import com.br.ifpe.hosp3.dao.QuartoDao;

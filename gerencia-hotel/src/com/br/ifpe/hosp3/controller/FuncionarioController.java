@@ -5,22 +5,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.br.ifpe.hosp3.dao.FuncionarioDao;
-import com.br.ifpe.hosp3.dao.QuartoDao;
 import com.br.ifpe.hosp3.model.Funcionario;
-import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.util.Criptografia;
 
 /**
  * @author Maria Beatriz Germano
  * 
- * Classe controladora para gestão das regras de negócio 
- * relacionadas ao funcionário
+ * Classe controladora para gestï¿½o das regras de negï¿½cio 
+ * relacionadas ao funcionï¿½rio
  * 
  **/
 public class FuncionarioController {
 
 	/**
-	 * Método estático para autenticação do funcionário
+	 * Mï¿½todo estï¿½tico para autenticaï¿½ï¿½o do funcionï¿½rio
 	 * 
 	 * @param funcionario {@link Funcionario}
 	 * @return funcionarioCorrespondente {@link Funcionario}
@@ -37,7 +35,7 @@ public class FuncionarioController {
 			if (!(funcionarioCorrespondente.getCodigo().equals(funcionario.getCodigo())
 					&& funcionarioCorrespondente.getPalavraPasse().equals(funcionario.getPalavraPasse()))) {
 				
-				throw new NullPointerException("Ops, não foi possivel encontrar o funcionário");
+				throw new NullPointerException("Ops, nï¿½o foi possivel encontrar o funcionï¿½rio");
 			}
 		} catch (NullPointerException e) {
 			throw e;

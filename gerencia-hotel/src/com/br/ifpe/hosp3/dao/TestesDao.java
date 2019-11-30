@@ -1,8 +1,6 @@
 package com.br.ifpe.hosp3.dao;
 
-import com.br.ifpe.hosp3.model.Endereco;
 import com.br.ifpe.hosp3.model.Hospede;
-import com.br.ifpe.hosp3.model.Quarto;
 
 public class TestesDao {
 

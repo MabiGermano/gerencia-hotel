@@ -1,7 +1,5 @@
 package com.br.ifpe.hosp3.connection;
 
-import java.io.IOException;
-
 import com.br.ifpe.hosp3.dao.EnderecoDao;
 import com.br.ifpe.hosp3.dao.HospedagemDao;
 import com.br.ifpe.hosp3.dao.HospedeDao;

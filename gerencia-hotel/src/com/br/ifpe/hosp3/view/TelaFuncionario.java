@@ -5,23 +5,23 @@
  */
 package com.br.ifpe.hosp3.view;
 
-import java.sql.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.model.Funcionario;
-
-import java.io.IOException;
-import javax.swing.JOptionPane;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-import java.awt.Color;
-import javax.swing.JButton;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-import java.awt.Font;
 
 /**
  *
@@ -325,7 +325,6 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     	txtCpfFunc.setText(funcionario.getCpf());
     	txtEmailFunc.setText(funcionario.getEmail());
     	txtTelFunc.setText(funcionario.getTelefone());
-    	this.alterar = true;
 	}
 
     private void txtRuaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaFuncActionPerformed

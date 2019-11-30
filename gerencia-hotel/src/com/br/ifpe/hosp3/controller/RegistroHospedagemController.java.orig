@@ -7,16 +7,17 @@ import com.br.ifpe.hosp3.dao.HospedagemDao;
 import com.br.ifpe.hosp3.dao.QuartoDao;
 import com.br.ifpe.hosp3.dao.RegistroDao;
 import com.br.ifpe.hosp3.model.Hospedagem;
+import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.model.Registro;
 
 /**
  * @author Maria Beatriz Germano
- * Classe controladora para gest√£o das regras de neg√≥cio 
+ * Classe controladora para gest„o das regras de negÛcio 
  * relacionadas ao Registro de Hospedagem
  **/
 public class RegistroHospedagemController {
 	/**
-	 * M√©todo contendo a regra de neg√≥cio necess√°ria para cria√ß√£o do registro de hospedagem
+	 * MÈtodo contendo a regra de negÛcio necess·ria para criaÁ„o do registro de hospedagem
 	 * comunicando com as classes de interface com o banco de dados
 	 * 
 	 * @param registro {@link Registro}
@@ -34,9 +35,12 @@ public class RegistroHospedagemController {
 			RegistroDao registroDao = new RegistroDao();
 			registroDao.create(registro);
 		}catch(Exception e){
-			throw new Exception("Erro na inclus√£o do registro");
+			throw new Exception("Erro na inclus„o do registro");
 		}
 	}
+<<<<<<< HEAD
+}
+=======
 
 	/**
 	 * M√©todo contendo a regra de neg√≥cio necess√°ria para listagem das hospedagens
@@ -58,3 +62,4 @@ public class RegistroHospedagemController {
 	
 	
 }
+>>>>>>> fad2246361c19a3acb356c58c5516eee4f63bd16

@@ -33,8 +33,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.event.InternalFrameEvent;
-import javax.swing.event.InternalFrameListener;
 
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.model.Funcionario;
@@ -456,8 +454,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private javax.swing.JButton btnCadastro;
 	private javax.swing.JComboBox<String> comboCadastro;
 	private javax.swing.JDesktopPane desktop;
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JLabel jLabel2;
+	private javax.swing.JLabel lblListar;
+	private javax.swing.JLabel lblLogoTelaPrinc;
 	private javax.swing.JLabel jLabel3;
 	private javax.swing.JLabel lblData;
 	public static javax.swing.JLabel lblUsuario;
@@ -474,4 +472,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private BufferedImage img;
 	private JButton btnCheckin;
 	private JButton btnCheckout;
+	
+	public javax.swing.JDesktopPane getDesktop() {
+		return desktop;
+	}
+
+	public void setDesktop(javax.swing.JDesktopPane desktop) {
+		this.desktop = desktop;
+	}
 }
