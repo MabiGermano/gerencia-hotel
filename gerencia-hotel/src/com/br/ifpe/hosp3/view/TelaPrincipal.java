@@ -396,7 +396,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 			Component add;
 			add = desktop.add(hospede);
 		} else if (sel.equals("Quarto")) {
-			TelaListagemQuarto quarto = new TelaListagemQuarto();
+			TelaListagemQuarto quarto = new TelaListagemQuarto(this);
 			quarto.setVisible(true);
 			Component add;
 			add = desktop.add(quarto);
@@ -474,7 +474,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private JButton btnCheckout;
 	
 	public javax.swing.JDesktopPane getDesktop() {
-		return desktop;
+		return this.desktop;
 	}
 
 	public void setDesktop(javax.swing.JDesktopPane desktop) {

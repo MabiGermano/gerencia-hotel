@@ -1,5 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
+import com.br.ifpe.hosp3.util.Criptografia;
+
 /**
  * @author Tayn� Alexandra
  *
@@ -40,6 +42,11 @@ public class Quarto
 
 	public Quarto() {
 		
+	}
+	
+	public String getHash() {
+		 
+		return Criptografia.criarHashKey(getNumero()+getId());
 	}
 
 	/**

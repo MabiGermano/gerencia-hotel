@@ -1,7 +1,10 @@
 package com.br.ifpe.hosp3.view;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import javax.swing.JCheckBox;
 import javax.swing.JInternalFrame;
@@ -29,6 +32,7 @@ public class TelaListagemQuarto extends JInternalFrame {
 	private DefaultTableModel modelTableQuarto;
 	private TelaPrincipal desktop;
 	private TratadorEventos tratadorEventos;
+	private Map<String, Quarto> listaMap;
 
 	/**
 	 * Create the frame.
@@ -57,6 +61,7 @@ public class TelaListagemQuarto extends JInternalFrame {
 		panel.add(scrollTableQuarto);
 
 		modelTableQuarto = new DefaultTableModel();
+		modelTableQuarto.addColumn("Codigo");
 		modelTableQuarto.addColumn("Número");
 		modelTableQuarto.addColumn("Tipo");
 		modelTableQuarto.addColumn("Qtd. Pessoas");
@@ -76,40 +81,49 @@ public class TelaListagemQuarto extends JInternalFrame {
 
 	private void listarQuartos() {
 		Set<Quarto> listaQuartos = this.buscarQuartos();
+		listaMap = listaQuartos.stream()
+				.collect(Collectors.toMap(Quarto::getHash,Function.identity()));
 
-		listaQuartos.stream().forEach(quarto -> {
+
+		listaMap.forEach((chave,quarto) -> {
 			table.getColumn("Ações").setCellRenderer(new ButtonRenderer());
 			table.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
-			Object[] objeto = new Object[] { quarto.getNumero(), quarto.getTipo(), quarto.getQuantidadePessoas(),
-					quarto.getValor(), quarto.isDisponivel() ? "Sim" : "Não", "Editar" };
+			Object[] objeto = new Object[] {chave,  quarto.getNumero(), quarto.getTipo(), quarto.getQuantidadePessoas(),
+					quarto.getValor(), quarto.isDisponivel() ? "Sim" : "Não", "Editar"};
 			modelTableQuarto.addRow(objeto);
-			
 			table.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
-
+				
 				@Override
 				public void editingStopped(ChangeEvent e) {
-					System.out.println("stop " + quarto.getId());
-					modelTableQuarto.getDataVector().removeAllElements();
-					modelTableQuarto.addRow(new Object[] { quarto.getNumero(), quarto.getTipo(),
-							quarto.getQuantidadePessoas(), quarto.getValor(), "Ok" });
-					TelaCriarQuarto alterarQuarto = new TelaCriarQuarto(quarto);
-					desktop.getDesktop().add(alterarQuarto);
-					alterarQuarto.setVisible(true);
-					tratadorEventos = new TratadorEventos(desktop);
-					alterarQuarto.addInternalFrameListener(tratadorEventos);
+					
+					clickedButton(table.getValueAt(table.getSelectedRow(), 0).toString());
 					
 				}
-
+				
 				@Override
 				public void editingCanceled(ChangeEvent e) {
 					System.out.println("Cancel");
-
+					
 				}
-
+				
 			});
 		});
 
 		
+	}
+	private void clickedButton(String chave) {
+		System.out.println("stop " + chave);
+		Quarto quarto = listaMap.get(chave);
+		
+		TelaCriarQuarto alterarQuarto = new TelaCriarQuarto(quarto);
+		
+		alterarQuarto.setVisible(true);
+		desktop.getDesktop().add(alterarQuarto);
+		tratadorEventos = new TratadorEventos(desktop);
+		alterarQuarto.addInternalFrameListener(tratadorEventos);
+		modelTableQuarto.getDataVector().removeAllElements();
+		modelTableQuarto.addRow(new Object[] { chave, quarto.getNumero(), quarto.getTipo(),
+				quarto.getQuantidadePessoas(), quarto.getValor(), "Ok" });
 	}
 
 	private Set<Quarto> buscarQuartos() {
