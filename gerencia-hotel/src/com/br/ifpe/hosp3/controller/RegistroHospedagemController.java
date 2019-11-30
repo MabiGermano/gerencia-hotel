@@ -1,18 +1,23 @@
 package com.br.ifpe.hosp3.controller;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.br.ifpe.hosp3.dao.HospedagemDao;
 import com.br.ifpe.hosp3.dao.QuartoDao;
 import com.br.ifpe.hosp3.dao.RegistroDao;
+import com.br.ifpe.hosp3.model.Hospedagem;
+import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.model.Registro;
 
 /**
  * @author Maria Beatriz Germano
- * Classe controladora para gest„o das regras de negÛcio 
+ * Classe controladora para gest√£o das regras de neg√≥cio 
  * relacionadas ao Registro de Hospedagem
  **/
 public class RegistroHospedagemController {
 	/**
-	 * MÈtodo contendo a regra de negÛcio necess·ria para criaÁ„o do registro de hospedagem
+	 * M√©todo contendo a regra de neg√≥cio necess√°ria para cria√ß√£o do registro de hospedagem
 	 * comunicando com as classes de interface com o banco de dados
 	 * 
 	 * @param registro {@link Registro}
@@ -30,7 +35,27 @@ public class RegistroHospedagemController {
 			RegistroDao registroDao = new RegistroDao();
 			registroDao.create(registro);
 		}catch(Exception e){
-			throw new Exception("Erro na inclus„o do registro");
+			throw new Exception("Erro na inclus√£o do registro");
 		}
 	}
+
+	/**
+	 * M√©todo contendo a regra de neg√≥cio necess√°ria para listagem das hospedagens
+	 * comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @return listaHospedagens {@link Set<Hospedagem>}
+	 * @throws Exception
+	 **/
+	public Set<Hospedagem> listarHospedagens() throws Exception{
+		HospedagemDao hospedagemDao = new HospedagemDao();
+		Set<Hospedagem> listaHospedagens = new HashSet<>();
+		try {
+			listaHospedagens = hospedagemDao.listAll();
+		} catch (Exception e) {
+			throw new Exception("Ocorreu um erro na consulta de hospedagens, tente novamente mais tarde");
+		}
+		return listaHospedagens;
+	}
+	
+	
 }

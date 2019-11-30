@@ -109,7 +109,7 @@ public class ConexaoMysql {
 		try {
 			conexao = (Connection) DriverManager.getConnection(url, username, password);
 			ScriptRunner sr = new ScriptRunner(conexao);
-		    Reader reader = new BufferedReader(new FileReader("./resources/sql/banco_gerencia_hotel.sql"));
+		    Reader reader = new BufferedReader(new FileReader(".\\resources\\sql\\banco_gerencia_hotel.sql"));
 		   
 		    sr.runScript(reader);
 		} catch (SQLException | FileNotFoundException e) {

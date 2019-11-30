@@ -387,29 +387,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		String sel = comboCadastro.getSelectedItem().toString();
 
 		if (sel.equals("Funcionário")) {
-			TelaFuncionario funcionario = null;
-			try {
-				funcionario = new TelaFuncionario();
-			} catch (IOException ex) {
-				Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-			}
+			TelaListagemFuncionario funcionario = null;
+			funcionario = new TelaListagemFuncionario();
 			funcionario.setVisible(true);
 			Component add;
 			add = desktop.add(funcionario);
-		}
-		if (sel.equals("Hóspede")) {
-			TelaCriarHospede hospede = new TelaCriarHospede();
+		} else if (sel.equals("Hóspede")) {
+			TelaListagemHospede hospede = new TelaListagemHospede();
 			hospede.setVisible(true);
 			Component add;
 			add = desktop.add(hospede);
-		}
-		if (sel.equals("Quarto")) {
-			TelaListagemQuarto quarto = new TelaListagemQuarto(this);
+		} else if (sel.equals("Quarto")) {
+			TelaListagemQuarto quarto = new TelaListagemQuarto();
 			quarto.setVisible(true);
 			Component add;
 			add = desktop.add(quarto);
-		} else {
-
+		} else if (sel.equals("Hospedagem")) {
+			TelaListagemHospedagem hospedagem = new TelaListagemHospedagem();
+			hospedagem.setVisible(true);
+			Component add;
+			add = desktop.add(hospedagem);
+		} else { 
+			
 		}
 	}
 
