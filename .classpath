@@ -4,5 +4,18 @@
 	<classpathentry kind="src" path="gerencia-hotel/src"/>
 	<classpathentry kind="lib" path="gerencia-hotel/lib/mybatis-3.5.3.jar"/>
 	<classpathentry kind="lib" path="gerencia-hotel/lib/mysql-connector-java-5.1.48-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/lib/commons-beanutils-1.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/lib/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/lib/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/lib/groovy-all-2.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/lib/iText-2.1.7.js2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/lib/jasperreports-5.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/lib/jasperreports-fonts-5.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/jgoodies-common-1.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/jgoodies-common-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/THG/Desktop/gerencia-hotel/gerencia-hotel/miglayout15-swing.jar"/>
 	<classpathentry kind="output" path="gerencia-hotel/bin"/>
 </classpath>

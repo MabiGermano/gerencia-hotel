@@ -27,6 +27,7 @@ public class TelaListagemHospede extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public TelaListagemHospede() {
+		setClosable(true);
 		setBounds(100, 100, 644, 349);
 		
 		JScrollPane scrollPane = new JScrollPane();

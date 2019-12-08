@@ -43,6 +43,7 @@ import com.br.ifpe.hosp3.util.TratadorEventos;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -130,7 +131,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		menuCadastroFuncionario.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
 		menuCadastroFuncionario.setText("Funcionário");
-		menuCadastroFuncionario.setEnabled(false);
+		menuCadastroFuncionario.setEnabled(true);
 		menuCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				menuCadastroFuncionarioActionPerformed(evt);
@@ -231,7 +232,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		panel.add(comboCadastro);
 
 		comboCadastro
-				.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Hóspede", "Quarto" }));
+				.setModel(new DefaultComboBoxModel(new String[] {"Funcionário", "Hóspede", "Hospedagem", "Quarto"}));
 		btnCadastro = new javax.swing.JButton();
 		btnCadastro.setBackground(new Color(192, 192, 192));
 		btnCadastro.setBounds(118, 176, 50, 24);
@@ -388,21 +389,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		String sel = comboCadastro.getSelectedItem().toString();
 
 		if (sel.equals("Funcionário")) {
-			TelaFuncionario funcionario = null;
-			try {
-				funcionario = new TelaFuncionario();
-			} catch (IOException ex) {
-				Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-			}
+			TelaListagemFuncionario funcionario = null;
+			funcionario = new TelaListagemFuncionario();
 			funcionario.setVisible(true);
 			Component add;
 			add = desktop.add(funcionario);
 		}
 		if (sel.equals("Hóspede")) {
-			TelaCriarHospede hospede = new TelaCriarHospede();
+			TelaListagemHospede hospede = new TelaListagemHospede();
 			hospede.setVisible(true);
 			Component add;
 			add = desktop.add(hospede);
+		}
+		if (sel.equals("Hospedagem")) {
+			TelaListagemHospedagem hospedagem = new TelaListagemHospedagem();
+			hospedagem.setVisible(true);
+			Component add;
+			add = desktop.add(hospedagem);
 		}
 		if (sel.equals("Quarto")) {
 			TelaListagemQuarto quarto = new TelaListagemQuarto();
@@ -410,7 +413,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 			Component add;
 			add = desktop.add(quarto);
 		} else {
-
+			
 		}
 	}
 
