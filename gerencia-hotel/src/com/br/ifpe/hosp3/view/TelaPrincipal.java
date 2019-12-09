@@ -394,7 +394,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 			Component add;
 			add = desktop.add(funcionario);
 		} else if (sel.equals("Hóspede")) {
-			TelaListagemHospede hospede = new TelaListagemHospede();
+			TelaListagemHospede hospede = new TelaListagemHospede(this);
 			hospede.setVisible(true);
 			Component add;
 			add = desktop.add(hospede);
@@ -406,7 +406,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 			add = desktop.add(hospedagem);
 		}
 		if (sel.equals("Quarto")) {
-			TelaListagemQuarto quarto = new TelaListagemQuarto();
+			TelaListagemQuarto quarto = new TelaListagemQuarto(this);
 			quarto.setVisible(true);
 			Component add;
 			add = desktop.add(quarto);

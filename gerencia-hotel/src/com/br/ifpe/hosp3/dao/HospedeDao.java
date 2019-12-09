@@ -73,8 +73,7 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 						+ "cpf = '" + hospede.getCpf() + "' ," 
 						+ "email = '" + hospede.getEmail() + "' ," 
 						+ "telefone = '" + hospede.getTelefone() + "' ,"
-						+ "palavra_passe = '" + hospede.getPalavraPasse() + "' ,"
-						+ "endereco_id = '" + hospede.getEndereco().getId() + "' "
+						+ "palavra_passe = '" + hospede.getPalavraPasse() + "' "
 						+ "WHERE id = " + hospede.getId();
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);

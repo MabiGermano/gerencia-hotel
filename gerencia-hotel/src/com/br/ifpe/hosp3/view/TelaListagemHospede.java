@@ -1,30 +1,32 @@
 package com.br.ifpe.hosp3.view;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
 
 import com.br.ifpe.hosp3.controller.HospedeController;
 import com.br.ifpe.hosp3.model.Hospede;
 import com.br.ifpe.hosp3.util.ButtonEditor;
 import com.br.ifpe.hosp3.util.ButtonRenderer;
-
-import javax.swing.JTextField;
-import javax.swing.event.CellEditorListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.util.HashSet;
-import java.util.Set;
-import java.awt.event.ActionEvent;
-import javax.swing.JCheckBox;
+import com.br.ifpe.hosp3.util.TratadorEventos;
 
 /**
  * @author Tayná Alexandra 
@@ -41,10 +43,16 @@ public class TelaListagemHospede extends JInternalFrame {
 	private JTextField txtBuscaNome;
 	private JTextField txtBuscarCpf;
 	private HospedeController hospedeController = new HospedeController();
+	private Map<String, Hospede> listaMap;
+	private TelaPrincipal desktop;
+	private TratadorEventos tratadorEventos;
 
-	/**
-	 * Create the frame.
-	 */
+
+	public TelaListagemHospede(TelaPrincipal desktop) {
+		this();
+		this.desktop = desktop;
+	}
+
 	public TelaListagemHospede() {
 		setClosable(true);
 		setBounds(100, 100, 623, 347);
@@ -102,6 +110,7 @@ public class TelaListagemHospede extends JInternalFrame {
 		panel.add(scrollTableHospede);
 		
 		modelTableHospede = new DefaultTableModel();
+		modelTableHospede.addColumn("HashCode");
 		modelTableHospede.addColumn("Nome");
 		modelTableHospede.addColumn("CPF");
 		modelTableHospede.addColumn("Email");
@@ -116,36 +125,58 @@ public class TelaListagemHospede extends JInternalFrame {
 
 	private void listarHospedes() {
 		Set<Hospede> listaHospedes = this.buscarHospedes();
-		tableListaHospede.getColumn("Ações").setCellRenderer(new ButtonRenderer());
-		tableListaHospede.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
-		
-		listaHospedes.stream().forEach(hospede -> {
-			Object[] object = new Object[] { hospede.getNome(), hospede.getCpf(), hospede.getEmail(),
-					hospede.getTelefone(), "Editar" };
-					
+		listaMap = listaHospedes.stream()
+				.collect(Collectors.toMap(Hospede::getHash,Function.identity()));
+
+		listaMap.forEach((chave,hospede) -> {
+			tableListaHospede.getColumn("Ações").setCellRenderer(new ButtonRenderer());
+			tableListaHospede.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
+			Object[] objeto = new Object[] {chave,  hospede.getNome(), hospede.getCpf(), hospede.getEmail(),
+					hospede.getTelefone(), "Editar"};
+			modelTableHospede.addRow(objeto);
 			tableListaHospede.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
-
-				@Override
-				public void editingCanceled(ChangeEvent e) {
-					System.out.println("stop " + hospede.getId());
-					modelTableHospede.getDataVector().removeAllElements();
-					modelTableHospede.addRow(new Object[] { hospede.getNome(), hospede.getCpf(), 
-							hospede.getEmail(), hospede.getTelefone(), "Ok" });
-					TelaCriarHospede alterarHospede = new TelaCriarHospede(hospede);
-					alterarHospede.setVisible(true);
-					Component add;
-				}
-
+				
 				@Override
 				public void editingStopped(ChangeEvent e) {
+					
+					clickedButton(tableListaHospede.getValueAt(tableListaHospede.getSelectedRow(), 0).toString());
+					
+				}
+				
+				@Override
+				public void editingCanceled(ChangeEvent e) {
 					System.out.println("Cancel");
-		
+					
 				}
 				
 			});
-			modelTableHospede.addRow(object);
 		});
+		
 	}
+	
+	
+
+	/**
+	 * Método contendo a lógica de visualização a partir do clique
+	 * no botão de editar.
+	 * 
+	 * @param chave {@link String}
+	 **/
+	private void clickedButton(String chave) {
+		System.out.println("stop " + chave);
+		Hospede hospede = listaMap.get(chave);
+		
+		TelaCriarHospede alterarHospede = new TelaCriarHospede(hospede);
+		
+		alterarHospede.setVisible(true);
+		desktop.getDesktop().add(alterarHospede);
+		tratadorEventos = new TratadorEventos(desktop);
+		alterarHospede.addInternalFrameListener(tratadorEventos);
+		modelTableHospede.getDataVector().removeAllElements();
+		modelTableHospede.addRow(new Object[] { chave,  hospede.getNome(), hospede.getCpf(), hospede.getEmail(),
+				hospede.getTelefone(), "Ok" });
+	}
+
 
 	private Set<Hospede> buscarHospedes() {
 		Set<Hospede> listaHospedes = new HashSet<>();

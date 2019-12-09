@@ -10,7 +10,7 @@ import com.br.ifpe.hosp3.util.Criptografia;
 
 public abstract class Pessoa 
 {
-	private Integer id;
+	private int id;
 	private String nome;
 	private String cpf;
 	private String email;
