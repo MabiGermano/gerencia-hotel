@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -52,7 +50,7 @@ public class TelaLogin extends javax.swing.JFrame {
 					this.dispose();
 				}
 			}else {
-				 JOptionPane.showMessageDialog(null, "OH-Ow Código ou senha incorretos... Tente novamente");
+				 JOptionPane.showMessageDialog(null, "OH-Ow CÃ³digo ou senha incorretos... Tente novamente");
 			}
 		} catch (Exception e) {
 			 JOptionPane.showMessageDialog(null, e.getMessage());
@@ -65,11 +63,9 @@ public class TelaLogin extends javax.swing.JFrame {
 			EstruturaBD estrutura = new EstruturaBD();
 			estrutura.criarBanco();
 		} catch (Exception e) {
-
 			System.out.println(e.getCause());
 			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "Não foi possivel resetar a base de dados");
-
+			JOptionPane.showMessageDialog(null, "Nï¿½o foi possivel resetar a base de dados");
 		} 
 		
 		
@@ -90,7 +86,7 @@ public class TelaLogin extends javax.swing.JFrame {
 		if (connection != null) {
 			lblStatus.setText("Conectado");
 		} else {
-			lblStatus.setText("Não conectado");
+			lblStatus.setText("NÃ£o conectado");
 		}
 	}
 
@@ -105,7 +101,7 @@ public class TelaLogin extends javax.swing.JFrame {
 	private void initComponents() {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setTitle("Hotel Renascen\u00E7a ");
+		setTitle("Hotel RenascenÃ§a ");
 		setResizable(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{540, 0};
@@ -116,21 +112,24 @@ public class TelaLogin extends javax.swing.JFrame {
 		
 		panel = new JPanel();
 		panel.setLayout(null);
-		lblImgLogin = new javax.swing.JLabel();
-		lblImgLogin.setBounds(47, 17, 152, 152);
-		panel.add(lblImgLogin);
+		jLabel3 = new javax.swing.JLabel();
+		jLabel3.setBounds(47, 17, 152, 152);
+		panel.add(jLabel3);
 		
-				lblImgLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/logo.png")));
-				lblSenhaLogin = new javax.swing.JLabel();
-				lblSenhaLogin.setBounds(276, 81, 36, 14);
-				panel.add(lblSenhaLogin);
+				jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/logo.png")));
+				jLabel4 = new javax.swing.JLabel();
+				jLabel4.setBounds(246, 81, 0, 0);
+				panel.add(jLabel4);
+				jLabel2 = new javax.swing.JLabel();
+				jLabel2.setBounds(276, 81, 36, 14);
+				panel.add(jLabel2);
 				
-						lblSenhaLogin.setText("Senha");
-						lblCódigoLogin = new javax.swing.JLabel();
-						lblCódigoLogin.setBounds(265, 43, 47, 14);
-						panel.add(lblCódigoLogin);
+						jLabel2.setText("Senha");
+						jLabel1 = new javax.swing.JLabel();
+						jLabel1.setBounds(265, 43, 47, 14);
+						panel.add(jLabel1);
 						
-								lblCódigoLogin.setText("C\u00F3digo");
+								jLabel1.setText("CÃ³digo");
 								
 										txtCodigo = new javax.swing.JTextField();
 										txtCodigo.setBounds(330, 38, 164, 24);
@@ -184,7 +183,7 @@ public class TelaLogin extends javax.swing.JFrame {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void actionResetSistema() {
-		int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja resetar o sistema? Todos os dados serãoo apagados", "Alerta", JOptionPane.YES_NO_OPTION);
+		int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja resetar o sistema? Todos os dados serï¿½o apagados", "Alerta", JOptionPane.YES_NO_OPTION);
 		
 		if(confirm == JOptionPane.YES_OPTION) {
 			
@@ -200,9 +199,10 @@ public class TelaLogin extends javax.swing.JFrame {
 	}// GEN-LAST:event_loginButtonActionPerformed
 
 	
-	private javax.swing.JLabel lblCódigoLogin;
-	private javax.swing.JLabel lblSenhaLogin;
-	private javax.swing.JLabel lblImgLogin;
+	private javax.swing.JLabel jLabel1;
+	private javax.swing.JLabel jLabel2;
+	private javax.swing.JLabel jLabel3;
+	private javax.swing.JLabel jLabel4;
 	private javax.swing.JLabel lblStatus;
 	private javax.swing.JButton loginButton;
 	private javax.swing.JTextField txtCodigo;

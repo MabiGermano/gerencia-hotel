@@ -17,7 +17,7 @@ import com.mysql.jdbc.Connection;
 /**
  * @author Maria Beatriz Germano 
  * 
- *  Classe de Comunixa√ß√£o com o banco de dados
+ *  Classe de ComunixaÁ„o com o banco de dados
  **/
 public class ConexaoMysql {
 
@@ -27,7 +27,7 @@ public class ConexaoMysql {
 		
 	}
 	/**
-	 * M√©todo est√°tico para obter as propriedades de configura√ß√£o
+	 * MÈtodo est·tico para obter as propriedades de configuraÁ„o
 	 * presentes no arquivo application.properties
 	 * 
 	 * @return props {@link Properties}
@@ -47,7 +47,7 @@ public class ConexaoMysql {
     }
 	
 	/**
-	 * M√©todo est√°tico para obter a conex√£o com o banco 
+	 * MÈtodo est·tico para obter a conex„o com o banco 
 	 * de dados MySql
 	 * 
 	 * @return connection {@link Connection}
@@ -80,7 +80,7 @@ public class ConexaoMysql {
 
 		} catch (SQLException e) {
 
-			System.out.println("N„o foi possivel conectar ao Banco de Dados.");
+			System.out.println("Nao foi possivel conectar ao Banco de Dados.");
 			if(e.getErrorCode() == 1049){
 				url = prop.getProperty("prop.server.urlDefault");
 				connection = getConexaoDefault(url, username, password);
@@ -89,12 +89,11 @@ public class ConexaoMysql {
 				connection = null; 
 			}
 
-
 			return connection;
 		}
 	}
 	/**
-	 * M√©todo para cria√ß√£o autom√°tica do banco de dados caso ele n√£o exista
+	 * MÈtodo para criaÁ„o autom·tica do banco de dados caso ele n„o exista
 	 * @param url {@link String}
 	 * @param username {@link String}
 	 * @param password {@link String}
@@ -109,7 +108,7 @@ public class ConexaoMysql {
 		try {
 			conexao = (Connection) DriverManager.getConnection(url, username, password);
 			ScriptRunner sr = new ScriptRunner(conexao);
-		    Reader reader = new BufferedReader(new FileReader("./resources/sql/banco_gerencia_hotel.sql"));
+		    Reader reader = new BufferedReader(new FileReader(".\\resources\\sql\\banco_gerencia_hotel.sql"));
 		   
 		    sr.runScript(reader);
 		} catch (SQLException | FileNotFoundException e) {
@@ -119,7 +118,7 @@ public class ConexaoMysql {
 	}
 
 	/**
-	 * M√©todo est√°tico para obter status da conexao
+	 * MÈtodo est·tico para obter status da conexao
 	 * 
 	 * @return status {@link String}
 	 **/
@@ -128,7 +127,7 @@ public class ConexaoMysql {
 	}
 
 	/**
-	 * M√©todo est√°tico para fechar a conex√£o com 
+	 * MÈtodo est·tico para fechar a conex„o com 
 	 * o banco de dados MySql
 	 * 
 	 * @return boolean {@link boolean}
@@ -144,7 +143,7 @@ public class ConexaoMysql {
 	}
 
 	/**
-	 * M√©todo est√°tico para reiniciar a conex√£o com 
+	 * MÈtodo est·tico para reiniciar a conex„o com 
 	 * o banco de dados MySql
 	 * 
 	 * @return ConexaoMysql.getConexaoMySQL() {@link Connection}
@@ -156,7 +155,7 @@ public class ConexaoMysql {
 	
 
 	/**
-	 * M√©todo est√°tico para leitura e execu√ß√£o de arquivos sql
+	 * MÈtodo est·tico para leitura e execuÁ„o de arquivos sql
 	 * 
 	 * @param caminhoDoArquivo {@link String}
 	 * 

@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import com.br.ifpe.hosp3.controller.QuartoController;
 import com.br.ifpe.hosp3.model.Quarto;
+import com.br.ifpe.hosp3.util.TratadorEventos;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
@@ -43,7 +44,9 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
     	try {
     		QuartoController.criarQuarto(quarto);
     		JOptionPane.showMessageDialog(null, "Quarto "+ quarto.getNumero() + "íncluido com sucesso");
+    		this.setClosed(true);
     		this.dispose();
+    		
     	}catch(Exception e) {
     		JOptionPane.showMessageDialog(null, e.getMessage());
     	}

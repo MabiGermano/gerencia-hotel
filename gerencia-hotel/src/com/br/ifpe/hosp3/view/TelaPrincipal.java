@@ -5,14 +5,18 @@
  */
 package com.br.ifpe.hosp3.view;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -25,27 +29,38 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.model.Funcionario;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Color;
+import com.br.ifpe.hosp3.util.TratadorEventos;
+
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
  * @author Thaysa Gomes
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+	Connection connection = null;
+	
 	Funcionario funcionario;
 
 	/**
 	 * Cria nova tela Principal
 	 */
 	public TelaPrincipal() {
+		try {
+			connection = ConexaoMysql.getConexaoMySQL();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setResizable(false);
 		initComponents();
 	}
@@ -75,7 +90,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		menuCadastroFuncionario = new javax.swing.JMenuItem();
 		menuCadastroHospede = new javax.swing.JMenuItem();
 		menuRelatorio = new javax.swing.JMenu();
-		menuRelatorioHospedagem = new javax.swing.JMenuItem();
+		menuRelatorioHospede = new javax.swing.JMenuItem();
+		menuRelatorioHospede.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão do relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
+				if (confirma == JOptionPane.YES_OPTION) {
+					try {
+						JasperPrint imprime = JasperFillManager.fillReport("gerencia-hotel\\resources\\arquivos\\hospedes.jasper", null, connection);
+						JasperViewer.viewReport(imprime, false);
+					} catch (Exception e) {
+						JOptionPane.showMessageDialog(null, e);
+					} 
+				}
+				
+				
+			}
+		});
 		menuRelatorioConsumo = new javax.swing.JMenuItem();
 		menuOpcoes = new javax.swing.JMenu();
 		menuOpcoesSair = new javax.swing.JMenuItem();
@@ -117,13 +147,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		menuCadastro.add(menuCadastroHospede);
 
 		Menu.add(menuCadastro);
+		
+		mntmQuarto = new JMenuItem("Quarto");
+		mntmQuarto.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				menuCadastroQuartoActionPerformed();
+			}
+		});
+		menuCadastro.add(mntmQuarto);
 
 		menuRelatorio.setText("Relatório");
 
-		menuRelatorioHospedagem.setAccelerator(
+		menuRelatorioHospede.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
-		menuRelatorioHospedagem.setText("Hospedagem");
-		menuRelatorio.add(menuRelatorioHospedagem);
+		menuRelatorioHospede.setText("Hóspede");
+		menuRelatorio.add(menuRelatorioHospede);
 
 		menuRelatorioConsumo.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
@@ -171,18 +209,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
 		lblUsuario.setText("Usuário");
+		jLabel2 = new javax.swing.JLabel();
+		jLabel2.setBounds(143, 23, 0, 0);
+		panel.add(jLabel2);
 		lblData = new javax.swing.JLabel();
 		lblData.setBounds(66, 58, 91, 23);
 		panel.add(lblData);
 
 		lblData.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 		lblData.setText("Data");
-		lblListar = new javax.swing.JLabel();
-		lblListar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblListar.setBounds(31, 117, 79, 14);
-		panel.add(lblListar);
+		jLabel3 = new javax.swing.JLabel();
+		jLabel3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		jLabel3.setBounds(31, 117, 79, 14);
+		panel.add(jLabel3);
 
-		lblListar.setText("Listar");
+		jLabel3.setText("Listar");
 		comboCadastro = new javax.swing.JComboBox<>();
 		comboCadastro.setBounds(31, 142, 136, 23);
 		panel.add(comboCadastro);
@@ -195,12 +236,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		panel.add(btnCadastro);
 
 		btnCadastro.setText("Ok");
-		lblLogoTelaPrinc = new javax.swing.JLabel();
-		lblLogoTelaPrinc.setText("Logo");
-		lblLogoTelaPrinc.setBounds(26, 230, 155, 155);
-		panel.add(lblLogoTelaPrinc);
+		jLabel1 = new javax.swing.JLabel();
+		jLabel1.setBounds(26, 230, 155, 155);
+		panel.add(jLabel1);
 
-		lblLogoTelaPrinc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/logo.png")));
+		jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/logo.png")));
 		btnCadastro.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				btnCadastroActionPerformed(evt);
@@ -229,7 +269,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		desktop.add(btnCheckin);
 
 		Icon iconCheckout = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-out_p.png"));
-		JButton btnCheckout = new JButton("Check-out", iconCheckout);
+		btnCheckout = new JButton("Check-out", iconCheckout);
 		btnCheckout.setBounds(405, 32, 127, 40);
 		desktop.add(btnCheckout);
 
@@ -256,7 +296,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 	/**
 	 * 
-	 * MÃ©todo para abrir a janela de cadastro de FuncionÃ¡rio
+	 * Método para abrir a janela de cadastro de Funcionário
 	 */
 	private void menuCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {
 		TelaFuncionario funcionario = null;
@@ -269,9 +309,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		desktop.add(funcionario);
 	}
 
+	private void menuCadastroQuartoActionPerformed() {
+		TelaCriarQuarto telaCriaQuarto = null;
+		telaCriaQuarto = new TelaCriarQuarto();
+		btnCheckin.setVisible(false);
+		btnCheckout.setVisible(false);
+		telaCriaQuarto.show();
+		
+		
+		TratadorEventos tratadorEventos = new TratadorEventos(this);
+		telaCriaQuarto.addInternalFrameListener(tratadorEventos);
+		desktop.add(telaCriaQuarto);
+		
+		
+	}
+	
+	public void executeBtnVisible() {
+		btnCheckin.setVisible(true);
+		btnCheckout.setVisible(true);
+	}
 	/**
 	 * 
-	 * MÃ©todo para formatar a data da tela principal
+	 * Método para formatar a data da tela principal
 	 */
 	private void formWindowActivated(java.awt.event.WindowEvent evt) {
 		Date data = new Date();
@@ -286,7 +345,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 	/**
 	 * 
-	 * MÃ©todo sair do sistema
+	 * Método sair do sistema
 	 */
 	private void menuOpcoesSairActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuOpcoesSairActionPerformed
 		int sair = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Alerta",
@@ -299,7 +358,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 	/**
 	 * 
-	 * MÃ©todo para abrir a janela de cadastro de HÃ³spede
+	 * Método para abrir a janela de cadastro de Hóspede
 	 */
 	private void menuCadastroHospedeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuCadastroHospedeActionPerformed
 		TelaCriarHospede hospede = new TelaCriarHospede();
@@ -326,7 +385,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {
 		String sel = comboCadastro.getSelectedItem().toString();
 
-		if (sel.equals("FuncionÃ¡rio")) {
+		if (sel.equals("Funcionário")) {
 			TelaFuncionario funcionario = null;
 			try {
 				funcionario = new TelaFuncionario();
@@ -337,7 +396,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 			Component add;
 			add = desktop.add(funcionario);
 		}
-		if (sel.equals("HÃ³spede")) {
+		if (sel.equals("Hóspede")) {
 			TelaCriarHospede hospede = new TelaCriarHospede();
 			hospede.setVisible(true);
 			Component add;
@@ -397,18 +456,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private javax.swing.JButton btnCadastro;
 	private javax.swing.JComboBox<String> comboCadastro;
 	private javax.swing.JDesktopPane desktop;
-	private javax.swing.JLabel lblLogoTelaPrinc;
-	private javax.swing.JLabel lblListar;
+	private javax.swing.JLabel jLabel1;
+	private javax.swing.JLabel jLabel2;
+	private javax.swing.JLabel jLabel3;
 	private javax.swing.JLabel lblData;
 	public static javax.swing.JLabel lblUsuario;
 	private javax.swing.JMenu menuCadastro;
 	public static javax.swing.JMenuItem menuCadastroFuncionario;
 	private javax.swing.JMenuItem menuCadastroHospede;
+	private JMenuItem mntmQuarto;
+	TratadorEventos tratadorEventos;
 	private javax.swing.JMenu menuOpcoes;
 	private javax.swing.JMenuItem menuOpcoesSair;
 	public static javax.swing.JMenu menuRelatorio;
 	private javax.swing.JMenuItem menuRelatorioConsumo;
-	private javax.swing.JMenuItem menuRelatorioHospedagem;
+	private javax.swing.JMenuItem menuRelatorioHospede;
 	private BufferedImage img;
 	private JButton btnCheckin;
+	private JButton btnCheckout;
 }

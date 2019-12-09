@@ -9,5 +9,11 @@
 	<classpathentry kind="lib" path="C:/Users/ALUNO/gerencia-hotel/gerencia-hotel/resources/jgoodies-forms-1.8.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ALUNO/gerencia-hotel/gerencia-hotel/resources/jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ALUNO/gerencia-hotel/gerencia-hotel/resources/miglayout15-swing.jar"/>
+	<classpathentry kind="lib" path="gerencia-hotel/resources/jgoodies-common-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="gerencia-hotel/resources/jgoodies-common-1.8.0.jar"/>
+	<classpathentry kind="lib" path="gerencia-hotel/resources/jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="gerencia-hotel/resources/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="lib" path="gerencia-hotel/lib/jasperreports-5.6.0.jar"/>
+	<classpathentry kind="lib" path="gerencia-hotel/lib/jasperreports-fonts-5.6.0.jar"/>
 	<classpathentry kind="output" path="gerencia-hotel/bin"/>
 </classpath>
