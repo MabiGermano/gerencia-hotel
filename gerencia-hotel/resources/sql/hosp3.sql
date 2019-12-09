@@ -37,7 +37,7 @@ CREATE TABLE `hosp3`.`consumo_extra` (
 
 LOCK TABLES `hosp3`.`consumo_extra` WRITE;
 /*!40000 ALTER TABLE `consumo_extra` DISABLE KEYS */;
-INSERT INTO `hosp3`.`consumo_extra` VALUES (1,'1 hospede extra',80),(2,'1 hospede extra',80),(3,'chocolate ',4),(4,'consumo de 4 √°guas',12),(5,'Almo√ßo do chefe',30),(6,'Ceviche',45),(7,'Ch√° de camomila',6),(8,'1 hospede extra',80),(9,'Salada',14),(10,'Salgadinho',3);
+INSERT INTO `hosp3`.`consumo_extra` VALUES (1,'1 hospede extra',80),(2,'1 hospede extra',80),(3,'chocolate ',4),(4,'consumo de 4 ·guas',12),(5,'AlmoÁo do chefe',30),(6,'Ceviche',45),(7,'Ch· de camomila',6),(8,'1 hospede extra',80),(9,'Salada',14),(10,'Salgadinho',3);
 /*!40000 ALTER TABLE `consumo_extra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +67,7 @@ CREATE TABLE `hosp3`.`endereco` (
 
 LOCK TABLES `hosp3`.`endereco` WRITE;
 /*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
-INSERT INTO `hosp3`.`endereco` VALUES (1,'R Torquato de Aquino','15','2562659','Peixinhos','Brasil','Olinda',''),(2,'Av tabatinga','5','9859867','Santa maria','Brasil','S√£o Paulo','apto 9'),(3,'R aderval costa','98','256418','Corrente','Brasil','Recife',''),(4,'Av Gauchos','24','5256985','Chimarr√£o','Brasil','Santa catarina',NULL),(5,'R Treze de outubro','12','8523647','S√£o jos√© dos campos','Brasil','S√£o paulo',NULL),(6,'Av O erro','56','9845621','Penha','Brasil','Rio de Janeiro',NULL),(7,'R Barrac√£o','8','9785956','S√£o Gon√ßalo','Brasil','S√£o paulo','apto 25'),(8,'Av Governador on√≥rio','52','8527419','Vila madaloca','Brasil','S√£o Paulo',''),(9,'Av Marqu√™s de olinda','3','9859748','Recife','Brasil','Recife','6 Andar'),(10,'Av Santada e Santos','856','9586325','Casa forte','Brasil','Recife',NULL);
+INSERT INTO `hosp3`.`endereco` VALUES (1,'R Torquato de Aquino','15','2562659','Peixinhos','Brasil','Olinda',''),(2,'Av tabatinga','5','9859867','Santa maria','Brasil','S„o Paulo','apto 9'),(3,'R aderval costa','98','256418','Corrente','Brasil','Recife',''),(4,'Av Gauchos','24','5256985','Chimarr„o','Brasil','Santa catarina',NULL),(5,'R Treze de outubro','12','8523647','S„o josÈ dos campos','Brasil','S„o paulo',NULL),(6,'Av O erro','56','9845621','Penha','Brasil','Rio de Janeiro',NULL),(7,'R Barrac„o','8','9785956','S„o GonÁalo','Brasil','S„o paulo','apto 25'),(8,'Av Governador onÛrio','52','8527419','Vila madaloca','Brasil','S„o Paulo',''),(9,'Av MarquÍs de olinda','3','9859748','Recife','Brasil','Recife','6 Andar'),(10,'Av Santada e Santos','856','9586325','Casa forte','Brasil','Recife',NULL);
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +159,7 @@ CREATE TABLE `hosp3`.`hospede` (
 
 LOCK TABLES `hosp3`.`hospede` WRITE;
 /*!40000 ALTER TABLE `hospede` DISABLE KEYS */;
-INSERT INTO `hosp3`.`hospede` VALUES (1,'Jos√© Bezerra','476.913.520-34','jose.bezerra@hotmail.com',2,'985895895','rapunzel*'),(2,'Rapunzel','533.996.080-39','rapunzel@hotmail.com',6,'852678496','estrelasflutuantes'),(3,'Boc√£o','865.839.170-17','bocao@gmail.com',1,'741523986','falafala'),(4,'Marcos','899.328.160-27','carrinho@gmail.com',3,'42344423343','tacalepau'),(5,'Sabrina Spellman','111.821.650-44','spellman@gmail.com',9,'957699021','salem'),(6,'Kara denvers','923.834.180-05','supergirl@gmail.com',4,'851245863','al3xdenvers'),(7,'Nunguento Mais','398.568.470-79','tatarde@hotmail.com',5,'232343560','mizera'),(8,'Lampi√£o','792.409.730-95','lampiao@hotmail.com',8,'828282823','cangaco'),(9,'Maria Bonita','165.144.840-00','buritinha@hotmail.com',10,'828956978','cangaceira'),(10,'Elsa','165.144.840-00','elsa@gmail.com',7,'978584978','lerigou');
+INSERT INTO `hosp3`.`hospede` VALUES (1,'JosÈ Bezerra','476.913.520-34','jose.bezerra@hotmail.com',2,'985895895','rapunzel*'),(2,'Rapunzel','533.996.080-39','rapunzel@hotmail.com',6,'852678496','estrelasflutuantes'),(3,'Boc„o','865.839.170-17','bocao@gmail.com',1,'741523986','falafala'),(4,'Marcos','899.328.160-27','carrinho@gmail.com',3,'42344423343','tacalepau'),(5,'Sabrina Spellman','111.821.650-44','spellman@gmail.com',9,'957699021','salem'),(6,'Kara denvers','923.834.180-05','supergirl@gmail.com',4,'851245863','al3xdenvers'),(7,'Nunguento Mais','398.568.470-79','tatarde@hotmail.com',5,'232343560','mizera'),(8,'Lampi„o','792.409.730-95','lampiao@hotmail.com',8,'828282823','cangaco'),(9,'Maria Bonita','165.144.840-00','buritinha@hotmail.com',10,'828956978','cangaceira'),(10,'Elsa','165.144.840-00','elsa@gmail.com',7,'978584978','lerigou');
 /*!40000 ALTER TABLE `hospede` ENABLE KEYS */;
 UNLOCK TABLES;
 
