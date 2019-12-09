@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import javax.swing.JCheckBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -34,6 +35,7 @@ public class TelaListagemQuarto extends JInternalFrame {
 	private TelaPrincipal desktop;
 	private TratadorEventos tratadorEventos;
 	private Map<String, Quarto> listaMap;
+	private QuartoController quartoController = new QuartoController();
 
 	/**
 	 * Create the frame.
@@ -68,8 +70,9 @@ public class TelaListagemQuarto extends JInternalFrame {
 		modelTableQuarto.addColumn("Qtd. Pessoas");
 		modelTableQuarto.addColumn("Valor");
 		modelTableQuarto.addColumn("Disponível");
-		modelTableQuarto.addColumn("Ações");
-
+		modelTableQuarto.addColumn("Editar");
+		modelTableQuarto.addColumn("Excluir");
+		
 		table = new JTable(modelTableQuarto);
 		scrollTableQuarto.setViewportView(table);
 
@@ -90,17 +93,21 @@ public class TelaListagemQuarto extends JInternalFrame {
 
 
 		listaMap.forEach((chave,quarto) -> {
-			table.getColumn("Ações").setCellRenderer(new ButtonRenderer());
-			table.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
+			table.getColumn("Editar").setCellRenderer(new ButtonRenderer());
+			table.getColumn("Editar").setCellEditor(new ButtonEditor(new JCheckBox()));
+					
+			table.getColumn("Excluir").setCellRenderer(new ButtonRenderer());
+			table.getColumn("Excluir").setCellEditor(new ButtonEditor(new JCheckBox()));
+
 			Object[] objeto = new Object[] {chave,  quarto.getNumero(), quarto.getTipo(), quarto.getQuantidadePessoas(),
-					quarto.getValor(), quarto.isDisponivel() ? "Sim" : "Não", "Editar"};
+					quarto.getValor(), quarto.isDisponivel() ? "Sim" : "Não", "Editar", "Excluir"};
 			modelTableQuarto.addRow(objeto);
-			table.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
+			table.getColumn("Editar").getCellEditor().addCellEditorListener(new CellEditorListener() {
 				
 				@Override
 				public void editingStopped(ChangeEvent e) {
 					
-					clickedButton(table.getValueAt(table.getSelectedRow(), 0).toString());
+					clickedButtonEdit(table.getValueAt(table.getSelectedRow(), 0).toString());
 					
 				}
 				
@@ -110,6 +117,22 @@ public class TelaListagemQuarto extends JInternalFrame {
 					
 				}
 				
+			});
+			table.getColumn("Excluir").getCellEditor().addCellEditorListener(new CellEditorListener() {
+
+				@Override
+				public void editingStopped(ChangeEvent e) {
+
+					clickedButtonDelete(table.getValueAt(table.getSelectedRow(), 0).toString());
+
+				}
+
+				@Override
+				public void editingCanceled(ChangeEvent e) {
+					System.out.println("Cancel");
+
+				}
+
 			});
 		});
 
@@ -121,7 +144,7 @@ public class TelaListagemQuarto extends JInternalFrame {
 	 * 
 	 * @param chave {@link String}
 	 **/
-	private void clickedButton(String chave) {
+	private void clickedButtonEdit(String chave) {
 		System.out.println("stop " + chave);
 		Quarto quarto = listaMap.get(chave);
 		
@@ -134,6 +157,31 @@ public class TelaListagemQuarto extends JInternalFrame {
 		modelTableQuarto.getDataVector().removeAllElements();
 		modelTableQuarto.addRow(new Object[] { chave, quarto.getNumero(), quarto.getTipo(),
 				quarto.getQuantidadePessoas(), quarto.getValor(), "Ok" });
+	}
+	
+	/**
+	 * Método contendo a lógica de deleção a partir do clique
+	 * no botão de excluir.
+	 * 
+	 * @param chave {@link String}
+	 **/
+	private void clickedButtonDelete(String chave) {
+		System.out.println("stop " + chave);
+		Quarto quarto = listaMap.get(chave);
+		try {
+			int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o quarto " 
+														+ quarto.getNumero() + "?");
+			if(confirm == JOptionPane.YES_OPTION) {
+				quartoController.deleteQuarto(quarto);
+			}
+			modelTableQuarto.getDataVector().removeAllElements();
+			listarQuartos();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+		
+
+		
 	}
 
 	private Set<Quarto> buscarQuartos() {

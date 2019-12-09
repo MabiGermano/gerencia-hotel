@@ -17,6 +17,7 @@ public class Quarto
 	private String numero;
 	private boolean disponivel = true;
 	
+	
 	public Quarto(int id, float valor, int quantidadePessoas, String tipo, String numero, boolean disponivel) 
 	{
 		this.id = id;

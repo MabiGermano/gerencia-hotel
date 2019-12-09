@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `hosp3`.`quarto` (
   `tipo` VARCHAR(45) NOT NULL,
   `numero` VARCHAR(45) NOT NULL,
   `disponivel` TINYINT(1) NOT NULL,
+  `deleted` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -55,13 +56,14 @@ CREATE TABLE IF NOT EXISTS `hosp3`.`hospede` (
   `endereco_id` INT NOT NULL,
   `telefone` VARCHAR(15) NOT NULL,
   `palavra_passe` VARCHAR(200) NOT NULL,
+  `deleted` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_hospede_1_idx` (`endereco_id` ASC),
   CONSTRAINT `fk_hospede_1`
     FOREIGN KEY (`endereco_id`)
     REFERENCES `hosp3`.`endereco` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -73,13 +75,14 @@ CREATE TABLE IF NOT EXISTS `hosp3`.`consumo_extra` (
   `descricao` VARCHAR(45) NOT NULL,
   `hospedagem_id` INT NOT NULL,
   `valor` FLOAT NOT NULL,
+  `deleted` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`),
    INDEX `fk_consumo_extra_1_idx` (`hospedagem_id` ASC),
   CONSTRAINT `fk_consumo_extra_1`
     FOREIGN KEY (`hospedagem_id`)
     REFERENCES `hosp3`.`hospedagem` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -96,13 +99,14 @@ CREATE TABLE IF NOT EXISTS `hosp3`.`funcionario` (
   `codigo` VARCHAR(10) NOT NULL,
   `cargo` VARCHAR(45) NOT NULL,
   `palavra_passe` VARCHAR(200) NOT NULL,
+  `deleted` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_funcionario_1_idx` (`endereco_id` ASC),
   CONSTRAINT `fk_funcionario_1`
     FOREIGN KEY (`endereco_id`)
     REFERENCES `hosp3`.`endereco` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -113,19 +117,20 @@ CREATE TABLE IF NOT EXISTS `hosp3`.`hospedagem` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `hospede_id` INT NOT NULL,
   `quarto_id` INT NOT NULL,
+  `deleted` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_table1_1_idx` (`hospede_id` ASC),
   INDEX `fk_table1_2_idx` (`quarto_id` ASC),
   CONSTRAINT `fk_table1_1`
     FOREIGN KEY (`hospede_id`)
     REFERENCES `hosp3`.`hospede` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_table1_2`
     FOREIGN KEY (`quarto_id`)
     REFERENCES `hosp3`.`quarto` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -141,19 +146,20 @@ CREATE TABLE IF NOT EXISTS `hosp3`.`registro` (
   `dataCheckin` DATE NOT NULL,
   `dataCheckout` DATE NOT NULL,
   `hospedagem_id` INT NOT NULL,
+  `deleted` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_registro_4_idx` (`funcionario_id` ASC),
   INDEX `fk_registro_2_idx` (`hospedagem_id` ASC),
   CONSTRAINT `fk_registro_4`
     FOREIGN KEY (`funcionario_id`)
     REFERENCES `hosp3`.`funcionario` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_registro_2`
     FOREIGN KEY (`hospedagem_id`)
     REFERENCES `hosp3`.`hospedagem` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 

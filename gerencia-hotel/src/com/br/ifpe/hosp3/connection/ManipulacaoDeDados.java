@@ -40,7 +40,7 @@ public interface ManipulacaoDeDados<Type> {
 	/**
 	 * @param id {@link dint}
 	 **/
-	public void delete(int id);
+	public void delete(int id) throws Exception;
 
 	/**
 	 * @param type {@link Type}
