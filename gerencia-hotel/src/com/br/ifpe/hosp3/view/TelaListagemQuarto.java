@@ -24,7 +24,8 @@ import com.br.ifpe.hosp3.util.TratadorEventos;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
- * @author Maria Beatriz Germano Classe de interface gráfica para listagem de
+ * @author Maria Beatriz Germano 
+ * Classe de interface gráfica para listagem de
  *         quartos
  **/
 public class TelaListagemQuarto extends JInternalFrame {
@@ -61,7 +62,7 @@ public class TelaListagemQuarto extends JInternalFrame {
 		panel.add(scrollTableQuarto);
 
 		modelTableQuarto = new DefaultTableModel();
-		modelTableQuarto.addColumn("Codigo");
+		modelTableQuarto.addColumn("HashCode");
 		modelTableQuarto.addColumn("Número");
 		modelTableQuarto.addColumn("Tipo");
 		modelTableQuarto.addColumn("Qtd. Pessoas");
@@ -79,6 +80,9 @@ public class TelaListagemQuarto extends JInternalFrame {
 		this.desktop = desktop;
 	}
 
+	/**
+	 * Método para Listar os quartos
+	 **/
 	private void listarQuartos() {
 		Set<Quarto> listaQuartos = this.buscarQuartos();
 		listaMap = listaQuartos.stream()
@@ -111,6 +115,12 @@ public class TelaListagemQuarto extends JInternalFrame {
 
 		
 	}
+	/**
+	 * Método contendo a lógica de visualização a partir do clique
+	 * no botão de editar.
+	 * 
+	 * @param chave {@link String}
+	 **/
 	private void clickedButton(String chave) {
 		System.out.println("stop " + chave);
 		Quarto quarto = listaMap.get(chave);

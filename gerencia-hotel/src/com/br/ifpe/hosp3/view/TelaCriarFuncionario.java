@@ -27,7 +27,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
  *
  * @author Thaysa Gomes
  */
-public class TelaFuncionario extends javax.swing.JInternalFrame {
+public class TelaCriarFuncionario extends javax.swing.JInternalFrame {
 
     Connection connection = null;
     PreparedStatement pst = null;
@@ -38,7 +38,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
      *
      * @throws java.io.IOException
      */
-    public TelaFuncionario() throws IOException {
+    public TelaCriarFuncionario() throws IOException {
         initComponents();
 
         connection = ConexaoMysql.getConexaoMySQL();
@@ -46,7 +46,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         
     }
     
-    public TelaFuncionario(Funcionario funcionario) throws IOException {
+    public TelaCriarFuncionario(Funcionario funcionario) throws IOException {
     	this();
     	setFields(funcionario);
 	}
@@ -324,7 +324,11 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     	txtNomeFunc.setText(funcionario.getNome());
     	txtCpfFunc.setText(funcionario.getCpf());
     	txtEmailFunc.setText(funcionario.getEmail());
+    	txtRuaFunc.setText(funcionario.getEndereco().getRua());
     	txtTelFunc.setText(funcionario.getTelefone());
+    	txtBairroFunc.setText(funcionario.getEndereco().getBairro());
+    	txtCepFunc.setText(funcionario.getEndereco().getCep());
+    	
 	}
 
     private void txtRuaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaFuncActionPerformed

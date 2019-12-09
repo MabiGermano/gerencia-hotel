@@ -43,7 +43,11 @@ public class Quarto
 	public Quarto() {
 		
 	}
-	
+	/**
+	 * Gera hash para o objeto
+	 * 
+	 * @return String
+	 **/
 	public String getHash() {
 		 
 		return Criptografia.criarHashKey(getNumero()+getId());

@@ -1,32 +1,33 @@
 package com.br.ifpe.hosp3.view;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
 
 import com.br.ifpe.hosp3.controller.FuncionarioController;
 import com.br.ifpe.hosp3.model.Funcionario;
 import com.br.ifpe.hosp3.util.ButtonEditor;
 import com.br.ifpe.hosp3.util.ButtonRenderer;
-
-import javax.swing.JTextField;
-import javax.swing.event.CellEditorListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import com.br.ifpe.hosp3.util.TratadorEventos;
 
 /**
  * @author Tayná Alexandra 
@@ -43,7 +44,10 @@ public class TelaListagemFuncionario extends JInternalFrame {
 	private JTable tableListaFuncionario;
 	private JTextField txtBuscaNome;
 	private JTextField txtBuscarCpf;
+	private TelaPrincipal desktop;
+	private TratadorEventos tratadorEventos;
 	private FuncionarioController funcionarioController = new FuncionarioController();
+	private Map<String, Funcionario> listaMap;
 
 	/**
 	 * Create the frame.
@@ -105,6 +109,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		panel.add(scrollTableFuncionario);
 		
 		modelTableFuncionario = new DefaultTableModel();
+		modelTableFuncionario.addColumn("HashCode");
 		modelTableFuncionario.addColumn("Código");
 		modelTableFuncionario.addColumn("Nome");
 		modelTableFuncionario.addColumn("CPF");
@@ -117,9 +122,42 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		
 		listarFuncionarios();
 	}
+	public TelaListagemFuncionario(TelaPrincipal desktop) {
+		this();
+		this.desktop = desktop;
+	}
 
 	private void listarFuncionarios() {
 		Set<Funcionario> listaFuncionarios = this.buscarFuncionarios();
+		listaMap = listaFuncionarios.stream()
+				.collect(Collectors.toMap(Funcionario::getHash,Function.identity()));
+
+
+		listaMap.forEach((chave,funcionario) -> {
+			tableListaFuncionario.getColumn("Ações").setCellRenderer(new ButtonRenderer());
+			tableListaFuncionario.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
+			Object[] objeto = new Object[] {chave,  funcionario.getCodigo(), funcionario.getNome(), funcionario.getCpf(),
+					funcionario.getEmail(), funcionario.getTelefone(), "Editar"};
+			modelTableFuncionario.addRow(objeto);
+			tableListaFuncionario.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
+				
+				@Override
+				public void editingStopped(ChangeEvent e) {
+					
+					clickedButton(tableListaFuncionario.getValueAt(tableListaFuncionario.getSelectedRow(), 0).toString());
+					
+				}
+				
+				@Override
+				public void editingCanceled(ChangeEvent e) {
+					System.out.println("Cancel");
+					
+				}
+				
+			});
+		});
+		
+		/**
 		tableListaFuncionario.getColumn("Ações").setCellRenderer(new ButtonRenderer());
 		tableListaFuncionario.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
 		
@@ -155,7 +193,40 @@ public class TelaListagemFuncionario extends JInternalFrame {
 			
 			modelTableFuncionario.addRow(objeto);
 		});
+		
+		
+		
+		
+		
+		**/
+		
+		
+		
 	}
+	
+	private void clickedButton(String chave) {
+		System.out.println("stop " + chave);
+		Funcionario funcionario = listaMap.get(chave);
+		
+		TelaCriarFuncionario alterarFuncionario = null;
+		try {
+			alterarFuncionario = new TelaCriarFuncionario(funcionario);
+			alterarFuncionario.setVisible(true);
+			desktop.getDesktop().add(alterarFuncionario);
+			tratadorEventos = new TratadorEventos(desktop);
+			alterarFuncionario.addInternalFrameListener(tratadorEventos);
+			modelTableFuncionario.getDataVector().removeAllElements();
+			modelTableFuncionario.addRow(new Object[] { chave,  funcionario.getCodigo(), funcionario.getNome(), funcionario.getCpf(),
+					funcionario.getEmail(), funcionario.getTelefone(), "Ok" });
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	
 
 	private Set<Funcionario> buscarFuncionarios() {
 		Set<Funcionario> listaFuncionarios = new HashSet<>();
