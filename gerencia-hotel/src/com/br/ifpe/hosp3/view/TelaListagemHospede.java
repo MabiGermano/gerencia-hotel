@@ -28,7 +28,7 @@ public class TelaListagemHospede extends JInternalFrame {
 	 */
 	public TelaListagemHospede() {
 		setClosable(true);
-		setBounds(100, 100, 644, 349);
+		setBounds(-5, 75, 644, 349);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -48,7 +48,7 @@ public class TelaListagemHospede extends JInternalFrame {
 		txtBuscaNome.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Buscar Nome:");
-		lblNome.setBounds(345, 52, 73, 14);
+		lblNome.setBounds(336, 53, 81, 14);
 		panel.add(lblNome);
 		
 		JButton btnBuscarPorNome = new JButton("");
@@ -61,11 +61,11 @@ public class TelaListagemHospede extends JInternalFrame {
 		panel.add(btnBuscarPorNome);
 		
 		JLabel lblCpf = new JLabel("Buscar CPF:");
-		lblCpf.setBounds(10, 52, 73, 14);
+		lblCpf.setBounds(10, 53, 73, 14);
 		panel.add(lblCpf);
 		
 		txtBuscarCpf = new JTextField();
-		txtBuscarCpf.setBounds(74, 48, 157, 25);
+		txtBuscarCpf.setBounds(83, 48, 157, 25);
 		panel.add(txtBuscarCpf);
 		txtBuscarCpf.setColumns(10);
 		
@@ -75,7 +75,7 @@ public class TelaListagemHospede extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnBuscarPorCpf.setBounds(242, 48, 32, 25);
+		btnBuscarPorCpf.setBounds(251, 48, 32, 25);
 		panel.add(btnBuscarPorCpf);
 		
 		JScrollPane scrollTableHospede = new JScrollPane();

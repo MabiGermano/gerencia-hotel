@@ -25,7 +25,7 @@ public class TelaListagemHospedagem extends JInternalFrame {
 	 */
 	public TelaListagemHospedagem() {
 		setClosable(true);
-setBounds(100, 100, 644, 349);
+		setBounds(-5, 75, 644, 349);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
