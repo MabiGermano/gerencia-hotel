@@ -296,7 +296,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	 * @return hospede {@link Hospede}
 	 **/
 	public Hospede buscarHospede() {
-		Hospede hospede = null;
+		Hospede hospede = new Hospede();
 		try {
 			hospede = HospedeController.buscarHospede(textCpf.getText());
 			

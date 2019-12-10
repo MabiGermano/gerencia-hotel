@@ -29,10 +29,12 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
 			
-			String sql = "INSERT INTO registro (flag_ativo, pagamento, funcionario_id, hospedagem_id)"
+			String sql = "INSERT INTO registro (flag_ativo, pagamento, dataCheckin, valor,funcionario_id, hospedagem_id)"
 						+ " VALUES ("
 						+ registro.isFlagAtivo() + " ,'"
-						+ registro.getPagamento() + "' ,"
+						+ registro.getPagamento() + "' ,'"
+						+ registro.getDataCheckin() + "' ,"
+						+ registro.getHospedagem().getQuarto().getValor() + ","
 						+ registro.getFuncionario().getId() + " ,"
 						+ registro.getHospedagem().getId() 
 						+ ")";
@@ -145,9 +147,48 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 				registro.setId(result.getInt("id"));
 				registro.setPagamento(result.getString("pagamento"));
 				registro.setFlagAtivo(result.getBoolean("flag_ativo"));
+				registro.setDataCheckin(result.getTimestamp("dataCheckin"));
+				registro.setDataCheckout(result.getTimestamp("dataCheckout"));
 				Hospedagem hospedagem = hospDao.getById(result.getInt("hospedagem_id"));
 				registro.setHospedagem(hospedagem);
 				Funcionario funcionario = funcionarioDao.getById(result.getInt("funcioario_id"));
+				registro.setFuncionario(funcionario);
+			}
+			ConexaoMysql.FecharConexao();
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		return registro;
+	}
+	
+	/**
+	 * M�todo para busca do objeto Registro no banco de dados
+	 * pelo id da hospedagem 
+	 * @return registro {@link Registro}
+	 **/
+	public Registro getByHospedagem(int hospedagem_id) {
+		Connection conexao;
+		Registro registro = new Registro();
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM registro WHERE hospedagem_id =" + hospedagem_id;
+						
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			
+			ResultSet result =  ps.executeQuery();				
+			if(result != null && result.next()) {
+				HospedagemDao hospDao = new HospedagemDao();
+				FuncionarioDao funcionarioDao = new FuncionarioDao();
+				
+				registro.setId(result.getInt("id"));
+				registro.setPagamento(result.getString("pagamento"));
+				registro.setFlagAtivo(result.getBoolean("flag_ativo"));
+				registro.setDataCheckin(result.getTimestamp("dataCheckin"));
+				registro.setDataCheckout(result.getTimestamp("dataCheckout"));
+				Hospedagem hospedagem = hospDao.getById(result.getInt("hospedagem_id"));
+				registro.setHospedagem(hospedagem);
+				Funcionario funcionario = funcionarioDao.getById(result.getInt("funcionario_id"));
 				registro.setFuncionario(funcionario);
 			}
 			ConexaoMysql.FecharConexao();
@@ -211,4 +252,6 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 }

@@ -21,7 +21,7 @@ import com.mysql.jdbc.Connection;
  **/
 public class ConexaoMysql {
 
-	public static String status = "Não conectou...";
+	public static String status = "Nï¿½o conectou...";
 
 	public ConexaoMysql() {
 		
@@ -69,7 +69,7 @@ public class ConexaoMysql {
 			if (connection != null) {
 				status = ("STATUS--->Conectado com sucesso!");
 			} else {
-				status = ("STATUS--->Não foi possivel realizar conexão");
+				status = ("STATUS--->Nï¿½o foi possivel realizar conexï¿½o");
 			}
 
 			return connection;
@@ -80,7 +80,7 @@ public class ConexaoMysql {
 
 		} catch (SQLException e) {
 
-			System.out.println("Não foi possivel conectar ao Banco de Dados.");
+			System.out.println("Nï¿½o foi possivel conectar ao Banco de Dados.");
 			if(e.getErrorCode() == 1049){
 				url = prop.getProperty("prop.server.urlDefault");
 				connection = getConexaoDefault(url, username, password);
@@ -109,7 +109,7 @@ public class ConexaoMysql {
 		try {
 			conexao = (Connection) DriverManager.getConnection(url, username, password);
 			ScriptRunner sr = new ScriptRunner(conexao);
-		    Reader reader = new BufferedReader(new FileReader(".\\resources\\sql\\banco_gerencia_hotel.sql"));
+		    Reader reader = new BufferedReader(new FileReader("./resources/sql/banco_gerencia_hotel.sql"));
 		   
 		    sr.runScript(reader);
 		} catch (SQLException | FileNotFoundException e) {

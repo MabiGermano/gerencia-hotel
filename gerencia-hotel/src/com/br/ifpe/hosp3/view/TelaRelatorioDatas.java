@@ -19,21 +19,6 @@ public class TelaRelatorioDatas extends JFrame {
 	private JTextField txtDataCheckin;
 	private JTextField txtDataCheckout;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaRelatorioDatas frame = new TelaRelatorioDatas();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.

@@ -1,6 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * @author Tayn� Alexandra
@@ -12,11 +13,11 @@ public class Registro
 {
 	private int id;
 	private boolean flagAtivo = true;
-	private String pagamento;
+	private String pagamento = "Pendente";
 	private Hospedagem hospedagem;
 	private Funcionario funcionario;
-	private Date dataCheckin;
-	private Date dataCheckout;
+	private Timestamp dataCheckin;
+	private Timestamp dataCheckout;
 	private double valor;
 	
 	public Registro(int id, String pagamento, Hospedagem hospedagem, Funcionario funcionario) {
@@ -24,7 +25,7 @@ public class Registro
 		this.pagamento = pagamento;
 		this.hospedagem = hospedagem;
 		this.funcionario = funcionario;
-		this.dataCheckin = new Date();
+		this.dataCheckin = new Timestamp(System.currentTimeMillis());
 	}
 	
 	public Registro(String pagamento, Hospedagem hospedagem, Funcionario funcionario) {
@@ -131,30 +132,30 @@ public class Registro
 	}
 
 	/**
-	 * @return dataCheckin {@link Date}
+	 * @return dataCheckin {@link Timestamp}
 	 */
-	public Date getDataCheckin() {
+	public Timestamp getDataCheckin() {
 		return dataCheckin;
 	}
 
 	/**
-	 * @param dataCheckin {@link Date}
+	 * @param dataCheckin {@link Timestamp}
 	 */
-	public void setDataCheckin(Date dataCheckin) {
+	public void setDataCheckin(Timestamp dataCheckin) {
 		this.dataCheckin = dataCheckin;
 	}
 
 	/**
-	 * @return dataCheckout {@link Date}
+	 * @return dataCheckout {@link Timestamp}
 	 */
-	public Date getDataCheckout() {
+	public Timestamp getDataCheckout() {
 		return dataCheckout;
 	}
 
 	/**
-	 * @param dataCheckout {@link Date}
+	 * @param dataCheckout {@link Timestamp}
 	 */
-	public void setDataCheckout(Date dataCheckout) {
+	public void setDataCheckout(Timestamp dataCheckout) {
 		this.dataCheckout = dataCheckout;
 	}
 	

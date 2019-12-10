@@ -157,6 +157,42 @@ public class HospedagemDao implements ManipulacaoDeDados<Hospedagem>{
 		return hospedagem;
 	}
 
+	/**
+	 * M�todo para busca do objeto Hospedagem no banco de dados
+	 * pelo cpf do hospede
+	 * @return hospedagem {@link Hospedagem}
+	 * @throws Exception 
+	 **/
+	public Hospedagem getByHospede(String cpf) throws Exception {
+		Connection conexao;
+		Hospedagem hospedagem = new Hospedagem();
+		try {
+			HospedeDao hospDao = new HospedeDao();
+			QuartoDao quartoDao = new QuartoDao();
+			Hospede hospede = hospDao.findByCpf(cpf);
+			
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM hospedagem WHERE hospede_id =" + hospede.getId();
+						
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			
+			ResultSet result =  ps.executeQuery();				
+			if(result != null && result.next()) {
+				
+				hospedagem.setId(result.getInt("id"));
+				hospedagem.setHospede(hospede);
+				Quarto quarto = quartoDao.getById(result.getInt("quarto_id"));
+				hospedagem.setQuarto(quarto);
+			}
+			ConexaoMysql.FecharConexao();
+		} catch (IOException | SQLException e) {
+			throw new Exception("Não foi possível encontrar hospedagem a partir dos parametros");
+		}
+
+		return hospedagem;
+	}
+
+	
 	@Override
 	/**
 	 * M�todo para deletar o objeto 
