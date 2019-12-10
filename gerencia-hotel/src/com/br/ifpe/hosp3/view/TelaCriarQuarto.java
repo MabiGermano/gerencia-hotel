@@ -16,6 +16,7 @@ import com.br.ifpe.hosp3.controller.QuartoController;
 import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.util.TratadorEventos;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Dimension;
 
 /**
  *
@@ -75,7 +76,7 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Quarto");
-        setPreferredSize(new java.awt.Dimension(540, 467));
+        setPreferredSize(new Dimension(630, 390));
 
         lblCpfFunc1.setText("Tipo");
 
