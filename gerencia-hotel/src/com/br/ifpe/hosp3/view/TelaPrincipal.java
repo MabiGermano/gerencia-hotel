@@ -230,7 +230,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		panel.add(comboCadastro);
 
 		comboCadastro
-				.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Hóspede", "Quarto" }));
+				.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Hóspede", "Quarto", "Hospedagem" }));
 		btnCadastro = new javax.swing.JButton();
 		btnCadastro.setBackground(new Color(192, 192, 192));
 		btnCadastro.setBounds(118, 176, 50, 24);
@@ -272,6 +272,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 		Icon iconCheckout = new ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/check-out_p.png"));
 		btnCheckout = new JButton("Check-out", iconCheckout);
+		btnCheckout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCheckOut checkOut = null;
+				checkOut = new TelaCheckOut();
+				checkOut.setVisible(true);
+				Component add;
+				add = desktop.add(checkOut);
+				
+			}
+		});
 		btnCheckout.setBounds(405, 32, 127, 40);
 		desktop.add(btnCheckout);
 
