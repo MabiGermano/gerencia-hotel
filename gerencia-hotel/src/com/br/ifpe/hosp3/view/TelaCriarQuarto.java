@@ -126,7 +126,7 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
         
         JLabel lblNovoQuarto_1 = DefaultComponentFactory.getInstance().createTitle("Novo Quarto");
         lblNovoQuarto_1.setFont(new Font("Dialog", Font.BOLD, 15));
-        lblNovoQuarto_1.setBounds(243, 12, 90, 14);
+        lblNovoQuarto_1.setBounds(243, 12, 98, 14);
         getContentPane().add(lblNovoQuarto_1);
 
         pack();
