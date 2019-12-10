@@ -5,8 +5,10 @@ import java.util.Set;
 
 import com.br.ifpe.hosp3.dao.EnderecoDao;
 import com.br.ifpe.hosp3.dao.HospedeDao;
+import com.br.ifpe.hosp3.dao.QuartoDao;
 import com.br.ifpe.hosp3.model.Endereco;
 import com.br.ifpe.hosp3.model.Hospede;
+import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.util.Criptografia;
 
 /**
@@ -79,4 +81,32 @@ public class HospedeController {
 		}
 		return listaHospedes;
 	}
-}
+
+
+	/**
+	 * Método contendo a regra de negócio necessária para alteração do hóspede
+	 * comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @param hospede {@link Hospede}
+	 * @throws Exception
+	 **/
+	public void alterarHospede(Hospede hospede) throws Exception{
+	
+		try {
+			HospedeDao hospedeDao = new HospedeDao();
+			
+			hospedeDao.updade(hospede);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public void deleteHospede(Hospede hospede) throws Exception {
+		HospedeDao hospedeDao = new HospedeDao();
+		try {
+			hospedeDao.delete(hospede.getId());
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	}

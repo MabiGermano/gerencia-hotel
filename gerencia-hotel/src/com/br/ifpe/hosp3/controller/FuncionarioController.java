@@ -5,7 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.br.ifpe.hosp3.dao.FuncionarioDao;
+import com.br.ifpe.hosp3.dao.QuartoDao;
 import com.br.ifpe.hosp3.model.Funcionario;
+import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.util.Criptografia;
 
 /**
@@ -61,4 +63,29 @@ public class FuncionarioController {
 		return listaFuncionarios;
 	}
 
+/**
+ * Método contendo a regra de negócio necessária para alteração do funcionário
+ * comunicando com a classe de interface com o banco de dados
+ * 
+ * @param funcionario {@link Funcionario}
+ * @throws Exception
+ **/
+public void alterarFuncionario(Funcionario funcionario) throws Exception{
+
+	try {
+		FuncionarioDao funcionarioDao = new FuncionarioDao();
+		funcionarioDao.updade(funcionario);
+	} catch (Exception e) {
+		throw e;
+	}
+}
+
+public void deleteFuncionario(Funcionario funcionario) throws Exception {
+	FuncionarioDao funcionarioDao = new FuncionarioDao();
+	try {
+		funcionarioDao.delete(funcionario.getId());
+	} catch (Exception e) {
+		throw e;
+	}
+}
 }

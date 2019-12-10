@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -25,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.br.ifpe.hosp3.controller.FuncionarioController;
 import com.br.ifpe.hosp3.model.Funcionario;
+import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.util.ButtonEditor;
 import com.br.ifpe.hosp3.util.ButtonRenderer;
 import com.br.ifpe.hosp3.util.TratadorEventos;
@@ -54,7 +56,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 	 */
 	public TelaListagemFuncionario() {
 		setClosable(true);
-		setBounds(-5, 75, 644, 349);
+		setBounds(-5, 75, 600, 349);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -65,16 +67,16 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		
 		JLabel lblFuncionarios = new JLabel("Funcionários");
 		lblFuncionarios.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblFuncionarios.setBounds(276, 11, 83, 26);
+		lblFuncionarios.setBounds(254, 11, 83, 26);
 		panel.add(lblFuncionarios);
 		
 		txtBuscaNome = new JTextField();
-		txtBuscaNome.setBounds(417, 48, 157, 25);
+		txtBuscaNome.setBounds(373, 48, 157, 25);
 		panel.add(txtBuscaNome);
 		txtBuscaNome.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Buscar Nome:");
-		lblNome.setBounds(335, 53, 83, 14);
+		lblNome.setBounds(288, 53, 83, 14);
 		panel.add(lblNome);
 		
 		JButton btnBuscarPorNome = new JButton("");
@@ -83,7 +85,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnBuscarPorNome.setBounds(584, 48, 32, 25);
+		btnBuscarPorNome.setBounds(540, 48, 32, 25);
 		panel.add(btnBuscarPorNome);
 		
 		JLabel lblCpf = new JLabel("Buscar CPF:");
@@ -91,7 +93,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		panel.add(lblCpf);
 		
 		txtBuscarCpf = new JTextField();
-		txtBuscarCpf.setBounds(81, 48, 157, 25);
+		txtBuscarCpf.setBounds(81, 48, 144, 25);
 		panel.add(txtBuscarCpf);
 		txtBuscarCpf.setColumns(10);
 		
@@ -101,11 +103,11 @@ public class TelaListagemFuncionario extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnBuscarPorCpf.setBounds(249, 48, 32, 25);
+		btnBuscarPorCpf.setBounds(235, 48, 32, 25);
 		panel.add(btnBuscarPorCpf);
 		
 		JScrollPane scrollTableFuncionario = new JScrollPane();
-		scrollTableFuncionario.setBounds(10, 82, 606, 224);
+		scrollTableFuncionario.setBounds(10, 82, 562, 224);
 		panel.add(scrollTableFuncionario);
 		
 		modelTableFuncionario = new DefaultTableModel();
@@ -115,7 +117,8 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		modelTableFuncionario.addColumn("CPF");
 		modelTableFuncionario.addColumn("Email");
 		modelTableFuncionario.addColumn("Telefone");
-		modelTableFuncionario.addColumn("Ações");
+		modelTableFuncionario.addColumn("Editar");
+		modelTableFuncionario.addColumn("Excluir");
 		
 		tableListaFuncionario = new JTable(modelTableFuncionario);
 		scrollTableFuncionario.setViewportView(tableListaFuncionario);
@@ -127,6 +130,9 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		this.desktop = desktop;
 	}
 
+	/**
+	 * Método para Listar os funcionários
+	 **/
 	private void listarFuncionarios() {
 		Set<Funcionario> listaFuncionarios = this.buscarFuncionarios();
 		listaMap = listaFuncionarios.stream()
@@ -134,17 +140,21 @@ public class TelaListagemFuncionario extends JInternalFrame {
 
 
 		listaMap.forEach((chave,funcionario) -> {
-			tableListaFuncionario.getColumn("Ações").setCellRenderer(new ButtonRenderer());
-			tableListaFuncionario.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
+			tableListaFuncionario.getColumn("Editar").setCellRenderer(new ButtonRenderer());
+			tableListaFuncionario.getColumn("Editar").setCellEditor(new ButtonEditor(new JCheckBox()));
+			
+			tableListaFuncionario.getColumn("Excluir").setCellRenderer(new ButtonRenderer());
+			tableListaFuncionario.getColumn("Excluir").setCellEditor(new ButtonEditor(new JCheckBox()));
+			
 			Object[] objeto = new Object[] {chave,  funcionario.getCodigo(), funcionario.getNome(), funcionario.getCpf(),
-					funcionario.getEmail(), funcionario.getTelefone(), "Editar"};
+					funcionario.getEmail(), funcionario.getTelefone(), "Editar", "Excluir"};
 			modelTableFuncionario.addRow(objeto);
-			tableListaFuncionario.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
+			tableListaFuncionario.getColumn("Editar").getCellEditor().addCellEditorListener(new CellEditorListener() {
 				
 				@Override
 				public void editingStopped(ChangeEvent e) {
 					
-					clickedButton(tableListaFuncionario.getValueAt(tableListaFuncionario.getSelectedRow(), 0).toString());
+					clickedButtonEdit(tableListaFuncionario.getValueAt(tableListaFuncionario.getSelectedRow(), 0).toString());
 					
 				}
 				
@@ -155,6 +165,23 @@ public class TelaListagemFuncionario extends JInternalFrame {
 				}
 				
 			});
+			tableListaFuncionario.getColumn("Excluir").getCellEditor().addCellEditorListener(new CellEditorListener() {
+				
+				@Override
+				public void editingStopped(ChangeEvent e) {
+					
+					clickedButtonDelete(tableListaFuncionario.getValueAt(tableListaFuncionario.getSelectedRow(), 0).toString());
+					
+				}
+				
+				@Override
+				public void editingCanceled(ChangeEvent e) {
+					System.out.println("Cancel");
+					
+				}
+				
+			});
+			
 		});
 		
 		/**
@@ -204,12 +231,18 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		
 	}
 	
-	private void clickedButton(String chave) {
+	/**
+	 * Método contendo a lógica de visualização a partir do clique
+	 * no botão de editar.
+	 * 
+	 * @param chave {@link String}
+	 **/
+	private void clickedButtonEdit(String chave) {
 		System.out.println("stop " + chave);
 		Funcionario funcionario = listaMap.get(chave);
 		
-		TelaCriarFuncionario alterarFuncionario = null;
-		alterarFuncionario = new TelaCriarFuncionario(funcionario);
+		TelaCriarFuncionario alterarFuncionario = new TelaCriarFuncionario(funcionario);
+		
 		alterarFuncionario.setVisible(true);
 		desktop.getDesktop().add(alterarFuncionario);
 		tratadorEventos = new TratadorEventos(desktop);
@@ -218,14 +251,38 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		modelTableFuncionario.addRow(new Object[] { chave,  funcionario.getCodigo(), funcionario.getNome(), funcionario.getCpf(),
 				funcionario.getEmail(), funcionario.getTelefone(), "Ok" });
 		
-		
+		listarFuncionarios();
 	}
 	
-	
+	/**
+	 * Método contendo a lógica de deleção a partir do clique
+	 * no botão de excluir.
+	 * 
+	 * @param chave {@link String}
+	 **/
+		private void clickedButtonDelete(String chave) {
+		System.out.println("stop " + chave);
+		Funcionario funcionario = listaMap.get(chave);
+		try {
+			int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o funcionário " 
+														+ funcionario.getNome() + "?");
+			if(confirm == JOptionPane.YES_OPTION) {
+				funcionarioController.deleteFuncionario(funcionario);
+			}
+			modelTableFuncionario.getDataVector().removeAllElements();
+			listarFuncionarios();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+		
+
+		
+	}
 
 	private Set<Funcionario> buscarFuncionarios() {
 		Set<Funcionario> listaFuncionarios = new HashSet<>();
 		try {
+			FuncionarioController funcionarioController = new FuncionarioController();
 			listaFuncionarios = funcionarioController.listarFuncionarios();
 		} catch (Exception e) {
 			
