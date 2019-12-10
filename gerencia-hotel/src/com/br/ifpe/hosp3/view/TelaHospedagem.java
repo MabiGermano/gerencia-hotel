@@ -4,12 +4,36 @@
  * and open the template in the editor.
  */
 package com.br.ifpe.hosp3.view;
+import javax.swing.JPanel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.JScrollPane;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.SpringLayout;
+import javax.swing.BoxLayout;
+import javax.swing.JScrollBar;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.JList;
+import java.awt.ScrollPane;
+import java.awt.Panel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Thaysa Gomes
  */
 public class TelaHospedagem extends javax.swing.JInternalFrame {
+	private JTextField txtCpfHospede;
+	private JTextField txtNomeHospede;
+	private JTable table;
 
     /**
      * Cria nova tela de Hospedagem
@@ -27,21 +51,54 @@ public class TelaHospedagem extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-        );
-
         pack();
+        getContentPane().setLayout(null);
+        
+        JLabel lblHospedagens = new JLabel("Hospedagens");
+        lblHospedagens.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        lblHospedagens.setBounds(210, 30, 82, 17);
+        getContentPane().add(lblHospedagens);
+        
+        JLabel lblBuscarCpf = new JLabel("Buscar CPF:");
+        lblBuscarCpf.setBounds(26, 84, 65, 14);
+        getContentPane().add(lblBuscarCpf);
+        
+        txtCpfHospede = new JTextField();
+        txtCpfHospede.setBounds(89, 79, 107, 25);
+        getContentPane().add(txtCpfHospede);
+        txtCpfHospede.setColumns(10);
+        
+        JLabel lblBuscarNome = new JLabel("Buscar nome:");
+        lblBuscarNome.setBounds(258, 84, 65, 14);
+        getContentPane().add(lblBuscarNome);
+        
+        txtNomeHospede = new JTextField();
+        txtNomeHospede.setBounds(328, 79, 107, 25);
+        getContentPane().add(txtNomeHospede);
+        txtNomeHospede.setColumns(10);
+        
+        JButton BtnSearchCpf = new JButton("", new ImageIcon(TelaHospedagem.class.getResource("/com/br/ifpe/hosp3/img/serch_p.png")));
+        BtnSearchCpf.setBounds(198, 79, 30, 25);
+        getContentPane().add(BtnSearchCpf);
+        
+        JButton BtnSearchNome = new JButton("", new ImageIcon(TelaHospedagem.class.getResource("/com/br/ifpe/hosp3/img/serch_p.png")));
+        BtnSearchNome.setBounds(438, 79, 30, 25);
+        getContentPane().add(BtnSearchNome);
+        
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(26, 137, 442, 152);
+        getContentPane().add(scrollPane);
+        
+        table = new JTable();
+        table.setModel(new DefaultTableModel(
+        	new Object[][] {
+        	},
+        	new String[] {
+        		"Nome", "CPF", "Telefone", "Nº do quarto", "Valor", "Pagamento"
+        	}
+        ));
+        scrollPane.setViewportView(table);
+        
+        
     }// </editor-fold>//GEN-END:initComponents
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
 }
