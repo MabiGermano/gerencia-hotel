@@ -199,7 +199,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 	 * 
 	 * @param id {@link Int}
 	 **/
-	public void delete(int id) {
+	public void delete(int id) throws Exception {
 		Connection conexao;
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
@@ -209,13 +209,13 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 			ps.execute();
 			ConexaoMysql.FecharConexao();
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
+			throw new Exception("Não foi possível deletar este quarto");
 		}
 	}
 
 	@Override
 	public void softDelete(Quarto quarto) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

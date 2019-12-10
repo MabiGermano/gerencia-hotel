@@ -23,7 +23,7 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
 
 	private boolean alterar = false;
 	private JLabel title;
-	private Quarto quarto;
+	private Quarto quarto = new Quarto();
     /**
      * Creates new form TelaCriarQuarto
      */
@@ -33,6 +33,7 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
     public TelaCriarQuarto(Quarto quarto) {
     	this();
     	setFields(quarto);
+    	this.alterar = true;
     }
 
     /**
@@ -57,7 +58,7 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
     	try {
     		QuartoController quartoController = new QuartoController();
     		quartoController.alterarQuarto(quarto);
-    		JOptionPane.showMessageDialog(null, "Quarto "+ quarto.getNumero() + " íncluido com sucesso");
+    		JOptionPane.showMessageDialog(null, "Quarto "+ quarto.getNumero() + " alterado com sucesso");
     		this.setClosed(true);
     		this.dispose();
     		
@@ -94,7 +95,6 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
         lblCpfFunc1.setText("Tipo");
 
         boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Simples", "Suite" }));
-
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,23 +150,24 @@ public class TelaCriarQuarto extends javax.swing.JInternalFrame {
     	textNumero.setText(quarto.getNumero());
     	textQtdPessoas.setText(String.valueOf(quarto.getQuantidadePessoas()));
     	textValor.setText(String.valueOf(quarto.getValor()));
-    	this.alterar = true;
+    	
     	this.title.setText("Alterar Quarto");
+    	
     	
     }
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {
  
+    	this.quarto.setNumero(textNumero.getText());
+    	this.quarto.setQuantidadePessoas(Integer.parseInt(textQtdPessoas.getText()));
+    	this.quarto.setTipo(boxTipo.getToolTipText());
+    	this.quarto.setValor(Float.parseFloat(textValor.getText()));
+    	this.quarto.setTipo(boxTipo.getModel().getSelectedItem().toString());
+    	
     	if(!this.alterar) {
-    		Quarto quarto = new Quarto();
-        	quarto.setNumero(textNumero.getText());
-        	quarto.setQuantidadePessoas(Integer.parseInt(textQtdPessoas.getText()));
-        	quarto.setTipo(boxTipo.getToolTipText());
-        	quarto.setValor(Float.parseFloat(textValor.getText()));
-        	
-        	this.criarQuarto(quarto);
+        	this.criarQuarto(this.quarto);
     	}else{
-    		this.alterarQuarto(quarto);
+    		this.alterarQuarto(this.quarto);
     	}
     	
         

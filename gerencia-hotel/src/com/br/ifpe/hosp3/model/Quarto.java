@@ -1,5 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
+import com.br.ifpe.hosp3.util.Criptografia;
+
 /**
  * @author Tayn� Alexandra
  *
@@ -14,6 +16,7 @@ public class Quarto
 	private String tipo;
 	private String numero;
 	private boolean disponivel = true;
+	
 	
 	public Quarto(int id, float valor, int quantidadePessoas, String tipo, String numero, boolean disponivel) 
 	{
@@ -40,6 +43,15 @@ public class Quarto
 
 	public Quarto() {
 		
+	}
+	/**
+	 * Gera hash para o objeto
+	 * 
+	 * @return String
+	 **/
+	public String getHash() {
+		 
+		return Criptografia.criarHashKey(getNumero()+getId());
 	}
 
 	/**

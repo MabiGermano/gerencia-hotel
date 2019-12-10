@@ -18,14 +18,13 @@ import com.br.ifpe.hosp3.util.Criptografia;
  **/
 public class HospedeController {
 
-	public static void criarHospede(Hospede hospede, Endereco endereco) throws Exception {
+	public void criarHospede(Hospede hospede) throws Exception {
 		
 		try {
 			EnderecoDao enderecoDao = new EnderecoDao();
-			endereco.setId(enderecoDao.create(endereco));
+			hospede.getEndereco().setId(enderecoDao.create(hospede.getEndereco()));
 			
 			HospedeDao hospedeDao = new HospedeDao();
-			hospede.setEndereco(endereco);
 			hospede.setPalavraPasse(Criptografia.criptografar(hospede.getPalavraPasse()));
 			hospede.setId(hospedeDao.create(hospede));
 			
@@ -33,7 +32,18 @@ public class HospedeController {
 			throw e;
 		}
 	}
-	
+
+	public void editarHospede(Hospede hospede) throws Exception {
+
+		try {
+			HospedeDao hospedeDao = new HospedeDao();
+			hospede.setPalavraPasse(Criptografia.criptografar(hospede.getPalavraPasse()));
+			hospedeDao.updade(hospede);
+
+		} catch (Exception e) {
+			throw e;
+		}
+	}
 	public static Hospede buscarHospede(String cpf) throws Exception {
 		Hospede hospedeRetorno = null;
 		try {

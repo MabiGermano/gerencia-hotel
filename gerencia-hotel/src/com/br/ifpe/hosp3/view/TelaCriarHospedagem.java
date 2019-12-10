@@ -129,23 +129,23 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		modelTableHospede.addColumn("Nome");
 		modelTableHospede.addColumn("CPF");
 		modelTableHospede.addColumn("Telefone");
-		modelTableHospede.addColumn("A��es");
+		modelTableHospede.addColumn("Ações");
 	    
 	    table = new JTable(modelTableHospede);
 
 	    
 	    scrollpaneTable.setViewportView(table);
 	    
-	    lblQuartosDisponveis = new JLabel("Quartos dispon�veis");
+	    lblQuartosDisponveis = new JLabel("Quartos disponíveis");
 	    lblQuartosDisponveis.setBounds(10, 161, 139, 14);
 	    panel.add(lblQuartosDisponveis);
 	    
 	    modelTableQuarto = new DefaultTableModel();
-	    modelTableQuarto.addColumn("N�mero");
+	    modelTableQuarto.addColumn("Número");
 	    modelTableQuarto.addColumn("Tipo");
 	    modelTableQuarto.addColumn("Qtd. Pessoas");
 	    modelTableQuarto.addColumn("Valor");
-	    modelTableQuarto.addColumn("A��es");
+	    modelTableQuarto.addColumn("Ações");
 	    
 	    
 	    scrollpaneTable.setViewportView(table);

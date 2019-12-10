@@ -33,6 +33,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.model.Funcionario;
@@ -41,6 +43,7 @@ import com.br.ifpe.hosp3.util.TratadorEventos;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -128,7 +131,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		menuCadastroFuncionario.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
 		menuCadastroFuncionario.setText("Funcionário");
-		menuCadastroFuncionario.setEnabled(false);
+		menuCadastroFuncionario.setEnabled(true);
 		menuCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				menuCadastroFuncionarioActionPerformed(evt);
@@ -308,12 +311,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	 * Método para abrir a janela de cadastro de Funcionário
 	 */
 	private void menuCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {
-		TelaFuncionario funcionario = null;
-		try {
-			funcionario = new TelaFuncionario();
-		} catch (IOException ex) {
-			Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-		}
+		TelaCriarFuncionario funcionario = null;
+		funcionario = new TelaCriarFuncionario();
 		funcionario.setVisible(true);
 		desktop.add(funcionario);
 	}
@@ -401,12 +400,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
 			Component add;
 			add = desktop.add(funcionario);
 		} else if (sel.equals("Hóspede")) {
-			TelaListagemHospede hospede = new TelaListagemHospede();
+			TelaListagemHospede hospede = new TelaListagemHospede(this);
 			hospede.setVisible(true);
 			Component add;
 			add = desktop.add(hospede);
-		} else if (sel.equals("Quarto")) {
-			TelaListagemQuarto quarto = new TelaListagemQuarto();
+		}
+		if (sel.equals("Hospedagem")) {
+			TelaListagemHospedagem hospedagem = new TelaListagemHospedagem();
+			hospedagem.setVisible(true);
+			Component add;
+			add = desktop.add(hospedagem);
+		}
+		if (sel.equals("Quarto")) {
+			TelaListagemQuarto quarto = new TelaListagemQuarto(this);
 			quarto.setVisible(true);
 			Component add;
 			add = desktop.add(quarto);
@@ -484,7 +490,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private JButton btnCheckout;
 	
 	public javax.swing.JDesktopPane getDesktop() {
-		return desktop;
+		return this.desktop;
 	}
 
 	public void setDesktop(javax.swing.JDesktopPane desktop) {

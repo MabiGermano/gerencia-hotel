@@ -3,6 +3,8 @@ package com.br.ifpe.hosp3.controller;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.swing.JOptionPane;
+
 import com.br.ifpe.hosp3.dao.QuartoDao;
 import com.br.ifpe.hosp3.model.Quarto;
 
@@ -84,6 +86,15 @@ public class QuartoController {
 						+ "\n" + "Verifique se o quarto está em hospedagem e tente novamente mais tarde.");
 			}
 			quartoDao.updade(quarto);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public void deleteQuarto(Quarto quarto) throws Exception {
+		QuartoDao quartoDao = new QuartoDao();
+		try {
+			quartoDao.delete(quarto.getId());
 		} catch (Exception e) {
 			throw e;
 		}

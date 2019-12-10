@@ -2,6 +2,7 @@ package com.br.ifpe.hosp3.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 
 public class Criptografia {
 
@@ -32,4 +33,10 @@ public class Criptografia {
 		}
 		return null;
 	}
+	public static String criarHashKey(String identificador) {
+		String retorno = "H3-";
+		retorno += identificador.getBytes();
+		return retorno;
+	}
+	
 }

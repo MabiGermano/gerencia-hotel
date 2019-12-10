@@ -1,5 +1,7 @@
 package com.br.ifpe.hosp3.model;
 
+import com.br.ifpe.hosp3.util.Criptografia;
+
 /**
  * @author Tayn� Alexandra
  *
@@ -8,7 +10,7 @@ package com.br.ifpe.hosp3.model;
 
 public abstract class Pessoa 
 {
-	private Integer id;
+	private int id;
 	private String nome;
 	private String cpf;
 	private String email;
@@ -30,6 +32,15 @@ public abstract class Pessoa
 		
 	}
 	
+	/**
+	 * Gera hash para o objeto
+	 * 
+	 * @return String
+	 **/
+	public String getHash() {
+		 
+		return Criptografia.criarHashKey(getCpf()+getId());
+	}
 
 	/**
 	 * @return id {@link int}

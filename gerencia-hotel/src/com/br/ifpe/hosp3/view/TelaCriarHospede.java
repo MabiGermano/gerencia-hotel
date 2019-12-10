@@ -27,8 +27,9 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
  */
 public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
-
-	private Hospede hospede;
+	private HospedeController hospedeController = new HospedeController();
+	private Hospede hospede = new Hospede();
+	private boolean alterar = false;
 	/**
 	 * Método de ação na interface para criar hospede 
 	 * 
@@ -37,9 +38,9 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 	 * 
 	 * @throws Exception
 	 **/
-	public void criarHospede(Hospede hospede, Endereco endereco) {
+	public void criarHospede(Hospede hospede) {
 		try {
-			HospedeController.criarHospede(hospede, endereco);
+			hospedeController.criarHospede(hospede);
 			JOptionPane.showMessageDialog(null, "Hospede " + hospede.getNome() + "Cadastrado com Sucesso!");
 			this.dispose();
 		}catch(Exception e) {
@@ -49,6 +50,18 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 		
 	}
 
+	public void editarHospede(Hospede hospede) {
+		try {
+			hospedeController.editarHospede(hospede);
+			JOptionPane.showMessageDialog(null, "Hospede " + hospede.getNome() + "Editado com Sucesso!");
+			this.dispose();
+		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+			this.dispose();
+		}
+		
+	}
+	
     /**
      * Cria nova tela de Hóspede
      * @param hospede 
@@ -59,7 +72,8 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
 
     public TelaCriarHospede(Hospede hospede) {
     	this();
-    	this.hospede = hospede;
+    	setFields(hospede);
+    	this.alterar = true;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -240,7 +254,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
        //Adicionando evento para botão de salvar ouvir
                 btnAddHospede.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    	btnAddHospedeAction(evt);
+                    	btnSaveAction(evt);
                     }
                 });
         
@@ -261,7 +275,7 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRuaHospedeActionPerformed
 
-    private void btnAddHospedeAction(java.awt.event.ActionEvent evt) {
+    private void btnSaveAction(java.awt.event.ActionEvent evt) {
     	Endereco endereco = new Endereco();
     	endereco.setBairro(txtBairroHospede.getText());
     	endereco.setCep(txtCepHospede.getText());
@@ -272,19 +286,53 @@ public class TelaCriarHospede extends javax.swing.JInternalFrame {
     	endereco.setPais(txtPaisHospede.getText());
     	endereco.setRua(txtRuaHospede.getText());
     	
-    	Hospede hospede = new Hospede();
-    	hospede.setCpf(txtCpf.getText());
-    	hospede.setEmail(txtEmailHospede.getText());
-    	hospede.setNome(txtNomeHospede.getText());
-    	hospede.setPalavraPasse(txtPassHospede.getText());
-    	hospede.setTelefone(txtTelHospede.getText());
-    	
-    	
-    	this.criarHospede(hospede, endereco);
+    	this.hospede.setCpf(txtCpf.getText());
+    	this.hospede.setEmail(txtEmailHospede.getText());
+    	this.hospede.setNome(txtNomeHospede.getText());
+    	this.hospede.setPalavraPasse(txtPassHospede.getText());
+    	this.hospede.setTelefone(txtTelHospede.getText());
+    	this.hospede.setEndereco(endereco);
+	
+    	if(this.alterar) {
+    		this.editarHospede(this.hospede);
+    	}else {
+    		this.criarHospede(this.hospede);
+    	}
+    }
+    
+    private void setFields(Hospede hospede) {
+    	this.hospede = hospede;
+    	txtNomeHospede.setText(hospede.getNome());
+    	txtCpf.setText(hospede.getCpf());
+    	txtEmailHospede.setText(hospede.getEmail());
+    	txtTelHospede.setText(hospede.getTelefone());
+    	txtRuaHospede.setText(hospede.getEndereco().getRua());
+    	txtNumHospede.setText(hospede.getEndereco().getNumero());
+    	txtBairroHospede.setText(hospede.getEndereco().getBairro());
+    	txtCepHospede.setText(hospede.getEndereco().getCep());
+    	txtPaisHospede.setText(hospede.getEndereco().getPais());
+    	txtCidadeHospede.setText(hospede.getEndereco().getCidade());
+    	txtEstadoHospede_1.setText(hospede.getEndereco().getEstado());
+    	txtCompHospede.setText(hospede.getEndereco().getComplemento());
+    	Color cor = new Color(46,139, 87);
+		btnEditHospede = new javax.swing.JButton();
+	    btnEditHospede.setBounds(370, 350, 95, 35);
+	    panel.add(btnEditHospede);
+	    panel.remove(btnAddHospede);
+	    btnEditHospede.setText("Salvar");
+	    btnEditHospede.setBackground(cor);
+	    btnEditHospede.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+	    btnEditHospede.setPreferredSize(new java.awt.Dimension(80, 50));     
+	    btnEditHospede.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	btnSaveAction(evt);
+            }
+        });
     }
 
     
     private javax.swing.JButton btnAddHospede;
+    private javax.swing.JButton btnEditHospede;
     private javax.swing.JLabel lblNomeHospede;
     private javax.swing.JTextField txtNomeHospede;
     private javax.swing.JTextField txtRuaHospede;
