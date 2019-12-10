@@ -65,7 +65,8 @@ public class RegistroHospedagemController {
 	 * Método contendo a regra de negócio necessária busca do registro de hospedagem 
 	 * comunicando com a classe de interface com o banco de dados
 	 * 
-	 * @return listaHospedagens {@link Set<Hospedagem>}
+	 * @param cpf {@link String}
+	 * @return registro {@link Registro}
 	 * @throws Exception
 	 **/
 	public Registro buscarPeloCpf(String cpf) throws Exception{
@@ -86,6 +87,23 @@ public class RegistroHospedagemController {
 			throw new Exception("Ocorreu um erro na consulta de hospedagens, tente novamente mais tarde");
 		}
 		return registro;
+	}
+	/**
+	 * Método contendo a regra de negócio necessária realizar checkout de hospedagem 
+	 * comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @param registro {@link Registro}
+	 * @throws Exception
+	 **/
+	public void realizarCheckout(Registro registro) throws Exception {
+		RegistroDao registroDao = new RegistroDao();
+		try {
+			registro.setFlagAtivo(false);
+			registro.setDataCheckout(new Timestamp(System.currentTimeMillis()));
+			registroDao.updade(registro);
+		} catch (Exception e) {
+			throw new Exception("Não foi possível realizar o check-out");
+		}
 	}
 	
 }

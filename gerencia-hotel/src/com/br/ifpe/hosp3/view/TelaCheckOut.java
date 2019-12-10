@@ -39,6 +39,7 @@ public class TelaCheckOut extends JInternalFrame {
 	private DefaultTableModel modelTableDados;
 	private RegistroHospedagemController hospedagemController = new RegistroHospedagemController();
 	private JTable tabelaDados;
+	private Registro registro;
 
 
 	/**
@@ -92,6 +93,12 @@ public class TelaCheckOut extends JInternalFrame {
 		
 		JButton btnRealizarCheckout = new JButton("Check-out");
 		btnRealizarCheckout.setBounds(357, 292, 100, 32);
+		btnRealizarCheckout.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				fazerCheckout();
+			}
+		});
 		
 		JButton buttonBuscaCpf = new JButton("");
 		buttonBuscaCpf.setBounds(196, 70, 26, 25);
@@ -154,6 +161,7 @@ public class TelaCheckOut extends JInternalFrame {
 		try {
 			Registro registro = new Registro();
 			registro = hospedagemController.buscarPeloCpf(txtCpfHospedeCheckOut.getText());
+			this.registro = registro;
 			setFields(registro);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
@@ -164,5 +172,15 @@ public class TelaCheckOut extends JInternalFrame {
 		modelTableDados.addRow(new Object[] { registro.getHospedagem().getHospede().getNome(), registro.getHospedagem().getQuarto().getNumero()});
 		txtValorCheckOut.setText(String.valueOf(registro.getValor()));
 		txtValorCheckOut.setEnabled(false);
+	}
+	
+	private void fazerCheckout() {
+		
+		try {
+			hospedagemController.realizarCheckout(this.registro);
+			JOptionPane.showMessageDialog(null, "Checkout realizado com sucesso.");
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
 	}
 }
