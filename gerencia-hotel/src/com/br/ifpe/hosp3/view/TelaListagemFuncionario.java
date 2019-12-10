@@ -54,7 +54,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 	 */
 	public TelaListagemFuncionario() {
 		setClosable(true);
-		setBounds(100, 100, 644, 349);
+		setBounds(-5, 75, 644, 349);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -74,7 +74,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		txtBuscaNome.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Buscar Nome:");
-		lblNome.setBounds(345, 52, 73, 14);
+		lblNome.setBounds(335, 53, 83, 14);
 		panel.add(lblNome);
 		
 		JButton btnBuscarPorNome = new JButton("");
@@ -87,11 +87,11 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		panel.add(btnBuscarPorNome);
 		
 		JLabel lblCpf = new JLabel("Buscar CPF:");
-		lblCpf.setBounds(10, 52, 73, 14);
+		lblCpf.setBounds(10, 52, 70, 14);
 		panel.add(lblCpf);
 		
 		txtBuscarCpf = new JTextField();
-		txtBuscarCpf.setBounds(74, 48, 157, 25);
+		txtBuscarCpf.setBounds(81, 48, 157, 25);
 		panel.add(txtBuscarCpf);
 		txtBuscarCpf.setColumns(10);
 		
@@ -101,7 +101,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnBuscarPorCpf.setBounds(242, 48, 32, 25);
+		btnBuscarPorCpf.setBounds(249, 48, 32, 25);
 		panel.add(btnBuscarPorCpf);
 		
 		JScrollPane scrollTableFuncionario = new JScrollPane();
@@ -209,19 +209,14 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		Funcionario funcionario = listaMap.get(chave);
 		
 		TelaCriarFuncionario alterarFuncionario = null;
-		try {
-			alterarFuncionario = new TelaCriarFuncionario(funcionario);
-			alterarFuncionario.setVisible(true);
-			desktop.getDesktop().add(alterarFuncionario);
-			tratadorEventos = new TratadorEventos(desktop);
-			alterarFuncionario.addInternalFrameListener(tratadorEventos);
-			modelTableFuncionario.getDataVector().removeAllElements();
-			modelTableFuncionario.addRow(new Object[] { chave,  funcionario.getCodigo(), funcionario.getNome(), funcionario.getCpf(),
-					funcionario.getEmail(), funcionario.getTelefone(), "Ok" });
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+		alterarFuncionario = new TelaCriarFuncionario(funcionario);
+		alterarFuncionario.setVisible(true);
+		desktop.getDesktop().add(alterarFuncionario);
+		tratadorEventos = new TratadorEventos(desktop);
+		alterarFuncionario.addInternalFrameListener(tratadorEventos);
+		modelTableFuncionario.getDataVector().removeAllElements();
+		modelTableFuncionario.addRow(new Object[] { chave,  funcionario.getCodigo(), funcionario.getNome(), funcionario.getCpf(),
+				funcionario.getEmail(), funcionario.getTelefone(), "Ok" });
 		
 		
 	}

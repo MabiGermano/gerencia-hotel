@@ -302,11 +302,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	 */
 	private void menuCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {
 		TelaCriarFuncionario funcionario = null;
-		try {
-			funcionario = new TelaCriarFuncionario();
-		} catch (IOException ex) {
-			Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-		}
+		funcionario = new TelaCriarFuncionario();
 		funcionario.setVisible(true);
 		desktop.add(funcionario);
 	}

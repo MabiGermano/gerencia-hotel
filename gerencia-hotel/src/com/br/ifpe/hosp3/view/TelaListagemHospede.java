@@ -16,6 +16,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.CellEditorListener;
@@ -34,10 +37,6 @@ import com.br.ifpe.hosp3.util.TratadorEventos;
  **/
 
 public class TelaListagemHospede extends JInternalFrame {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private DefaultTableModel modelTableHospede;
 	private JTable tableListaHospede;
 	private JTextField txtBuscaNome;
@@ -55,7 +54,7 @@ public class TelaListagemHospede extends JInternalFrame {
 
 	public TelaListagemHospede() {
 		setClosable(true);
-		setBounds(100, 100, 623, 347);
+		setBounds(-5, 75, 644, 349);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -66,16 +65,16 @@ public class TelaListagemHospede extends JInternalFrame {
 		
 		JLabel lblHspedes = new JLabel("Hóspedes");
 		lblHspedes.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblHspedes.setBounds(266, 11, 73, 26);
+		lblHspedes.setBounds(276, 11, 73, 26);
 		panel.add(lblHspedes);
 		
 		txtBuscaNome = new JTextField();
-		txtBuscaNome.setBounds(399, 48, 157, 25);
+		txtBuscaNome.setBounds(417, 48, 157, 25);
 		panel.add(txtBuscaNome);
 		txtBuscaNome.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Buscar Nome:");
-		lblNome.setBounds(318, 53, 81, 14);
+		lblNome.setBounds(336, 53, 81, 14);
 		panel.add(lblNome);
 		
 		JButton btnBuscarPorNome = new JButton("");
@@ -84,15 +83,15 @@ public class TelaListagemHospede extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnBuscarPorNome.setBounds(566, 48, 32, 25);
+		btnBuscarPorNome.setBounds(584, 48, 32, 25);
 		panel.add(btnBuscarPorNome);
 		
 		JLabel lblCpf = new JLabel("Buscar CPF:");
-		lblCpf.setBounds(10, 52, 86, 14);
+		lblCpf.setBounds(10, 53, 73, 14);
 		panel.add(lblCpf);
 		
 		txtBuscarCpf = new JTextField();
-		txtBuscarCpf.setBounds(82, 48, 157, 25);
+		txtBuscarCpf.setBounds(83, 48, 157, 25);
 		panel.add(txtBuscarCpf);
 		txtBuscarCpf.setColumns(10);
 		
@@ -102,11 +101,11 @@ public class TelaListagemHospede extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnBuscarPorCpf.setBounds(249, 48, 32, 25);
+		btnBuscarPorCpf.setBounds(251, 48, 32, 25);
 		panel.add(btnBuscarPorCpf);
 		
 		JScrollPane scrollTableHospede = new JScrollPane();
-		scrollTableHospede.setBounds(10, 82, 585, 224);
+		scrollTableHospede.setBounds(10, 82, 606, 224);
 		panel.add(scrollTableHospede);
 		
 		modelTableHospede = new DefaultTableModel();
