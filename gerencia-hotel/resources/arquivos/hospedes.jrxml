@@ -39,10 +39,6 @@
 				</textElement>
 				<text><![CDATA[Hóspedes]]></text>
 			</staticText>
-			<image>
-				<reportElement x="454" y="0" width="82" height="79" uuid="ebc1df3d-fae9-4709-9461-ae2f62fb7ca4"/>
-				<imageExpression><![CDATA["C:\\Users\\THG\\Desktop\\logo.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
