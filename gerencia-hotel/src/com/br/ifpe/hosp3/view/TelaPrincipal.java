@@ -104,7 +104,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 				
 			}
 		});
-		menuRelatorioConsumo = new javax.swing.JMenuItem();
 		menuOpcoes = new javax.swing.JMenu();
 		menuOpcoesSair = new javax.swing.JMenuItem();
 
@@ -155,16 +154,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		menuCadastro.add(mntmQuarto);
 
 		menuRelatorio.setText("Relatório");
+		
+		mntmHospedagem = new JMenuItem();
+		mntmHospedagem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaRelatorioDatas relatorioDatas = null;
+				relatorioDatas = new TelaRelatorioDatas();
+				relatorioDatas.setVisible(true);
+				desktop.add(relatorioDatas);
+			}
+		});
+		mntmHospedagem.setText("Hospedagens");
+		menuRelatorio.add(mntmHospedagem);
 
 		menuRelatorioHospede.setAccelerator(
 				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
-		menuRelatorioHospede.setText("Hóspede");
+		menuRelatorioHospede.setText("Hóspedes");
 		menuRelatorio.add(menuRelatorioHospede);
-
-		menuRelatorioConsumo.setAccelerator(
-				javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
-		menuRelatorioConsumo.setText("Consumo Extra");
-		menuRelatorio.add(menuRelatorioConsumo);
 
 		Menu.add(menuRelatorio);
 
@@ -478,11 +484,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	private javax.swing.JMenu menuOpcoes;
 	private javax.swing.JMenuItem menuOpcoesSair;
 	public static javax.swing.JMenu menuRelatorio;
-	private javax.swing.JMenuItem menuRelatorioConsumo;
 	private javax.swing.JMenuItem menuRelatorioHospede;
 	private BufferedImage img;
 	private JButton btnCheckin;
 	private JButton btnCheckout;
+	private JMenuItem mntmHospedagem;
 	
 	public javax.swing.JDesktopPane getDesktop() {
 		return this.desktop;

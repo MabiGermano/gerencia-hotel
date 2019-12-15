@@ -4,27 +4,30 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[select * from hospede order by nome;]]>
+		<![CDATA[select * from registro order by id;]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nome" class="java.lang.String">
+	<field name="flag_ativo" class="java.lang.Boolean">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="cpf" class="java.lang.String">
+	<field name="pagamento" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="email" class="java.lang.String">
+	<field name="valor" class="java.lang.Float">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="endereco_id" class="java.lang.Integer">
+	<field name="dataCheckin" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="telefone" class="java.lang.String">
+	<field name="dataCheckout" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="palavra_passe" class="java.lang.String">
+	<field name="funcionario_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hospedagem_id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -33,11 +36,11 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="17" y="20" width="138" height="42" uuid="1f30bb67-da17-49ed-ad3d-440c37789cb5"/>
+				<reportElement x="17" y="20" width="190" height="42" uuid="1f30bb67-da17-49ed-ad3d-440c37789cb5"/>
 				<textElement>
 					<font size="30"/>
 				</textElement>
-				<text><![CDATA[Hóspedes]]></text>
+				<text><![CDATA[Hospedagens]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -59,56 +62,56 @@
 				<text><![CDATA[Id]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="55" y="0" width="100" height="20" uuid="7be50807-7b07-4485-adb7-4c5b84d2a4e6"/>
+				<reportElement x="395" y="0" width="100" height="20" uuid="cf19cf8f-95a7-46e8-8790-2a2320e217d5"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nome]]></text>
+				<text><![CDATA[Pagamento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="166" y="0" width="100" height="20" uuid="9f8040e2-a4a4-4ec5-9473-f000525a20df"/>
+				<reportElement x="68" y="2" width="100" height="20" uuid="cbd475e9-db56-4880-9c21-7114918c3ee9"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[CPF]]></text>
+				<text><![CDATA[Check-in]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="276" y="0" width="100" height="20" uuid="df5f1922-ad5f-4706-8c4a-ebd7ba5dc51c"/>
+				<reportElement x="182" y="2" width="100" height="20" uuid="8c8faeae-e489-497f-8ea6-49409d745ce6"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[E-mail]]></text>
+				<text><![CDATA[Check-out]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="404" y="0" width="100" height="20" uuid="55991f61-34c1-4c12-99f7-08ffbc8ea31c"/>
+				<reportElement x="295" y="0" width="44" height="20" uuid="4cb4fba7-06ab-4d2e-be96-8aabcf452b4f"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Telefone]]></text>
+				<text><![CDATA[Valor]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="36" splitType="Stretch">
 			<textField>
-				<reportElement x="17" y="0" width="34" height="20" uuid="b67d7679-f9f1-4c99-9963-28d3e022aef9"/>
+				<reportElement x="17" y="0" width="32" height="20" uuid="9215f4ee-1498-4a26-83e7-dc1f69dab204"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="55" y="0" width="100" height="20" uuid="a6e8827c-3093-4fe2-b3b7-94a9d9ad567e"/>
-				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				<reportElement x="395" y="0" width="128" height="20" uuid="5f2e0cf3-a1f8-4e63-ad40-df1794d68359"/>
+				<textFieldExpression><![CDATA[$F{pagamento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="166" y="0" width="100" height="20" uuid="e3c696e2-e87a-451d-83db-8e45368a0c12"/>
-				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+				<reportElement x="68" y="0" width="100" height="20" uuid="9428fb11-573b-4208-b91d-76e6c346d295"/>
+				<textFieldExpression><![CDATA[$F{dataCheckin}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="276" y="0" width="100" height="20" uuid="d8a0a61c-4c5f-4953-949d-7e5caef21904"/>
-				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+				<reportElement x="182" y="0" width="100" height="20" uuid="2c7ea57e-fc97-4bcd-a3d8-db37236ed1c4"/>
+				<textFieldExpression><![CDATA[$F{dataCheckout}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="404" y="0" width="100" height="20" uuid="a2a40917-2f22-486e-b1d6-e86cc4169fe1"/>
-				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
+				<reportElement x="295" y="0" width="69" height="20" uuid="dedb0667-55f8-4e51-895c-9310beec3a65"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
