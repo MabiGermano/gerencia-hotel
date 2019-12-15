@@ -157,6 +157,8 @@ public class TelaListagemQuarto extends JInternalFrame {
 		modelTableQuarto.getDataVector().removeAllElements();
 		modelTableQuarto.addRow(new Object[] { chave, quarto.getNumero(), quarto.getTipo(),
 				quarto.getQuantidadePessoas(), quarto.getValor(), "Ok" });
+		
+		listarQuartos();
 	}
 	
 	/**

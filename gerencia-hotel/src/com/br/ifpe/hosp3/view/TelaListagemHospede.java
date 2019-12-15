@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
@@ -26,7 +27,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
 
 import com.br.ifpe.hosp3.controller.HospedeController;
+import com.br.ifpe.hosp3.controller.QuartoController;
 import com.br.ifpe.hosp3.model.Hospede;
+import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.util.ButtonEditor;
 import com.br.ifpe.hosp3.util.ButtonRenderer;
 import com.br.ifpe.hosp3.util.TratadorEventos;
@@ -54,7 +57,7 @@ public class TelaListagemHospede extends JInternalFrame {
 
 	public TelaListagemHospede() {
 		setClosable(true);
-		setBounds(-5, 75, 644, 349);
+		setBounds(-5, 75, 584, 334);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -65,16 +68,16 @@ public class TelaListagemHospede extends JInternalFrame {
 		
 		JLabel lblHspedes = new JLabel("Hóspedes");
 		lblHspedes.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblHspedes.setBounds(276, 11, 73, 26);
+		lblHspedes.setBounds(252, 11, 73, 26);
 		panel.add(lblHspedes);
 		
 		txtBuscaNome = new JTextField();
-		txtBuscaNome.setBounds(417, 48, 157, 25);
+		txtBuscaNome.setBounds(376, 48, 136, 25);
 		panel.add(txtBuscaNome);
 		txtBuscaNome.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Buscar Nome:");
-		lblNome.setBounds(336, 53, 81, 14);
+		lblNome.setBounds(286, 53, 81, 14);
 		panel.add(lblNome);
 		
 		JButton btnBuscarPorNome = new JButton("");
@@ -83,7 +86,7 @@ public class TelaListagemHospede extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnBuscarPorNome.setBounds(584, 48, 32, 25);
+		btnBuscarPorNome.setBounds(522, 48, 32, 25);
 		panel.add(btnBuscarPorNome);
 		
 		JLabel lblCpf = new JLabel("Buscar CPF:");
@@ -91,7 +94,7 @@ public class TelaListagemHospede extends JInternalFrame {
 		panel.add(lblCpf);
 		
 		txtBuscarCpf = new JTextField();
-		txtBuscarCpf.setBounds(83, 48, 157, 25);
+		txtBuscarCpf.setBounds(93, 48, 136, 25);
 		panel.add(txtBuscarCpf);
 		txtBuscarCpf.setColumns(10);
 		
@@ -101,11 +104,11 @@ public class TelaListagemHospede extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnBuscarPorCpf.setBounds(251, 48, 32, 25);
+		btnBuscarPorCpf.setBounds(239, 48, 32, 25);
 		panel.add(btnBuscarPorCpf);
 		
 		JScrollPane scrollTableHospede = new JScrollPane();
-		scrollTableHospede.setBounds(10, 82, 606, 224);
+		scrollTableHospede.setBounds(10, 82, 547, 213);
 		panel.add(scrollTableHospede);
 		
 		modelTableHospede = new DefaultTableModel();
@@ -114,7 +117,8 @@ public class TelaListagemHospede extends JInternalFrame {
 		modelTableHospede.addColumn("CPF");
 		modelTableHospede.addColumn("Email");
 		modelTableHospede.addColumn("Telefone");
-		modelTableHospede.addColumn("Ações");
+		modelTableHospede.addColumn("Editar");
+		modelTableHospede.addColumn("Excluir");
 		
 		tableListaHospede = new JTable(modelTableHospede);
 		scrollTableHospede.setViewportView(tableListaHospede);
@@ -128,12 +132,16 @@ public class TelaListagemHospede extends JInternalFrame {
 				.collect(Collectors.toMap(Hospede::getHash,Function.identity()));
 
 		listaMap.forEach((chave,hospede) -> {
-			tableListaHospede.getColumn("Ações").setCellRenderer(new ButtonRenderer());
-			tableListaHospede.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
+			tableListaHospede.getColumn("Editar").setCellRenderer(new ButtonRenderer());
+			tableListaHospede.getColumn("Editar").setCellEditor(new ButtonEditor(new JCheckBox()));
+			
+			tableListaHospede.getColumn("Excluir").setCellRenderer(new ButtonRenderer());
+			tableListaHospede.getColumn("Excluir").setCellEditor(new ButtonEditor(new JCheckBox()));
+			
 			Object[] objeto = new Object[] {chave,  hospede.getNome(), hospede.getCpf(), hospede.getEmail(),
-					hospede.getTelefone(), "Editar"};
+					hospede.getTelefone(), "Editar", "Excluir"};
 			modelTableHospede.addRow(objeto);
-			tableListaHospede.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
+			tableListaHospede.getColumn("Editar").getCellEditor().addCellEditorListener(new CellEditorListener() {
 				
 				@Override
 				public void editingStopped(ChangeEvent e) {
@@ -148,6 +156,23 @@ public class TelaListagemHospede extends JInternalFrame {
 					
 				}
 				
+			});
+			
+			tableListaHospede.getColumn("Excluir").getCellEditor().addCellEditorListener(new CellEditorListener() {
+
+				@Override
+				public void editingStopped(ChangeEvent e) {
+
+					clickedButtonDelete(tableListaHospede.getValueAt(tableListaHospede.getSelectedRow(), 0).toString());
+
+				}
+
+				@Override
+				public void editingCanceled(ChangeEvent e) {
+					System.out.println("Cancel");
+
+				}
+
 			});
 		});
 		
@@ -174,12 +199,38 @@ public class TelaListagemHospede extends JInternalFrame {
 		modelTableHospede.getDataVector().removeAllElements();
 		modelTableHospede.addRow(new Object[] { chave,  hospede.getNome(), hospede.getCpf(), hospede.getEmail(),
 				hospede.getTelefone(), "Ok" });
+		
+		listarHospedes();
+	}
+	
+	/**
+	 * Método contendo a lógica de deleção a partir do clique
+	 * no botão de excluir.
+	 * 
+	 * @param chave {@link String}
+	 **/
+	private void clickedButtonDelete(String chave) {
+		System.out.println("stop " + chave);
+		Hospede hospede = listaMap.get(chave);
+		try {
+			int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o hóspede " 
+														+ hospede.getNome() + "?");
+			if(confirm == JOptionPane.YES_OPTION) {
+				hospedeController.deleteHospede(hospede);
+			}
+			modelTableHospede.getDataVector().removeAllElements();
+			listarHospedes();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+	
 	}
 
 
 	private Set<Hospede> buscarHospedes() {
 		Set<Hospede> listaHospedes = new HashSet<>();
 		try {
+			HospedeController hospedeController = new HospedeController();
 			listaHospedes = hospedeController.listarHospedes();
 		} catch (Exception e) {
 			
