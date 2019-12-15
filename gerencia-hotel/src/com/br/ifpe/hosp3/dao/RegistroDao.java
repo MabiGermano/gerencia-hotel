@@ -69,8 +69,6 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 			
 			String sql = "UPDATE registro SET "
 						+ "flag_ativo = " + registro.isFlagAtivo() + " ,"
-						+ "hospedagem_id = " + registro.getHospedagem().getId() + " ,"
-						+ "funcionario_id = '" + registro.getFuncionario().getId() + "' "
 						+ "dataCheckout = '" + registro.getDataCheckout() + "' "
 						+ "pagamento = '" + registro.getPagamento() + "' "
 						+ "WHERE id = " + registro.getId();
@@ -173,7 +171,7 @@ public class RegistroDao implements ManipulacaoDeDados<Registro>{
 		Registro registro = new Registro();
 		try {
 			conexao = ConexaoMysql.getConexaoMySQL();
-			String sql = "SELECT * FROM registro WHERE hospedagem_id =" + hospedagem_id + "AND flag_ativo = true";
+			String sql = "SELECT * FROM registro WHERE hospedagem_id = " + hospedagem_id + " AND flag_ativo = true";
 						
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			

@@ -40,6 +40,7 @@ public class TelaCheckOut extends JInternalFrame {
 	private RegistroHospedagemController hospedagemController = new RegistroHospedagemController();
 	private JTable tabelaDados;
 	private Registro registro;
+	private JComboBox comboBoxFormasDePagamento;
 
 
 	/**
@@ -84,7 +85,7 @@ public class TelaCheckOut extends JInternalFrame {
 		JLabel lblValor = new JLabel("Valor:");
 		lblValor.setBounds(268, 217, 46, 14);
 		
-		JComboBox comboBoxFormasDePagamento = new JComboBox();
+		comboBoxFormasDePagamento = new JComboBox();
 		comboBoxFormasDePagamento.setBounds(26, 243, 160, 25);
 		comboBoxFormasDePagamento.setModel(new DefaultComboBoxModel(FormasDePagamentoEnum.values()));
 		
@@ -177,6 +178,7 @@ public class TelaCheckOut extends JInternalFrame {
 	private void fazerCheckout() {
 		
 		try {
+			this.registro.setPagamento(comboBoxFormasDePagamento.getToolTipText());
 			hospedagemController.realizarCheckout(this.registro);
 			JOptionPane.showMessageDialog(null, "Checkout realizado com sucesso.");
 		} catch (Exception e) {
