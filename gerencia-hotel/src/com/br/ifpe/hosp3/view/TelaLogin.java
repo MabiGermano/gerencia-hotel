@@ -32,6 +32,11 @@ public class TelaLogin extends javax.swing.JFrame {
 	PreparedStatement pst = null;
 	ResultSet rs = null;
 
+	/**
+	 * Método para realizar login no sistema.
+	 * 
+	 * 
+	 **/
 	public void logar() {
 		try {
 			Funcionario funcionarioForm = new Funcionario(txtCodigo.getText(), txtSenha.getText());
@@ -58,6 +63,10 @@ public class TelaLogin extends javax.swing.JFrame {
 
 	}
 	
+	/**
+	 * Método para resetar os dados contidos na base de dados.
+	 * 
+	 **/
 	public void resetarSistema() {
 		try {
 			EstruturaBD estrutura = new EstruturaBD();

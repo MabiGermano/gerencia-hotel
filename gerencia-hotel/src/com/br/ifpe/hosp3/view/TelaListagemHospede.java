@@ -125,7 +125,11 @@ public class TelaListagemHospede extends JInternalFrame {
 		
 		listarHospedes();
 	}
-
+	
+	/**
+	 * Método para listar hospedagens.
+	 * 
+	 **/
 	private void listarHospedes() {
 		Set<Hospede> listaHospedes = this.buscarHospedes();
 		listaMap = listaHospedes.stream()
@@ -226,7 +230,11 @@ public class TelaListagemHospede extends JInternalFrame {
 	
 	}
 
-
+	/**
+	 * Método para buscar hóspedes.
+	 * 
+	 * @return listaHospedes {@link Set<Hospedes>}
+	 **/
 	private Set<Hospede> buscarHospedes() {
 		Set<Hospede> listaHospedes = new HashSet<>();
 		try {

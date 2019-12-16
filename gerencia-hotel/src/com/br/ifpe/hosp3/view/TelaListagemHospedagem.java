@@ -40,7 +40,7 @@ public class TelaListagemHospedagem extends JInternalFrame {
 	private Hospedagem hospedagem;
 
 	/**
-	 * Create the frame.
+	 * Cria tela de listagem de hospedagem.
 	 */
 	public TelaListagemHospedagem() {
 		setClosable(true);
@@ -109,7 +109,11 @@ public class TelaListagemHospedagem extends JInternalFrame {
 		
 		listarHospedagens();
 	}
-
+	
+	/**
+	 * Método para listar hospedagens.
+	 * 
+	 **/
 	private void listarHospedagens() {
 		Set<Hospedagem> listaHospedagens = this.buscarHospedagens();
 		tableListaHospedagem.getColumn("Ações").setCellRenderer(new ButtonRenderer());
@@ -140,7 +144,12 @@ public class TelaListagemHospedagem extends JInternalFrame {
 			modelTableHospedagem.addRow(objeto);
 		});
 	}
-
+	
+	/**
+	 * Método para buscar hospedagens.
+	 * 
+	 * @return listaHospedagens {@link Set<Hospedagem>}
+	 **/
 	private Set<Hospedagem> buscarHospedagens() {
 		Set<Hospedagem> listaHospedagens = new HashSet<>();
 		try {

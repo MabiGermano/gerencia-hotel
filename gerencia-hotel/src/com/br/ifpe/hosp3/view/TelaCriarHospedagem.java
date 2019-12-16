@@ -56,23 +56,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	private final JButton btnCancelar = new JButton("Cancelar");
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaCriarHospedagem frame = new TelaCriarHospedagem();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
+	 * Cria a tela de hospedagem.
 	 */
 	public TelaCriarHospedagem() {
 		setBounds(60, 100, 500, 300);
