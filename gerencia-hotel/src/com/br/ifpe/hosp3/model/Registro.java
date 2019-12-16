@@ -36,6 +36,16 @@ public class Registro
 	public Registro() {
 		
 	}
+	
+	public double gerarValorDiarias() {
+		double valorDiarias = 0;
+		java.util.Date now = new java.util.Date();
+		long diferenca = this.getDataCheckin().getTime() - now.getTime();
+		float dias = 1 +  (diferenca / (1000*60*60*24));
+		valorDiarias = this.getHospedagem().getQuarto().getValor() * (int) dias;
+		
+		return valorDiarias;
+	}
 
 	/**
 	 * @return id {@link int}

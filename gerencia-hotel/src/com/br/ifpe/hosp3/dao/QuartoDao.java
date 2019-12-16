@@ -10,6 +10,7 @@ import java.util.HashSet;
 
 import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.connection.ManipulacaoDeDados;
+import com.br.ifpe.hosp3.model.Hospede;
 import com.br.ifpe.hosp3.model.Quarto;
 
 /**
@@ -221,7 +222,7 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 
 	@Override
 	/**
-	 * O m�todo pega o ultimo ID inserido no banco de dados
+	 * O método pega o ultimo ID inserido no banco de dados
 	 * 
 	 * @param rs {@link ResultSet}
 	 **/
@@ -237,5 +238,39 @@ public class QuartoDao implements ManipulacaoDeDados<Quarto>{
 		}
 		
 		return resultado;
+	}
+
+	/**
+	 * Método para busca do objeto Quarto no banco de dados
+	 * pelo numero
+	 * @param numero {@link String}
+	 * @return  {@link Hospede}
+	 * @throws Exception 
+	 **/
+	public Quarto findByNumero(String numero) {
+		
+		Connection conexao;
+		Quarto quarto = new Quarto();
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM quarto WHERE numero =" + numero;
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			
+			ResultSet result =  ps.executeQuery();
+			if(result != null && result.next()) {
+				quarto.setId(result.getInt("id"));
+				quarto.setValor(result.getFloat("valor"));
+				quarto.setQuantidadePessoas(result.getInt("quantidade_pessoas"));
+				quarto.setTipo(result.getString("tipo"));
+				quarto.setNumero(result.getString("numero"));
+				quarto.setDisponivel(result.getBoolean("disponivel"));	
+			}
+			ConexaoMysql.FecharConexao();
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+	
+		return quarto;
 	}
 }

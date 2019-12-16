@@ -75,17 +75,36 @@ public class RegistroHospedagemController {
 		Registro registro = new Registro();
 		try {
 			Hospedagem hospedagem = hospedagemDao.getByHospede(cpf);
-			Date now = new Date();
 			registro = registroDao.getByHospedagem(hospedagem.getId());
 			
-			//por essa lógica para a classe model
-			long diferenca = registro.getDataCheckin().getTime() - now.getTime();
-			float dias = 1 +  (diferenca / (1000*60*60*24));
-			
-			registro.setValor(registro.getHospedagem().getQuarto().getValor() * (int) dias);
+			registro.setValor(registro.gerarValorDiarias());
 		} catch (Exception e) {
 			throw new Exception("Ocorreu um erro na consulta de hospedagens, tente novamente mais tarde");
 		}
+		return registro;
+	}
+	
+	/**
+	 * Método contendo a regra de negócio necessária busca do registro de hospedagem 
+	 * comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @param numero {@link String}
+	 * @return registro {@link Registro}
+	 * @throws Exception
+	 **/
+	public Registro buscarPeloNumQuarto(String numero) throws Exception{
+		HospedagemDao hospedagemDao = new HospedagemDao();
+		RegistroDao registroDao = new RegistroDao();
+		Registro registro = new Registro();
+		try {
+			Hospedagem hospedagem = hospedagemDao.getByNumQuarto(numero);
+			registro = registroDao.getByHospedagem(hospedagem.getId());
+			
+			registro.setValor(registro.gerarValorDiarias());
+		} catch (Exception e) {
+			throw new Exception("Ocorreu um erro na consulta de hospedagens, tente novamente mais tarde");
+		}
+		
 		return registro;
 	}
 	/**
