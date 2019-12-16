@@ -46,7 +46,7 @@ public class HospedeController {
 			throw e;
 		}
 	}
-	public static Hospede buscarHospede(String cpf) throws Exception {
+	public Hospede buscarHospedeCpf(String cpf) throws Exception {
 		Hospede hospedeRetorno = null;
 		try {
 			HospedeDao hospedeDao = new HospedeDao();

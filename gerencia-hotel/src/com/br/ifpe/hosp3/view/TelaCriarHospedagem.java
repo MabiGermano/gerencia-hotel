@@ -54,6 +54,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	private JTable tableQuartos;
 	private final JButton btnSalvar = new JButton("Salvar");
 	private final JButton btnCancelar = new JButton("Cancelar");
+	private HospedeController hospedeController = new HospedeController();
 
 	/**
 	 * Launch the application.
@@ -298,7 +299,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	public Hospede buscarHospede() {
 		Hospede hospede = new Hospede();
 		try {
-			hospede = HospedeController.buscarHospede(textCpf.getText());
+			hospede = hospedeController.buscarHospedeCpf(textCpf.getText());
 			
 		} catch (Exception e) {
 			panel.remove(table);

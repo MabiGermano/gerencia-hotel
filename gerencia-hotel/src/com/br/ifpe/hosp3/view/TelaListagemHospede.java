@@ -97,9 +97,8 @@ public class TelaListagemHospede extends JInternalFrame {
 		JButton btnBuscarPorCpf = new JButton("");
 		btnBuscarPorCpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/serch_p.png")));
 		btnBuscarPorCpf.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent arg0) {
-				
+				buscaPorCpf();
 			}
 		});
 		btnBuscarPorCpf.setBounds(239, 48, 32, 25);
@@ -204,10 +203,32 @@ public class TelaListagemHospede extends JInternalFrame {
 		try {
 			listaHospedes = hospedeController.buscarHospedeNome(txtBuscaNome.getText());
 			modelTableHospede.setRowCount(0);
-			listarHospedes(listaHospedes);
+			txtBuscaNome.setText("");
+			if(listaHospedes.size() > 0) {				
+				listarHospedes(listaHospedes);
+			}else {
+				JOptionPane.showMessageDialog(null, "Nenhum hospede encontrado");
+				listarHospedes(this.buscarHospedes());
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void buscaPorCpf() {
+		Set<Hospede> listaHospedes = new HashSet<>();
+		Hospede hospede = new Hospede();
+		try {
+			hospede = hospedeController.buscarHospedeCpf(txtBuscarCpf.getText());
+			modelTableHospede.setRowCount(0);
+			listaHospedes.add(hospede);
+			listarHospedes(listaHospedes);
+		} catch (Exception e) {
+			modelTableHospede.setRowCount(0);
+			JOptionPane.showMessageDialog(null,e.getMessage());
+			listarHospedes(this.buscarHospedes());
+		}
+		txtBuscarCpf.setText("");
 	}
 	
 	/**
