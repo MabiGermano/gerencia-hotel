@@ -67,6 +67,7 @@ public class HospedeController {
 	 * comunicando com a classe de interface com o banco de dados
 	 * 
 	 * @param cpf {@link String}
+	 * @return hospedeRetorno {@link Hospede}
 	 * @throws Exception
 	 **/
 	public Hospede buscarHospede(String cpf) throws Exception {
@@ -141,6 +142,13 @@ public class HospedeController {
 		}
 	}
 
+	/**
+	 * Método para buscar hóspede pelo nome.
+	 * 
+	 * @param nome {@link String}
+	 * @return listaHospedes {@link Set<Hospede>}
+	 * @throws Exception
+	 **/
 	public Set<Hospede> buscarHospedeNome(String nome) throws Exception {
 		HospedeDao hospedeDao = new HospedeDao();
 		Set<Hospede> listaHospedes = new HashSet<>();
