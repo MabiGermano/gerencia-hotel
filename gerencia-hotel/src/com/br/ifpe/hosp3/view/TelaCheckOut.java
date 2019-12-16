@@ -116,6 +116,7 @@ public class TelaCheckOut extends JInternalFrame {
 		buttonBuscaNumQuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/serch_p.png")));
 		buttonBuscaNumQuarto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				buscarRegistroPeloNumQuarto();
 			}
 		});
 		panel.setLayout(null);
@@ -169,11 +170,25 @@ public class TelaCheckOut extends JInternalFrame {
 		}
 	}
 	
+	private void buscarRegistroPeloNumQuarto() {
+		
+		try {
+			Registro registro = new Registro();
+			registro = hospedagemController.buscarPeloNumQuarto(txtNumQuartoCheckOut.getText());
+			this.registro = registro;
+			setFields(registro);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+	}
+	
 	private void setFields(Registro registro) {
 		modelTableDados.addRow(new Object[] { registro.getHospedagem().getHospede().getNome(), registro.getHospedagem().getQuarto().getNumero()});
 		txtValorCheckOut.setText(String.valueOf(registro.getValor()));
 		txtValorCheckOut.setEnabled(false);
 	}
+	
+	
 	
 	private void fazerCheckout() {
 		
