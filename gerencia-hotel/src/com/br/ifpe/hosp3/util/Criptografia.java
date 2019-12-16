@@ -38,5 +38,6 @@ public class Criptografia {
 		retorno += identificador.getBytes();
 		return retorno;
 	}
+
 	
 }

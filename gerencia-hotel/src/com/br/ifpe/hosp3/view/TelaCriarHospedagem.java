@@ -48,14 +48,15 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	private JPanel panel;
 	JScrollPane scrollpaneTable ;
 	private JTable table;
-	private Hospedagem hospedagem;
+	private Registro registro;
 	private JLabel lblQuartosDisponveis;
 	private JScrollPane scrollPaneTableQuarto;
 	private JTable tableQuartos;
 	private final JButton btnSalvar = new JButton("Salvar");
 	private final JButton btnCancelar = new JButton("Cancelar");
 	private HospedeController hospedeController = new HospedeController();
-
+	private boolean alterar = false;
+	
 	/**
 	 * Cria a tela de hospedagem.
 	 */
@@ -63,7 +64,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		setBounds(60, 100, 500, 300);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		hospedagem = new Hospedagem();
+		registro = new Registro();
 		
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
@@ -166,9 +167,22 @@ public class TelaCriarHospedagem extends JInternalFrame {
 		getContentPane().setLayout(groupLayout);
 
 	}
-	public TelaCriarHospedagem(Funcionario funcionario) {
+	
+	public TelaCriarHospedagem(Registro registro) {
 		this();
-		this.funcionario = funcionario;
+    	setFields(registro);
+    	this.alterar = true;
+	}
+	
+	public TelaCriarHospedagem(Funcionario funcionario2) {
+		this();
+		this.funcionario = funcionario2;
+	}
+
+	private void setFields(Registro registro) {
+		this.registro = registro;
+		textCpf.setText(registro.getHospedagem().getHospede().getCpf());
+		
 	}
 	/**
 	 * M�todo para fechar o frame de cria��o
@@ -183,11 +197,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	 **/
 	private void criarRegistroHospedagem() {
 		try {
-			Registro registro = new Registro();
-			registro.setFuncionario(this.funcionario);
-			registro.setHospedagem(this.hospedagem);
-			registro.setValor(this.hospedagem.getQuarto().getValor());
-			RegistroHospedagemController.criarRegistroHospedagem(registro);
+			RegistroHospedagemController.criarRegistroHospedagem(this.registro);
 			JOptionPane.showMessageDialog(null, "Check-in realizado com sucesso.");
 			this.dispose();
 		} catch (Exception e) {
@@ -214,8 +224,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 					System.out.println("stop " + hospede.getId());
 					modelTableHospede.getDataVector().removeAllElements();
 					modelTableHospede.addRow(new Object[]{hospede.getNome(), hospede.getCpf(), hospede.getTelefone(), "Ok"});
-					hospedagem.setHospede(hospede);
-					System.out.println(hospedagem);
+					registro.getHospedagem().setHospede(hospede);
 			}
 			
 			@Override
@@ -248,7 +257,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 					modelTableQuarto.getDataVector().removeAllElements();
 					modelTableQuarto.addRow(new Object[]{quartoSelecionado.getNumero(), quartoSelecionado.getTipo(), 
 							quartoSelecionado.getQuantidadePessoas(), quartoSelecionado.getValor(), "Ok"});
-					hospedagem.setQuarto(quartoSelecionado);
+					registro.getHospedagem().setQuarto(quartoSelecionado);
 				}
 				
 				@Override
@@ -283,7 +292,7 @@ public class TelaCriarHospedagem extends JInternalFrame {
 	public Hospede buscarHospede() {
 		Hospede hospede = new Hospede();
 		try {
-			hospede = hospedeController.buscarHospedeCpf(textCpf.getText());
+			hospede = hospedeController.buscarHospede(textCpf.getText());
 			
 		} catch (Exception e) {
 			panel.remove(table);

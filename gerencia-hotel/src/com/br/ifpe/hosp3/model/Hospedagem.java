@@ -1,5 +1,9 @@
 package com.br.ifpe.hosp3.model;
 
+import org.codehaus.groovy.util.StringUtil;
+
+import com.br.ifpe.hosp3.util.Criptografia;
+
 /**
  * @author Tayn� Alexandra
  *
@@ -28,6 +32,16 @@ public class Hospedagem
 	public Hospedagem() 
 	{
 
+	}
+	
+	/**
+	 * Gera hash para o objeto
+	 * 
+	 * @return String
+	 **/
+	public String getHash() {
+		 
+		return Criptografia.criarHashKey("" + getId() + this.getHospede().getId() + this.getQuarto().getId());
 	}
 
 	/**

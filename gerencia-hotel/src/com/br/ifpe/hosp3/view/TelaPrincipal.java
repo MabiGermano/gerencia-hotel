@@ -75,10 +75,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
-
+		
 		try {
-			URL url = getClass().getResource("./../img/lobby.jpg");
-			img = ImageIO.read(new File(url.getPath()));
+			//URL url = getClass().getResource("/gerencia-hotel/src/com/br/ifpe/hosp3/img/lobby.jpg");
+			img = ImageIO.read(new File("/gerencia-hotel/src/com/br/ifpe/hosp3/img/lobby.jpg"));
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -406,19 +406,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 			Component add;
 			add = desktop.add(hospede);
 		}
-		if (sel.equals("Hospedagem")) {
-			TelaListagemHospedagem hospedagem = new TelaListagemHospedagem(this);
-			hospedagem.setVisible(true);
-			Component add;
-			add = desktop.add(hospedagem);
-		}
 		if (sel.equals("Quarto")) {
 			TelaListagemQuarto quarto = new TelaListagemQuarto(this);
 			quarto.setVisible(true);
 			Component add;
 			add = desktop.add(quarto);
 		} else if (sel.equals("Hospedagem")) {
-			TelaListagemHospedagem hospedagem = new TelaListagemHospedagem();
+			TelaListagemHospedagem hospedagem = new TelaListagemHospedagem(this);
 			hospedagem.setVisible(true);
 			Component add;
 			add = desktop.add(hospedagem);

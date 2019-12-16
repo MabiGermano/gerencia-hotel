@@ -223,7 +223,7 @@ public class TelaListagemHospede extends JInternalFrame {
 		Set<Hospede> listaHospedes = new HashSet<>();
 		Hospede hospede = new Hospede();
 		try {
-			hospede = hospedeController.buscarHospedeCpf(txtBuscarCpf.getText());
+			hospede = hospedeController.buscarHospede(txtBuscarCpf.getText());
 			modelTableHospede.setRowCount(0);
 			listaHospedes.add(hospede);
 			listarHospedes(listaHospedes);

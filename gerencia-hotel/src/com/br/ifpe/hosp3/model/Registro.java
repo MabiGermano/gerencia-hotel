@@ -3,6 +3,8 @@ package com.br.ifpe.hosp3.model;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import com.br.ifpe.hosp3.util.Criptografia;
+
 /**
  * @author Tayn� Alexandra
  *
@@ -46,6 +48,17 @@ public class Registro
 		
 		return valorDiarias;
 	}
+	
+	/**
+	 * Gera hash para o objeto
+	 * 
+	 * @return String
+	 **/
+	public String getHash() {
+		 
+		return Criptografia.criarHashKey("" + getId() + this.getHospedagem());
+	}
+
 
 	/**
 	 * @return id {@link int}
@@ -131,7 +144,7 @@ public class Registro
 	 * @return valor {@link double}
 	 */
 	public double getValor() {
-		return valor;
+		return this.gerarValorDiarias();
 	}
 
 	/**
