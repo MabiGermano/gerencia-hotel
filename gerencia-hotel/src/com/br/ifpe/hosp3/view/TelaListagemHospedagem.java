@@ -38,6 +38,7 @@ public class TelaListagemHospedagem extends JInternalFrame {
 	private JTextField txtBuscarNumQuarto;
 	private RegistroHospedagemController registroHospedagemController = new RegistroHospedagemController();
 	private Hospedagem hospedagem;
+	private TelaPrincipal desktop;
 
 	/**
 	 * Cria tela de listagem de hospedagem.
@@ -110,6 +111,10 @@ public class TelaListagemHospedagem extends JInternalFrame {
 		listarHospedagens();
 	}
 	
+	public TelaListagemHospedagem(TelaPrincipal telaPrincipal) {
+		this.desktop = telaPrincipal;
+	}
+
 	/**
 	 * Método para listar hospedagens.
 	 * 

@@ -69,7 +69,7 @@ public class HospedeController {
 	 * @param cpf {@link String}
 	 * @throws Exception
 	 **/
-	public Hospede buscarHospede(String cpf) throws Exception {
+	public Hospede buscarHospedeCpf(String cpf) throws Exception {
 		Hospede hospedeRetorno = null;
 		try {
 			HospedeDao hospedeDao = new HospedeDao();

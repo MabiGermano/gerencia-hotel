@@ -235,6 +235,7 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 
 		return listaHospede;
 	}
+	
 	@Override
 	/**
 	 * Método para deletar o objeto 

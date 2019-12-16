@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -26,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.br.ifpe.hosp3.controller.FuncionarioController;
 import com.br.ifpe.hosp3.model.Funcionario;
-import com.br.ifpe.hosp3.model.Quarto;
+import com.br.ifpe.hosp3.model.Hospede;
 import com.br.ifpe.hosp3.util.ButtonEditor;
 import com.br.ifpe.hosp3.util.ButtonRenderer;
 import com.br.ifpe.hosp3.util.TratadorEventos;
@@ -83,6 +82,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		btnBuscarPorNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/serch_p.png")));
 		btnBuscarPorNome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				buscaPorNome();
 			}
 		});
 		btnBuscarPorNome.setBounds(540, 48, 32, 25);
@@ -101,6 +101,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		btnBuscarPorCpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/serch_p.png")));
 		btnBuscarPorCpf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				buscaPorCpf();
 			}
 		});
 		btnBuscarPorCpf.setBounds(235, 48, 32, 25);
@@ -123,7 +124,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		tableListaFuncionario = new JTable(modelTableFuncionario);
 		scrollTableFuncionario.setViewportView(tableListaFuncionario);
 		
-		listarFuncionarios();
+		listarFuncionarios(this.buscarFuncionarios());
 	}
 	public TelaListagemFuncionario(TelaPrincipal desktop) {
 		this();
@@ -133,8 +134,8 @@ public class TelaListagemFuncionario extends JInternalFrame {
 	/**
 	 * Método para Listar os funcionários
 	 **/
-	private void listarFuncionarios() {
-		Set<Funcionario> listaFuncionarios = this.buscarFuncionarios();
+	private void listarFuncionarios(Set<Funcionario> lista) {
+		Set<Funcionario> listaFuncionarios = lista;
 		listaMap = listaFuncionarios.stream()
 				.collect(Collectors.toMap(Funcionario::getHash,Function.identity()));
 
@@ -181,53 +182,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 				}
 				
 			});
-			
 		});
-		
-		/**
-		tableListaFuncionario.getColumn("Ações").setCellRenderer(new ButtonRenderer());
-		tableListaFuncionario.getColumn("Ações").setCellEditor(new ButtonEditor(new JCheckBox()));
-		
-		listaFuncionarios.stream().forEach(funcionario -> {
-			Object[] objeto = new Object[] {funcionario.getCodigo(), funcionario.getNome(), funcionario.getCpf(),
-					funcionario.getEmail(), funcionario.getTelefone(), "Editar" };
-			
-			tableListaFuncionario.getColumn("Ações").getCellEditor().addCellEditorListener(new CellEditorListener() {
-
-				@Override
-				public void editingCanceled(ChangeEvent e) {
-					System.out.println("stop " + funcionario.getId());
-					modelTableFuncionario.getDataVector().removeAllElements();
-					modelTableFuncionario.addRow(new Object[] { funcionario.getCodigo(), funcionario.getNome(), funcionario.getCpf(),
-							funcionario.getEmail(), funcionario.getTelefone(), "Ok" });
-					TelaFuncionario alterarFuncionario = null;
-					try {
-						alterarFuncionario = new TelaFuncionario(funcionario);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					alterarFuncionario.setVisible(true);
-					Component add;
-				}
-
-				@Override
-				public void editingStopped(ChangeEvent e) {
-					System.out.println("Cancel");
-					
-				}
-			});
-			
-			modelTableFuncionario.addRow(objeto);
-		});
-		
-		
-		
-		
-		
-		**/
-		
-		
 		
 	}
 	
@@ -247,11 +202,9 @@ public class TelaListagemFuncionario extends JInternalFrame {
 		desktop.getDesktop().add(alterarFuncionario);
 		tratadorEventos = new TratadorEventos(desktop);
 		alterarFuncionario.addInternalFrameListener(tratadorEventos);
-		modelTableFuncionario.getDataVector().removeAllElements();
-		modelTableFuncionario.addRow(new Object[] { chave,  funcionario.getCodigo(), funcionario.getNome(), funcionario.getCpf(),
-				funcionario.getEmail(), funcionario.getTelefone(), "Ok" });
+		modelTableFuncionario.setRowCount(0);
 		
-		listarFuncionarios();
+		listarFuncionarios(this.buscarFuncionarios());
 	}
 	
 	/**
@@ -269,8 +222,8 @@ public class TelaListagemFuncionario extends JInternalFrame {
 			if(confirm == JOptionPane.YES_OPTION) {
 				funcionarioController.deleteFuncionario(funcionario);
 			}
-			modelTableFuncionario.getDataVector().removeAllElements();
-			listarFuncionarios();
+			modelTableFuncionario.setRowCount(0);
+			listarFuncionarios(this.buscarFuncionarios());
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
@@ -293,5 +246,39 @@ public class TelaListagemFuncionario extends JInternalFrame {
 			
 		}
 		return listaFuncionarios;
+	}
+	
+
+	private void buscaPorNome() {
+		Set<Funcionario> listaFuncionarios= new HashSet<>();
+		try {
+			listaFuncionarios = funcionarioController.buscarFuncionarioNome(txtBuscaNome.getText());
+			modelTableFuncionario.setRowCount(0);
+			txtBuscaNome.setText("");
+			if(listaFuncionarios.size() > 0) {				
+				listarFuncionarios(listaFuncionarios);
+			}else {
+				JOptionPane.showMessageDialog(null, "Nenhum hospede encontrado");
+				listarFuncionarios(this.buscarFuncionarios());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void buscaPorCpf() {
+		Set<Funcionario> listaFuncionarios = new HashSet<>();
+		Funcionario funcionario= new Funcionario();
+		try {
+			funcionario = funcionarioController.buscarFuncionarioCpf(txtBuscarCpf.getText());
+			modelTableFuncionario.setRowCount(0);
+			listaFuncionarios.add(funcionario);
+			listarFuncionarios(listaFuncionarios);
+		} catch (Exception e) {
+			modelTableFuncionario.setRowCount(0);
+			JOptionPane.showMessageDialog(null,e.getMessage());
+			listarFuncionarios(this.buscarFuncionarios());
+		}
+		txtBuscarCpf.setText("");
 	}
 }

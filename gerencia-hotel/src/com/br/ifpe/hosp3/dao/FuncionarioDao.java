@@ -12,6 +12,7 @@ import com.br.ifpe.hosp3.connection.ConexaoMysql;
 import com.br.ifpe.hosp3.connection.ManipulacaoDeDados;
 import com.br.ifpe.hosp3.model.Endereco;
 import com.br.ifpe.hosp3.model.Funcionario;
+import com.br.ifpe.hosp3.model.Hospede;
 import com.br.ifpe.hosp3.util.Criptografia;
 
 public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
@@ -104,7 +105,7 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 				
 				Funcionario funcionario = new Funcionario();
 				funcionario = this.constructObject(funcionario, result);
-			
+
 				listaFuncionario.add(funcionario);
 			}
 			ConexaoMysql.FecharConexao();
@@ -222,6 +223,69 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 	}
 	
 	/**
+	 * Método para busca do objeto Funcionario no banco de dados
+	 * pelo cpf
+	 * @param cpf {@link String}
+	 * @return funcionario {@link Funcionario}
+	 * @throws Exception 
+	 **/
+	public Funcionario findByCpf(String cpf) throws Exception {
+		Connection conexao;
+		Funcionario funcionario = new Funcionario();
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM funcionario WHERE cpf ='" + cpf + "'";
+						
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			
+			ResultSet result =  ps.executeQuery();				
+			if(result != null && result.next()) {
+				funcionario = this.constructObject(funcionario, result);
+			}else {
+				funcionario = null;
+			}
+			
+		} catch (IOException | SQLException e) {
+			throw e;
+		}
+
+		return funcionario;
+	}
+	
+
+	/**
+	 * Método para busca do objeto Funcionario no banco de dados
+	 * pelo nome
+	 * @param nome {@link String}
+	 * @return funcionario {@link Funcionario}
+	 * @throws Exception 
+	 **/
+	public HashSet<Funcionario> findByNome(String nome) throws Exception {
+		Connection conexao;
+		HashSet<Funcionario> listafuncionarios= new HashSet<>();
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM funcionario WHERE nome LIKE '%" + nome + "%'";
+
+			PreparedStatement ps = conexao.prepareStatement(sql);
+
+			ResultSet result = ps.executeQuery();
+
+			while (result.next()) {
+				
+				Funcionario funcionario = new Funcionario();
+				funcionario = this.constructObject(funcionario, result);
+				listafuncionarios.add(funcionario);
+			}
+			ConexaoMysql.FecharConexao();
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listafuncionarios;
+	}
+	
+	/**
 	 * Método verifica se CPF já está registrado no banco de dados
 	 * @param cpf {@link String}
 	 * @return retorno {@link boolean}
@@ -276,4 +340,6 @@ public class FuncionarioDao implements ManipulacaoDeDados<Funcionario>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 }
