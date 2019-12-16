@@ -38,7 +38,7 @@ public class TelaListagemQuarto extends JInternalFrame {
 	private QuartoController quartoController = new QuartoController();
 
 	/**
-	 * Create the frame.
+	 * Cria a tela de listagem de quarto.
 	 */
 	public TelaListagemQuarto() {
 
@@ -183,7 +183,12 @@ public class TelaListagemQuarto extends JInternalFrame {
 
 		
 	}
-
+	
+	/**
+	 * Método para buscar hospedagens.
+	 * 
+	 * @return listaQuartos {@link Set<Quarto>}
+	 **/
 	private Set<Quarto> buscarQuartos() {
 		Set<Quarto> listaQuartos = new HashSet<>();
 		try {

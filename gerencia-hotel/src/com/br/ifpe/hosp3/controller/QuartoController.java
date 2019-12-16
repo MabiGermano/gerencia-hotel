@@ -91,6 +91,13 @@ public class QuartoController {
 		}
 	}
 	
+	/**
+	 * Método contendo a regra de negócio necessária para deleção do quarto
+	 * comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @param quarto {@link Quarto}
+	 * @throws Exception
+	 **/
 	public void deleteQuarto(Quarto quarto) throws Exception {
 		QuartoDao quartoDao = new QuartoDao();
 		try {

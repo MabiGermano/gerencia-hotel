@@ -7,6 +7,7 @@ import com.br.ifpe.hosp3.dao.EnderecoDao;
 import com.br.ifpe.hosp3.dao.HospedeDao;
 import com.br.ifpe.hosp3.dao.QuartoDao;
 import com.br.ifpe.hosp3.model.Endereco;
+import com.br.ifpe.hosp3.model.Funcionario;
 import com.br.ifpe.hosp3.model.Hospede;
 import com.br.ifpe.hosp3.model.Quarto;
 import com.br.ifpe.hosp3.util.Criptografia;
@@ -19,7 +20,14 @@ import com.br.ifpe.hosp3.util.Criptografia;
  * 
  **/
 public class HospedeController {
-
+	
+	/**
+	 * Método contendo a regra de negócio necessária para criação do hóspede
+	 * comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @param hospede {@link Hospede}
+	 * @throws Exception
+	 **/
 	public void criarHospede(Hospede hospede) throws Exception {
 		
 		try {
@@ -34,7 +42,14 @@ public class HospedeController {
 			throw e;
 		}
 	}
-
+	
+	/**
+	 * Método contendo a regra de negócio necessária para alteração do hóspede
+	 * comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @param hospede {@link Hospede}
+	 * @throws Exception
+	 **/
 	public void editarHospede(Hospede hospede) throws Exception {
 
 		try {
@@ -46,7 +61,15 @@ public class HospedeController {
 			throw e;
 		}
 	}
-	public Hospede buscarHospedeCpf(String cpf) throws Exception {
+	
+	/**
+	 * Método contendo a regra de negócio necessária para criação do hóspede
+	 * comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @param cpf {@link String}
+	 * @throws Exception
+	 **/
+	public Hospede buscarHospede(String cpf) throws Exception {
 		Hospede hospedeRetorno = null;
 		try {
 			HospedeDao hospedeDao = new HospedeDao();
@@ -101,6 +124,14 @@ public class HospedeController {
 		}
 	}
 	
+	
+	/**
+	 * Método contendo a regra de negócio necessária para deleção do hóspede
+	 * comunicando com a classe de interface com o banco de dados
+	 * 
+	 * @param hospede {@link Hospede}
+	 * @throws Exception
+	 **/
 	public void deleteHospede(Hospede hospede) throws Exception {
 		HospedeDao hospedeDao = new HospedeDao();
 		try {

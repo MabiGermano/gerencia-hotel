@@ -80,6 +80,13 @@ public void alterarFuncionario(Funcionario funcionario) throws Exception{
 	}
 }
 
+/**
+ * Método contendo a regra de negócio necessária para deleção do funcionário
+ * comunicando com a classe de interface com o banco de dados
+ * 
+ * @param funcionario {@link Funcionario}
+ * @throws Exception
+ **/
 public void deleteFuncionario(Funcionario funcionario) throws Exception {
 	FuncionarioDao funcionarioDao = new FuncionarioDao();
 	try {

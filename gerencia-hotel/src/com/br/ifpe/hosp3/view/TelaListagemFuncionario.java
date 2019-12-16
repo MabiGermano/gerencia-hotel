@@ -52,7 +52,7 @@ public class TelaListagemFuncionario extends JInternalFrame {
 	private Map<String, Funcionario> listaMap;
 
 	/**
-	 * Create the frame.
+	 * Cria tela de listagem de funcionário.
 	 */
 	public TelaListagemFuncionario() {
 		setClosable(true);
@@ -278,7 +278,12 @@ public class TelaListagemFuncionario extends JInternalFrame {
 
 		
 	}
-
+	
+	/**
+	 * Método para buscar funcionários.
+	 * 
+	 * @return listaFuncionarios {@link Set<Funcionario>}
+	 **/
 	private Set<Funcionario> buscarFuncionarios() {
 		Set<Funcionario> listaFuncionarios = new HashSet<>();
 		try {

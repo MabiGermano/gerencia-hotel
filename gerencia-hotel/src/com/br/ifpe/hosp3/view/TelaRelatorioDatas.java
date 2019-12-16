@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,7 +27,7 @@ public class TelaRelatorioDatas extends javax.swing.JInternalFrame {
 	private JTextField txtDataCheckout;
 
 	/**
-	 * Create the frame.
+	 * Cria a tela de relatório de hospedagem.
 	 */
 	public TelaRelatorioDatas() {
 		setClosable(true);
@@ -82,11 +83,22 @@ public class TelaRelatorioDatas extends javax.swing.JInternalFrame {
 		JButton btnCancelarRelHospedagem = new JButton("Cancelar");
 		btnCancelarRelHospedagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			
+				try {
+					cancelarConsulta();
+				} catch (PropertyVetoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			private void cancelarConsulta() throws PropertyVetoException {
+				setClosed(true);
+				
 			}
 		});
 		btnCancelarRelHospedagem.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCancelarRelHospedagem.setBounds(319, 154, 130, 45);
 		contentPane.add(btnCancelarRelHospedagem);
+		
 	}
 }

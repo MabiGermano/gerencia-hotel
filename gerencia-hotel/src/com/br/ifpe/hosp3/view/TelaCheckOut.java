@@ -44,7 +44,7 @@ public class TelaCheckOut extends JInternalFrame {
 
 
 	/**
-	 * Create the frame.
+	 * Cria a tela de Check-out.
 	 */
 	public TelaCheckOut() {
 		setClosable(true);
@@ -157,6 +157,10 @@ public class TelaCheckOut extends JInternalFrame {
 
 	}
 	
+	/**
+	 * Método para buscar registro de hospedagem pelo CPF do hóspede.
+	 * 
+	 **/
 	private void buscarRegistroPeloCpf() {
 		
 		try {
@@ -175,6 +179,10 @@ public class TelaCheckOut extends JInternalFrame {
 		txtValorCheckOut.setEnabled(false);
 	}
 	
+	/**
+	 * Método para realizar Check-out.
+	 * 
+	 **/
 	private void fazerCheckout() {
 		
 		try {
