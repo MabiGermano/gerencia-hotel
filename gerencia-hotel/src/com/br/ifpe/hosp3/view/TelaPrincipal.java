@@ -158,10 +158,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		mntmHospedagem = new JMenuItem();
 		mntmHospedagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaRelatorioDatas relatorioDatas = null;
-				relatorioDatas = new TelaRelatorioDatas();
-				relatorioDatas.setVisible(true);
-				desktop.add(relatorioDatas);
+				int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão do relatório?", "Atenção", JOptionPane.YES_NO_OPTION);
+				if (confirma == JOptionPane.YES_OPTION) {
+					try {
+						JasperPrint imprime = JasperFillManager.fillReport(".\\gerencia-hotel\\resources\\arquivos\\hospedagens.jasper", null, connection);
+						JasperViewer.viewReport(imprime, false);
+					} catch (Exception e) {
+						JOptionPane.showMessageDialog(null, e);
+					} 
+				}
 			}
 		});
 		mntmHospedagem.setText("Hospedagens");

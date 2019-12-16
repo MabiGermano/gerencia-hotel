@@ -202,6 +202,10 @@ public class TelaListagemHospede extends JInternalFrame {
 		listarHospedes(this.buscarHospedes());
 	}
 	
+	/**
+	 * Método para buscar hóspede pelo nome.
+	 * 
+	 **/
 	private void buscaPorNome() {
 		Set<Hospede> listaHospedes = new HashSet<>();
 		try {
@@ -219,6 +223,10 @@ public class TelaListagemHospede extends JInternalFrame {
 		}
 	}
 	
+	/**
+	 * Método para buscar hóspede pelo CPF.
+	 * 
+	 **/
 	private void buscaPorCpf() {
 		Set<Hospede> listaHospedes = new HashSet<>();
 		Hospede hospede = new Hospede();
