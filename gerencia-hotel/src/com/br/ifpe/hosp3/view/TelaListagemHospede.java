@@ -79,6 +79,7 @@ public class TelaListagemHospede extends JInternalFrame {
 		btnBuscarPorNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/serch_p.png")));
 		btnBuscarPorNome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				buscaPorNome();
 			}
 		});
 		btnBuscarPorNome.setBounds(522, 48, 32, 25);
@@ -97,6 +98,7 @@ public class TelaListagemHospede extends JInternalFrame {
 		btnBuscarPorCpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/ifpe/hosp3/img/serch_p.png")));
 		btnBuscarPorCpf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				buscaPorCpf();
 			}
 		});
 		btnBuscarPorCpf.setBounds(239, 48, 32, 25);
@@ -118,15 +120,15 @@ public class TelaListagemHospede extends JInternalFrame {
 		tableListaHospede = new JTable(modelTableHospede);
 		scrollTableHospede.setViewportView(tableListaHospede);
 		
-		listarHospedes();
+		listarHospedes(this.buscarHospedes());
 	}
 	
 	/**
 	 * Método para listar hospedagens.
 	 * 
 	 **/
-	private void listarHospedes() {
-		Set<Hospede> listaHospedes = this.buscarHospedes();
+	private void listarHospedes(Set<Hospede> lista) {
+		Set<Hospede> listaHospedes = lista;
 		listaMap = listaHospedes.stream()
 				.collect(Collectors.toMap(Hospede::getHash,Function.identity()));
 
@@ -195,11 +197,42 @@ public class TelaListagemHospede extends JInternalFrame {
 		desktop.getDesktop().add(alterarHospede);
 		tratadorEventos = new TratadorEventos(desktop);
 		alterarHospede.addInternalFrameListener(tratadorEventos);
-		modelTableHospede.getDataVector().removeAllElements();
-		modelTableHospede.addRow(new Object[] { chave,  hospede.getNome(), hospede.getCpf(), hospede.getEmail(),
-				hospede.getTelefone(), "Ok" });
+		modelTableHospede.setRowCount(0);
 		
-		listarHospedes();
+		listarHospedes(this.buscarHospedes());
+	}
+	
+	private void buscaPorNome() {
+		Set<Hospede> listaHospedes = new HashSet<>();
+		try {
+			listaHospedes = hospedeController.buscarHospedeNome(txtBuscaNome.getText());
+			modelTableHospede.setRowCount(0);
+			txtBuscaNome.setText("");
+			if(listaHospedes.size() > 0) {				
+				listarHospedes(listaHospedes);
+			}else {
+				JOptionPane.showMessageDialog(null, "Nenhum hospede encontrado");
+				listarHospedes(this.buscarHospedes());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void buscaPorCpf() {
+		Set<Hospede> listaHospedes = new HashSet<>();
+		Hospede hospede = new Hospede();
+		try {
+			hospede = hospedeController.buscarHospedeCpf(txtBuscarCpf.getText());
+			modelTableHospede.setRowCount(0);
+			listaHospedes.add(hospede);
+			listarHospedes(listaHospedes);
+		} catch (Exception e) {
+			modelTableHospede.setRowCount(0);
+			JOptionPane.showMessageDialog(null,e.getMessage());
+			listarHospedes(this.buscarHospedes());
+		}
+		txtBuscarCpf.setText("");
 	}
 	
 	/**
@@ -217,13 +250,16 @@ public class TelaListagemHospede extends JInternalFrame {
 			if(confirm == JOptionPane.YES_OPTION) {
 				hospedeController.deleteHospede(hospede);
 			}
-			modelTableHospede.getDataVector().removeAllElements();
-			listarHospedes();
+			modelTableHospede.setRowCount(0);
+			
+			listarHospedes(this.buscarHospedes());
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	
 	}
+	
+	
 
 	/**
 	 * Método para buscar hóspedes.

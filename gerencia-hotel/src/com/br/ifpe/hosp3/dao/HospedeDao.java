@@ -195,6 +195,46 @@ public class HospedeDao implements ManipulacaoDeDados<Hospede>{
 
 		return hospede;
 	}
+	
+	/**
+	 * Método para busca do objeto Hospede no banco de dados
+	 * pelo nome
+	 * @param nome {@link String}
+	 * @return hospede {@link Hospede}
+	 * @throws Exception 
+	 **/
+	public HashSet<Hospede> findByNome(String nome) throws Exception {
+		Connection conexao;
+		HashSet<Hospede> listaHospede = new HashSet<>();
+		try {
+			conexao = ConexaoMysql.getConexaoMySQL();
+			String sql = "SELECT * FROM hospede WHERE nome LIKE '%" + nome + "%'";
+
+			PreparedStatement ps = conexao.prepareStatement(sql);
+
+			ResultSet result = ps.executeQuery();
+
+			while (result.next()) {
+				EnderecoDao endDao = new EnderecoDao();
+				Endereco endereco = endDao.getById(result.getInt("endereco_id"));
+				Hospede hospede = new Hospede();
+				hospede.setId(result.getInt("id"));
+				hospede.setNome(result.getString("nome"));
+				hospede.setCpf(result.getString("cpf"));
+				hospede.setEmail(result.getString("email"));
+				hospede.setTelefone(result.getString("telefone"));
+				hospede.setPalavraPasse(result.getString("palavra_passe"));
+				hospede.setEndereco(endereco);
+
+				listaHospede.add(hospede);
+			}
+			ConexaoMysql.FecharConexao();
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listaHospede;
+	}
 	@Override
 	/**
 	 * Método para deletar o objeto 

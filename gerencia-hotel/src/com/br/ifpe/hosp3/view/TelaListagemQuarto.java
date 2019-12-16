@@ -154,10 +154,7 @@ public class TelaListagemQuarto extends JInternalFrame {
 		desktop.getDesktop().add(alterarQuarto);
 		tratadorEventos = new TratadorEventos(desktop);
 		alterarQuarto.addInternalFrameListener(tratadorEventos);
-		modelTableQuarto.getDataVector().removeAllElements();
-		modelTableQuarto.addRow(new Object[] { chave, quarto.getNumero(), quarto.getTipo(),
-				quarto.getQuantidadePessoas(), quarto.getValor(), "Ok" });
-		
+		modelTableQuarto.setRowCount(0);
 		listarQuartos();
 	}
 	
@@ -176,7 +173,8 @@ public class TelaListagemQuarto extends JInternalFrame {
 			if(confirm == JOptionPane.YES_OPTION) {
 				quartoController.deleteQuarto(quarto);
 			}
-			modelTableQuarto.getDataVector().removeAllElements();
+			
+			modelTableQuarto.setRowCount(0);
 			listarQuartos();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());

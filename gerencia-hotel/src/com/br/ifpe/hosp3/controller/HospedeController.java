@@ -69,7 +69,7 @@ public class HospedeController {
 	 * @param cpf {@link String}
 	 * @throws Exception
 	 **/
-	public static Hospede buscarHospede(String cpf) throws Exception {
+	public Hospede buscarHospede(String cpf) throws Exception {
 		Hospede hospedeRetorno = null;
 		try {
 			HospedeDao hospedeDao = new HospedeDao();
@@ -140,4 +140,17 @@ public class HospedeController {
 			throw e;
 		}
 	}
+
+	public Set<Hospede> buscarHospedeNome(String nome) throws Exception {
+		HospedeDao hospedeDao = new HospedeDao();
+		Set<Hospede> listaHospedes = new HashSet<>();
+		try {
+			listaHospedes = hospedeDao.findByNome(nome);
+		} catch (Exception e) {
+			throw new Exception("Usuário não encontrado! "
+					+ "\n" + "Verifique: "
+					+ "\n" + "**nome não pode estar vazio");
+		}
+		return listaHospedes;
 	}
+}
